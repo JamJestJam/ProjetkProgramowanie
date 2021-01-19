@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProjektZaliczeniowyProgramowanie.Table {
+namespace DBconnectShop.Table {
     class Address {
         #region Columns ======================================
 

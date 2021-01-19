@@ -1,20 +1,38 @@
 ﻿using System;
 using System.Linq;
-using ProjektZaliczeniowyProgramowanie.Table;
+using DBconnectShop.Table;
+using Microsoft.EntityFrameworkCore;
 
-namespace ProjektZaliczeniowyProgramowanie {
+namespace DBconnectShop {
     public class Class {
         public static void Main() {
-            using var db = new ShopMarekMichura();
+            Group();
+        }
 
-            Console.WriteLine("");
-            
-            IQueryable<User> users = db.Users;
+        static void AllUsers() {
+            using var db = new Shop();
 
-            //Console.WriteLine(db.Database.CanConnect());
+            IQueryable<User> users = db.Users
+                .Include(a => a.User_Group)
+                .Include(a => a.User_Data);
 
-            foreach(var u in users) {
+            foreach (var u in users) {
                 Console.WriteLine($"{u.User_name}, {u.User_password}");
+            }
+        }
+
+        static void Group() {
+            using var db = new Shop();
+
+            IQueryable<User_group> groups = db.User_Groups
+                .Include(a => a.Users)
+                .ThenInclude(b => b.User_Data);
+
+            foreach (var g in groups) {
+                Console.WriteLine($"{g.User_group_name}: ");
+                foreach (var u in g.Users) {
+                    Console.WriteLine($"\t{u.User_name}");
+                }
             }
         }
     }

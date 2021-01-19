@@ -1,11 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProjektZaliczeniowyProgramowanie.Table;
+using DBconnectShop.Table;
 
-namespace ProjektZaliczeniowyProgramowanie {
-    class ShopMarekMichura : DbContext {
+namespace DBconnectShop {
+    class Shop : DbContext {
+
+        #region Tables =======================================
+
         public DbSet<Address> Addresses { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<User_group> User_Groups { get; set; }
+        public DbSet<User_data> Users_Data { get; set; }
+
+        #endregion
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             if (!optionsBuilder.IsConfigured) {
@@ -13,6 +19,10 @@ namespace ProjektZaliczeniowyProgramowanie {
             }
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) { }
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            User.ModelCreate(modelBuilder);
+            User_group.ModelCreate(modelBuilder);
+            User_data.ModelCreate(modelBuilder);
+        }
     }
 }

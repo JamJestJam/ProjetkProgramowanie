@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
-namespace ProjektZaliczeniowyProgramowanie.Table {
+namespace DBconnectShop.Table  {
     class User {
         #region Columns ======================================
 
@@ -27,13 +27,24 @@ namespace ProjektZaliczeniowyProgramowanie.Table {
         [Required]
         public int User_group_id { get; set; }
 
-        [Required]
-        public virtual ICollection<User_group> User_Group { get; set; }
+        public virtual User_group User_Group { get; set; }
+
+        public User_data User_Data { get; set; }
 
         #endregion
 
-        public User() {
-            User_Group = new HashSet<User_group>();
+        public static void ModelCreate(ModelBuilder modelBuilder) {
+            modelBuilder.Entity<User>().ToTable("Users");
+
+            modelBuilder.Entity<User>()
+                .HasOne(a => a.User_Group)
+                .WithMany(b => b.Users)
+                .HasForeignKey(b => b.User_group_id);
+
+            modelBuilder.Entity<User>()
+                .HasOne(a => a.User_Data)
+                .WithOne(b => b.User)
+                .HasForeignKey<User_data>(b => b.User_id);
         }
     }
 }
