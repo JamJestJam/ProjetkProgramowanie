@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DBconnectShop.Table {
     class Address {
@@ -24,10 +26,19 @@ namespace DBconnectShop.Table {
         [StringLength(50)]
         public string Address_building_number { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string Address_zip_code { get; set; }
 
         #endregion
+
+        #region Fireign key ==================================
+
+        public ICollection<User_address> User_Addresses { get; set; } = new List<User_address>();
+
+        #endregion
+
+        public static void ModelCreate(ModelBuilder modelBuilder) {
+            modelBuilder.Entity<Address>().ToTable("Addresses");
+        }
     }
 }

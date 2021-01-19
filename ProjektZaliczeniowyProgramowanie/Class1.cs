@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 namespace DBconnectShop {
     public class Class {
         public static void Main() {
+            AllUsers();
             Group();
+            Addresses();
         }
 
         static void AllUsers() {
@@ -33,6 +35,17 @@ namespace DBconnectShop {
                 foreach (var u in g.Users) {
                     Console.WriteLine($"\t{u.User_name}");
                 }
+            }
+        }
+
+        static void Addresses() {
+            using var db = new Shop();
+
+            IQueryable<Address> addresses = db.Addresses
+                .Include(a => a.User_Addresses);
+
+            foreach (var a in addresses) {
+                Console.WriteLine($"{a.Address_city}: ");
             }
         }
     }

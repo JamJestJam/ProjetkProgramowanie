@@ -40,11 +40,6 @@ namespace DBconnectShop.Table  {
                 .HasOne(a => a.User_Group)
                 .WithMany(b => b.Users)
                 .HasForeignKey(b => b.User_group_id);
-
-            modelBuilder.Entity<User>()
-                .HasOne(a => a.User_Data)
-                .WithOne(b => b.User)
-                .HasForeignKey<User_data>(b => b.User_id);
         }
     }
 }

@@ -18,7 +18,7 @@ create index I_Addresses on Addresses(Address_id)
 --typy urzytkownikow
 create table User_groups(
 User_group_id int primary key identity(1,1),
-User_group_name nchar(25)
+User_group_name nchar(25) not null
 )
 
 --lista urzytkownikow

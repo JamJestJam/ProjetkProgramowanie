@@ -10,6 +10,7 @@ namespace DBconnectShop {
         public DbSet<User> Users { get; set; }
         public DbSet<User_group> User_Groups { get; set; }
         public DbSet<User_data> Users_Data { get; set; }
+        public DbSet<User_address> User_Addresses { get; set; }
 
         #endregion
 
@@ -20,9 +21,12 @@ namespace DBconnectShop {
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            Address.ModelCreate(modelBuilder);
+
             User.ModelCreate(modelBuilder);
             User_group.ModelCreate(modelBuilder);
             User_data.ModelCreate(modelBuilder);
+            User_address.ModelCreate(modelBuilder);
         }
     }
 }
