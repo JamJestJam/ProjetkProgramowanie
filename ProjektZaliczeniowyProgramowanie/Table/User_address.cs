@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace DBconnectShop.Table {
     class User_address {
@@ -26,6 +27,8 @@ namespace DBconnectShop.Table {
 
         public Address Address { get; set; }
 
+        public User User { get; }
+
         #endregion
 
         public static void ModelCreate(ModelBuilder modelBuilder) {
@@ -35,6 +38,11 @@ namespace DBconnectShop.Table {
                 .HasOne(a => a.Address)
                 .WithMany(b => b.User_Addresses)
                 .HasForeignKey(b => b.Address_id);
+
+            modelBuilder.Entity<User_address>()
+                .HasOne(a => a.User)
+                .WithMany(b => b.User_Address)
+                .HasForeignKey(b => b.User_id);
         }
     }
 }

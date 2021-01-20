@@ -16,7 +16,9 @@ namespace DBconnectShop {
 
             IQueryable<User> users = db.Users
                 .Include(a => a.User_Group)
-                .Include(a => a.User_Data);
+                .Include(a => a.User_Data)
+                .Include(a => a.User_Address)
+                    .ThenInclude(b => b.Address);
 
             foreach (var u in users) {
                 Console.WriteLine($"{u.User_name}, {u.User_password}");

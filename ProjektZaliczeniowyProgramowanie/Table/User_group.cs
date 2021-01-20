@@ -24,11 +24,6 @@ namespace DBconnectShop.Table {
 
         public static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<User_group>().ToTable("User_groups");
-
-            modelBuilder.Entity<User_group>()
-                .HasMany(a => a.Users)
-                .WithOne(b => b.User_Group)
-                .HasForeignKey(b => b.User_group_id);
         }
     }
 }

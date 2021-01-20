@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DBconnectShop.Table  {
@@ -30,6 +31,8 @@ namespace DBconnectShop.Table  {
         public virtual User_group User_Group { get; set; }
 
         public User_data User_Data { get; set; }
+
+        public ICollection<User_address> User_Address { get; set; } = new List<User_address>();
 
         #endregion
 
