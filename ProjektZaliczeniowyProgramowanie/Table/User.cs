@@ -42,7 +42,7 @@ namespace DBconnectShop.Table  {
 
         #endregion
 
-        public static void ModelCreate(ModelBuilder modelBuilder) {
+        internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<User>().ToTable("Users");
 
             modelBuilder.Entity<User>()

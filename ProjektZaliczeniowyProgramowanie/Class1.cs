@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
-using DBconnectShop.Table;
+﻿using DBconnectShop.Table;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 
 namespace DBconnectShop {
     public class Class {
@@ -9,7 +9,9 @@ namespace DBconnectShop {
             //AllUsers();
             //Group();
             //Addresses();
-            Workers();
+            //Workers();
+            Products();
+            //Categores();
         }
 
         static void AllUsers() {
@@ -19,8 +21,8 @@ namespace DBconnectShop {
                 .Include(a => a.User_Group)
                 .Include(a => a.User_Data)
                 .Include(a => a.User_Address).ThenInclude(b => b.Address)
-                .Include(a=> a.Worker_Seller)
-                .Include(a=> a.Worker_Storekeeper);
+                .Include(a => a.Worker_Seller)
+                .Include(a => a.Worker_Storekeeper);
 
             foreach (var u in users) {
                 Console.WriteLine($"{u.User_name}, {u.User_password}");
@@ -65,7 +67,7 @@ namespace DBconnectShop {
                 .Include(a => a.User).ThenInclude(b => b.User_Data);
 
             IQueryable<Worker_purchaser> purchasers = db.Worker_Purchasers
-                .Include(a => a.User).ThenInclude(b => b.User_Address).ThenInclude(c=>c.Address)
+                .Include(a => a.User).ThenInclude(b => b.User_Address).ThenInclude(c => c.Address)
                 .Include(a => a.User).ThenInclude(b => b.User_Data);
 
             Console.WriteLine("Sellers: ");
@@ -81,6 +83,30 @@ namespace DBconnectShop {
             Console.WriteLine("purchasers: ");
             foreach (var a in purchasers) {
                 Console.WriteLine($"\t{a.User.User_name}");
+            }
+        }
+
+        static void Products() {
+            using var db = new Shop();
+
+            IQueryable<Product_producer> product_Producers = db.Product_Producers
+                .Include(a => a.Products).ThenInclude(b => b.Product_Categori);
+
+            Console.WriteLine("Products: ");
+            foreach (var p in product_Producers) {
+                Console.WriteLine($"{p.Product_producer_name}");
+            }
+        }
+
+        static void Categores() {
+            using var db = new Shop();
+
+            IQueryable<Product_categori> product_Categories = db.Product_Categories
+                .Include(a => a.Children);
+
+            Console.WriteLine("Product categories: ");
+            foreach (var p in product_Categories) {
+                Console.WriteLine($"{p.Product_category_name}");
             }
         }
     }

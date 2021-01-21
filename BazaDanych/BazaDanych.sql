@@ -1,7 +1,7 @@
 go
-create database ShopMarekMichura
+create database Shop
 go
-use ShopMarekMichura
+use Shop
 go
 --lista adresowa
 create table Addresses(
@@ -98,17 +98,17 @@ on update cascade
 create index I_Worker_purchasers on Worker_purchasers([User_id])
 
 --producenci sprzetu
-create table Worker(
+create table Product_producers(
 Product_producer_id int primary key identity(1,1),
 Product_producer_name nchar(25) not null
 )
-create index I_Worker on Worker(Product_producer_id)
+create index I_Product_producers on Product_producers(Product_producer_id)
 
 --kategorie sprzetu
 create table Product_categories(
 Product_category_id int primary key identity(1,1),
 Product_sub_category int,
-Product_category_name nchar(25)
+Product_category_name nchar(25) not null
 )
 create index I_Product_categories on Product_categories(Product_category_id)
 alter table Product_categories
@@ -132,8 +132,8 @@ references Product_categories(Product_category_id)
 on delete no action
 on update cascade
 alter table Products
-add constraint FK_Products__Worker foreign key(Product_producer_id)
-references Worker(Product_producer_id)
+add constraint FK_Products__Product_producers foreign key(Product_producer_id)
+references Product_producers(Product_producer_id)
 on delete no action
 on update cascade
 
@@ -706,7 +706,7 @@ go
 insert into Worker_storekeepers([User_id]) values
 (1),(5),(6),(7),(8)
 go
-insert into Worker(Product_producer_name) values
+insert into Product_producers(Product_producer_name) values
 ('Intel'),('Amd'),('Good ram')
 go
 insert into Product_categories(Product_category_name, Product_sub_category) values

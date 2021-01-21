@@ -25,13 +25,13 @@ namespace DBconnectShop.Table {
 
         #region Fireign key ==================================
 
-        public Address Address { get; set; }
+        public Address Address { get; }
 
         public User User { get; }
 
         #endregion
 
-        public static void ModelCreate(ModelBuilder modelBuilder) {
+        internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<User_address>().ToTable("User_Addresses");
 
             modelBuilder.Entity<User_address>()

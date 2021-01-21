@@ -22,7 +22,7 @@ namespace DBconnectShop.Table {
 
         #endregion
 
-        public static void ModelCreate(ModelBuilder modelBuilder) {
+        internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Worker_purchaser>().ToTable("Worker_purchasers");
 
             modelBuilder.Entity<Worker_purchaser>()

@@ -1,29 +1,29 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace DBconnectShop.Table {
-    class User_group {
+    class Product_producer {
         #region Columns ======================================
 
         [Required]
         [Key]
-        public int User_group_id { get; set; }
+        public int Product_producer_id { get; set; }
 
         [Required]
         [StringLength(25)]
-        public string User_group_name { get; set; }
+        public string Product_producer_name { get; set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public ICollection<User> Users { get; set; } = new List<User>();
+        public IEnumerable<Product> Products { get; set; } = new List<Product>();
 
         #endregion
 
         internal static void ModelCreate(ModelBuilder modelBuilder) {
-            modelBuilder.Entity<User_group>().ToTable("User_groups");
+            modelBuilder.Entity<Product_producer>().ToTable("Product_producers");
         }
     }
 }

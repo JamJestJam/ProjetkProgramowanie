@@ -14,6 +14,9 @@ namespace DBconnectShop {
         public DbSet<Worker_seller> Worker_Sellers { get; set; }
         public DbSet<Worker_storekeeper> Worker_Storekeepers { get; set; }
         public DbSet<Worker_purchaser> Worker_Purchasers { get; set; }
+        public DbSet<Product_producer> Product_Producers { get; set; }
+        public DbSet<Product_categori> Product_Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         #endregion
 
@@ -34,6 +37,10 @@ namespace DBconnectShop {
             Worker_seller.ModelCreate(modelBuilder);
             Worker_storekeeper.ModelCreate(modelBuilder);
             Worker_purchaser.ModelCreate(modelBuilder);
+
+            Product_producer.ModelCreate(modelBuilder);
+            Product_categori.ModelCreate(modelBuilder);
+            Product.ModelCreate(modelBuilder);
         }
     }
 }
