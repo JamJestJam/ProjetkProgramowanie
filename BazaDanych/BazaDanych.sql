@@ -87,15 +87,15 @@ on update cascade
 create index I_Worker_storekeepers on Worker_storekeepers([User_id])
 
 --lista upwarznionych do zamawiania towaru
-create table Worker_purchaser(
+create table Worker_purchasers(
 [User_id] int primary key
 )
-alter table Worker_Purchaser
-add constraint FK_Worker_purchaser__Users foreign key([User_id])
+alter table Worker_purchasers
+add constraint FK_Worker_purchasers__Users foreign key([User_id])
 references Users([User_id])
 on delete no action
 on update cascade
-create index I_Worker_purchaser on Worker_purchaser([User_id])
+create index I_Worker_purchasers on Worker_purchasers([User_id])
 
 --producenci sprzetu
 create table Worker(
@@ -228,7 +228,7 @@ on update cascade
 create table Product_orders(
 Product_order_id int primary key identity(1,1),
 Storage_id int not null,
-Worker_purchaser_id int not null,
+Worker_purchasers_id int not null,
 Product_id int not null,
 Product_order_price smallmoney not null,
 Product_order_quantity smallint not null,
@@ -246,7 +246,7 @@ references Products(Product_id)
 on delete no action
 on update cascade
 alter table Product_orders
-add constraint FK_Product_orders__Users foreign key(Worker_purchaser_id)
+add constraint FK_Product_orders__Users foreign key(Worker_purchasers_id)
 references Users([User_id])
 on delete no action
 on update cascade
@@ -377,7 +377,7 @@ RETURN;
 
 declare @Worker int
 declare C_Product_orders cursor for
-select Worker_purchaser_id from inserted
+select Worker_purchasers_id from inserted
 open C_Product_orders
 
 declare @c int
@@ -393,7 +393,7 @@ fetch next from C_Product_orders into
 if @@FETCH_STATUS <> 0
 return
 
-if not exists(SELECT [User_id] from Worker_purchaser where [User_id]=@Worker)
+if not exists(SELECT [User_id] from Worker_purchasers where [User_id]=@Worker)
 begin
 RAISERROR ('You dont have acces to receipt Products.', 16, 1);  
 ROLLBACK TRANSACTION;
@@ -700,7 +700,7 @@ go
 insert into Worker_sellers([User_id]) values
 (1),(2),(3),(4)
 go
-insert into Worker_purchaser([User_id]) values
+insert into Worker_purchasers([User_id]) values
 (1),(3)
 go
 insert into Worker_storekeepers([User_id]) values
@@ -795,7 +795,7 @@ insert into Storages(Address_id, Storage_name) values
 (9,'Sklep 1'),
 (10,'Slep 2');
 go
-insert into Product_orders(Storage_id, Worker_purchaser_id, Product_id, Product_order_price, Product_order_quantity, Product_order_estimated_time) values
+insert into Product_orders(Storage_id, Worker_purchasers_id, Product_id, Product_order_price, Product_order_quantity, Product_order_estimated_time) values
 (1,1,1,2000, 4, '2019-10-25'),
 (2,3,1,1000, 2, '2019-10-27'),
 (3,3,1,1000, 2, NULL),

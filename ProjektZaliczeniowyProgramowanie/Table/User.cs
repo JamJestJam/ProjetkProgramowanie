@@ -21,18 +21,24 @@ namespace DBconnectShop.Table  {
         [Required]
         public bool User_active { get; set; }
 
+        [Required]
+        public int User_group_id { get; set; }
+
         #endregion
 
         #region Fireign key ==================================
-
-        [Required]
-        public int User_group_id { get; set; }
 
         public virtual User_group User_Group { get; set; }
 
         public User_data User_Data { get; set; }
 
         public ICollection<User_address> User_Address { get; set; } = new List<User_address>();
+
+        public Worker_seller Worker_Seller { get; set; }
+
+        public Worker_storekeeper Worker_Storekeeper { get; set; }
+
+        public Worker_purchaser Worker_Purchaser { get; set; }
 
         #endregion
 
