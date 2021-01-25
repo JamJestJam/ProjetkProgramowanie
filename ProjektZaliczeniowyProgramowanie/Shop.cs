@@ -18,7 +18,9 @@ namespace DBconnectShop {
         public DbSet<Product_categori> Product_Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Product_specification> Product_Specifications { get; set; }
-        public DbSet<Products_price> products_Prices { get; set; }
+        public DbSet<Products_price> Products_Prices { get; set; }
+        public DbSet<Product_image> Product_Images { get; set; }
+        public DbSet<Product_opinion> Product_Opinions { get; set; }
 
         #endregion
 
@@ -45,6 +47,8 @@ namespace DBconnectShop {
             Product.ModelCreate(modelBuilder);
             Product_specification.ModelCreate(modelBuilder);
             Products_price.ModelCreate(modelBuilder);
+            Product_image.ModelCreate(modelBuilder);
+            Product_opinion.ModelCreate(modelBuilder);
         }
     }
 }

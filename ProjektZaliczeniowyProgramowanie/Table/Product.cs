@@ -34,6 +34,9 @@ namespace DBconnectShop.Table {
 
         public Product_categori Product_Categori { get; set; }
         public Product_producer Product_Producer { get; set; }
+        public IEnumerable<Product_rating> product_Ratings { get; set; }
+        public IEnumerable<Product_image> Product_Images { get; set; }
+        public IEnumerable<Product_opinion> Product_Opinions { get; set; }
         public IEnumerable<Product_specification> Product_Specifications { get; set; } = new List<Product_specification>();
         public IEnumerable<Products_price> Products_Prices { get; set; } = new List<Products_price>();
 
