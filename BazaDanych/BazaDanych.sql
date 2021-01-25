@@ -1,8 +1,3 @@
-go
-create database Shop
-go
-use Shop
-go
 --lista adresowa
 create table Addresses(
 Address_id int primary key identity(1,1),
