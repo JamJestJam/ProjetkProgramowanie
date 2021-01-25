@@ -24,7 +24,7 @@ namespace DBconnectShop {
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             if (!optionsBuilder.IsConfigured) {
-                optionsBuilder.UseSqlServer(@"Data Source=(local);Initial Catalog=Shop;Integrated Security=SSPI;");
+                optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Shop;Integrated Security=SSPI;");
             }
         }
 
