@@ -19,6 +19,7 @@ namespace DBconnectShop.Table {
         #region Fireign key ==================================
 
         public User User { get; set; }
+        public IEnumerable<Product_order> Product_Order { get; set; }
 
         #endregion
 

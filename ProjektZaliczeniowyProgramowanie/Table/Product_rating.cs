@@ -26,15 +26,24 @@ namespace DBconnectShop.Table {
         #region Fireign key ==================================
 
         public Product Product { get; set; }
+        public User User { get; set; }
 
         #endregion
 
         internal static void ModelCreate(ModelBuilder modelBuilder) {
-            modelBuilder.Entity<Product_rating>().ToTable("Product_images");
+            modelBuilder.Entity<Product_rating>().ToTable("Product_ratings");
+
+            modelBuilder.Entity<Product_rating>()
+                .HasKey(a => new { a.Product_id, a.User_id });
 
             modelBuilder.Entity<Product_rating>()
                 .HasOne(a => a.Product)
-                .WithMany(b => b.product_Ratings)
+                .WithMany(b => b.Product_Ratings)
+                .HasForeignKey(b => b.Product_id);
+
+            modelBuilder.Entity<Product_rating>()
+                .HasOne(a => a.User)
+                .WithMany(b => b.Product_Ratings)
                 .HasForeignKey(b => b.Product_id);
         }
     }

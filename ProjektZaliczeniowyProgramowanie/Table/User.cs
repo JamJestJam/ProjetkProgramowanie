@@ -28,16 +28,13 @@ namespace DBconnectShop.Table  {
 
         #region Fireign key ==================================
 
-        public virtual User_group User_Group { get; set; }
-
+        public User_group User_Group { get; set; }
         public User_data User_Data { get; set; }
-
         public ICollection<User_address> User_Address { get; set; } = new List<User_address>();
-
+        public ICollection<Product_opinion> Product_Opinions { get; set; } = new List<Product_opinion>();
+        public ICollection<Product_rating> Product_Ratings { get; set; } = new List<Product_rating>();
         public Worker_seller Worker_Seller { get; set; }
-
         public Worker_storekeeper Worker_Storekeeper { get; set; }
-
         public Worker_purchaser Worker_Purchaser { get; set; }
 
         #endregion

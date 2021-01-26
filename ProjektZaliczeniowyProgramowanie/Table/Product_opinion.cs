@@ -25,6 +25,7 @@ namespace DBconnectShop.Table {
         #region Fireign key ==================================
 
         public Product Product { get; set; }
+        public User User { get; set; }
 
         #endregion
 
@@ -38,6 +39,11 @@ namespace DBconnectShop.Table {
                 .HasOne(a => a.Product)
                 .WithMany(b => b.Product_Opinions)
                 .HasForeignKey(b => b.Product_id);
+
+            modelBuilder.Entity<Product_opinion>()
+                .HasOne(a => a.User)
+                .WithMany(b => b.Product_Opinions)
+                .HasForeignKey(b => b.User_id);
         }
     }
 }

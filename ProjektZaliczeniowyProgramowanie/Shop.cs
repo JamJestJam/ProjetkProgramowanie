@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using DBconnectShop.Table;
+﻿using DBconnectShop.Table;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.IO;
 
 namespace DBconnectShop {
     class Shop : DbContext {
@@ -21,12 +23,19 @@ namespace DBconnectShop {
         public DbSet<Products_price> Products_Prices { get; set; }
         public DbSet<Product_image> Product_Images { get; set; }
         public DbSet<Product_opinion> Product_Opinions { get; set; }
+        public DbSet<Product_rating> Product_Ratings { get; set; }
+        public DbSet<Storage> Storages { get; set; }
+        public DbSet<Product_order> Product_Orders { get; set; }
+        public DbSet<Product_receipt> product_Receipts { get; set; }
+        public DbSet<Storage_Product> Storage_Products { get; set; }
+        public DbSet<Storage_Product_localization> Storage_Product_Localizations { get; set; }
 
         #endregion
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-            if (!optionsBuilder.IsConfigured) {
-                optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Shop;Integrated Security=SSPI;");
+            if(!optionsBuilder.IsConfigured) {
+                string path = Path.Combine(Environment.CurrentDirectory, "Shop.mdf");
+                optionsBuilder.UseSqlServer($@"Server=(LocalDB)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName={path}");
             }
         }
 
@@ -49,6 +58,13 @@ namespace DBconnectShop {
             Products_price.ModelCreate(modelBuilder);
             Product_image.ModelCreate(modelBuilder);
             Product_opinion.ModelCreate(modelBuilder);
+            Product_rating.ModelCreate(modelBuilder);
+
+            Storage.ModelCreate(modelBuilder);
+            Product_order.ModelCreate(modelBuilder);
+            Product_receipt.ModelCreate(modelBuilder);
+            Storage_Product.ModelCreate(modelBuilder);
+            Storage_Product_localization.ModelCreate(modelBuilder);
         }
     }
 }

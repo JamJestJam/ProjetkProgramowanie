@@ -34,6 +34,7 @@ namespace DBconnectShop.Table {
         #region Fireign key ==================================
 
         public ICollection<User_address> User_Addresses { get; set; } = new List<User_address>();
+        public ICollection<Storage> Storage_Addresses { get; set; } = new List<Storage>();
 
         #endregion
 

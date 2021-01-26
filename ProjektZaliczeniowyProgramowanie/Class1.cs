@@ -11,8 +11,9 @@ namespace DBconnectShop {
             //Group();
             //Addresses();
             //Workers();
-            Products();
+            //Products();
             //Categores();
+            Storages();
         }
 
         static void AllUsers() {
@@ -25,7 +26,7 @@ namespace DBconnectShop {
                 .Include(a => a.Worker_Seller)
                 .Include(a => a.Worker_Storekeeper);
 
-            foreach (var u in users) {
+            foreach(var u in users) {
                 Console.WriteLine($"{u.User_name}, {u.User_password}");
             }
         }
@@ -37,9 +38,9 @@ namespace DBconnectShop {
                 .Include(a => a.Users)
                 .ThenInclude(b => b.User_Data);
 
-            foreach (var g in groups) {
+            foreach(var g in groups) {
                 Console.WriteLine($"{g.User_group_name}: ");
-                foreach (var u in g.Users) {
+                foreach(var u in g.Users) {
                     Console.WriteLine($"\t{u.User_name}");
                 }
             }
@@ -51,7 +52,7 @@ namespace DBconnectShop {
             IQueryable<Address> addresses = db.Addresses
                 .Include(a => a.User_Addresses);
 
-            foreach (var a in addresses) {
+            foreach(var a in addresses) {
                 Console.WriteLine($"{a.Address_city}: ");
             }
         }
@@ -72,17 +73,17 @@ namespace DBconnectShop {
                 .Include(a => a.User).ThenInclude(b => b.User_Data);
 
             Console.WriteLine("Sellers: ");
-            foreach (var a in sellers) {
+            foreach(var a in sellers) {
                 Console.WriteLine($"\t{a.User.User_name}");
             }
 
             Console.WriteLine("Storekeepers: ");
-            foreach (var a in storekeepers) {
+            foreach(var a in storekeepers) {
                 Console.WriteLine($"\t{a.User.User_name}");
             }
 
             Console.WriteLine("purchasers: ");
-            foreach (var a in purchasers) {
+            foreach(var a in purchasers) {
                 Console.WriteLine($"\t{a.User.User_name}");
             }
         }
@@ -96,10 +97,10 @@ namespace DBconnectShop {
                 .Include(a => a.Products).ThenInclude(b => b.Products_Prices)
                 .Include(a => a.Products).ThenInclude(b => b.Product_Images)
                 .Include(a => a.Products).ThenInclude(b => b.Product_Opinions)
-                .Include(a => a.Products).ThenInclude(b => b.product_Ratings);
+                .Include(a => a.Products).ThenInclude(b => b.Product_Ratings);
 
             Console.WriteLine("Products: ");
-            foreach (var p in product_Producers) {
+            foreach(var p in product_Producers) {
                 Console.WriteLine($"{p.Product_producer_name}");
             }
         }
@@ -111,8 +112,37 @@ namespace DBconnectShop {
                 .Include(a => a.Children);
 
             Console.WriteLine("Product categories: ");
-            foreach (var p in product_Categories) {
+            foreach(var p in product_Categories) {
                 Console.WriteLine($"{p.Product_category_name}");
+            }
+        }
+
+        static void Storages() {
+            using var db = new Shop();
+
+            IQueryable<Storage> storages = db.Storages;
+                //.Include(a => a.Product_Order)
+                //    .ThenInclude(b => b.Product)
+                //.Include(a => a.Product_Order)
+                //    .ThenInclude(b => b.Worker)
+                //        .ThenInclude(c => c.User)
+                //            .ThenInclude(d => d.User_Address)
+                //.Include(a => a.Product_Order)
+                //    .ThenInclude(b => b.Worker)
+                //        .ThenInclude(c => c.User)
+                //            .ThenInclude(d => d.User_Data)
+                //.Include(a => a.Product_Order)
+                //    .ThenInclude(b => b.Product_Receipt)
+                //        .ThenInclude(c => c.Worker)
+                //.Include(a=>a.Product_Order)
+                //    .ThenInclude(b=>b.Product_Receipt)
+                //        .ThenInclude(c=>c.Storage_Product)
+                //            .ThenInclude(d=>d.Storage_Product_Localizations);
+            
+
+            Console.WriteLine("storages: ");
+            foreach(var p in storages) {
+                Console.WriteLine($"{p.Storage_name}");
             }
         }
     }

@@ -21,9 +21,7 @@ namespace DBconnectShop.Table {
         #region Fireign key ==================================
 
         public Product_categori Parent { get; set; }
-
         public IEnumerable<Product_categori> Children { get; set; } = new List<Product_categori>();
-
         public IEnumerable<Product> Products { get; set; } = new List<Product>();
 
         #endregion
