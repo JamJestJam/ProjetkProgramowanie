@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBconnectShop;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,7 @@ namespace ProjektApp {
             InitializeComponent();
 
             Application.Current.MainWindow.Width = 350;
-            Application.Current.MainWindow.Height = 380;
+            Application.Current.MainWindow.Height = 385;
         }
 
         private void Register_Click(object sender, RoutedEventArgs e) {
@@ -47,17 +48,23 @@ namespace ProjektApp {
 
             try {
                 DBconnectShop.Login.Register(userName, password1, password2);
-#if DEBUG
-                Console.WriteLine("Register");
-#endif
-            } catch {
-#if DEBUG
-                Console.WriteLine("Crash");
-#endif
+
+                MessageBox.Show("Rejestrowanie zakończone pomyślnie");
+
+                this.Dispatcher.Invoke(() => {
+                    this.Content = new LoginPage();
+                });
+            } catch (LoginException e) {
+                MessageBox.Show(e.Message);
+
                 this.Dispatcher.Invoke(() => {
                     Hiden.Visibility = Visibility.Hidden;
                 });
             }
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e) {
+            this.Content = new LoginPage();
         }
     }
 }

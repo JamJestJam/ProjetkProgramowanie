@@ -17,13 +17,17 @@
                 <PasswordBox x:Name="Password1" Background="#444" Foreground="White" FontSize="18"/>
                 <Label Content="Powtórz hasło" Foreground="White"/>
                 <PasswordBox x:Name="Password2" Background="#444" Foreground="White" FontSize="18"/>
-                <Button x:Name="Register" Margin="10" Padding="30 10" Content="Zarejestruj się" HorizontalAlignment="Center" Background="#444" Foreground="White" FontSize="18" Click="Register_Click"/>
+                <Grid Margin="0 15">
+                    <Button x:Name="Register" Padding="15 10" Content="Zarejestruj się" HorizontalAlignment="Right" Background="#444" Foreground="White" FontSize="18" Click="Register_Click"/>
+                    <Button x:Name="Back" Padding="15 10" Content="Cofnij" HorizontalAlignment="Left" Background="#444" Foreground="White" FontSize="18" Click="Back_Click"/>
+                </Grid>
             </StackPanel>
         </Border>
         <Border x:Name="Hiden" Background="#333" CornerRadius="25" Margin="20" Visibility="Hidden">
             <StackPanel VerticalAlignment="Center">
                 <Label Padding="0 10" Content="Proszę czekać" FontSize="40" FontWeight="Bold" Foreground="White" Background="#333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Padding="0 10" Content="Trwa rejestrowanie" FontSize="40" FontWeight="Bold" Foreground="White" Background="#333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Padding="0 10" Content="trwa" FontSize="40" FontWeight="Bold" Foreground="White" Background="#333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Padding="0 10" Content="rejestrowanie" FontSize="40" FontWeight="Bold" Foreground="White" Background="#333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </StackPanel>
         </Border>
     </Grid>
