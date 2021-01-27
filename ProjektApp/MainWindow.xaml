@@ -1,0 +1,24 @@
+﻿<Window x:Class="ProjektApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjektApp"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+        Title="Logowanie" Height="325" Width="350" WindowStartupLocation="CenterScreen" Background="#292929">
+    <Border Background="#333" CornerRadius="25" Margin="20">
+        <StackPanel Margin="20">
+            <Label Content="Zaloguj się" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+            <Separator/>
+            <Label Content="Nazwa użytkownika" Foreground="White"/>
+            <TextBox x:Name="Login" Background="#444" Foreground="White" FontSize="18"/>
+            <Label Content="Hasło" Foreground="White"/>
+            <PasswordBox x:Name="Password" Background="#444" Foreground="White" FontSize="18"/>
+            <Grid Margin="0 15">
+                <Button x:Name="Register" Padding="5 5" Content="Zarejestruj się" HorizontalAlignment="Right" Background="#444" Foreground="White" FontSize="18"/>
+                <Button x:Name="Submit" Padding="5 5" Content="Zaloguj się" HorizontalAlignment="Left" Background="#444" Foreground="White" FontSize="18"/>
+            </Grid>
+        </StackPanel>
+    </Border>
+</Window>

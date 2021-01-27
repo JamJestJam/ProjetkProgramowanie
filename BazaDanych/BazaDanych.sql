@@ -541,7 +541,7 @@ SELECT * from Users u
 WHERE u.User_group_id=2
 go
 create view V_available_Products as --lista produktow w magazynach
-select p.Product_name, count(sp.Storage_Product_id) as "ilosc"
+select p.Product_id ,p.Product_name, count(sp.Storage_Product_id) as "ilosc"
 from Products p
 left join Storage_Products sp on p.Product_id=sp.Product_id
 left join User_order_Products uop on uop.Storage_Product_id=sp.Storage_Product_id
