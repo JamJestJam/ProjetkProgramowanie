@@ -16,8 +16,8 @@
             <Label Content="Hasło" Foreground="White"/>
             <PasswordBox x:Name="Password" Background="#444" Foreground="White" FontSize="18"/>
             <Grid Margin="0 15">
-                <Button x:Name="Register" Padding="5 5" Content="Zarejestruj się" HorizontalAlignment="Right" Background="#444" Foreground="White" FontSize="18"/>
-                <Button x:Name="Submit" Padding="5 5" Content="Zaloguj się" HorizontalAlignment="Left" Background="#444" Foreground="White" FontSize="18"/>
+                <Button x:Name="Register" Padding="5 5" Content="Zarejestruj się" HorizontalAlignment="left" Background="#444" Foreground="White" FontSize="18" Click="Register_Click"/>
+                <Button x:Name="Submit" Padding="5 5" Content="Zaloguj się" HorizontalAlignment="Right" Background="#444" Foreground="White" FontSize="18" Click="Submit_Click"/>
             </Grid>
         </StackPanel>
     </Border>

@@ -1,25 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DBconnectShop;
+using System;
+using System.Runtime.InteropServices;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ProjektApp {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+
+#if DEBUG
+        [DllImport("Kernel32")]
+        public static extern void AllocConsole();
+#endif
         public MainWindow() {
+#if DEBUG
+            AllocConsole();
+#endif
             InitializeComponent();
+        }
+
+        private void Register_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void Submit_Click(object sender, RoutedEventArgs e) {
+            try {
+                var login = new Login(this.Login.Text, this.Password.Password);
+#if DEBUG
+                Console.WriteLine($"{login.GetUserName} {login.GetUserGroup}");
+#endif
+            } catch(LoginException exception) {
+                MessageBox.Show(exception.Message);
+            }
         }
     }
 }
