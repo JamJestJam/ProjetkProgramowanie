@@ -7,8 +7,9 @@ namespace DBconnectShop.Table {
     class Product {
         #region Columns ======================================
 
-        [Required]
         [Key]
+        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Product_id { get; set; }
 
         [Required]
@@ -19,6 +20,7 @@ namespace DBconnectShop.Table {
 
         [Required]
         [StringLength(50)]
+        [Column(TypeName ="nchar")]
         public string Product_name { get; set; }
 
         [Required]
@@ -46,6 +48,10 @@ namespace DBconnectShop.Table {
 
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Product>().ToTable("Products");
+
+            modelBuilder.Entity<Product>()
+                .Property(a => a.Product_aviable)
+                .HasDefaultValue(true);
 
             modelBuilder.Entity<Product>()
                 .HasOne(a => a.Product_Categori)

@@ -1,12 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
     class Product_specification {
         #region Columns ======================================
 
-        [Required]
         [Key]
+        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Product_specification_id { get; set; }
 
         [Required]
@@ -14,10 +16,12 @@ namespace DBconnectShop.Table {
 
         [Required]
         [StringLength(30)]
+        [Column(TypeName ="nchar")]
         public string Product_specification_name { get; set; }
 
         [Required]
         [StringLength(25)]
+        [Column(TypeName ="nchar")]
         public string Product_specification_value { get; set; }
 
         #endregion

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
     class Product_image {
@@ -7,6 +8,7 @@ namespace DBconnectShop.Table {
 
         [Key]
         [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Product_image_id { get; set; }
 
         [Required]
@@ -14,6 +16,7 @@ namespace DBconnectShop.Table {
 
         [Required]
         [StringLength(50)]
+        [Column(TypeName ="nchar")]
         public string Product_Image { get; set; }
 
         #endregion

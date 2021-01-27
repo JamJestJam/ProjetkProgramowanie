@@ -31,6 +31,10 @@ namespace DBconnectShop.Table {
             modelBuilder.Entity<User_order_receipt>().ToTable("User_order_receipts");
 
             modelBuilder.Entity<User_order_receipt>()
+                .Property(a => a.User_order_recipt_date)
+                .HasDefaultValueSql("SYSDATETIME()");
+
+            modelBuilder.Entity<User_order_receipt>()
                 .HasOne(a => a.Order)
                 .WithOne(b => b.Order_Receipt)
                 .HasForeignKey<User_order_receipt>(b => b.User_order_id);

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
     class Product_categori {
@@ -8,12 +9,14 @@ namespace DBconnectShop.Table {
 
         [Key]
         [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Product_category_id { get; set; }
 
         public int? Product_sub_category { get; set; }
 
         [Required]
         [StringLength(25)]
+        [Column(TypeName ="nchar")]
         public string Product_category_name { get; set; }
 
         #endregion

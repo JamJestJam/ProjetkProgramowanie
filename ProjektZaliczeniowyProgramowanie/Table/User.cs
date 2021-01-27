@@ -14,10 +14,12 @@ namespace DBconnectShop.Table {
 
         [Required]
         [StringLength(25)]
+        [Column(TypeName ="nchar")]
         public string User_name { get; set; }
 
         [Required]
         [StringLength(25)]
+        [Column(TypeName ="nchar")]
         public string User_password { get; set; }
 
         [Required]
@@ -43,6 +45,14 @@ namespace DBconnectShop.Table {
 
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<User>().ToTable("Users");
+
+            modelBuilder.Entity<User>()
+                .Property(a => a.User_active)
+                .HasDefaultValue(true);
+
+            modelBuilder.Entity<User>()
+                .Property(a => a.User_group_id)
+                .HasDefaultValue(1);
 
             modelBuilder.Entity<User>()
                 .HasOne(a => a.User_Group)

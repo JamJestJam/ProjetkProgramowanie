@@ -1,17 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
     class Product_producer {
         #region Columns ======================================
 
-        [Required]
         [Key]
+        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Product_producer_id { get; set; }
 
         [Required]
         [StringLength(25)]
+        [Column(TypeName ="nchar")]
         public string Product_producer_name { get; set; }
 
         #endregion

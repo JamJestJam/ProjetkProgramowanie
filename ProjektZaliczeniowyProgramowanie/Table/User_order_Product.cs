@@ -8,6 +8,7 @@ namespace DBconnectShop.Table {
 
         [Key]
         [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int User_order_Product_id { get; set; }
 
         [Required]

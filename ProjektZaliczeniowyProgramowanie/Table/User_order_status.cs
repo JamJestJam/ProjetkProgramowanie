@@ -9,11 +9,12 @@ namespace DBconnectShop.Table {
 
         [Key]
         [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int User_order_status_id { get; set; }
 
         [Required]
-        [Column(TypeName = "nchar")]
         [StringLength(25)]
+        [Column(TypeName = "nchar")]
         public string User_order_status_name { get; set; }
 
         #endregion

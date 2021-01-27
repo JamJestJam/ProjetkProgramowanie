@@ -9,6 +9,7 @@ namespace DBconnectShop.Table {
 
         [Key]
         [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Product_order_id { get; set; }
 
         [Required]
@@ -49,6 +50,10 @@ namespace DBconnectShop.Table {
 
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Product_order>().ToTable("Product_orders");
+
+            modelBuilder.Entity<Product_order>()
+                .Property(a => a.Product_order_date)
+                .HasDefaultValueSql("SYSDATETIME()");
 
             modelBuilder.Entity<Product_order>()
                 .HasOne(a => a.Product)

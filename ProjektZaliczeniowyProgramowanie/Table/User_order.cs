@@ -10,6 +10,7 @@ namespace DBconnectShop.Table {
 
         [Key]
         [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int User_order_id { get; set; }
 
         [Required]
@@ -22,8 +23,8 @@ namespace DBconnectShop.Table {
         [Column(TypeName = "smalldatetime")]
         public DateTime User_order_date { get; set; }
 
-        [Column(TypeName = "nchar")]
         [StringLength(100)]
+        [Column(TypeName = "nchar")]
         public string User_note { get; set; }
 
         #endregion
@@ -39,6 +40,10 @@ namespace DBconnectShop.Table {
 
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<User_order>().ToTable("User_orders");
+
+            modelBuilder.Entity<User_order>()
+                .Property(a => a.User_order_date)
+                .HasDefaultValueSql("SYSDATETIME()");
 
             modelBuilder.Entity<User_order>()
                 .HasOne(a => a.Order_Status)

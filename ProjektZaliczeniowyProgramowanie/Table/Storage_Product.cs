@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
     class Storage_Product {
@@ -8,6 +9,7 @@ namespace DBconnectShop.Table {
 
         [Key]
         [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Storage_Product_id { get; set; }
 
         [Required]
@@ -17,6 +19,7 @@ namespace DBconnectShop.Table {
         public int Product_id { get; set; }
 
         [StringLength(100)]
+        [Column(TypeName ="nchar")]
         public string Storage_Product_note { get; set; }
         #endregion
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
     class Product_opinion {
@@ -13,6 +14,7 @@ namespace DBconnectShop.Table {
 
         [Required]
         [StringLength(200)]
+        [Column(TypeName ="nchar")]
         public string Product_Opinion { get; set; }
 
         #endregion

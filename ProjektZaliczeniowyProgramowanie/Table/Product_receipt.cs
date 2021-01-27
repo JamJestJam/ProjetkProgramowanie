@@ -32,6 +32,10 @@ namespace DBconnectShop.Table {
             modelBuilder.Entity<Product_receipt>().ToTable("Product_receipts");
 
             modelBuilder.Entity<Product_receipt>()
+                .Property(a => a.Product_receipt_date)
+                .HasDefaultValueSql("SYSDATETIME()");
+
+            modelBuilder.Entity<Product_receipt>()
                 .HasOne(a => a.Worker)
                 .WithMany(b => b.Product_Receipts)
                 .HasForeignKey(b => b.Worker_storekeeper_id);
