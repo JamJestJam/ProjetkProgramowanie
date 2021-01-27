@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace DBconnectShop.Table  {
+namespace DBconnectShop.Table {
     class User {
         #region Columns ======================================
 

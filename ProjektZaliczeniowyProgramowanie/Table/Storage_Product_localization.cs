@@ -1,11 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DBconnectShop.Table {
     class Storage_Product_localization {
@@ -41,7 +37,7 @@ namespace DBconnectShop.Table {
             modelBuilder.Entity<Storage_Product_localization>().ToTable("Storage_Product_localizations");
 
             modelBuilder.Entity<Storage_Product_localization>()
-                .HasKey(a=>new { a.Storage_Product_id, a.Storage_id, a.Storage_Product_date });
+                .HasKey(a => new { a.Storage_Product_id, a.Storage_id, a.Storage_Product_date });
 
             modelBuilder.Entity<Storage_Product_localization>()
                 .HasOne(a => a.Storage_Product)

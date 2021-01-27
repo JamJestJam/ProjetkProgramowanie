@@ -1,7 +1,6 @@
 ﻿using DBconnectShop.Table;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace DBconnectShop {
@@ -151,11 +150,11 @@ namespace DBconnectShop {
             using var db = new Shop();
 
             IQueryable<User_order> orders = db.User_Orders
-                .Include(a=>a.Order_Status)
-                .Include(a=>a.Order_Products)
-                    .ThenInclude(b=>b.Product)
-                        .ThenInclude(b=>b.Product)
-                .Include(a=>a.Order_Receipt);
+                .Include(a => a.Order_Status)
+                .Include(a => a.Order_Products)
+                    .ThenInclude(b => b.Product)
+                        .ThenInclude(b => b.Product)
+                .Include(a => a.Order_Receipt);
 
             foreach(var o in orders) {
                 Console.WriteLine(o.User_order_id);

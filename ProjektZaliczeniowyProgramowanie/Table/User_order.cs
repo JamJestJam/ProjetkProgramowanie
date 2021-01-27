@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DBconnectShop.Table {
     class User_order {
@@ -46,7 +43,7 @@ namespace DBconnectShop.Table {
             modelBuilder.Entity<User_order>()
                 .HasOne(a => a.Order_Status)
                 .WithMany(b => b.User_Orders)
-                .HasForeignKey(b=>b.User_order_status_id);
+                .HasForeignKey(b => b.User_order_status_id);
 
             modelBuilder.Entity<User_order>()
                 .HasOne(a => a.Address)

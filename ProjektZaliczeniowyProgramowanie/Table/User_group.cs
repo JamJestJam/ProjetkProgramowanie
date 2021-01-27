@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace DBconnectShop.Table {
     class User_group {

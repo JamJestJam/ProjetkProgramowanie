@@ -1,11 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DBconnectShop.Table {
     class Products_price {
@@ -34,7 +30,7 @@ namespace DBconnectShop.Table {
             modelBuilder.Entity<Products_price>().ToTable("Products_price");
 
             modelBuilder.Entity<Products_price>()
-                .HasKey(a=>new { a.Product_id, a.Product_price_date });
+                .HasKey(a => new { a.Product_id, a.Product_price_date });
 
             modelBuilder.Entity<Products_price>()
                 .HasOne(a => a.Product)
