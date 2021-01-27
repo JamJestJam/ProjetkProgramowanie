@@ -5,90 +5,85 @@ using System.Linq;
 
 namespace DBconnectShop {
     /// <summary>
-    /// Klasa przechowująca dane użytkownika
+    /// Klasa przechowująca dane użytkownika, po wczesniejszym zalogowaniu
     /// </summary>
     public class Login {
-        private User userData;
-        private readonly string login;
-        private readonly string password;
+        private readonly User user;
 
         /// <summary>
-        /// Pobiera nazwe uzytkownika
+        /// Tworzy obiekt klasy
         /// </summary>
-        public string GetUserName => userData.User_name;
-        /// <summary>
-        /// Pobiera nazwe grupy do której należy użytkownik
-        /// </summary>
-        public string GetUserGroup => userData.User_Group.User_group_name;
-
-        public delegate void LoginDone(object sender, EventLoginDone e);
-        public event LoginDone Sprawdzono;
-
-        /// <summary>
-        /// Tworzy obiekt Login
-        /// </summary>
-        /// <param name="login">Nazwa użytkownika</param>
+        /// <param name="userName">Nazwa użytkownika</param>
         /// <param name="password">Hasło</param>
-        public Login(string login, string password) {
-            this.login = login;
-            this.password = password;
-        }
-
-        public void TryLogin() {
-            if(userData != null)
-                throw new LoggedInException();
-
+        public Login(string userName, string password) {
             using var db = new Shop();
 
-            var user = db.Users
-                .Include(a => a.User_Group)
-                .Where(a => a.User_name == login && a.User_password == password);
+            var users = db.Users
+                .Where(a => a.User_name == userName)
+                .Where(a => a.User_password == password);
+
 #if DEBUG
-            Console.WriteLine(user.ToQueryString());
+            Console.WriteLine(users.ToQueryString());
 #endif
-            if(user.Count() != 1)
-                SendEvent(new EventLoginDone(login, false));
-            else {
-                userData = user.First();
-                SendEvent(new EventLoginDone(login, true));
-            }
+
+            if(users.Count() != 1)
+                throw new LoginException("Nie poprwna nazwa użytkownika lub hasło");
+
+            this.user = users.First();
         }
 
-        private void SendEvent(EventLoginDone e) {
-            if(Sprawdzono != null) {
-                Sprawdzono(this, e);
-            }
+        /// <summary>
+        /// Tworzy nowego użytkownika
+        /// </summary>
+        /// <param name="userName">Login użytkownika</param>
+        /// <param name="password1">Hasło użytkownika</param>
+        /// <param name="password2">Powtórzone hasło użytkownika</param>
+        public static void Register(string userName, string password1, string password2) {
+            if(password1 != password2)
+                throw new LoginException("Hasła nie są identyczne");
+
+            using var db = new Shop();
+            var checkLogin = db.Users
+                .Where(a=>a.User_name==userName);
+
+#if DEBUG
+            Console.WriteLine(checkLogin.ToQueryString());
+#endif
+
+            if(checkLogin.Count() != 0)
+                throw new LoginException("Użytkownik o takim loginie już istnieje");
+
+            var NewUser = new User {
+                User_group_id = 1,
+                User_name = userName,
+                User_password = password1,
+            };
+
+            var resoult = db.Users.Add(NewUser);
+
+#if DEBUG
+            Console.WriteLine(resoult.ToString());
+#endif
+
+            int code = db.SaveChanges();
+            if(code != 1)
+                throw new LoginException("Wystąpił niespodziewany wyjątek podczas tworzenie konta");
         }
     }
 
     /// <summary>
-    /// Wyjątek spowodowany próbą zalogowania na po raz kolejny
+    /// Wyjątek do logowania
     /// </summary>
-    public class LoggedInException:Exception {
+    public class LoginException : Exception {
+        private string message;
+
+        internal LoginException(string message) {
+            this.message = message;
+        }
+
         /// <summary>
         /// Treść błędu
         /// </summary>
-        public override string Message => "Already logged in";
-    }
-
-    /// <summary>
-    /// Klasa zawierające parametry zdarzenia.
-    /// </summary>
-    public class EventLoginDone : EventArgs {
-        /// <summary>
-        /// Nazwa użytkonika który próbował się zalogować
-        /// </summary>
-        public string User_name { get; }
-        /// <summary>
-        /// Informacja czy próba logowania powiodła się
-        /// <para>True - oznacza że logowanie się powiodło</para>
-        /// <para>False - oznacza że logowanie się nie powiodło</para>
-        /// </summary>
-        public bool Success { get; }
-
-        internal EventLoginDone(string user, bool success) {
-            this.User_name = user;
-            this.Success = success;
-        }
+        public override string Message => message;
     }
 }

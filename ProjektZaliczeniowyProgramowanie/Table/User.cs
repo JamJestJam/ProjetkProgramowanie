@@ -1,13 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
     class User {
         #region Columns ======================================
 
-        [Required]
         [Key]
+        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int User_id { get; set; }
 
         [Required]
