@@ -2,34 +2,34 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DBconnectShop.Table {
-    class Worker_seller {
+    class User_order_status {
         #region Columns ======================================
 
         [Key]
         [Required]
-        public int User_id { get; set; }
+        public int User_order_status_id { get; set; }
+
+        [Required]
+        [Column(TypeName = "nchar")]
+        [StringLength(25)]
+        public string User_order_status_name { get; set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public User User { get; set; }
-        public IEnumerable<User_order_receipt> Order_Receipts { get; set; } = new List<User_order_receipt>();
+        public IEnumerable<User_order> User_Orders { get; set; } = new List<User_order>();
 
         #endregion
 
         internal static void ModelCreate(ModelBuilder modelBuilder) {
-            modelBuilder.Entity<Worker_seller>().ToTable("Worker_sellers");
-
-            modelBuilder.Entity<Worker_seller>()
-                .HasOne(a => a.User)
-                .WithOne(b => b.Worker_Seller)
-                .HasForeignKey<Worker_seller>(b => b.User_id);
+            modelBuilder.Entity<User_order_status>().ToTable("User_order_status");
         }
     }
 }

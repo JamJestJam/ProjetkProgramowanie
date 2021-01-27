@@ -13,7 +13,8 @@ namespace DBconnectShop {
             //Workers();
             //Products();
             //Categores();
-            Storages();
+            //Storages();
+            Orders();
         }
 
         static void AllUsers() {
@@ -120,29 +121,44 @@ namespace DBconnectShop {
         static void Storages() {
             using var db = new Shop();
 
-            IQueryable<Storage> storages = db.Storages;
-                //.Include(a => a.Product_Order)
-                //    .ThenInclude(b => b.Product)
-                //.Include(a => a.Product_Order)
-                //    .ThenInclude(b => b.Worker)
-                //        .ThenInclude(c => c.User)
-                //            .ThenInclude(d => d.User_Address)
-                //.Include(a => a.Product_Order)
-                //    .ThenInclude(b => b.Worker)
-                //        .ThenInclude(c => c.User)
-                //            .ThenInclude(d => d.User_Data)
-                //.Include(a => a.Product_Order)
-                //    .ThenInclude(b => b.Product_Receipt)
-                //        .ThenInclude(c => c.Worker)
-                //.Include(a=>a.Product_Order)
-                //    .ThenInclude(b=>b.Product_Receipt)
-                //        .ThenInclude(c=>c.Storage_Product)
-                //            .ThenInclude(d=>d.Storage_Product_Localizations);
-            
+            IQueryable<Storage> storages = db.Storages
+                .Include(a => a.Product_Order)
+                    .ThenInclude(b => b.Product)
+                .Include(a => a.Product_Order)
+                    .ThenInclude(b => b.Worker)
+                        .ThenInclude(c => c.User)
+                            .ThenInclude(d => d.User_Address)
+                .Include(a => a.Product_Order)
+                    .ThenInclude(b => b.Worker)
+                        .ThenInclude(c => c.User)
+                            .ThenInclude(d => d.User_Data)
+                .Include(a => a.Product_Order)
+                    .ThenInclude(b => b.Product_Receipt)
+                        .ThenInclude(c => c.Worker)
+                .Include(a => a.Product_Order)
+                    .ThenInclude(b => b.Product_Receipt)
+                        .ThenInclude(c => c.Storage_Product)
+                            .ThenInclude(d => d.Storage_Product_Localizations);
+
 
             Console.WriteLine("storages: ");
             foreach(var p in storages) {
                 Console.WriteLine($"{p.Storage_name}");
+            }
+        }
+
+        static void Orders() {
+            using var db = new Shop();
+
+            IQueryable<User_order> orders = db.User_Orders
+                .Include(a=>a.Order_Status)
+                .Include(a=>a.Order_Products)
+                    .ThenInclude(b=>b.Product)
+                        .ThenInclude(b=>b.Product)
+                .Include(a=>a.Order_Receipt);
+
+            foreach(var o in orders) {
+                Console.WriteLine(o.User_order_id);
             }
         }
     }

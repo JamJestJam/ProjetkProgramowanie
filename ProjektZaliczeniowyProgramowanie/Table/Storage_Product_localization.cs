@@ -41,7 +41,7 @@ namespace DBconnectShop.Table {
             modelBuilder.Entity<Storage_Product_localization>().ToTable("Storage_Product_localizations");
 
             modelBuilder.Entity<Storage_Product_localization>()
-                .HasKey(a=>new { a.Storage_Product_id, a.Storage_id });
+                .HasKey(a=>new { a.Storage_Product_id, a.Storage_id, a.Storage_Product_date });
 
             modelBuilder.Entity<Storage_Product_localization>()
                 .HasOne(a => a.Storage_Product)

@@ -27,6 +27,7 @@ namespace DBconnectShop.Table {
 
         public Address Address { get; }
         public User User { get; }
+        public IEnumerable<User_order> User_Orders { get; set; } = new List<User_order>();
 
         #endregion
 

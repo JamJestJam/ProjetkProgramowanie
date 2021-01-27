@@ -29,6 +29,10 @@ namespace DBconnectShop {
         public DbSet<Product_receipt> product_Receipts { get; set; }
         public DbSet<Storage_Product> Storage_Products { get; set; }
         public DbSet<Storage_Product_localization> Storage_Product_Localizations { get; set; }
+        public DbSet<User_order_status> user_Order_Statuses { get; set; }
+        public DbSet<User_order> User_Orders { get; set; }
+        public DbSet<User_order_Product> User_Order_Products { get; set; }
+        public DbSet<User_order_receipt> User_Order_Receipts { get; set; }
 
         #endregion
 
@@ -65,6 +69,11 @@ namespace DBconnectShop {
             Product_receipt.ModelCreate(modelBuilder);
             Storage_Product.ModelCreate(modelBuilder);
             Storage_Product_localization.ModelCreate(modelBuilder);
+
+            User_order_status.ModelCreate(modelBuilder);
+            User_order.ModelCreate(modelBuilder);
+            User_order_Product.ModelCreate(modelBuilder);
+            User_order_receipt.ModelCreate(modelBuilder);
         }
     }
 }
