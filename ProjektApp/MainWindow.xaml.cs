@@ -20,38 +20,8 @@ namespace ProjektApp {
             AllocConsole();
 #endif
             InitializeComponent();
-        }
 
-        private void Register_Click(object sender, RoutedEventArgs e) {
-            
-        }
-
-        private void Submit_Click(object sender, RoutedEventArgs e) {
-            Hiden.Visibility = Visibility.Visible;
-
-            var login = new Login(Login.Text, Password.Password);
-            login.Sprawdzono += CheckLogin;
-
-            Thread thread = new Thread(login.TryLogin);
-            thread.IsBackground = true;
-            thread.Start();
-        }
-
-        private void CheckLogin(object sender, EventLoginDone e) {
-            this.Dispatcher.Invoke(() => {
-                Hiden.Visibility = Visibility.Hidden;
-            });
-
-            if(e.Success) {
-#if DEBUG
-                Console.WriteLine("Udało się");
-#endif
-                
-            } else {
-#if DEBUG
-                Console.WriteLine("Nie udało się");
-#endif
-            }
+            this.Content = new LoginPage();
         }
     }
 }

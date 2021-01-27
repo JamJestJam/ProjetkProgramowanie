@@ -6,27 +6,5 @@
         xmlns:local="clr-namespace:ProjektApp"
         ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="Logowanie" Height="325" Width="350" WindowStartupLocation="CenterScreen" Background="#292929">
-    <Grid>
-        <Border Background="#333" CornerRadius="25" Margin="20">
-            <StackPanel Margin="20">
-                <Label Content="Zaloguj się" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
-                <Separator/>
-                <Label Content="Nazwa użytkownika" Foreground="White"/>
-                <TextBox x:Name="Login" Background="#444" Foreground="White" FontSize="18"/>
-                <Label Content="Hasło" Foreground="White"/>
-                <PasswordBox x:Name="Password" Background="#444" Foreground="White" FontSize="18"/>
-                <Grid Margin="0 15">
-                    <Button x:Name="Register" Padding="5 5" Content="Zarejestruj się" HorizontalAlignment="left" Background="#444" Foreground="White" FontSize="18" Click="Register_Click"/>
-                    <Button x:Name="Submit" Padding="5 5" Content="Zaloguj się" HorizontalAlignment="Right" Background="#444" Foreground="White" FontSize="18" Click="Submit_Click"/>
-                </Grid>
-            </StackPanel>
-        </Border>
-        <Border x:Name="Hiden" Background="#333" CornerRadius="25" Margin="20" Visibility="Hidden">
-            <StackPanel VerticalAlignment="Center">
-                <Label Padding="0 10" Content="Proszę czekać" FontSize="40" FontWeight="Bold" Foreground="White" Background="#333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Padding="0 10" Content="Trwa logowanie" FontSize="40" FontWeight="Bold" Foreground="White" Background="#333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </StackPanel>
-        </Border>
-    </Grid>
+        Title="Logowanie" Height="600" Width="750" WindowStartupLocation="CenterScreen" Background="#292929">
 </Window>
