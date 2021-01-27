@@ -28,7 +28,7 @@ namespace ProjektApp {
         }
 
         private void Register_Click(object sender, RoutedEventArgs e) {
-
+            this.Content = new RegisterPage();
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e) {
