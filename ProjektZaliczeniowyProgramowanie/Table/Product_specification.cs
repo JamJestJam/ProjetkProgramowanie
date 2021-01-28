@@ -16,12 +16,12 @@ namespace DBconnectShop.Table {
 
         [Required]
         [StringLength(30)]
-        [Column(TypeName ="nchar")]
+        [Column(TypeName = "nchar")]
         public string Product_specification_name { get; set; }
 
         [Required]
         [StringLength(25)]
-        [Column(TypeName ="nchar")]
+        [Column(TypeName = "nchar")]
         public string Product_specification_value { get; set; }
 
         #endregion

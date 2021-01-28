@@ -14,12 +14,12 @@ namespace DBconnectShop.Table {
 
         [Required]
         [StringLength(25)]
-        [Column(TypeName ="nchar")]
+        [Column(TypeName = "nchar")]
         public string User_name { get; set; }
 
         [Required]
         [StringLength(25)]
-        [Column(TypeName ="nchar")]
+        [Column(TypeName = "nchar")]
         public string User_password { get; set; }
 
         [Required]

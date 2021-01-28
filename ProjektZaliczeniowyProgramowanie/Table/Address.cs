@@ -14,26 +14,26 @@ namespace DBconnectShop.Table {
 
         [Required]
         [StringLength(25)]
-        [Column(TypeName ="nchar")]
+        [Column(TypeName = "nchar")]
         public string Address_country { get; set; }
 
         [Required]
         [StringLength(50)]
-        [Column(TypeName ="nchar")]
+        [Column(TypeName = "nchar")]
         public string Address_city { get; set; }
 
         [Required]
         [StringLength(50)]
-        [Column(TypeName ="nchar")]
+        [Column(TypeName = "nchar")]
         public string Address_street { get; set; }
 
         [Required]
         [StringLength(50)]
-        [Column(TypeName ="nchar")]
+        [Column(TypeName = "nchar")]
         public string Address_building_number { get; set; }
 
         [StringLength(50)]
-        [Column(TypeName ="nchar")]
+        [Column(TypeName = "nchar")]
         public string Address_zip_code { get; set; }
 
         #endregion

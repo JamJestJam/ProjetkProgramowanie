@@ -1,9 +1,5 @@
-﻿using DBconnectShop;
-using System;
-using System.Runtime.InteropServices;
-using System.Threading;
+﻿using System.Runtime.InteropServices;
 using System.Windows;
-using System.Windows.Navigation;
 
 namespace ProjektApp {
     /// <summary>
@@ -21,7 +17,15 @@ namespace ProjektApp {
 #endif
             InitializeComponent();
 
-            this.Content = new LoginPage();
+            //this.Content = new LoginPage();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e) {
+            this.Close();
+        }
+
+        private void Bar_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e) {
+            DragMove();
         }
     }
 }

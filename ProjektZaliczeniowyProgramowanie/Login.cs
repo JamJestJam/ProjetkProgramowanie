@@ -44,7 +44,7 @@ namespace DBconnectShop {
 
             using var db = new Shop();
             var checkLogin = db.Users
-                .Where(a=>a.User_name==userName);
+                .Where(a => a.User_name == userName);
 
 #if DEBUG
             Console.WriteLine(checkLogin.ToQueryString());
@@ -60,10 +60,6 @@ namespace DBconnectShop {
             };
 
             var resoult = db.Users.Add(NewUser);
-
-#if DEBUG
-            Console.WriteLine(resoult.ToString());
-#endif
 
             int code = db.SaveChanges();
             if(code != 1)

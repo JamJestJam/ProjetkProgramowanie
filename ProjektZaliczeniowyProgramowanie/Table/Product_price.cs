@@ -32,7 +32,7 @@ namespace DBconnectShop.Table {
             modelBuilder.Entity<Products_price>()
                 .Property(a => a.Product_price_date)
                 .HasDefaultValueSql("SYSDATETIME()");
-            
+
             modelBuilder.Entity<Products_price>()
                 .HasKey(a => new { a.Product_id, a.Product_price_date });
 

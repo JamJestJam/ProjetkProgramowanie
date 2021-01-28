@@ -19,7 +19,7 @@ namespace DBconnectShop.Table {
         public int Product_id { get; set; }
 
         [StringLength(100)]
-        [Column(TypeName ="nchar")]
+        [Column(TypeName = "nchar")]
         public string Storage_Product_note { get; set; }
         #endregion
 

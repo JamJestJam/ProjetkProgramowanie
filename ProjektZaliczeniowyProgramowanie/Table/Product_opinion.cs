@@ -14,7 +14,7 @@ namespace DBconnectShop.Table {
 
         [Required]
         [StringLength(200)]
-        [Column(TypeName ="nchar")]
+        [Column(TypeName = "nchar")]
         public string Product_Opinion { get; set; }
 
         #endregion

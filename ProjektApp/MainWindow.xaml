@@ -4,7 +4,59 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektApp"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="Logowanie" Height="600" Width="750" WindowStartupLocation="CenterScreen" Background="#292929">
+        Title="Logowanie" Height="600" Width="1024" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid>
+        <!-- Podział grida -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!-- Menu górne -->
+        <Grid x:Name="Bar" Grid.ColumnSpan="2" Background="#292929" MouseDown="Bar_MouseDown">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 0">
+                <Button Width="30" Height="30" Background="#292929" BorderBrush="#292929" Foreground="White" Cursor="Hand">
+                    <materialDesign:PackIcon Kind="Account"/>
+                </Button>
+                <Button Width="30" Height="30" Background="#292929" BorderBrush="#292929" Foreground="White" Cursor="Hand" Click="Button_Click">
+                    <materialDesign:PackIcon Kind="Power"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <!-- Lewe menu -->
+        <Grid Grid.Row="1">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF555555" Offset="1"/>
+                    <GradientStop Color="#FF333333" Offset="0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="20" Color="#FF787878" RenderingBias="Quality" ShadowDepth="1" />
+            </Grid.Effect>
+
+            <Grid Background="#333">
+                <TextBlock Text="Sklepik" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial Black" FontSize="60" />
+            </Grid>
+
+            <StackPanel Grid.Row="1">
+                <Button Margin="10">
+                    <Grid Width="250">
+                        <materialDesign:PackIcon Kind="ViewDashboard" Height="43" Width="43" HorizontalAlignment="Right"/>
+                        <TextBlock Text="Zaloguj się" FontSize="25" Padding="5"/>
+                    </Grid>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
 </Window>
