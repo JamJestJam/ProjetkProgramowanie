@@ -4,16 +4,13 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ProjektApp {
+namespace ProjektApp.Pages {
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
     public partial class LoginPage : UserControl {
         public LoginPage() {
             InitializeComponent();
-
-            Application.Current.MainWindow.Width = 350;
-            Application.Current.MainWindow.Height = 325;
         }
 
         private void Register_Click(object sender, RoutedEventArgs e) {

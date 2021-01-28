@@ -1,13 +1,24 @@
-﻿<UserControl x:Class="ProjektApp.RegisterPage"
+﻿<UserControl x:Class="ProjektApp.Pages.RegisterPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProjektApp"
              mc:Ignorable="d" 
-             d:DesignHeight="350" d:DesignWidth="350">
-    <Grid Background="#292929">
-        <Border Background="#333" CornerRadius="25" Margin="20">
+             d:DesignHeight="570" d:DesignWidth="724">
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation
+              Storyboard.TargetProperty="Opacity"
+              From="0.0" To="1.0" Duration="0:0:1"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid>
+        <Border Background="#333" CornerRadius="25" Margin="20" Height="350" Width="350">
             <StackPanel Margin="20">
                 <Label Content="Zarejestruj się" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
                 <Separator/>
@@ -17,10 +28,7 @@
                 <PasswordBox x:Name="Password1" Background="#444" Foreground="White" FontSize="18"/>
                 <Label Content="Powtórz hasło" Foreground="White"/>
                 <PasswordBox x:Name="Password2" Background="#444" Foreground="White" FontSize="18"/>
-                <Grid Margin="0 15">
-                    <Button x:Name="Register" Padding="15 10" Content="Zarejestruj się" HorizontalAlignment="Right" Background="#444" Foreground="White" FontSize="18" Click="Register_Click"/>
-                    <Button x:Name="Back" Padding="15 10" Content="Cofnij" HorizontalAlignment="Left" Background="#444" Foreground="White" FontSize="18" Click="Back_Click"/>
-                </Grid>
+                <Button x:Name="Register" Margin="20" Padding="40 10" Content="Zarejestruj się" HorizontalAlignment="Center" Background="#444" Foreground="White" FontSize="18" Click="Register_Click"/>
             </StackPanel>
         </Border>
         <Border x:Name="Hiden" Background="#333" CornerRadius="25" Margin="20" Visibility="Hidden">

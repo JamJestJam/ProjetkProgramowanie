@@ -3,16 +3,13 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ProjektApp {
+namespace ProjektApp.Pages {
     /// <summary>
     /// Interaction logic for RegisterPage.xaml
     /// </summary>
     public partial class RegisterPage : UserControl {
         public RegisterPage() {
             InitializeComponent();
-
-            Application.Current.MainWindow.Width = 350;
-            Application.Current.MainWindow.Height = 385;
         }
 
         private void Register_Click(object sender, RoutedEventArgs e) {

@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using ProjektApp.Pages;
 using System.Windows;
 
 namespace ProjektApp {
@@ -17,7 +18,8 @@ namespace ProjektApp {
 #endif
             InitializeComponent();
 
-            //this.Content = new LoginPage();
+            this.Content.Content = new LoginPage();
+            this.LeftPanel.Content = new LoginLeftPage();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {

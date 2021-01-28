@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="ProjektApp.Pages.LoginLeftPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjektApp.Pages"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             d:DesignHeight="450" d:DesignWidth="300">
+    <StackPanel >
+        <Button x:Name="LoginUp" Margin="10" Cursor="Hand" Click="LoginUp_Click">
+            <Grid Width="250">
+                <materialDesign:PackIcon Kind="Account" Height="43" Width="43" HorizontalAlignment="Right"/>
+                <TextBlock Text="Zaloguj się" FontSize="25" Padding="5"/>
+            </Grid>
+        </Button>
+        <Button x:Name="SignUp" Margin="10" Cursor="Hand" Click="SignUp_Click">
+            <Grid Width="250">
+                <materialDesign:PackIcon Kind="AccountAdd" Height="43" Width="43" HorizontalAlignment="Right"/>
+                <TextBlock Text="Utwórz konto" FontSize="25" Padding="5"/>
+            </Grid>
+        </Button>
+    </StackPanel>
+</UserControl>

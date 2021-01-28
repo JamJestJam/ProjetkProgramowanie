@@ -49,14 +49,22 @@
                 <TextBlock Text="Sklepik" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial Black" FontSize="60" />
             </Grid>
 
-            <StackPanel Grid.Row="1">
-                <Button Margin="10">
-                    <Grid Width="250">
-                        <materialDesign:PackIcon Kind="ViewDashboard" Height="43" Width="43" HorizontalAlignment="Right"/>
-                        <TextBlock Text="Zaloguj się" FontSize="25" Padding="5"/>
-                    </Grid>
-                </Button>
-            </StackPanel>
+            <UserControl Grid.Row="1" x:Name="LeftPanel">
+
+            </UserControl>
+        </Grid>
+        <!-- Główne menu -->
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFA0A0A0" Offset="0.992"/>
+                    <GradientStop Color="Gainsboro"/>
+                </RadialGradientBrush>
+            </Grid.Background>
+
+            <Grid>
+                <UserControl x:Name="Content" />
+            </Grid>
         </Grid>
     </Grid>
 </Window>
