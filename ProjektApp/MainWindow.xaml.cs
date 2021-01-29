@@ -18,6 +18,7 @@ namespace ProjektApp {
 #endif
             InitializeComponent();
 
+            
             this.Content.Content = new LoginPage();
             this.LeftPanel.Content = new LoginLeftPage();
         }

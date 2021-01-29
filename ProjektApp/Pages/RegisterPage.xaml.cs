@@ -1,4 +1,5 @@
 ﻿using DBconnectShop;
+using MaterialDesignThemes.Wpf;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,7 +14,7 @@ namespace ProjektApp.Pages {
         }
 
         private void Register_Click(object sender, RoutedEventArgs e) {
-            Hiden.Visibility = Visibility.Visible;
+            Hidden.IsOpen = true;
 
             Thread thread = new Thread(LoginIn);
             thread.IsBackground = true;
@@ -40,16 +41,20 @@ namespace ProjektApp.Pages {
                     this.Content = new LoginPage();
                 });
             } catch(LoginException e) {
-                MessageBox.Show(e.Message);
-
                 this.Dispatcher.Invoke(() => {
-                    Hiden.Visibility = Visibility.Hidden;
+                    Dialog.IsOpen = true;
+                    DialogText.Content = e.Message;
+                    Hidden.IsOpen = false;
                 });
             }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e) {
             this.Content = new LoginPage();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e) {
+            this.Dialog.IsOpen = false;
         }
     }
 }

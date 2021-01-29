@@ -3,6 +3,8 @@ using System;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using MaterialDesignThemes;
+using MaterialDesignThemes.Wpf;
 
 namespace ProjektApp.Pages {
     /// <summary>
@@ -18,7 +20,7 @@ namespace ProjektApp.Pages {
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e) {
-            Hiden.Visibility = Visibility.Visible;
+            Hidden.IsOpen = true;
 
             Thread thread = new Thread(LoginIn);
             thread.IsBackground = true;
@@ -39,14 +41,17 @@ namespace ProjektApp.Pages {
 #if DEBUG
                 Console.WriteLine("Login in");
 #endif
-            } catch {
-#if DEBUG
-                Console.WriteLine("Crash");
-#endif
+            } catch (LoginException e) {
                 this.Dispatcher.Invoke(() => {
-                    Hiden.Visibility = Visibility.Hidden;
+                    DialogText.Content = e.Message;
+                    Dialog.IsOpen = true;
+                    Hidden.IsOpen = false;
                 });
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e) {
+            Dialog.IsOpen = false;
         }
     }
 }

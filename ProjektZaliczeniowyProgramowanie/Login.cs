@@ -27,7 +27,7 @@ namespace DBconnectShop {
 #endif
 
             if(users.Count() != 1)
-                throw new LoginException("Nie poprwna nazwa użytkownika lub hasło");
+                throw new LoginException("Nie poprawna nazwa użytkownika lub hasło");
 
             this.user = users.First();
         }

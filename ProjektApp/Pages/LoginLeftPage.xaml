@@ -8,13 +8,13 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              d:DesignHeight="450" d:DesignWidth="300">
     <StackPanel >
-        <Button x:Name="LoginUp" Margin="10" Cursor="Hand" Click="LoginUp_Click">
+        <Button x:Name="LoginUp" Margin="10" Cursor="Hand" Click="LoginUp_Click" Height="50">
             <Grid Width="250">
                 <materialDesign:PackIcon Kind="Account" Height="43" Width="43" HorizontalAlignment="Right"/>
                 <TextBlock Text="Zaloguj się" FontSize="25" Padding="5"/>
             </Grid>
         </Button>
-        <Button x:Name="SignUp" Margin="10" Cursor="Hand" Click="SignUp_Click">
+        <Button x:Name="SignUp" Margin="10" Cursor="Hand" Click="SignUp_Click" Height="50">
             <Grid Width="250">
                 <materialDesign:PackIcon Kind="AccountAdd" Height="43" Width="43" HorizontalAlignment="Right"/>
                 <TextBlock Text="Utwórz konto" FontSize="25" Padding="5"/>

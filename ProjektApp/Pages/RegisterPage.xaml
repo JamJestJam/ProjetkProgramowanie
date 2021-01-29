@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProjektApp"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="724">
     <UserControl.Triggers>
@@ -18,6 +19,33 @@
         </EventTrigger>
     </UserControl.Triggers>
     <Grid>
+        <materialDesign:DialogHost x:Name="Hidden" IsOpen="False">
+            <materialDesign:DialogHost.DialogContent>
+                <ProgressBar
+                    Style="{DynamicResource MaterialDesignCircularProgressBar}"
+                    HorizontalAlignment="Center"
+                    Margin="16"
+                    IsIndeterminate="True"
+                    Value="0" />
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+        <materialDesign:DialogHost IsOpen="False" CloseOnClickAway="True" x:Name="Dialog" MinWidth="400">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Margin="16">
+                    <Label Content="Ej stary problem jest xD" x:Name="DialogText" FontSize="30" HorizontalAlignment="Center"/>
+                    <StackPanel
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                        <Button
+                            IsDefault="True"
+                            Margin="0 8 8 0"
+                            HorizontalAlignment="Center"
+                            Content="Rozumiem" 
+                            Click="Button_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
         <Border Background="#333" CornerRadius="25" Margin="20" Height="350" Width="350">
             <StackPanel Margin="20">
                 <Label Content="Zarejestruj się" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
@@ -28,14 +56,7 @@
                 <PasswordBox x:Name="Password1" Background="#444" Foreground="White" FontSize="18"/>
                 <Label Content="Powtórz hasło" Foreground="White"/>
                 <PasswordBox x:Name="Password2" Background="#444" Foreground="White" FontSize="18"/>
-                <Button x:Name="Register" Margin="20" Padding="40 10" Content="Zarejestruj się" HorizontalAlignment="Center" Background="#444" Foreground="White" FontSize="18" Click="Register_Click"/>
-            </StackPanel>
-        </Border>
-        <Border x:Name="Hiden" Background="#333" CornerRadius="25" Margin="20" Visibility="Hidden">
-            <StackPanel VerticalAlignment="Center">
-                <Label Padding="0 10" Content="Proszę czekać" FontSize="40" FontWeight="Bold" Foreground="White" Background="#333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Padding="0 10" Content="trwa" FontSize="40" FontWeight="Bold" Foreground="White" Background="#333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Padding="0 10" Content="rejestrowanie" FontSize="40" FontWeight="Bold" Foreground="White" Background="#333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button x:Name="Register" Margin="20" Height="50" Padding="40 10" Content="Zarejestruj się" HorizontalAlignment="Center" Background="#444" Foreground="White" FontSize="18" Click="Register_Click"/>
             </StackPanel>
         </Border>
     </Grid>
