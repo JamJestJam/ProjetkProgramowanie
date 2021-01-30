@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +19,13 @@ namespace ProjektApp.Pages {
     /// Interaction logic for SingleProduct_ProductsBuyPage.xaml
     /// </summary>
     public partial class SingleProduct_ProductsBuyPage : UserControl {
-        public SingleProduct_ProductsBuyPage(string productName) {
+        public SingleProduct_ProductsBuyPage(string productName, decimal productPrice) {
             InitializeComponent();
+            var nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
+            nfi.NumberGroupSeparator = " ";
+
             ProductName.Text = productName;
+            ProductPrice.Text += ' ' + productPrice.ToString("#,0.00", nfi) + "zł";
         }
     }
 }

@@ -5,20 +5,31 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProjektApp.Pages"
              mc:Ignorable="d" 
-             d:DesignHeight="260" d:DesignWidth="240">
-    <Grid Height="260" Width="240">
+             d:DesignHeight="350" d:DesignWidth="240">
+    <Grid Height="350" Width="240">
         <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Background="#393939" Margin="10 10 10 0">
             <Image Source="/Images/no-image.png" x:Name="Image"/>
         </Grid>
-        <Grid Grid.Row="1" Margin="10 0 10 10" Background="#333">
+        <Grid Grid.Row="1" Margin="10 0 10 0" Background="#333">
             <TextBlock x:Name="ProductName" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" TextWrapping="Wrap" TextAlignment="Center">
                 Nazwa produktu jest bardzo bardzo bardzo długa
             </TextBlock>
+        </Grid>
+        <Grid Grid.Row="2" Margin="10 0 10 0" Background="#444">
+            <TextBlock x:Name="ProductPrice" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" TextWrapping="Wrap" TextAlignment="Left">
+                Cena:
+            </TextBlock>
+        </Grid>
+        <Grid Grid.Row="3" Margin="10 0 10 10" Background="#333">
+            <Button Content="Dodaj do koszyka" Style="{DynamicResource MaterialDesignFlatLightBgButton}">
+            </Button>
         </Grid>
     </Grid>
 </UserControl>

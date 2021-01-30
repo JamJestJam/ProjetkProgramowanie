@@ -19,6 +19,7 @@ namespace DBconnectShop {
             using var db = new Shop();
 
             IQueryable<Product> products = db.Products
+                .Include(a=>a.Products_Prices)
                 .Where(a => a.Product_aviable);
 #if DEBUG
             Console.WriteLine(products.ToQueryString());
@@ -27,13 +28,19 @@ namespace DBconnectShop {
             Products = products.ToList();
         }
 
-        public List<string> GetProductName(int page = 0, int perPage = 18) {
-            var resoult = new List<string>();
+        public List<(string ProductName, decimal Products_price)> GetProducts(int page = 0, int perPage = 18) {
+            var resoult = new List<(string ProductName, decimal Products_price)>();
 
-            for(int i = page * perPage; i < (page + 1) * perPage && i < Products.Count; i++) 
-                resoult.Add(Products[i].Product_name.Trim());
-            
-            
+            for(int i = page * perPage; i < (page + 1) * perPage && i < Products.Count; i++) {
+                var product = Products[i];
+                var price = product.Products_Prices.OrderBy(a => a.Product_price_date).First();
+
+                var tmp = (
+                    ProductName: product.Product_name.Trim(),
+                    Products_price: price.Product_price
+                );
+                resoult.Add(tmp);
+            }
             return resoult;
         }
     }

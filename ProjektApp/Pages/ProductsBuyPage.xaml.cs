@@ -25,10 +25,9 @@ namespace ProjektApp.Pages {
         }
 
         public void UserPage() {
-            var list = products.GetProductName();
+            var list = products.GetProducts();
             for(int i = 0; i < list.Count; i++) 
-                controls[i].Content = new SingleProduct_ProductsBuyPage(list[i]);
-            
+                controls[i].Content = new SingleProduct_ProductsBuyPage(list[i].ProductName, list[i].Products_price);
         }
     }
 }
