@@ -18,8 +18,9 @@ namespace ProjektApp.Pages {
     /// Interaction logic for SingleProduct_ProductsBuyPage.xaml
     /// </summary>
     public partial class SingleProduct_ProductsBuyPage : UserControl {
-        public SingleProduct_ProductsBuyPage() {
+        public SingleProduct_ProductsBuyPage(string productName) {
             InitializeComponent();
+            ProductName.Text = productName;
         }
     }
 }

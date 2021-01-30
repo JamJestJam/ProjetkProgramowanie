@@ -16,8 +16,8 @@
             <Image Source="/Images/no-image.png" x:Name="Image"/>
         </Grid>
         <Grid Grid.Row="1" Margin="10 0 10 10" Background="#333">
-            <TextBlock FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White">
-                Nazwa produktu
+            <TextBlock x:Name="ProductName" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" TextWrapping="Wrap" TextAlignment="Center">
+                Nazwa produktu jest bardzo bardzo bardzo długa
             </TextBlock>
         </Grid>
     </Grid>
