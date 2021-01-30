@@ -35,10 +35,10 @@ namespace ProjektApp.Pages {
             try {
                 DBconnectShop.Login.Register(userName, password1, password2);
 
-                MessageBox.Show("Rejestrowanie zakończone pomyślnie");
-
                 this.Dispatcher.Invoke(() => {
-                    this.Content = new LoginPage();
+                    DialogText.Content = "Rejestrowanie zakończone pomyślnie";
+                    Dialog.IsOpen = true;
+                    Hidden.IsOpen = false;
                 });
             } catch(LoginException e) {
                 this.Dispatcher.Invoke(() => {

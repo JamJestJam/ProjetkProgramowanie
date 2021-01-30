@@ -32,7 +32,7 @@
         <materialDesign:DialogHost IsOpen="False" CloseOnClickAway="True" x:Name="Dialog" MinWidth="400">
             <materialDesign:DialogHost.DialogContent>
                 <StackPanel Margin="16">
-                    <Label Content="Ej stary problem jest xD" x:Name="DialogText" FontSize="30" HorizontalAlignment="Center"/>
+                    <Label Content="" x:Name="DialogText" FontSize="30" HorizontalAlignment="Center"/>
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Right">

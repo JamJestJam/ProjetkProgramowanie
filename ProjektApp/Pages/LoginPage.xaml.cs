@@ -38,9 +38,12 @@ namespace ProjektApp.Pages {
 
             try {
                 var Login = new Login(userName, password);
-#if DEBUG
-                Console.WriteLine("Login in");
-#endif
+
+                this.Dispatcher.Invoke(() => {
+                    Hidden.IsOpen = false;
+                    this.Content = new ProductsBuyPage();
+                    (Application.Current.MainWindow as MainWindow).LeftPanel.Content = null;
+                });
             } catch (LoginException e) {
                 this.Dispatcher.Invoke(() => {
                     DialogText.Content = e.Message;

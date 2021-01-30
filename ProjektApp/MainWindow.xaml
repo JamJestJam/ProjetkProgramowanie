@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:ProjektApp"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         ResizeMode="NoResize"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
         mc:Ignorable="d"
         Title="Logowanie" Height="600" Width="1024" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid>
