@@ -42,7 +42,6 @@ namespace ProjektApp.Pages {
                 this.Dispatcher.Invoke(() => {
                     Hidden.IsOpen = false;
                     this.Content = new ProductsBuyPage();
-                    (Application.Current.MainWindow as MainWindow).LeftPanel.Content = null;
                     (Application.Current.MainWindow as MainWindow).TopBarr.Content = new TopBarLogged();
                 });
             } catch (LoginException e) {

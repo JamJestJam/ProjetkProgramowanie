@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="ProjektApp.Pages.LoggedLeftPageUser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjektApp.Pages"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300">
+    <ScrollViewer>
+        <materialDesign:Card>
+            <StackPanel>
+                <Expander HorizontalAlignment="Stretch" Header="Komputery">
+                    <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="24,8,0,16">
+
+                        <Expander HorizontalAlignment="Stretch" Header="Procesory" Height="52" >
+                            <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="24,8,0,16">
+
+                            </StackPanel>
+                        </Expander>
+
+                        <Expander HorizontalAlignment="Stretch" Header="Ramy">
+                            <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="24,8,0,16">
+                                
+                                <Expander HorizontalAlignment="Stretch" Header="DDR3">
+                                    <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="24,8,0,16">
+
+                                    </StackPanel>
+                                </Expander>
+                                <Expander HorizontalAlignment="Stretch" Header="DDR4">
+                                    <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="24,8,0,16">
+
+                                    </StackPanel>
+                                </Expander>
+                                
+                            </StackPanel>
+                        </Expander>
+
+                    </StackPanel>
+                </Expander>
+            </StackPanel>
+        </materialDesign:Card>
+    </ScrollViewer>
+</UserControl>

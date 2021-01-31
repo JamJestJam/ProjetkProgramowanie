@@ -7,6 +7,7 @@ using System.Linq;
 namespace DBconnectShop {
     public class BuyableProducts {
         List<Product> Products { get; set; }
+        List<Product_categori> Categoris { get; set; }
 
         public int ProductCount => Products.Count();
 
@@ -18,14 +19,25 @@ namespace DBconnectShop {
         public void Refresh() {
             using var db = new Shop();
 
-            IQueryable<Product> products = db.Products
+            var products = db.Products
                 .Include(a=>a.Products_Prices)
                 .Where(a => a.Product_aviable);
+
+            var category = db.Product_Categories
+                .Include(a => a.Children)
+                    .ThenInclude(b => b.Children)
+                        .ThenInclude(c => c.Children)
+                            .ThenInclude(d => d.Children)
+                                .ThenInclude(e => e.Children)
+                .Where(a=>a.Parent == null);
 #if DEBUG
             Console.WriteLine(products.ToQueryString());
+            Console.WriteLine(category.ToQueryString());
 #endif
 
             Products = products.ToList();
+            Categoris = category.ToList();
+            Console.WriteLine(123);
         }
 
         public List<(string ProductName, decimal Products_price)> GetProducts(int page = 0, int perPage = 18) {
@@ -42,6 +54,10 @@ namespace DBconnectShop {
                 resoult.Add(tmp);
             }
             return resoult;
+        }
+
+        public void ProductCategory() {
+
         }
     }
 }

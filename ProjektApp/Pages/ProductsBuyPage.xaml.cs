@@ -1,5 +1,6 @@
 ﻿using DBconnectShop;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ProjektApp.Pages {
@@ -21,6 +22,7 @@ namespace ProjektApp.Pages {
             };
             products = new BuyableProducts();
 
+            (Application.Current.MainWindow as MainWindow).LeftPanel.Content = new LoggedLeftPageUser(products);
             UserPage();
         }
 
