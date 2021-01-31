@@ -20,16 +20,10 @@ namespace DBconnectShop {
             using var db = new Shop();
 
             var products = db.Products
-                .Include(a=>a.Products_Prices)
+                .Include(a => a.Products_Prices)
                 .Where(a => a.Product_aviable);
 
-            var category = db.Product_Categories
-                .Include(a => a.Children)
-                    .ThenInclude(b => b.Children)
-                        .ThenInclude(c => c.Children)
-                            .ThenInclude(d => d.Children)
-                                .ThenInclude(e => e.Children)
-                .Where(a=>a.Parent == null);
+            var category = db.Product_Categories;
 #if DEBUG
             Console.WriteLine(products.ToQueryString());
             Console.WriteLine(category.ToQueryString());
@@ -56,8 +50,20 @@ namespace DBconnectShop {
             return resoult;
         }
 
-        public void ProductCategory() {
+        public List<(string name, int id, int? parentID)> ProductCategory() {
+            var list = new List<(string name, int id, int? parentID)>();
 
+            foreach(var category in Categoris) {
+                var tmp = (
+                    name: category.Product_category_name.Trim(),
+                    id: category.Product_category_id,
+                    parentID: category.Product_sub_category
+                );
+
+                list.Add(tmp);
+            }
+
+            return list;
         }
     }
 }

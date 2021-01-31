@@ -29,7 +29,12 @@ namespace DBconnectShop {
             if(users.Count() != 1)
                 throw new LoginException("Nie poprawna nazwa użytkownika lub hasło");
 
-            this.user = users.First();
+            var user = users.First();
+
+            if(!user.User_active)
+                throw new LoginException("Konto na które próbujesz się zalogować zostało zablokowane");
+
+            this.user = user;
         }
 
         /// <summary>
