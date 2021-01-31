@@ -21,10 +21,7 @@ namespace ProjektApp {
             
             this.Content.Content = new LoginPage();
             this.LeftPanel.Content = new LoginLeftPage();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e) {
-            this.Close();
+            this.TopBarr.Content = new TopBarLoggedOut();
         }
 
         private void Bar_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e) {

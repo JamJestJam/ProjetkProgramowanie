@@ -22,14 +22,9 @@
         </Grid.RowDefinitions>
         <!-- Menu górne -->
         <Grid x:Name="Bar" Grid.ColumnSpan="2" Background="#292929" MouseDown="Bar_MouseDown">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 0">
-                <Button Width="30" Height="30" Padding="0" Margin="5 0" Background="#292929" BorderBrush="#292929" Foreground="White" Cursor="Hand">
-                    <materialDesign:PackIcon Kind="Account"/>
-                </Button>
-                <Button Width="30" Height="30" Padding="0" Margin="5 0" Background="#292929" BorderBrush="#292929" Foreground="White" Cursor="Hand" Click="Button_Click">
-                    <materialDesign:PackIcon Kind="Power"/>
-                </Button>
-            </StackPanel>
+            <UserControl x:Name="TopBarr">
+
+            </UserControl>
         </Grid>
         <!-- Lewe menu -->
         <Grid Grid.Row="1">
