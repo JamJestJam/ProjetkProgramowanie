@@ -13,19 +13,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DBconnectShop.Table;
 
 namespace ProjektApp.Pages {
     /// <summary>
     /// Interaction logic for SingleProduct_ProductsBuyPage.xaml
     /// </summary>
     public partial class SingleProduct_ProductsBuyPage : UserControl {
-        public SingleProduct_ProductsBuyPage(string productName, decimal productPrice) {
+        Product Product;
+
+        public SingleProduct_ProductsBuyPage(Product product) {
             InitializeComponent();
+            Product = product;
+
             var nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
             nfi.NumberGroupSeparator = " ";
 
-            ProductName.Text = productName;
-            ProductPrice.Text += ' ' + productPrice.ToString("#,0.00", nfi) + "zł";
+            ProductName.Text = product.TrueName;
+            ProductPrice.Text += ' ' + product.ActualPrice.ToString("#,0.00", nfi) + "zł";
         }
     }
 }

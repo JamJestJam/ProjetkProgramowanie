@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
-    class User_group {
+    public class User_group {
         #region Columns ======================================
 
         [Key]

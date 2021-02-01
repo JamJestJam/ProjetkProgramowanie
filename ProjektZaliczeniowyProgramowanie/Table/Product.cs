@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace DBconnectShop.Table {
-    class Product {
+    public class Product {
         #region Columns ======================================
 
         [Key]
@@ -43,6 +44,14 @@ namespace DBconnectShop.Table {
         public IEnumerable<Product_opinion> Product_Opinions { get; set; } = new List<Product_opinion>();
         public IEnumerable<Product_specification> Product_Specifications { get; set; } = new List<Product_specification>();
         public IEnumerable<Products_price> Products_Prices { get; set; } = new List<Products_price>();
+
+        #endregion
+
+        #region Cuts =========================================
+
+        public int ID => Product_id;
+        public decimal ActualPrice => Products_Prices.OrderBy(a => a.Product_price_date).FirstOrDefault().Product_price;
+        public string TrueName => Product_name.Trim();
 
         #endregion
 

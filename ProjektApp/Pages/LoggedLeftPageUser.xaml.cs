@@ -18,24 +18,18 @@ namespace ProjektApp.Pages {
             this.page = page;
 
             var dict = new Dictionary<int, Expander>();
-            var categories = products.ProductCategory();
+            var categories = products.CatergorisRO;
 
             foreach(var category in categories) {
-                var tmp = CreateContener(category.name, category.id);
-                dict.Add(category.id, tmp);
-            }
+                var tmp = CreateContener(category.TrueName, category.ID);
+                dict.Add(category.ID, tmp);
 
-            foreach(var category in categories) {
-                if(!(category.parentID is null)) {
-                    (dict[(int)category.parentID].Content as StackPanel)
-                        .Children.Add(dict[category.id]);
+                if(category.ParentID == 0) {
+                    ExpanderPanel.Children.Add(dict[category.ID]);
+                } else { 
+                    (dict[(int)category.ParentID].Content as StackPanel)
+                        .Children.Add(dict[category.ID]);
                 }
-            }
-
-            var categoriesNull = categories.Where(a => a.parentID == null).ToList();
-
-            foreach(var category in categoriesNull) {
-                ExpanderPanel.Children.Add(dict[category.id]);
             }
         }
 
@@ -85,7 +79,8 @@ namespace ProjektApp.Pages {
         }
 
         private void ChangeCategory(int id) {
-            page.UserPage(id);
+            page.Category = id;
+            page.UserPage();
         }
     }
 }

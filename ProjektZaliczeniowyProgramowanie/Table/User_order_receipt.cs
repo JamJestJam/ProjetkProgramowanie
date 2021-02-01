@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
-    class User_order_receipt {
+    public class User_order_receipt {
         #region Columns ======================================
 
         [Key]

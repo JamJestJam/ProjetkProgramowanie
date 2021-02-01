@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
-    class Product_categori {
+    public class Product_categori {
         #region Columns ======================================
 
         [Key]
@@ -26,6 +26,14 @@ namespace DBconnectShop.Table {
         public Product_categori Parent { get; set; }
         public IEnumerable<Product_categori> Children { get; set; } = new List<Product_categori>();
         public IEnumerable<Product> Products { get; set; } = new List<Product>();
+
+        #endregion
+
+        #region Cuts =========================================
+
+        public int ID => Product_category_id;
+        public int ParentID => (Product_sub_category is null) ? 0 : (int)Product_sub_category;
+        public string TrueName => Product_category_name.Trim();
 
         #endregion
 

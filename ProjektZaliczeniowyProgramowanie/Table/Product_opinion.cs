@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
-    class Product_opinion {
+    public class Product_opinion {
         #region Columns ======================================
 
         [Required]

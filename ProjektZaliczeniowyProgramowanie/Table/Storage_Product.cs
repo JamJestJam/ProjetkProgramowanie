@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
-    class Storage_Product {
+    public class Storage_Product {
         #region Columns ======================================
 
         [Key]

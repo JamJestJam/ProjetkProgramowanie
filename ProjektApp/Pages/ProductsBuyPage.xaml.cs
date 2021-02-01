@@ -11,8 +11,9 @@ namespace ProjektApp.Pages {
         List<UserControl> controls;
         BuyableProducts products;
 
-        int page = 0;
-        int perPage = 18;
+        public int Page { get; set; } = 0;
+        public int PerPage { get; set; } = 18;
+        public int? Category { get; set; } = null;
 
         public ProductsBuyPage() {
             InitializeComponent();
@@ -29,12 +30,14 @@ namespace ProjektApp.Pages {
             UserPage();
         }
 
-        public void UserPage(int? id = null) {
-            var list = products.GetProducts(page, perPage, id);
+        public void UserPage() {
+            var list = products.GetProducts(Page, PerPage, Category);
+
             foreach(var control in controls)
                 control.Content = null;
+
             for(int i = 0; i < list.Count; i++)
-                controls[i].Content = new SingleProduct_ProductsBuyPage(list[i].ProductName, list[i].Products_price);
+                controls[i].Content = new SingleProduct_ProductsBuyPage(list[i]);
         }
     }
 }

@@ -9,8 +9,8 @@ namespace DBconnectShop {
         List<Product> Products { get; set; }
         List<Product_categori> Categoris { get; set; }
 
-        public int ProductCount => Products.Count();
-
+        public IReadOnlyList<Product_categori> CatergorisRO => Categoris.OrderBy(a=>a.ParentID).ToList().AsReadOnly();
+        public IReadOnlyList<Product> ProductsRO => Products.AsReadOnly();
 
         public BuyableProducts() {
             Refresh();
@@ -35,7 +35,7 @@ namespace DBconnectShop {
             Categoris = category.ToList();
         }
 
-        public List<(string ProductName, decimal Products_price)> GetProducts(int page, int perPage, int? categoryID = null) {
+        public List<Product> GetProducts(int page, int perPage, int? categoryID, string like = "") {
             var categoryWhere = Categoris
                 .Where(a => a.Product_category_id == categoryID)
                 .SelectManyRecursive(a => a.Children)
@@ -47,39 +47,10 @@ namespace DBconnectShop {
             else
                 categoryWhere.Add((int)categoryID);
 
-            var Products = this.Products
+            return this.Products
                 .Where(a => categoryWhere.Any(b => b == a.Product_category_id))
+                .Where(a => a.Product_name.Contains(like))
                 .ToList();
-
-            var resoult = new List<(string ProductName, decimal Products_price)>();
-
-            for(int i = page * perPage; i < (page + 1) * perPage && i < Products.Count; i++) {
-                var product = Products[i];
-                var price = product.Products_Prices.OrderBy(a => a.Product_price_date).First();
-
-                var tmp = (
-                    ProductName: product.Product_name.Trim(),
-                    Products_price: price.Product_price
-                );
-                resoult.Add(tmp);
-            }
-            return resoult;
-        }
-
-        public List<(string name, int id, int? parentID)> ProductCategory() {
-            var list = new List<(string name, int id, int? parentID)>();
-
-            foreach(var category in Categoris) {
-                var tmp = (
-                    name: category.Product_category_name.Trim(),
-                    id: category.Product_category_id,
-                    parentID: category.Product_sub_category
-                );
-
-                list.Add(tmp);
-            }
-
-            return list;
         }
     }
 

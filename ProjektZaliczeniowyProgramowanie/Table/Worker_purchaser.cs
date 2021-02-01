@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DBconnectShop.Table {
-    class Worker_purchaser {
+    public class Worker_purchaser {
         #region Columns ======================================
 
         [Key]
