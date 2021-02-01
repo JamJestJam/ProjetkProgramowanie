@@ -7,7 +7,7 @@ namespace ProjektApp.Pages.login {
     /// </summary>
     public partial class LoginLeftPage : UserControl {
 
-        private MainWindow Window =>
+        private static MainWindow Window =>
             (MainWindow)Application.Current.MainWindow;
 
         public LoginLeftPage() {

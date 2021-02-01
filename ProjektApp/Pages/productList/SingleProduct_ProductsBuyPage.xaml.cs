@@ -7,7 +7,9 @@ namespace ProjektApp.Pages.productList {
     /// Interaction logic for SingleProduct_ProductsBuyPage.xaml
     /// </summary>
     public partial class SingleProduct_ProductsBuyPage : UserControl {
+#pragma warning disable IDE0052 // Remove unread private members
         readonly Product Product;
+#pragma warning restore IDE0052 // Remove unread private members
 
         public SingleProduct_ProductsBuyPage(Product product) {
             InitializeComponent();

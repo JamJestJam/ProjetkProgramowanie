@@ -10,6 +10,8 @@ namespace DBconnectShop {
     public class Login {
         private readonly User user;
 
+        public int GetUserID => user.User_id;
+
         /// <summary>
         /// Tworzy obiekt klasy
         /// </summary>
