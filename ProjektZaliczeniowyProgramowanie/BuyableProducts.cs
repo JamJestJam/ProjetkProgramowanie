@@ -8,22 +8,36 @@ namespace DBconnectShop {
     public class BuyableProducts {
         List<Product> Products { get; set; }
         List<Product_categori> Categoris { get; set; }
+        List<int> CategorisWhere { get; set; }
 
         public int ProductCount => Products.Count();
 
 
-        public BuyableProducts() {
-            Refresh();
+        public BuyableProducts(int? id) {
+            Refresh(id);
         }
 
-        public void Refresh() {
+        public void Refresh(int? id) {
             using var db = new Shop();
+
+            var category = db.Product_Categories;
+
+            var categoryWhere = category.ToList()
+                .Where(a => a.Product_category_id == id)
+                .SelectManyRecursive(a => a.Children)
+                .Select(a => a.Product_category_id).ToList();
+            if(id == null)
+                categoryWhere = category.SelectManyRecursive(a => a.Children)
+                    .Select(a => a.Product_category_id).ToList();
+            else
+                categoryWhere.Add((int)id);
 
             var products = db.Products
                 .Include(a => a.Products_Prices)
-                .Where(a => a.Product_aviable);
+                .Include(a => a.Product_Categori)
+                .Where(a => a.Product_aviable)
+                .Where(a => categoryWhere.Any(b => b == a.Product_category_id));
 
-            var category = db.Product_Categories;
 #if DEBUG
             Console.WriteLine(products.ToQueryString());
             Console.WriteLine(category.ToQueryString());
@@ -31,7 +45,7 @@ namespace DBconnectShop {
 
             Products = products.ToList();
             Categoris = category.ToList();
-            Console.WriteLine(123);
+            CategorisWhere = categoryWhere.ToList();
         }
 
         public List<(string ProductName, decimal Products_price)> GetProducts(int page = 0, int perPage = 18) {
@@ -64,6 +78,16 @@ namespace DBconnectShop {
             }
 
             return list;
+        }
+    }
+
+    internal static class Extension {
+        public static IEnumerable<T> SelectManyRecursive<T>(this IEnumerable<T> source, Func<T, IEnumerable<T>> selector) {
+            var result = source.SelectMany(selector);
+            if(!result.Any()) {
+                return result;
+            }
+            return result.Union(result.SelectManyRecursive(selector));
         }
     }
 }
