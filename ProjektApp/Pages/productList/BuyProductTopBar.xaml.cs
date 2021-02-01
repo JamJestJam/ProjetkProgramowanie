@@ -5,8 +5,8 @@ namespace ProjektApp.Pages.productList {
     /// <summary>
     /// Interaction logic for TopBarLogged.xaml
     /// </summary>
-    public partial class TopBarLogged : UserControl {
-        public TopBarLogged() {
+    public partial class BuyProductTopBar : UserControl {
+        public BuyProductTopBar() {
             InitializeComponent();
         }
 
