@@ -8,35 +8,23 @@ namespace DBconnectShop {
     public class BuyableProducts {
         List<Product> Products { get; set; }
         List<Product_categori> Categoris { get; set; }
-        List<int> CategorisWhere { get; set; }
 
         public int ProductCount => Products.Count();
 
 
-        public BuyableProducts(int? id) {
-            Refresh(id);
+        public BuyableProducts() {
+            Refresh();
         }
 
-        public void Refresh(int? id) {
+        public void Refresh() {
             using var db = new Shop();
 
             var category = db.Product_Categories;
 
-            var categoryWhere = category.ToList()
-                .Where(a => a.Product_category_id == id)
-                .SelectManyRecursive(a => a.Children)
-                .Select(a => a.Product_category_id).ToList();
-            if(id == null)
-                categoryWhere = category.SelectManyRecursive(a => a.Children)
-                    .Select(a => a.Product_category_id).ToList();
-            else
-                categoryWhere.Add((int)id);
-
             var products = db.Products
                 .Include(a => a.Products_Prices)
                 .Include(a => a.Product_Categori)
-                .Where(a => a.Product_aviable)
-                .Where(a => categoryWhere.Any(b => b == a.Product_category_id));
+                .Where(a => a.Product_aviable);
 
 #if DEBUG
             Console.WriteLine(products.ToQueryString());
@@ -45,10 +33,24 @@ namespace DBconnectShop {
 
             Products = products.ToList();
             Categoris = category.ToList();
-            CategorisWhere = categoryWhere.ToList();
         }
 
-        public List<(string ProductName, decimal Products_price)> GetProducts(int page = 0, int perPage = 18) {
+        public List<(string ProductName, decimal Products_price)> GetProducts(int page, int perPage, int? categoryID = null) {
+            var categoryWhere = Categoris
+                .Where(a => a.Product_category_id == categoryID)
+                .SelectManyRecursive(a => a.Children)
+                .Select(a => a.Product_category_id).ToList();
+
+            if(categoryID == null)
+                categoryWhere = Categoris.SelectManyRecursive(a => a.Children)
+                    .Select(a => a.Product_category_id).ToList();
+            else
+                categoryWhere.Add((int)categoryID);
+
+            var Products = this.Products
+                .Where(a => categoryWhere.Any(b => b == a.Product_category_id))
+                .ToList();
+
             var resoult = new List<(string ProductName, decimal Products_price)>();
 
             for(int i = page * perPage; i < (page + 1) * perPage && i < Products.Count; i++) {

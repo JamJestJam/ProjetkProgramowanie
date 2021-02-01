@@ -11,9 +11,11 @@ namespace ProjektApp.Pages {
     /// Interaction logic for LoggedLeftPageUser.xaml
     /// </summary>
     public partial class LoggedLeftPageUser : UserControl {
+        ProductsBuyPage page;
 
-        public LoggedLeftPageUser(BuyableProducts products) {
+        public LoggedLeftPageUser(BuyableProducts products, ProductsBuyPage page) {
             InitializeComponent();
+            this.page = page;
 
             var dict = new Dictionary<int, Expander>();
             var categories = products.ProductCategory();
@@ -83,7 +85,7 @@ namespace ProjektApp.Pages {
         }
 
         private void ChangeCategory(int id) {
-            (Application.Current.MainWindow as MainWindow).Content.Content = new ProductsBuyPage(id);
+            page.UserPage(id);
         }
     }
 }
