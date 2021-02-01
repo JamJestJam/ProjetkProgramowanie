@@ -1,10 +1,9 @@
 ﻿using DBconnectShop;
-using MaterialDesignThemes.Wpf;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ProjektApp.Pages {
+namespace ProjektApp.Pages.login {
     /// <summary>
     /// Interaction logic for RegisterPage.xaml
     /// </summary>

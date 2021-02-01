@@ -1,12 +1,10 @@
 ﻿using DBconnectShop;
-using System;
+using ProjektApp.Pages.productList;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using MaterialDesignThemes;
-using MaterialDesignThemes.Wpf;
 
-namespace ProjektApp.Pages {
+namespace ProjektApp.Pages.login {
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
@@ -44,7 +42,7 @@ namespace ProjektApp.Pages {
                     this.Content = new ProductsBuyPage();
                     (Application.Current.MainWindow as MainWindow).TopBarr.Content = new TopBarLogged();
                 });
-            } catch (LoginException e) {
+            } catch(LoginException e) {
                 this.Dispatcher.Invoke(() => {
                     DialogText.Content = e.Message;
                     Dialog.IsOpen = true;

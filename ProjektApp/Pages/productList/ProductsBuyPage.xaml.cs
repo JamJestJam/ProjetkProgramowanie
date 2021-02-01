@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ProjektApp.Pages {
+namespace ProjektApp.Pages.productList {
     /// <summary>
     /// Interaction logic for ProductsBuyPage.xaml
     /// </summary>

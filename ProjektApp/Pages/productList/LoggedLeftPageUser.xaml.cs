@@ -1,12 +1,10 @@
 ﻿using DBconnectShop;
 using MaterialDesignThemes.Wpf;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ProjektApp.Pages {
+namespace ProjektApp.Pages.productList {
     /// <summary>
     /// Interaction logic for LoggedLeftPageUser.xaml
     /// </summary>
@@ -26,7 +24,7 @@ namespace ProjektApp.Pages {
 
                 if(category.ParentID == 0) {
                     ExpanderPanel.Children.Add(dict[category.ID]);
-                } else { 
+                } else {
                     (dict[(int)category.ParentID].Content as StackPanel)
                         .Children.Add(dict[category.ID]);
                 }

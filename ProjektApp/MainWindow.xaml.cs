@@ -1,5 +1,5 @@
-﻿using System.Runtime.InteropServices;
-using ProjektApp.Pages;
+﻿using ProjektApp.Pages.login;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 
@@ -19,10 +19,10 @@ namespace ProjektApp {
 #endif
             InitializeComponent();
 
-            
+
             this.Content.Content = new LoginPage();
             this.LeftPanel.Content = new LoginLeftPage();
-            this.TopBarr.Content = new TopBarLoggedOut();
+            this.TopBarr.Content = new LoginTopBar();
         }
 
         private void Bar_MouseDown(object sender, MouseButtonEventArgs e) {
