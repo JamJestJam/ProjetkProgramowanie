@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System;
 
 namespace ProjektApp.Pages.productList {
     /// <summary>
@@ -14,6 +15,7 @@ namespace ProjektApp.Pages.productList {
         public int Page { get; set; } = 0;
         public int PerPage { get; set; } = 18;
         public int? Category { get; set; } = null;
+        public string Like { get; set; } = "";
 
         public ProductsBuyPage() {
             InitializeComponent();
@@ -31,13 +33,19 @@ namespace ProjektApp.Pages.productList {
         }
 
         public void UserPage() {
-            var list = products.GetProducts(Page, PerPage, Category);
+            var list = products.GetProducts(Page, PerPage, Category, Like);
 
             foreach(var control in controls)
                 control.Content = null;
 
             for(int i = 0; i < list.Count; i++)
                 controls[i].Content = new SingleProduct_ProductsBuyPage(list[i]);
+        }
+
+        private void Find(object o, EventArgs e) {
+            Console.WriteLine(123);
+            Like = FindBox.Text;
+            UserPage();
         }
     }
 }

@@ -25,11 +25,14 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBox Grid.Column="1" Margin="8 0 0 0" materialDesign:HintAssist.Hint="Wyszukaj produktu" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" Background="#444" Padding="10 3" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" />
+                                <TextBox x:Name="FindBox" Grid.Column="1" Margin="8 0 0 0" materialDesign:HintAssist.Hint="Wyszukaj produktu" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" Background="#444" Padding="10 3" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" />
                             </Grid>
                         </materialDesign:ColorZone>
-                        <Button Margin="8 0 0 0" Panel.ZIndex="0">
+                        <Button Margin="8 0 0 0" Click="Find">
                             <materialDesign:PackIcon Kind="Send" />
+                        </Button>
+                        <Button Margin="8 0 0 0">
+                            <materialDesign:PackIcon Kind="Settings" />
                         </Button>
                     </StackPanel>
                 </DockPanel>

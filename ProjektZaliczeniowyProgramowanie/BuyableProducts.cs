@@ -51,7 +51,7 @@ namespace DBconnectShop {
 
             return this.Products
                 .Where(a => categoryWhere.Any(b => b == a.Product_category_id))
-                .Where(a => a.Product_name.Contains(like))
+                .Where(a => a.Product_name.ToLower().Contains(like.ToLower()))
                 .ToList();
         }
     }
