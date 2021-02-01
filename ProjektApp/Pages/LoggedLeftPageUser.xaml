@@ -10,34 +10,7 @@
     <ScrollViewer>
         <materialDesign:Card>
             <StackPanel x:Name="ExpanderPanel">
-                <Expander HorizontalAlignment="Stretch" Header="Komputery">
-                    <StackPanel Orientation="Vertical" Margin="24,8,0,16">
-
-                        <Expander HorizontalAlignment="Stretch" Header="Procesory" >
-                            <StackPanel Orientation="Vertical" Margin="24,8,0,16">
-                                <Button Content="Dodaj" />
-                            </StackPanel>
-                        </Expander>
-
-                        <Expander HorizontalAlignment="Stretch" Header="Ramy">
-                            <StackPanel Orientation="Vertical" Margin="24,8,0,16">
-
-                                <Expander HorizontalAlignment="Stretch" Header="DDR3">
-                                    <StackPanel Orientation="Vertical" Margin="24,8,0,16">
-
-                                    </StackPanel>
-                                </Expander>
-                                <Expander HorizontalAlignment="Stretch" Header="DDR4">
-                                    <StackPanel Orientation="Vertical" Margin="24,8,0,16">
-
-                                    </StackPanel>
-                                </Expander>
-
-                            </StackPanel>
-                        </Expander>
-
-                    </StackPanel>
-                </Expander>
+                
             </StackPanel>
         </materialDesign:Card>
     </ScrollViewer>

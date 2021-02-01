@@ -1,10 +1,10 @@
 ﻿using DBconnectShop;
+using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Linq;
-using MaterialDesignThemes.Wpf;
-using System.Windows.Media;
 
 namespace ProjektApp.Pages {
     /// <summary>
@@ -19,7 +19,7 @@ namespace ProjektApp.Pages {
             var categories = products.ProductCategory();
 
             foreach(var category in categories) {
-                var tmp = CreateContener(category.name);
+                var tmp = CreateContener(category.name, category.id);
                 dict.Add(category.id, tmp);
             }
 
@@ -37,10 +37,11 @@ namespace ProjektApp.Pages {
             }
         }
 
-        private Expander CreateContener(string text) {
+        private Expander CreateContener(string text, int id) {
             Button button = new Button();
             button.Style = this.Resources["MaterialDesignFloatingActionMiniLightButton"] as Style;
             button.ToolTip = "Wyszukaj";
+            button.Click += (object o, RoutedEventArgs e) => ChangeCategory(id);
 
             PackIcon packIcon = new PackIcon();
             packIcon.Kind = PackIconKind.Magnify;
@@ -75,10 +76,14 @@ namespace ProjektApp.Pages {
             StackPanel stackPanel = new StackPanel();
             stackPanel.Orientation = Orientation.Vertical;
             stackPanel.Margin = new Thickness(24, 8, 0, 16);
-            
+
             expander.Content = stackPanel;
 
             return expander;
+        }
+
+        private void ChangeCategory(int id) {
+            (Application.Current.MainWindow as MainWindow).Content.Content = new ProductsBuyPage(id);
         }
     }
 }

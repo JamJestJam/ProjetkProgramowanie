@@ -11,7 +11,7 @@ namespace ProjektApp.Pages {
         List<UserControl> controls;
         BuyableProducts products;
 
-        public ProductsBuyPage() {
+        public ProductsBuyPage(int? id=null) {
             InitializeComponent();
 
             controls = new List<UserControl> {
@@ -20,7 +20,7 @@ namespace ProjektApp.Pages {
                 Product02, Product12, Product22,
                 Product03, Product13, Product23
             };
-            products = new BuyableProducts();
+            products = new BuyableProducts(id);
 
             (Application.Current.MainWindow as MainWindow).LeftPanel.Content = new LoggedLeftPageUser(products);
             UserPage();

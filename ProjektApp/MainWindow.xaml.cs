@@ -1,6 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using ProjektApp.Pages;
 using System.Windows;
+using System.Windows.Input;
 
 namespace ProjektApp {
     /// <summary>
@@ -24,7 +25,7 @@ namespace ProjektApp {
             this.TopBarr.Content = new TopBarLoggedOut();
         }
 
-        private void Bar_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e) {
+        private void Bar_MouseDown(object sender, MouseButtonEventArgs e) {
             DragMove();
         }
     }
