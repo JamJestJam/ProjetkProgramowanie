@@ -15,8 +15,9 @@ namespace ProjektApp.Pages.login {
         private void Register_Click(object sender, RoutedEventArgs e) {
             Hidden.IsOpen = true;
 
-            Thread thread = new Thread(LoginIn);
-            thread.IsBackground = true;
+            Thread thread = new Thread(LoginIn) {
+                IsBackground = true
+            };
             thread.Start();
         }
 

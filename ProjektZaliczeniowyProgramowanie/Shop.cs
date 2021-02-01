@@ -26,10 +26,10 @@ namespace DBconnectShop {
         public DbSet<Product_rating> Product_Ratings { get; set; }
         public DbSet<Storage> Storages { get; set; }
         public DbSet<Product_order> Product_Orders { get; set; }
-        public DbSet<Product_receipt> product_Receipts { get; set; }
+        public DbSet<Product_receipt> Product_Receipts { get; set; }
         public DbSet<Storage_Product> Storage_Products { get; set; }
         public DbSet<Storage_Product_localization> Storage_Product_Localizations { get; set; }
-        public DbSet<User_order_status> user_Order_Statuses { get; set; }
+        public DbSet<User_order_status> User_Order_Statuses { get; set; }
         public DbSet<User_order> User_Orders { get; set; }
         public DbSet<User_order_Product> User_Order_Products { get; set; }
         public DbSet<User_order_receipt> User_Order_Receipts { get; set; }

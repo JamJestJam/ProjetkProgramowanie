@@ -8,8 +8,8 @@ namespace ProjektApp.Pages.productList {
     /// Interaction logic for ProductsBuyPage.xaml
     /// </summary>
     public partial class ProductsBuyPage : UserControl {
-        List<UserControl> controls;
-        BuyableProducts products;
+        readonly List<UserControl> controls;
+        readonly BuyableProducts products;
 
         public int Page { get; set; } = 0;
         public int PerPage { get; set; } = 18;
@@ -26,7 +26,7 @@ namespace ProjektApp.Pages.productList {
             };
             products = new BuyableProducts();
 
-            (Application.Current.MainWindow as MainWindow).LeftPanel.Content = new LoggedLeftPageUser(products, this);
+            (Application.Current.MainWindow as MainWindow).LeftPanel.Content = new ProductListLeftPage(products, this);
             UserPage();
         }
 

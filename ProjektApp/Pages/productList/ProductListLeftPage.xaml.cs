@@ -8,10 +8,10 @@ namespace ProjektApp.Pages.productList {
     /// <summary>
     /// Interaction logic for LoggedLeftPageUser.xaml
     /// </summary>
-    public partial class LoggedLeftPageUser : UserControl {
-        ProductsBuyPage page;
+    public partial class ProductListLeftPage : UserControl {
+        readonly ProductsBuyPage page;
 
-        public LoggedLeftPageUser(BuyableProducts products, ProductsBuyPage page) {
+        public ProductListLeftPage(BuyableProducts products, ProductsBuyPage page) {
             InitializeComponent();
             this.page = page;
 
@@ -32,17 +32,20 @@ namespace ProjektApp.Pages.productList {
         }
 
         private Expander CreateContener(string text, int id) {
-            Button button = new Button();
-            button.Style = this.Resources["MaterialDesignFloatingActionMiniLightButton"] as Style;
-            button.ToolTip = "Wyszukaj";
+            Button button = new Button {
+                Style = this.Resources["MaterialDesignFloatingActionMiniLightButton"] as Style,
+                ToolTip = "Wyszukaj"
+            };
             button.Click += (object o, RoutedEventArgs e) => ChangeCategory(id);
 
-            PackIcon packIcon = new PackIcon();
-            packIcon.Kind = PackIconKind.Magnify;
+            PackIcon packIcon = new PackIcon {
+                Kind = PackIconKind.Magnify
+            };
             button.Content = packIcon;
 
-            TextBlock textBlock = new TextBlock();
-            textBlock.Text = text;
+            TextBlock textBlock = new TextBlock {
+                Text = text
+            };
 
             Grid grid = new Grid();
             var column1 = new ColumnDefinition();
@@ -63,13 +66,15 @@ namespace ProjektApp.Pages.productList {
             grid.Children.Add(button);
             grid.Children.Add(textBlock);
 
-            Expander expander = new Expander();
-            expander.HorizontalAlignment = HorizontalAlignment.Stretch;
-            expander.Header = grid;
+            Expander expander = new Expander {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Header = grid
+            };
 
-            StackPanel stackPanel = new StackPanel();
-            stackPanel.Orientation = Orientation.Vertical;
-            stackPanel.Margin = new Thickness(24, 8, 0, 16);
+            StackPanel stackPanel = new StackPanel {
+                Orientation = Orientation.Vertical,
+                Margin = new Thickness(24, 8, 0, 16)
+            };
 
             expander.Content = stackPanel;
 

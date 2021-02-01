@@ -8,7 +8,7 @@ namespace ProjektApp.Pages.login {
     public partial class LoginLeftPage : UserControl {
 
         private MainWindow Window =>
-            ((MainWindow)Application.Current.MainWindow);
+            (MainWindow)Application.Current.MainWindow;
 
         public LoginLeftPage() {
             InitializeComponent();

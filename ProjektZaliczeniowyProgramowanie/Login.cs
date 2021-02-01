@@ -55,7 +55,7 @@ namespace DBconnectShop {
             Console.WriteLine(checkLogin.ToQueryString());
 #endif
 
-            if(checkLogin.Count() != 0)
+            if(checkLogin.Any())
                 throw new LoginException("Użytkownik o takim loginie już istnieje");
 
             var NewUser = new User {
@@ -76,7 +76,7 @@ namespace DBconnectShop {
     /// Wyjątek do logowania
     /// </summary>
     public class LoginException : Exception {
-        private string message;
+        private readonly string message;
 
         internal LoginException(string message) {
             this.message = message;

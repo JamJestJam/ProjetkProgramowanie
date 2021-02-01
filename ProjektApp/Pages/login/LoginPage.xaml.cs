@@ -20,8 +20,9 @@ namespace ProjektApp.Pages.login {
         private void Submit_Click(object sender, RoutedEventArgs e) {
             Hidden.IsOpen = true;
 
-            Thread thread = new Thread(LoginIn);
-            thread.IsBackground = true;
+            Thread thread = new Thread(LoginIn) {
+                IsBackground = true
+            };
             thread.Start();
         }
 
@@ -40,7 +41,7 @@ namespace ProjektApp.Pages.login {
                 this.Dispatcher.Invoke(() => {
                     Hidden.IsOpen = false;
                     this.Content = new ProductsBuyPage();
-                    (Application.Current.MainWindow as MainWindow).TopBarr.Content = new TopBarLogged();
+                    (Application.Current.MainWindow as MainWindow).TopBarr.Content = new ProductListTopBar();
                 });
             } catch(LoginException e) {
                 this.Dispatcher.Invoke(() => {

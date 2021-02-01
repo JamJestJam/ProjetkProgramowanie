@@ -7,7 +7,7 @@ namespace ProjektApp.Pages.productList {
     /// Interaction logic for SingleProduct_ProductsBuyPage.xaml
     /// </summary>
     public partial class SingleProduct_ProductsBuyPage : UserControl {
-        Product Product;
+        readonly Product Product;
 
         public SingleProduct_ProductsBuyPage(Product product) {
             InitializeComponent();
