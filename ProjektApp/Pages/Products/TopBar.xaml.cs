@@ -1,24 +1,24 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace ProjektApp.Pages.productList {
+namespace ProjektApp.Pages.Products {
     /// <summary>
-    /// Interaction logic for TopBarLogged.xaml
+    /// Interaction logic for TopBar.xaml
     /// </summary>
-    public partial class ProductListTopBar : UserControl {
-        ProductsBuyPage Page;
+    public partial class TopBar : UserControl {
+        ProductList productList;
 
-        public ProductListTopBar(ProductsBuyPage page) {
+        public TopBar(ProductList productList) {
             InitializeComponent();
-            Page = page;
+            this.productList = productList;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
+        private void Close(object sender, RoutedEventArgs e) {
             Application.Current.MainWindow.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e) {
-            Page.Reload();
+        private void Reload(object sender, RoutedEventArgs e) {
+            productList.Reload();
         }
     }
 }

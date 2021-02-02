@@ -1,25 +1,32 @@
-﻿using DBconnectShop.Table;
-using System.Globalization;
+﻿using ProjektApp.Pages.Product;
+using System.Windows;
 using System.Windows.Controls;
+using ProductTable = DBconnectShop.Table.Product;
 
-namespace ProjektApp.Pages.productList {
+namespace ProjektApp.Pages.Products {
     /// <summary>
-    /// Interaction logic for SingleProduct_ProductsBuyPage.xaml
+    /// Interaction logic for SingleProduct.xaml
     /// </summary>
-    public partial class SingleProduct_ProductsBuyPage : UserControl {
-#pragma warning disable IDE0052 // Remove unread private members
-        readonly Product Product;
-#pragma warning restore IDE0052 // Remove unread private members
+    public partial class SingleProduct : UserControl {
+        static MainWindow Window =>
+            Application.Current.MainWindow as MainWindow;
 
-        public SingleProduct_ProductsBuyPage(Product product) {
+        private readonly ProductTable product;
+
+        public SingleProduct(ProductTable product) {
             InitializeComponent();
-            Product = product;
+            this.product = product;
 
-            var nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
-            nfi.NumberGroupSeparator = " ";
+            ManageInfo();
+        }
 
+        private void ManageInfo() {
             ProductName.Text = product.TrueName;
-            ProductPrice.Text += ' ' + product.ActualPrice.ToString("#,0.00", nfi) + "zł";
+            ProductPrice.Text += ' ' + product.ActualPrice.ToString("#,0.00") + "zł";
+        }
+
+        private void ShowMore(object o, RoutedEventArgs e) {
+            Window.Content.Content = new ProductInfo(product.ID);
         }
     }
 }

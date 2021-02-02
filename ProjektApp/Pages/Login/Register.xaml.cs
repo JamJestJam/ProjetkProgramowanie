@@ -2,59 +2,59 @@
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using LoginDB = DBconnectShop.Login;
 
-namespace ProjektApp.Pages.login {
+namespace ProjektApp.Pages.Login {
     /// <summary>
-    /// Interaction logic for RegisterPage.xaml
+    /// Interaction logic for Register.xaml
     /// </summary>
-    public partial class RegisterPage : UserControl {
-        public RegisterPage() {
+    public partial class Register : UserControl {
+        public Register() {
             InitializeComponent();
         }
 
-        private void Register_Click(object sender, RoutedEventArgs e) {
-            Hidden.IsOpen = true;
+        private void RegisterIn(object o, RoutedEventArgs e) {
+            Loading.IsOpen = true;
 
-            Thread thread = new Thread(LoginIn) {
+            Thread thread = new Thread(RegisterIn) {
                 IsBackground = true
             };
             thread.Start();
         }
 
-        private void LoginIn() {
+        private void RegisterIn() {
             string userName = "";
             string password1 = "";
             string password2 = "";
 
-            this.Dispatcher.Invoke(() => {
-                userName = Login.Text;
+            Dispatcher.Invoke(() => {
+                userName = UserName.Text;
                 password1 = Password1.Password;
                 password2 = Password2.Password;
             });
 
             try {
-                DBconnectShop.Login.Register(userName, password1, password2);
+                LoginDB.Register(userName, password1, password2);
 
-                this.Dispatcher.Invoke(() => {
-                    DialogText.Content = "Rejestrowanie zakończone pomyślnie";
-                    Dialog.IsOpen = true;
-                    Hidden.IsOpen = false;
+                Dispatcher.Invoke(() => {
+                    var Login = new Login();
+
+                    Login.DialogText.Content = "Rejestracja zakończona pomyślnie";
+                    Login.Dialog.IsOpen = true;
+                    Login.Loading.IsOpen = false;
+                    Content = Login;
                 });
             } catch(LoginException e) {
-                this.Dispatcher.Invoke(() => {
-                    Dialog.IsOpen = true;
+                Dispatcher.Invoke(() => {
                     DialogText.Content = e.Message;
-                    Hidden.IsOpen = false;
+                    Dialog.IsOpen = true;
+                    Loading.IsOpen = false;
                 });
             }
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e) {
-            this.Content = new LoginPage();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e) {
-            this.Dialog.IsOpen = false;
+        private void CloseDialog(object o, RoutedEventArgs e) {
+            Dialog.IsOpen = false;
         }
     }
 }

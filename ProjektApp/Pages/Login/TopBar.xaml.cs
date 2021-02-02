@@ -1,17 +1,20 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace ProjektApp.Pages.login {
+namespace ProjektApp.Pages.Login {
     /// <summary>
-    /// Interaction logic for TopBarLoggedOut.xaml
+    /// Interaction logic for TopBar.xaml
     /// </summary>
-    public partial class LoginTopBar : UserControl {
-        public LoginTopBar() {
+    public partial class TopBar : UserControl {
+        static MainWindow Window =>
+            Application.Current.MainWindow as MainWindow;
+
+        public TopBar() {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
-            Application.Current.MainWindow.Close();
+        private void Close(object o, RoutedEventArgs e) {
+            Window.Close();
         }
     }
 }

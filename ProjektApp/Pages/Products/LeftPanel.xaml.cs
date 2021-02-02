@@ -1,32 +1,32 @@
-﻿using DBconnectShop;
-using MaterialDesignThemes.Wpf;
+﻿using MaterialDesignThemes.Wpf;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ProjektApp.Pages.productList {
+namespace ProjektApp.Pages.Products {
     /// <summary>
-    /// Interaction logic for LoggedLeftPageUser.xaml
+    /// Interaction logic for LeftPanel.xaml
     /// </summary>
-    public partial class ProductListLeftPage : UserControl {
-        readonly ProductsBuyPage page;
+    public partial class LeftPanel : UserControl {
+        readonly ProductList productList;
 
-        public ProductListLeftPage(ProductsBuyPage page) {
+        public LeftPanel(ProductList product) {
             InitializeComponent();
-            this.page = page;
+
+            this.productList = product;
         }
 
         public void ShowCategory() {
             var dict = new Dictionary<int, Expander>();
-            var categories = page.Products.CatergorisRO;
-            ExpanderPanel.Children.Clear();
+            var categories = productList.Products.CatergorisRO;
+            Panel.Children.Clear();
 
             foreach(var category in categories) {
-                var tmp = CreateContener(category.TrueName, category.ID);
+                var tmp = CreateConteiner(category.TrueName, category.ID);
                 dict.Add(category.ID, tmp);
 
                 if(category.ParentID == 0) {
-                    ExpanderPanel.Children.Add(dict[category.ID]);
+                    Panel.Children.Add(dict[category.ID]);
                 } else {
                     (dict[(int)category.ParentID].Content as StackPanel)
                         .Children.Add(dict[category.ID]);
@@ -34,12 +34,12 @@ namespace ProjektApp.Pages.productList {
             }
         }
 
-        private Expander CreateContener(string text, int id) {
+        private Expander CreateConteiner(string name, int ID) {
             Button button = new Button {
                 Style = this.Resources["MaterialDesignFloatingActionMiniLightButton"] as Style,
                 ToolTip = "Wyszukaj"
             };
-            button.Click += (object o, RoutedEventArgs e) => ChangeCategory(id);
+            button.Click += (object o, RoutedEventArgs e) => ChangeCategory(ID);
 
             PackIcon packIcon = new PackIcon {
                 Kind = PackIconKind.Magnify
@@ -47,7 +47,7 @@ namespace ProjektApp.Pages.productList {
             button.Content = packIcon;
 
             TextBlock textBlock = new TextBlock {
-                Text = text
+                Text = name
             };
 
             Grid grid = new Grid();
@@ -85,8 +85,8 @@ namespace ProjektApp.Pages.productList {
         }
 
         private void ChangeCategory(int id) {
-            page.Category = id;
-            page.UserPage();
+            productList.Category = id;
+            productList.ShowProducts();
         }
     }
 }

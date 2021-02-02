@@ -1,30 +1,33 @@
 ﻿using DBconnectShop;
+using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System;
-using System.Threading;
 
-namespace ProjektApp.Pages.productList {
+namespace ProjektApp.Pages.Products {
     /// <summary>
-    /// Interaction logic for ProductsBuyPage.xaml
+    /// Interaction logic for ProductList.xaml
     /// </summary>
-    public partial class ProductsBuyPage : UserControl {
-        readonly List<UserControl> controls;
-        public BuyableProducts Products { get; private set; }
+    public partial class ProductList : UserControl {
+        static MainWindow Window =>
+            Application.Current.MainWindow as MainWindow;
 
-        ProductListLeftPage leftPage;
-        ProductListTopBar topBar;
+        readonly List<UserControl> controls;
+        public BuyableProducts Products { get; }
+
+        readonly LeftPanel left;
+        readonly TopBar top;
 
         public int Page { get; set; } = 0;
         public int PerPage { get; set; } = 18;
         public int? Category { get; set; } = null;
         public string Like { get; set; } = "";
 
-        public ProductsBuyPage() {
+        public ProductList() {
             InitializeComponent();
-            Products = new BuyableProducts();
 
+            Products = new BuyableProducts();
             controls = new List<UserControl> {
                 Product00, Product10, Product20,
                 Product01, Product11, Product21,
@@ -32,47 +35,47 @@ namespace ProjektApp.Pages.productList {
                 Product03, Product13, Product23
             };
 
-            Reload();
+            left = new LeftPanel(this);
+            top = new TopBar(this);
+            Window.LeftPanel.Content = left;
+            Window.TopBar.Content = top;
 
-            topBar = new ProductListTopBar(this);
-            leftPage = new ProductListLeftPage(this);
-            (Application.Current.MainWindow as MainWindow).TopBarr.Content = topBar;
-            (Application.Current.MainWindow as MainWindow).LeftPanel.Content = leftPage;
+            Reload();
         }
 
         public void Reload() {
-            Hidden.IsOpen = true;
+            Loading.IsOpen = true;
 
-            Thread thread = new Thread(ReloadThread) {
+            Thread thread = new Thread(ReloadContent) {
                 IsBackground = true
             };
             thread.Start();
-    }
+        }
 
-        private void ReloadThread() {
+        public void ReloadContent() {
             Products.Refresh();
 
-            Dispatcher.Invoke(()=> {
-                UserPage();
-                leftPage.ShowCategory();
-                Hidden.IsOpen = false;
+            Dispatcher.Invoke(() => {
+                ShowProducts();
+                left.ShowCategory();
+                Loading.IsOpen = false;
             });
         }
 
-        public void UserPage() {
+        public void ShowProducts() {
             var list = Products.GetProducts(Page, PerPage, Category, Like);
-
-            foreach(var control in controls)
-                control.Content = null;
+            controls.ForEach(a => a.Content = null);
 
             for(int i = 0; i < list.Count; i++)
-                controls[i].Content = new SingleProduct_ProductsBuyPage(list[i]);
+                controls[i].Content = new SingleProduct(list[i]);
         }
 
-        private void Find(object o, EventArgs e) {
-            Console.WriteLine(123);
-            Like = FindBox.Text;
-            UserPage();
+        private void Find(object o, RoutedEventArgs e) {
+            ShowProducts();
+        }
+
+        private void FindTextChange(object o, EventArgs e) {
+            Like = FindText.Text;
         }
     }
 }

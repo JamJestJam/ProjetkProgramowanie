@@ -3,13 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProjektApp"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-        ResizeMode="NoResize"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        Background="{DynamicResource MaterialDesignPaper}"
+        xmlns:local="clr-namespace:ProjektApp"
         mc:Ignorable="d"
-        Title="Logowanie" Height="600" Width="1024" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="Sklep" Height="600" Width="1024" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
         <!-- Podział grida -->
         <Grid.ColumnDefinitions>
@@ -22,7 +19,7 @@
         </Grid.RowDefinitions>
         <!-- Menu górne -->
         <Grid x:Name="Bar" Grid.ColumnSpan="2" Background="#292929" MouseDown="Bar_MouseDown">
-            <UserControl x:Name="TopBarr">
+            <UserControl x:Name="TopBar">
 
             </UserControl>
         </Grid>
@@ -63,6 +60,5 @@
                 <UserControl x:Name="Content" />
             </Grid>
         </Grid>
-        
     </Grid>
 </Window>

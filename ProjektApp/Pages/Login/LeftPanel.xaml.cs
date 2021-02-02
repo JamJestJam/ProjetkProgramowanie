@@ -1,25 +1,24 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace ProjektApp.Pages.login {
+namespace ProjektApp.Pages.Login {
     /// <summary>
-    /// Interaction logic for LoginLeftPage.xaml
+    /// Interaction logic for LeftPanel.xaml
     /// </summary>
-    public partial class LoginLeftPage : UserControl {
+    public partial class LeftPanel : UserControl {
+        static MainWindow Window =>
+            Application.Current.MainWindow as MainWindow;
 
-        private static MainWindow Window =>
-            (MainWindow)Application.Current.MainWindow;
-
-        public LoginLeftPage() {
+        public LeftPanel() {
             InitializeComponent();
         }
 
-        private void LoginUp_Click(object sender, RoutedEventArgs e) {
-            Window.Content.Content = new LoginPage();
+        private void ToLoginPanel(object s, RoutedEventArgs e) {
+            Window.Content.Content = new Login();
         }
 
-        private void SignUp_Click(object sender, RoutedEventArgs e) {
-            Window.Content.Content = new RegisterPage();
+        private void ToRegisterPanel(object s, RoutedEventArgs e) {
+            Window.Content.Content = new Register();
         }
     }
 }

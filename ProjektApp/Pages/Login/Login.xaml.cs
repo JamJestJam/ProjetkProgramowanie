@@ -1,24 +1,27 @@
 ﻿using DBconnectShop;
-using ProjektApp.Pages.productList;
+using ProjektApp.Pages.Products;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using LoginDB = DBconnectShop.Login;
 
-namespace ProjektApp.Pages.login {
+namespace ProjektApp.Pages.Login {
     /// <summary>
-    /// Interaction logic for LoginPage.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class LoginPage : UserControl {
-        public LoginPage() {
+    public partial class Login : UserControl {
+        static MainWindow Window =>
+            Application.Current.MainWindow as MainWindow;
+
+        public Login() {
             InitializeComponent();
+
+            Window.LeftPanel.Content = new LeftPanel();
+            Window.TopBar.Content = new TopBar();
         }
 
-        private void Register_Click(object sender, RoutedEventArgs e) {
-            this.Content = new RegisterPage();
-        }
-
-        private void Submit_Click(object sender, RoutedEventArgs e) {
-            Hidden.IsOpen = true;
+        private void LoginIn(object o, RoutedEventArgs e) {
+            Loading.IsOpen = true;
 
             Thread thread = new Thread(LoginIn) {
                 IsBackground = true
@@ -27,31 +30,30 @@ namespace ProjektApp.Pages.login {
         }
 
         private void LoginIn() {
-            string userName = "";
+            string login = "";
             string password = "";
 
-            this.Dispatcher.Invoke(() => {
-                userName = Login.Text;
+            Dispatcher.Invoke(() => {
+                login = UserName.Text;
                 password = Password.Password;
             });
 
             try {
-                var Login = new Login(userName, password);
+                var tryLogin = new LoginDB(login, password);
 
-                this.Dispatcher.Invoke(() => {
-                    Hidden.IsOpen = false;
-                    this.Content = new ProductsBuyPage();
+                Dispatcher.Invoke(() => {
+                    Content = new ProductList();
                 });
             } catch(LoginException e) {
-                this.Dispatcher.Invoke(() => {
+                Dispatcher.Invoke(() => {
                     DialogText.Content = e.Message;
                     Dialog.IsOpen = true;
-                    Hidden.IsOpen = false;
+                    Loading.IsOpen = false;
                 });
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
+        private void CloseDialog(object o, RoutedEventArgs e) {
             Dialog.IsOpen = false;
         }
     }

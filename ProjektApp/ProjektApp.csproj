@@ -7,22 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\no-image.png" />
+    <PackageReference Include="MaterialDesignThemes" Version="3.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ProjektZaliczeniowyProgramowanie\DBconnectShop.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="Images\no-image.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CustomToolNamespace>Images</CustomToolNamespace>
-    </Resource>
-  </ItemGroup>
-
-<ItemGroup>
-	<PackageReference Include="MaterialDesignThemes" Version="3.2.0" />
-</ItemGroup>
-	
 </Project>

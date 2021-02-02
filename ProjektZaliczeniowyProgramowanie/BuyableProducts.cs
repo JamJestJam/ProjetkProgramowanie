@@ -9,10 +9,10 @@ namespace DBconnectShop {
         List<Product> Products { get; set; }
         List<Product_categori> Categoris { get; set; }
 
-        public IReadOnlyList<Product_categori> CatergorisRO => Categoris.OrderBy(a=>a.ParentID).ToList().AsReadOnly();
+        public IReadOnlyList<Product_categori> CatergorisRO => Categoris.OrderBy(a => a.ParentID).ToList().AsReadOnly();
         public IReadOnlyList<Product> ProductsRO => Products.AsReadOnly();
 
-        public BuyableProducts() {}
+        public BuyableProducts() { }
 
         public void Refresh() {
             using var db = new Shop();
