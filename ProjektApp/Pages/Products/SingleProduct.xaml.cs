@@ -1,6 +1,7 @@
 ﻿using ProjektApp.Pages.Product;
 using System.Windows;
 using System.Windows.Controls;
+using System.Linq;
 using ProductTable = DBconnectShop.Table.Product;
 
 namespace ProjektApp.Pages.Products {

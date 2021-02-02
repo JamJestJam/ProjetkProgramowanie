@@ -32,6 +32,14 @@ namespace DBconnectShop.Table {
 
         #endregion
 
+        #region Cuts =========================================
+
+        public int ID => Product_specification_id;
+        public string Name => Product_specification_name.Trim();
+        public string Value => Product_specification_value.Trim();
+
+        #endregion
+
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Product_specification>().ToTable("Product_specifications");
 
