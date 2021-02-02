@@ -6,12 +6,19 @@ namespace ProjektApp.Pages.productList {
     /// Interaction logic for TopBarLogged.xaml
     /// </summary>
     public partial class ProductListTopBar : UserControl {
-        public ProductListTopBar() {
+        ProductsBuyPage Page;
+
+        public ProductListTopBar(ProductsBuyPage page) {
             InitializeComponent();
+            Page = page;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
             Application.Current.MainWindow.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e) {
+            Page.Reload();
         }
     }
 }

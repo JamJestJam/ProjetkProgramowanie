@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System;
+using System.Threading;
 
 namespace ProjektApp.Pages.productList {
     /// <summary>
@@ -10,7 +11,10 @@ namespace ProjektApp.Pages.productList {
     /// </summary>
     public partial class ProductsBuyPage : UserControl {
         readonly List<UserControl> controls;
-        readonly BuyableProducts products;
+        public BuyableProducts Products { get; private set; }
+
+        ProductListLeftPage leftPage;
+        ProductListTopBar topBar;
 
         public int Page { get; set; } = 0;
         public int PerPage { get; set; } = 18;
@@ -19,6 +23,7 @@ namespace ProjektApp.Pages.productList {
 
         public ProductsBuyPage() {
             InitializeComponent();
+            Products = new BuyableProducts();
 
             controls = new List<UserControl> {
                 Product00, Product10, Product20,
@@ -26,14 +31,36 @@ namespace ProjektApp.Pages.productList {
                 Product02, Product12, Product22,
                 Product03, Product13, Product23
             };
-            products = new BuyableProducts();
 
-            (Application.Current.MainWindow as MainWindow).LeftPanel.Content = new ProductListLeftPage(products, this);
-            UserPage();
+            Reload();
+
+            topBar = new ProductListTopBar(this);
+            leftPage = new ProductListLeftPage(this);
+            (Application.Current.MainWindow as MainWindow).TopBarr.Content = topBar;
+            (Application.Current.MainWindow as MainWindow).LeftPanel.Content = leftPage;
+        }
+
+        public void Reload() {
+            Hidden.IsOpen = true;
+
+            Thread thread = new Thread(ReloadThread) {
+                IsBackground = true
+            };
+            thread.Start();
+    }
+
+        private void ReloadThread() {
+            Products.Refresh();
+
+            Dispatcher.Invoke(()=> {
+                UserPage();
+                leftPage.ShowCategory();
+                Hidden.IsOpen = false;
+            });
         }
 
         public void UserPage() {
-            var list = products.GetProducts(Page, PerPage, Category, Like);
+            var list = Products.GetProducts(Page, PerPage, Category, Like);
 
             foreach(var control in controls)
                 control.Content = null;

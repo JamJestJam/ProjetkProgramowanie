@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="1024">
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 0">
-        <Button Width="30" Height="30" Padding="0" Margin="5 0" Background="#292929" BorderBrush="#292929" Foreground="White" Cursor="Hand">
+        <Button Width="30" Height="30" Padding="0" Margin="5 0" Background="#292929" BorderBrush="#292929" Foreground="White" Cursor="Hand" Click="Button_Click_1">
             <materialDesign:PackIcon Kind="Refresh"/>
         </Button>
         <Button Width="30" Height="30" Padding="0" Margin="5 0" Background="#292929" BorderBrush="#292929" Foreground="White" Cursor="Hand">

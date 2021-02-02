@@ -11,12 +11,15 @@ namespace ProjektApp.Pages.productList {
     public partial class ProductListLeftPage : UserControl {
         readonly ProductsBuyPage page;
 
-        public ProductListLeftPage(BuyableProducts products, ProductsBuyPage page) {
+        public ProductListLeftPage(ProductsBuyPage page) {
             InitializeComponent();
             this.page = page;
+        }
 
+        public void ShowCategory() {
             var dict = new Dictionary<int, Expander>();
-            var categories = products.CatergorisRO;
+            var categories = page.Products.CatergorisRO;
+            ExpanderPanel.Children.Clear();
 
             foreach(var category in categories) {
                 var tmp = CreateContener(category.TrueName, category.ID);

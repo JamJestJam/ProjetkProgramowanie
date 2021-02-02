@@ -41,7 +41,6 @@ namespace ProjektApp.Pages.login {
                 this.Dispatcher.Invoke(() => {
                     Hidden.IsOpen = false;
                     this.Content = new ProductsBuyPage();
-                    (Application.Current.MainWindow as MainWindow).TopBarr.Content = new ProductListTopBar();
                 });
             } catch(LoginException e) {
                 this.Dispatcher.Invoke(() => {

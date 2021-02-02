@@ -6,7 +6,16 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="724">
-
+    <materialDesign:DialogHost x:Name="Hidden" IsOpen="False">
+        <materialDesign:DialogHost.DialogContent>
+            <ProgressBar
+                    Style="{DynamicResource MaterialDesignCircularProgressBar}"
+                    HorizontalAlignment="Center"
+                    Margin="16"
+                    IsIndeterminate="True"
+                    Value="0" />
+        </materialDesign:DialogHost.DialogContent>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
@@ -108,4 +117,5 @@
             </ScrollViewer>
         </Grid>
     </Grid>
+    </materialDesign:DialogHost>
 </UserControl>
