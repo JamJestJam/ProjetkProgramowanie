@@ -1,4 +1,5 @@
 ﻿using ProjektApp.Pages.login;
+using ProjektApp.Pages.SingleProduct;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
@@ -20,7 +21,7 @@ namespace ProjektApp {
             InitializeComponent();
 
 
-            this.Content.Content = new LoginPage();
+            this.Content.Content = new SingleProductPage();
             this.LeftPanel.Content = new LoginLeftPage();
             this.TopBarr.Content = new LoginTopBar();
         }
