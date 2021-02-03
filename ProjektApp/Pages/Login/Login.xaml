@@ -28,7 +28,7 @@
                     <TextBox x:Name="UserName" FontSize="18" Background="#444" Foreground="#fff"/>
                     <Label Content="Hasło"/>
                     <PasswordBox x:Name="Password" Background="#444" FontSize="18"/>
-                    <Button Content="Zaloguj się" Foreground="#fff" Background="#444" Height="50" FontSize="18" Margin="20" Click="LoginIn"/>
+                    <Button Content="Zaloguj się" Background="#444" Height="50" FontSize="18" Margin="20" Click="LoginIn" Style="{StaticResource MaterialDesignFlatButton}"/>
                 </StackPanel>
             </Border>
         </materialDesign:DialogHost>

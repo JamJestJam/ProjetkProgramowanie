@@ -6,84 +6,95 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:local="clr-namespace:ProjektApp.Pages.Product"
              mc:Ignorable="d" 
-             d:DesignHeight="570" d:DesignWidth="724">
-    <ScrollViewer >
-        <Grid Margin="15 15 15 15">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="300"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-
-            <Grid Grid.Row="0" Grid.Column="1" VerticalAlignment="Top">
-                <materialDesign:Card Height="280" Padding="19" Margin="0 20 0 0">
-                    <StackPanel>
-                        <TextBlock x:Name="Name" Foreground="White" Margin="16 16 12 8" FontSize="16" TextWrapping="Wrap" TextAlignment="Center">
-                            Bardzo długa długa nazwa produktu
-                        </TextBlock>
-                        <Separator Background="LightGray" />
-                        <TextBlock x:Name="Price" Foreground="White">
-                            Cena produktu: 1 200.00 zł
-                        </TextBlock>
+             d:DesignHeight="1000" d:DesignWidth="724">
+    <ScrollViewer>
+        <materialDesign:ColorZone Mode="Dark" Background="{x:Null}">
+            <Grid Margin="15 15 15 15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <!-- Info panel -->
+                <Grid Grid.Row="0" Grid.Column="1" VerticalAlignment="Top">
+                    <materialDesign:Card Height="280" Padding="19" Margin="0 20 0 0">
                         <StackPanel>
-                            <ComboBox Foreground="White" materialDesign:HintAssist.Hint="Ilość" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                                <ComboBoxItem IsSelected="True" Content="1" />
-                                <ComboBoxItem Content="2" />
-                                <ComboBoxItem Content="3" />
-                                <ComboBoxItem Content="4" />
-                                <ComboBoxItem Content="5" />
-                            </ComboBox>
-                            <Button Margin="0 10 0 0" Content="Dodaj do koszyka" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </StackPanel>
-                </materialDesign:Card>
-            </Grid>
-            <Grid Grid.Row="0" Grid.Column="0" Background="#333" Margin="0 20 10 0">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid Grid.Column="0" Grid.Row="0">
-                        <ScrollViewer>
+                            <TextBlock x:Name="Name" Foreground="White" Margin="16 16 12 8" FontSize="16" TextWrapping="Wrap" TextAlignment="Center">
+                            Bardzo długa długa nazwa produktu
+                            </TextBlock>
+                            <Separator Background="LightGray" />
+                            <TextBlock x:Name="Price" Foreground="White">
+                            Cena produktu: 1 200.00 zł
+                            </TextBlock>
                             <StackPanel>
-                                
-                                <Image Source="/Images/no-image.png" Width="80" Height="80" HorizontalAlignment="Center"/>
-                                <Image Source="/Images/no-image.png" Width="80" Height="80" HorizontalAlignment="Center"/>
-                                <Image Source="/Images/no-image.png" Width="80" Height="80" HorizontalAlignment="Center"/>
-                                <Image Source="/Images/no-image.png" Width="80" Height="80" HorizontalAlignment="Center"/>
-                                <Image Source="/Images/no-image.png" Width="80" Height="80" HorizontalAlignment="Center"/>
-                                
+                                <ComboBox Foreground="White" materialDesign:HintAssist.Hint="Ilość" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                    <ComboBoxItem IsSelected="True" Content="1" />
+                                    <ComboBoxItem Content="2" />
+                                    <ComboBoxItem Content="3" />
+                                    <ComboBoxItem Content="4" />
+                                    <ComboBoxItem Content="5" />
+                                </ComboBox>
+                                <Button Margin="0 10 0 0" Content="Dodaj do koszyka" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </StackPanel>
-                        </ScrollViewer>
-                    </Grid>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Grid>
+                <!-- Images -->
+                <Grid Grid.Row="0" Grid.Column="0" Background="#333" Margin="0 20 10 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="1" Grid.Row="0">
-                        <Image Source="/Images/no-image.png"  HorizontalAlignment="Center"/>
+                        <Grid Grid.Column="0" Grid.Row="0">
+                            <ScrollViewer>
+                                <StackPanel>
+                                    <Image Source="/Images/no-image.png" Width="80" Height="80" HorizontalAlignment="Center"/>
+                                    <Image Source="/Images/no-image.png" Width="80" Height="80" HorizontalAlignment="Center"/>
+                                    <Image Source="/Images/no-image.png" Width="80" Height="80" HorizontalAlignment="Center"/>
+                                    <Image Source="/Images/no-image.png" Width="80" Height="80" HorizontalAlignment="Center"/>
+                                    <Image Source="/Images/no-image.png" Width="80" Height="80" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+
+                        <Grid Grid.Column="1" Grid.Row="0">
+                            <Image Source="/Images/no-image.png"  HorizontalAlignment="Center"/>
+                        </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
-            <Grid Grid.Row="1" Grid.ColumnSpan="2" Background="#454545" MinHeight="230" Margin="0 10 0 0">
-                <Grid Height="230" VerticalAlignment="Bottom">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                <!-- Specyfication -->
+                <Grid Grid.Row="1" Grid.ColumnSpan="2" Background="#454545" MinHeight="230" Margin="0 10 0 0">
+                    <Grid Height="230" VerticalAlignment="Bottom">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0">
-                        <Border BorderBrush="Black" BorderThickness="1" Width="1" HorizontalAlignment="Right" />
-                        <StackPanel x:Name="PropertyName" HorizontalAlignment="Right" />
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Border BorderBrush="Black" BorderThickness="1" Width="1" HorizontalAlignment="Left" />
-                        <StackPanel x:Name="PropertyValue" HorizontalAlignment="Left" />
+                        <Grid Grid.Column="0">
+                            <Border BorderBrush="Black" BorderThickness="1" Width="1" HorizontalAlignment="Right" />
+                            <StackPanel x:Name="PropertyName" HorizontalAlignment="Right" />
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Border BorderBrush="Black" BorderThickness="1" Width="1" HorizontalAlignment="Left" />
+                            <StackPanel x:Name="PropertyValue" HorizontalAlignment="Left" />
+                        </Grid>
                     </Grid>
                 </Grid>
+                <!-- Comments -->
+                <Grid Grid.Row="2" Grid.ColumnSpan="2" Background="#454545" MinHeight="0" Margin="0 10 0 0">
+                    <StackPanel Margin="5">
+                        <Label Content="Komentarze"/>
+                        <TextBox Background="#333" TextWrapping="Wrap" Height="50" Margin="10 0" AcceptsReturn="True"/>
+                        <Button Content="Dodaj" HorizontalAlignment="Right" Margin="10 5" Style="{StaticResource MaterialDesignRaisedButton}"/>
+                    </StackPanel>
+                </Grid>
             </Grid>
-        </Grid>
+        </materialDesign:ColorZone>
     </ScrollViewer>
 </UserControl>

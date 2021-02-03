@@ -26,26 +26,37 @@ namespace ProjektApp.Pages.Product {
             Price.Text = $"Cena produktu: {Product.ActualPrice.ToString("#,0.00")} zł";
 
             foreach(var specyfication in Product.Product_Specifications) {
-                var propertyName = new Label() {
-                    Content = specyfication.Name,
-                    Width = 340,
-                    HorizontalAlignment = HorizontalAlignment.Right,
-                    HorizontalContentAlignment = HorizontalAlignment.Right
-                };
-                var nameSeparator = new Separator();
-                var propertyValue = new Label() {
-                    Content = specyfication.Value,
-                    Width = 340,
-                    HorizontalAlignment = HorizontalAlignment.Left,
-                    HorizontalContentAlignment = HorizontalAlignment.Left
-                };
-                var valueSeparator = new Separator();
-
-                PropertyName.Children.Add(propertyName);
-                PropertyName.Children.Add(nameSeparator);
-                PropertyValue.Children.Add(propertyValue);
-                PropertyValue.Children.Add(valueSeparator);
+                SetPropertyName(specyfication.Name);
+                SetPropertyValue(specyfication.Value);
             }
+        }
+
+        private void SetPropertyName(string name) {
+            var propertyName = new Label() {
+                Content = name,
+                Width = 330,
+                Margin = new Thickness(0,0,10,0),
+                HorizontalAlignment = HorizontalAlignment.Right,
+                HorizontalContentAlignment = HorizontalAlignment.Right
+            };
+            var nameSeparator = new Separator();
+
+            PropertyName.Children.Add(propertyName);
+            PropertyName.Children.Add(nameSeparator);
+        }
+
+        private void SetPropertyValue(string value) {
+            var propertyValue = new Label() {
+                Content = value,
+                Width = 330,
+                Margin = new Thickness(10, 0, 0, 0),
+                HorizontalAlignment = HorizontalAlignment.Left,
+                HorizontalContentAlignment = HorizontalAlignment.Left
+            };
+            var valueSeparator = new Separator();
+
+            PropertyValue.Children.Add(propertyValue);
+            PropertyValue.Children.Add(valueSeparator);
         }
     }
 }

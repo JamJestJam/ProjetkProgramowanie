@@ -17,7 +17,7 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0" Background="#393939" Margin="10 10 10 0">
-                <Button Width="auto" Height="auto" Click="ShowMore" Background="{x:Null}">
+                <Button Width="auto" Height="auto" Click="ShowMore" Style="{StaticResource MaterialDesignToolButton}">
                     <Image x:Name="Image" Source="/Images/no-image.png"/>
                 </Button>
             </Grid>
@@ -35,7 +35,7 @@
             </Grid>
             
             <Grid Grid.Row="3" Margin="10 0 10 10" Background="#333">
-                <Button Content="Dodaj do koszyka" Style="{DynamicResource MaterialDesignFlatLightBgButton}" />
+                <Button Content="Dodaj do koszyka" Style="{DynamicResource MaterialDesignToolForegroundButton}"/>
             </Grid>
         </Grid>
     </materialDesign:ColorZone>
