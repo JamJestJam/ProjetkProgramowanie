@@ -21,7 +21,7 @@ namespace ProjektApp.Pages.Login {
         }
 
         private void LoginIn(object o, RoutedEventArgs e) {
-            Loading.IsOpen = true;
+            Window.Loading.IsOpen = true;
 
             Thread thread = new Thread(LoginIn) {
                 IsBackground = true
@@ -42,19 +42,16 @@ namespace ProjektApp.Pages.Login {
                 var tryLogin = new LoginDB(login, password);
 
                 Dispatcher.Invoke(() => {
+                    Window.login = tryLogin;
                     Content = new ProductList();
                 });
             } catch(LoginException e) {
                 Dispatcher.Invoke(() => {
-                    DialogText.Content = e.Message;
-                    Dialog.IsOpen = true;
-                    Loading.IsOpen = false;
+                    Window.DialogText.Content = e.Message;
+                    Window.Dialog.IsOpen = true;
+                    Window.Loading.IsOpen = false;
                 });
             }
-        }
-
-        private void CloseDialog(object o, RoutedEventArgs e) {
-            Dialog.IsOpen = false;
         }
     }
 }

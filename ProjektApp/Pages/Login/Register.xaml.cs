@@ -9,12 +9,15 @@ namespace ProjektApp.Pages.Login {
     /// Interaction logic for Register.xaml
     /// </summary>
     public partial class Register : UserControl {
+        static MainWindow Window =>
+            Application.Current.MainWindow as MainWindow;
+
         public Register() {
             InitializeComponent();
         }
 
         private void RegisterIn(object o, RoutedEventArgs e) {
-            Loading.IsOpen = true;
+            Window.Loading.IsOpen = true;
 
             Thread thread = new Thread(RegisterIn) {
                 IsBackground = true
@@ -39,22 +42,18 @@ namespace ProjektApp.Pages.Login {
                 Dispatcher.Invoke(() => {
                     var Login = new Login();
 
-                    Login.DialogText.Content = "Rejestracja zakończona pomyślnie";
-                    Login.Dialog.IsOpen = true;
-                    Login.Loading.IsOpen = false;
+                    Window.DialogText.Content = "Rejestracja zakończona pomyślnie";
+                    Window.Dialog.IsOpen = true;
+                    Window.Loading.IsOpen = false;
                     Content = Login;
                 });
             } catch(LoginException e) {
                 Dispatcher.Invoke(() => {
-                    DialogText.Content = e.Message;
-                    Dialog.IsOpen = true;
-                    Loading.IsOpen = false;
+                    Window.DialogText.Content = e.Message;
+                    Window.Dialog.IsOpen = true;
+                    Window.Loading.IsOpen = false;
                 });
             }
-        }
-
-        private void CloseDialog(object o, RoutedEventArgs e) {
-            Dialog.IsOpen = false;
         }
     }
 }

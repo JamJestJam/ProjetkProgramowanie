@@ -7,102 +7,97 @@
              xmlns:local="clr-namespace:ProjektApp.Pages.Products"
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="724">
-    <materialDesign:DialogHost x:Name="Loading" IsOpen="False">
-        <materialDesign:DialogHost.DialogContent>
-            <ProgressBar Style="{DynamicResource MaterialDesignCircularProgressBar}" HorizontalAlignment="Center" Margin="16" IsIndeterminate="True"  />
-        </materialDesign:DialogHost.DialogContent>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="32"/>
-            </Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="32"/>
+        </Grid.RowDefinitions>
 
-            <!-- Find panel -->
-            <Grid Grid.Row="0">
-                <materialDesign:ColorZone Mode="Dark" Height="50">
-                    <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
-                        <TextBox x:Name="FindText" Background="#444" Foreground="#fff" FontSize="20" Padding="5 0" MinWidth="300" VerticalAlignment="Center" TextChanged="FindTextChange"/>
-                        <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Click="Find">
-                            <materialDesign:PackIcon Foreground="#fff" Kind="Send" Width="30" Height="30"/>
-                        </Button>
-                        <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}">
-                            <materialDesign:PackIcon Foreground="#fff" Kind="Settings" Width="30" Height="30"/>
-                        </Button>
-                    </StackPanel>
-                </materialDesign:ColorZone>
-            </Grid>
-            <!-- Bottom -->
-            <Grid Grid.Row="2">
-                <materialDesign:ColorZone Mode="Dark">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Width="30" Height="30">
-                            <materialDesign:PackIcon Kind="ArrowLeftBold" />
-                        </Button>
-                        <Button Content="1" Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Width="30" Height="30"/>
-                        <Button Content="2" Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Width="30" Height="30"/>
-                        <Button Content="3" Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Width="30" Height="30"/>
-                        <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Width="30" Height="30">
-                            <materialDesign:PackIcon Kind="ArrowRightBold" />
-                        </Button>
-                    </StackPanel>
-                </materialDesign:ColorZone>
-            </Grid>
-            <!-- Content -->
-            <Grid Grid.Row="1">
-                <ScrollViewer>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0" Grid.Row="0">
-                            <UserControl x:Name="Product00"/>
-                        </Grid>
-                        <Grid Grid.Column="1" Grid.Row="0">
-                            <UserControl x:Name="Product10"/>
-                        </Grid>
-                        <Grid Grid.Column="2" Grid.Row="0">
-                            <UserControl x:Name="Product20"/>
-                        </Grid>
-                        <Grid Grid.Column="0" Grid.Row="1">
-                            <UserControl x:Name="Product01"/>
-                        </Grid>
-                        <Grid Grid.Column="1" Grid.Row="1">
-                            <UserControl x:Name="Product11"/>
-                        </Grid>
-                        <Grid Grid.Column="2" Grid.Row="1">
-                            <UserControl x:Name="Product21"/>
-                        </Grid>
-                        <Grid Grid.Column="0" Grid.Row="2">
-                            <UserControl x:Name="Product02"/>
-                        </Grid>
-                        <Grid Grid.Column="1" Grid.Row="2">
-                            <UserControl x:Name="Product12"/>
-                        </Grid>
-                        <Grid Grid.Column="2" Grid.Row="2">
-                            <UserControl x:Name="Product22"/>
-                        </Grid>
-                        <Grid Grid.Column="0" Grid.Row="3">
-                            <UserControl x:Name="Product03"/>
-                        </Grid>
-                        <Grid Grid.Column="1" Grid.Row="3">
-                            <UserControl x:Name="Product13"/>
-                        </Grid>
-                        <Grid Grid.Column="2" Grid.Row="3">
-                            <UserControl x:Name="Product23"/>
-                        </Grid>
-                    </Grid>
-                </ScrollViewer>
-            </Grid>
+        <!-- Find panel -->
+        <Grid Grid.Row="0">
+            <materialDesign:ColorZone Mode="Dark" Height="50">
+                <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
+                    <TextBox x:Name="FindText" Background="#444" Foreground="#fff" FontSize="20" Padding="5 0" MinWidth="300" VerticalAlignment="Center" TextChanged="FindTextChange"/>
+                    <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Click="Find">
+                        <materialDesign:PackIcon Foreground="#fff" Kind="Send" Width="30" Height="30"/>
+                    </Button>
+                    <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}">
+                        <materialDesign:PackIcon Foreground="#fff" Kind="Settings" Width="30" Height="30"/>
+                    </Button>
+                </StackPanel>
+            </materialDesign:ColorZone>
         </Grid>
-    </materialDesign:DialogHost>
+        <!-- Bottom -->
+        <Grid Grid.Row="2">
+            <materialDesign:ColorZone Mode="Dark">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Width="30" Height="30">
+                        <materialDesign:PackIcon Kind="ArrowLeftBold" />
+                    </Button>
+                    <Button Content="1" Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Width="30" Height="30"/>
+                    <Button Content="2" Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Width="30" Height="30"/>
+                    <Button Content="3" Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Width="30" Height="30"/>
+                    <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Width="30" Height="30">
+                        <materialDesign:PackIcon Kind="ArrowRightBold" />
+                    </Button>
+                </StackPanel>
+            </materialDesign:ColorZone>
+        </Grid>
+        <!-- Content -->
+        <Grid Grid.Row="1">
+            <ScrollViewer>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0" Grid.Row="0">
+                        <UserControl x:Name="Product00"/>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="0">
+                        <UserControl x:Name="Product10"/>
+                    </Grid>
+                    <Grid Grid.Column="2" Grid.Row="0">
+                        <UserControl x:Name="Product20"/>
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="1">
+                        <UserControl x:Name="Product01"/>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="1">
+                        <UserControl x:Name="Product11"/>
+                    </Grid>
+                    <Grid Grid.Column="2" Grid.Row="1">
+                        <UserControl x:Name="Product21"/>
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="2">
+                        <UserControl x:Name="Product02"/>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="2">
+                        <UserControl x:Name="Product12"/>
+                    </Grid>
+                    <Grid Grid.Column="2" Grid.Row="2">
+                        <UserControl x:Name="Product22"/>
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="3">
+                        <UserControl x:Name="Product03"/>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="3">
+                        <UserControl x:Name="Product13"/>
+                    </Grid>
+                    <Grid Grid.Column="2" Grid.Row="3">
+                        <UserControl x:Name="Product23"/>
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
 </UserControl>

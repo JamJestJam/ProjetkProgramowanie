@@ -7,58 +7,73 @@
         xmlns:local="clr-namespace:ProjektApp"
         mc:Ignorable="d"
         Title="Sklep" Height="600" Width="1024" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
-    <Grid>
-        <!-- Podział grida -->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <!-- Menu górne -->
-        <Grid x:Name="Bar" Grid.ColumnSpan="2" Background="#292929" MouseDown="Bar_MouseDown">
-            <UserControl x:Name="TopBar">
-
-            </UserControl>
-        </Grid>
-        <!-- Lewe menu -->
-        <Grid Grid.Row="1">
-            <Grid.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF555555" Offset="1"/>
-                    <GradientStop Color="#FF333333" Offset="0"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="120"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.Effect>
-                <DropShadowEffect BlurRadius="20" Color="#FF787878" RenderingBias="Quality" ShadowDepth="1" />
-            </Grid.Effect>
-
-            <Grid Background="#333">
-                <TextBlock Text="Sklepik" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial Black" FontSize="60" />
-            </Grid>
-
-            <UserControl Grid.Row="1" x:Name="LeftPanel">
-
-            </UserControl>
-        </Grid>
-        <!-- Główne menu -->
-        <Grid Grid.Column="1" Grid.Row="1">
-            <Grid.Background>
-                <RadialGradientBrush>
-                    <GradientStop Color="#FFA0A0A0" Offset="0.992"/>
-                    <GradientStop Color="Gainsboro"/>
-                </RadialGradientBrush>
-            </Grid.Background>
-
+    <materialDesign:DialogHost x:Name="Loading" IsOpen="False">
+        <materialDesign:DialogHost.DialogContent>
+            <ProgressBar Style="{DynamicResource MaterialDesignCircularProgressBar}" HorizontalAlignment="Center" Margin="16" IsIndeterminate="True" />
+        </materialDesign:DialogHost.DialogContent>
+        <materialDesign:DialogHost x:Name="Dialog" IsOpen="False" CloseOnClickAway="True" MinWidth="400">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Margin="16">
+                    <Label Content="" x:Name="DialogText" FontSize="30" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button IsDefault="True" Margin="0 8 8 0" HorizontalAlignment="Center" Content="Rozumiem"  Click="CloseDialog"/>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
             <Grid>
-                <UserControl x:Name="Content" />
+                <!-- Podział grida -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!-- Menu górne -->
+                <Grid x:Name="Bar" Grid.ColumnSpan="2" Background="#292929" MouseDown="Bar_MouseDown">
+                    <UserControl x:Name="TopBar">
+
+                    </UserControl>
+                </Grid>
+                <!-- Lewe menu -->
+                <Grid Grid.Row="1">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF555555" Offset="1"/>
+                            <GradientStop Color="#FF333333" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="120"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="#FF787878" RenderingBias="Quality" ShadowDepth="1" />
+                    </Grid.Effect>
+
+                    <Grid Background="#333">
+                        <TextBlock Text="Sklepik" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial Black" FontSize="60" />
+                    </Grid>
+
+                    <UserControl Grid.Row="1" x:Name="LeftPanel">
+
+                    </UserControl>
+                </Grid>
+                <!-- Główne menu -->
+                <Grid Grid.Column="1" Grid.Row="1">
+                    <Grid.Background>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#FFA0A0A0" Offset="0.992"/>
+                            <GradientStop Color="Gainsboro"/>
+                        </RadialGradientBrush>
+                    </Grid.Background>
+
+                    <Grid>
+                        <UserControl x:Name="Content" />
+                    </Grid>
+                </Grid>
             </Grid>
-        </Grid>
-    </Grid>
+        </materialDesign:DialogHost>
+    </materialDesign:DialogHost>
 </Window>

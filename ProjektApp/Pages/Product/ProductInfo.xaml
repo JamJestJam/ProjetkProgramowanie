@@ -92,6 +92,15 @@
                         <Label Content="Komentarze"/>
                         <TextBox Background="#333" TextWrapping="Wrap" Height="50" Margin="10 0" AcceptsReturn="True"/>
                         <Button Content="Dodaj" HorizontalAlignment="Right" Margin="10 5" Style="{StaticResource MaterialDesignRaisedButton}"/>
+
+                        <StackPanel Margin="10">
+                            <materialDesign:Chip Content="James Willock">
+                                <materialDesign:Chip.Icon>
+                                    <Image Source="/Images/no-image.png" />
+                                </materialDesign:Chip.Icon>
+                            </materialDesign:Chip>
+                            <Label Content="Bardzo długi i wyczerpujący komentarz który nikogo nie obchodzi" Background="{StaticResource MaterialDesignDarkBackground}"/>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
             </Grid>

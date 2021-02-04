@@ -44,7 +44,7 @@ namespace ProjektApp.Pages.Products {
         }
 
         public void Reload() {
-            Loading.IsOpen = true;
+            Window.Loading.IsOpen = true;
 
             Thread thread = new Thread(ReloadContent) {
                 IsBackground = true
@@ -58,7 +58,7 @@ namespace ProjektApp.Pages.Products {
             Dispatcher.Invoke(() => {
                 ShowProducts();
                 left.ShowCategory();
-                Loading.IsOpen = false;
+                Window.Loading.IsOpen = false;
             });
         }
 

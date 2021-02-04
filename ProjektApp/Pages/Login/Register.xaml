@@ -7,32 +7,17 @@
              xmlns:local="clr-namespace:ProjektApp.Pages.Login"
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="724">
-    <materialDesign:DialogHost x:Name="Loading" IsOpen="False">
-        <materialDesign:DialogHost.DialogContent>
-            <ProgressBar Style="{DynamicResource MaterialDesignCircularProgressBar}" HorizontalAlignment="Center" Margin="16" IsIndeterminate="True" />
-        </materialDesign:DialogHost.DialogContent>
-        <materialDesign:DialogHost x:Name="Dialog" IsOpen="False" CloseOnClickAway="True" MinWidth="400">
-            <materialDesign:DialogHost.DialogContent>
-                <StackPanel Margin="16">
-                    <Label Content="" x:Name="DialogText" FontSize="30" HorizontalAlignment="Center"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button IsDefault="True" Margin="0 8 8 0" HorizontalAlignment="Center" Content="Rozumiem"  Click="CloseDialog"/>
-                    </StackPanel>
-                </StackPanel>
-            </materialDesign:DialogHost.DialogContent>
-            <Border Background="#333" CornerRadius="25" Margin="20" Width="350" Height="350">
-                <StackPanel Margin="20">
-                    <Label Content="Zarejestruj się" FontSize="25" HorizontalAlignment="Center" />
-                    <Separator />
-                    <Label Content="Nazwa użytkownika"/>
-                    <TextBox x:Name="UserName" FontSize="18" Background="#444" Foreground="#fff"/>
-                    <Label Content="Hasło"/>
-                    <PasswordBox x:Name="Password1" Background="#444" FontSize="18"/>
-                    <Label Content="Powtórz hasło"/>
-                    <PasswordBox x:Name="Password2" Background="#444" FontSize="18"/>
-                    <Button Content="Zarejestruj się" Foreground="#fff" Background="#444" Height="50" FontSize="18" Margin="20" Click="RegisterIn"/>
-                </StackPanel>
-            </Border>
-        </materialDesign:DialogHost>
-    </materialDesign:DialogHost>
+    <Border Background="#333" CornerRadius="25" Margin="20" Width="350" Height="350">
+        <StackPanel Margin="20">
+            <Label Content="Zarejestruj się" FontSize="25" HorizontalAlignment="Center" />
+            <Separator />
+            <Label Content="Nazwa użytkownika"/>
+            <TextBox x:Name="UserName" FontSize="18" Background="#444" Foreground="#fff"/>
+            <Label Content="Hasło"/>
+            <PasswordBox x:Name="Password1" Background="#444" FontSize="18"/>
+            <Label Content="Powtórz hasło"/>
+            <PasswordBox x:Name="Password2" Background="#444" FontSize="18"/>
+            <Button Content="Zarejestruj się" Foreground="#fff" Background="#444" Height="50" FontSize="18" Margin="20" Click="RegisterIn"/>
+        </StackPanel>
+    </Border>
 </UserControl>
