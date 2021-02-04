@@ -66,7 +66,7 @@ namespace DBconnectShop {
                 User_password = password1,
             };
 
-            var resoult = db.Users.Add(NewUser);
+            db.Users.Add(NewUser);
 
             int code = db.SaveChanges();
             if(code != 1)

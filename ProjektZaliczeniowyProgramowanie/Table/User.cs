@@ -43,6 +43,12 @@ namespace DBconnectShop.Table {
 
         #endregion
 
+        #region Cuts =========================================
+
+        public string UserName => User_name;
+
+        #endregion
+
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<User>().ToTable("Users");
 
