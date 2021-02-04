@@ -19,10 +19,10 @@
             <materialDesign:ColorZone Mode="Dark" Height="50">
                 <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
                     <TextBox x:Name="FindText" Background="#444" Foreground="#fff" FontSize="20" Padding="5 0" MinWidth="300" VerticalAlignment="Center" TextChanged="FindTextChange"/>
-                    <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Click="Find">
-                        <materialDesign:PackIcon Foreground="#fff" Kind="Send" Width="30" Height="30"/>
+                    <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" Click="Find">
+                        <materialDesign:PackIcon Foreground="#fff" Kind="Send" Width="30" Height="30" />
                     </Button>
-                    <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}">
+                    <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}">
                         <materialDesign:PackIcon Foreground="#fff" Kind="Settings" Width="30" Height="30"/>
                     </Button>
                 </StackPanel>
@@ -32,13 +32,13 @@
         <Grid Grid.Row="2">
             <materialDesign:ColorZone Mode="Dark">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Width="30" Height="30">
+                    <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30">
                         <materialDesign:PackIcon Kind="ArrowLeftBold" />
                     </Button>
-                    <Button Content="1" Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Width="30" Height="30"/>
-                    <Button Content="2" Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Width="30" Height="30"/>
-                    <Button Content="3" Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Width="30" Height="30"/>
-                    <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniDarkButton}" Width="30" Height="30">
+                    <Button Content="1" Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30"/>
+                    <Button Content="2" Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30"/>
+                    <Button Content="3" Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30"/>
+                    <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30">
                         <materialDesign:PackIcon Kind="ArrowRightBold" />
                     </Button>
                 </StackPanel>

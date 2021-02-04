@@ -1,13 +1,12 @@
 ﻿using DBconnectShop;
 using DBconnectShop.Table;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using MaterialDesignThemes.Wpf;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace ProjektApp.Pages.Product {
     using Product = DBconnectShop.Table.Product;
@@ -108,16 +107,12 @@ namespace ProjektApp.Pages.Product {
         }
 
         private void CreateCommentBox(Product_opinion opinion) {
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri("/Images/no-image.png", UriKind.Relative);
-            bitmap.EndInit();
-            Image img = new Image {
-                Source = bitmap
-            };
+            PackIcon icon = new PackIcon();
+            icon.Kind = PackIconKind.User;
             Chip chip = new Chip {
+                Margin = new Thickness(0, 5, 0, 0),
                 Content = opinion.User.UserName,
-                Icon = img,
+                Icon = icon,
                 Cursor = Cursors.Arrow
             };
 

@@ -17,7 +17,7 @@
             <PasswordBox x:Name="Password1" Background="#444" FontSize="18"/>
             <Label Content="Powtórz hasło"/>
             <PasswordBox x:Name="Password2" Background="#444" FontSize="18"/>
-            <Button Content="Zarejestruj się" Foreground="#fff" Background="#444" Height="50" FontSize="18" Margin="20" Click="RegisterIn"/>
+            <Button Content="Zarejestruj się" Background="#444" Height="50" FontSize="18" Margin="20" Click="RegisterIn" Style="{StaticResource MaterialDesignFlatAccentButton}"/>
         </StackPanel>
     </Border>
 </UserControl>

@@ -21,12 +21,12 @@
                 </Grid.RowDefinitions>
                 <!-- Info panel -->
                 <Grid Grid.Row="0" Grid.Column="1" VerticalAlignment="Top">
-                    <materialDesign:Card Height="280" Padding="19" Margin="0 20 0 0">
+                    <materialDesign:Card Height="280" Padding="10" Margin="0 20 0 0">
                         <StackPanel>
                             <TextBlock x:Name="Name" Foreground="White" Margin="16 16 12 8" FontSize="16" TextWrapping="Wrap" TextAlignment="Center">
                             Bardzo długa długa nazwa produktu
                             </TextBlock>
-                            <Separator Background="LightGray" />
+                            <Separator Background="{StaticResource MaterialDesignBackground}" />
                             <TextBlock x:Name="Price" Foreground="White">
                             Cena produktu: 1 200.00 zł
                             </TextBlock>
@@ -38,7 +38,10 @@
                                     <ComboBoxItem Content="4" />
                                     <ComboBoxItem Content="5" />
                                 </ComboBox>
-                                <Button Margin="0 10 0 0" Content="Dodaj do koszyka" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Button Margin="0 10 0 0" Content="Dodaj do koszyka" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFlatAccentBgButton}"/>
+                                <materialDesign:RatingBar HorizontalAlignment="Center" Value="5" Foreground="{StaticResource SecondaryHueMidBrush}"/>
+                                <Label Content="Twoja ocena"/>
+                                <materialDesign:RatingBar x:Name="BasicRatingBar" HorizontalAlignment="Center" Foreground="{StaticResource SecondaryHueMidBrush}"/>
                             </StackPanel>
                         </StackPanel>
                     </materialDesign:Card>
@@ -90,8 +93,8 @@
                 <Grid Grid.Row="2" Grid.ColumnSpan="2" Background="#454545" MinHeight="0" Margin="0 10 0 0">
                     <StackPanel Margin="5">
                         <Label Content="Opinie"/>
-                        <TextBox x:Name="CommentContent" Background="#333" TextWrapping="Wrap" Height="50" Margin="10 0" AcceptsReturn="True"/>
-                        <Button Content="Dodaj" HorizontalAlignment="Right" Margin="10 5" Style="{StaticResource MaterialDesignRaisedButton}" Click="AddComment"/>
+                        <TextBox x:Name="CommentContent" Background="#333" TextWrapping="Wrap" Height="50" Margin="10 0" AcceptsReturn="True" />
+                        <Button Content="Dodaj" HorizontalAlignment="Right" Margin="10 5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Click="AddComment"/>
 
                         <StackPanel Margin="10" x:Name="Comments">
                             
