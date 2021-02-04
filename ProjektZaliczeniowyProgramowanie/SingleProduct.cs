@@ -5,12 +5,12 @@ using System.Linq;
 
 namespace DBconnectShop {
     public class SingleProduct {
-        public int id { get; }
+        public int Id { get; }
 
         public Product Product { get; private set; }
 
         public SingleProduct(int ID) {
-            id = ID;
+            Id = ID;
             Reload();
         }
 
@@ -23,7 +23,8 @@ namespace DBconnectShop {
                 .Include(a => a.Product_Specifications)
                 .Include(a => a.Product_Ratings)
                 .Include(a => a.Product_Opinions)
-                .Where(a => a.Product_id == id);
+                    .ThenInclude(b => b.User)
+                .Where(a => a.Product_id == Id);
 
 #if DEBUG
             Console.WriteLine(product.ToQueryString());
