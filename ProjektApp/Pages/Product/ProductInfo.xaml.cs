@@ -176,7 +176,7 @@ namespace ProjektApp.Pages.Product {
                     Window.Loading.IsOpen = false;
                     Rating.Value = singleProduct.AverageRating;
                 });
-            } catch (Exception e) {
+            } catch(Exception e) {
                 Dispatcher.Invoke(() => {
                     Window.DialogText.Content = e.Message;
                     Window.Dialog.IsOpen = true;

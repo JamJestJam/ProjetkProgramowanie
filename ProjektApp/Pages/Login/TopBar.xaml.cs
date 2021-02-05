@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using ProjektApp.Pages.Buttons;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ProjektApp.Pages.Login {
@@ -6,15 +7,9 @@ namespace ProjektApp.Pages.Login {
     /// Interaction logic for TopBar.xaml
     /// </summary>
     public partial class TopBar : UserControl {
-        static MainWindow Window =>
-            Application.Current.MainWindow as MainWindow;
-
         public TopBar() {
             InitializeComponent();
-        }
-
-        private void Close(object o, RoutedEventArgs e) {
-            Window.Close();
+            Exit.Content = new Exit();
         }
     }
 }

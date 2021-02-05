@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ProjektApp.Pages.Buttons;
+using ProjektApp.Pages.Products;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DBconnectShop;
-using ProjektApp.Pages.Products;
 
 namespace ProjektApp.Pages.Product {
     /// <summary>
@@ -23,10 +11,14 @@ namespace ProjektApp.Pages.Product {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
         ProductInfo productInfo;
-        
+
         public TopBar(ProductInfo product) {
             InitializeComponent();
             productInfo = product;
+
+            UserBtn.Content = new User();
+            Exit.Content = new Exit();
+            Basket.Content = new Basket();
         }
 
         private void Close(object sender, RoutedEventArgs e) {

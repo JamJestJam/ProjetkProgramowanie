@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using ProjektApp.Pages.Buttons;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ProjektApp.Pages.Products {
@@ -11,6 +12,10 @@ namespace ProjektApp.Pages.Products {
         public TopBar(ProductList productList) {
             InitializeComponent();
             this.productList = productList;
+
+            UserBtn.Content = new User();
+            Exit.Content = new Exit();
+            Basket.Content = new Basket();
         }
 
         private void Close(object sender, RoutedEventArgs e) {

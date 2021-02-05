@@ -14,14 +14,8 @@
         <Button Padding="0" Margin="5 0" Background="#292929" BorderBrush="#292929" Foreground="White" Width="30" Height="30" Click="Reload">
             <materialDesign:PackIcon Kind="Refresh"/>
         </Button>
-        <Button Padding="0" Margin="5 0" Background="#292929" BorderBrush="#292929" Foreground="White" Width="30" Height="30">
-            <materialDesign:PackIcon Kind="Basket"/>
-        </Button>
-        <Button Padding="0" Margin="5 0" Background="#292929" BorderBrush="#292929" Foreground="White" Width="30" Height="30">
-            <materialDesign:PackIcon Kind="Account"/>
-        </Button>
-        <Button Padding="0" Margin="5 0" Background="#292929" BorderBrush="#292929" Foreground="White" Width="30" Height="30" Click="Close">
-            <materialDesign:PackIcon Kind="Power"/>
-        </Button>
+        <UserControl x:Name="Basket" />
+        <UserControl x:Name="UserBtn"/>
+        <UserControl x:Name="Exit"/>
     </StackPanel>
 </UserControl>
