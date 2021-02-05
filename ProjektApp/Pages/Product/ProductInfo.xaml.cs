@@ -24,11 +24,31 @@ namespace ProjektApp.Pages.Product {
         public ProductInfo(int ProductID) {
             InitializeComponent();
             singleProduct = new SingleProduct(ProductID);
+            Window.TopBar.Content = new TopBar(this);
+            Window.LeftPanel.Content = new LeftPanel();
 
-            SetData();
+            Reload();
         }
 
-        public void SetData() {
+        public void Reload() {
+            Window.Loading.IsOpen = true;
+
+            Thread thread = new Thread(ReloadProductInfo) {
+                IsBackground = true
+            };
+            thread.Start();
+        }
+
+        private void ReloadProductInfo() {
+            singleProduct.Reload();
+
+            Dispatcher.Invoke(() => {
+                ReloadContent();
+                Window.Loading.IsOpen = false;
+            });
+        }
+
+        public void ReloadContent() {
             Name.Text = Product.TrueName;
             Price.Text = $"Cena produktu: {Product.ActualPrice.ToString("#,0.00")} zł";
 
@@ -40,6 +60,12 @@ namespace ProjektApp.Pages.Product {
             foreach(var opinion in Product.Product_Opinions) {
                 CreateCommentBox(opinion);
             }
+
+            Rating.Value = singleProduct.AverageRating;
+
+            UserRating.ValueChanged -= Rate;
+            UserRating.Value = singleProduct.GetUserRate(Window.login);
+            UserRating.ValueChanged += Rate;
         }
 
         private void SetPropertyName(string name) {
@@ -123,6 +149,40 @@ namespace ProjektApp.Pages.Product {
 
             Comments.Children.Add(chip);
             Comments.Children.Add(label);
+        }
+
+        private void Rate(object o, RoutedEventArgs e) {
+            Window.Loading.IsOpen = true;
+            Thread thread = new Thread(Rate) {
+                IsBackground = true
+            };
+            thread.Start();
+        }
+
+        private void Rate() {
+            short rate = 0;
+            DBconnectShop.Login login = null;
+
+            Dispatcher.Invoke(() => {
+                rate = (short)UserRating.Value;
+                login = Window.login;
+            });
+
+            try {
+                singleProduct.AddRate(login, rate);
+                Dispatcher.Invoke(() => {
+                    Window.DialogText.Content = "Dziękujemy za podzielenie się swoją opinią!";
+                    Window.Dialog.IsOpen = true;
+                    Window.Loading.IsOpen = false;
+                    Rating.Value = singleProduct.AverageRating;
+                });
+            } catch (Exception e) {
+                Dispatcher.Invoke(() => {
+                    Window.DialogText.Content = e.Message;
+                    Window.Dialog.IsOpen = true;
+                    Window.Loading.IsOpen = false;
+                });
+            }
         }
     }
 }

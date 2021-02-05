@@ -15,13 +15,13 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="330"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <!-- Info panel -->
                 <Grid Grid.Row="0" Grid.Column="1" VerticalAlignment="Top">
-                    <materialDesign:Card Height="280" Padding="10" Margin="0 20 0 0">
+                    <materialDesign:Card Height="310" Padding="10" Margin="0 20 0 0">
                         <StackPanel>
                             <TextBlock x:Name="Name" Foreground="White" Margin="16 16 12 8" FontSize="16" TextWrapping="Wrap" TextAlignment="Center">
                             Bardzo długa długa nazwa produktu
@@ -39,9 +39,9 @@
                                     <ComboBoxItem Content="5" />
                                 </ComboBox>
                                 <Button Margin="0 10 0 0" Content="Dodaj do koszyka" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFlatAccentBgButton}"/>
-                                <materialDesign:RatingBar HorizontalAlignment="Center" Value="5" Foreground="{StaticResource SecondaryHueMidBrush}"/>
+                                <materialDesign:RatingBar x:Name="Rating" HorizontalAlignment="Center" IsReadOnly="True" Value="5" Foreground="{StaticResource SecondaryHueMidBrush}"/>
                                 <Label Content="Twoja ocena"/>
-                                <materialDesign:RatingBar x:Name="BasicRatingBar" HorizontalAlignment="Center" Foreground="{StaticResource SecondaryHueMidBrush}"/>
+                                <materialDesign:RatingBar x:Name="UserRating" HorizontalAlignment="Center" Foreground="{StaticResource SecondaryHueMidBrush}" ValueChanged="Rate"/>
                             </StackPanel>
                         </StackPanel>
                     </materialDesign:Card>

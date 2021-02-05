@@ -7,7 +7,7 @@ namespace DBconnectShop {
     public class SingleProduct {
         private int Id { get; }
 
-        public Product Product { get; private set; }
+        public Product Product { get; private set; } = null;
 
         public SingleProduct(int ID) {
             Id = ID;
@@ -36,8 +36,17 @@ namespace DBconnectShop {
             Product = product.First();
         }
 
+        public short AverageRating {
+            get {
+                if(Product.Product_Ratings.Count() == 0)
+                    return 0;
+
+                return (short)Product.Product_Ratings.Average(a => a.Product_Rating);
+            }
+        }
+
         public Product_opinion AddComment(Login login, string content) {
-            using var shop = new Shop();
+            using var db = new Shop();
             int userID = -1;
             int prodctID = -1;
 
@@ -54,19 +63,69 @@ namespace DBconnectShop {
                 Product_Opinion = content
             };
 
-            shop.Product_Opinions.Add(comment);
+            db.Product_Opinions.Add(comment);
             int code;
             try {
-                code = shop.SaveChanges();
+                code = db.SaveChanges();
             } catch {
                 throw new AddElementException("Nie udało się dodać Twojej opini.\nPamiętaj można dodać tylko jedeną opinie do danego produktu.");
             }
 
             if(code != 1)
-                throw new AddElementException("Wystąpił problem z dodanyą przez Ciebie opinią.");
+                throw new AddElementException("Wystąpił problem z dodaną przez Ciebie opinią.");
 
             Reload();
             return Product.Product_Opinions.Where(a => a.Product_id == comment.Product_id && a.User_id == comment.User_id).First();
+        }
+
+        public void AddRate(Login login, short rate) {
+            using var db = new Shop();
+            int userID = 0;
+            int productID = 0;
+
+            try {
+                userID = login.GetUserID;
+                productID = Product.ID;
+            } catch {
+                throw new AuthorizationException();
+            }
+
+            Product_rating rating = db.Product_Ratings
+                .FirstOrDefault(a => a.User_id == userID && a.Product_id == productID);
+
+            if(rating is null) {
+                rating = new Product_rating() {
+                    User_id = userID,
+                    Product_id = productID,
+                    Product_Rating = rate
+                };
+                db.Product_Ratings.Add(rating);
+            } else {
+                rating.Product_Rating = rate;
+            }
+
+            int code = db.SaveChanges();
+            if(code != 1)
+                throw new AddElementException("Wystąpił problem z dodaną przez Ciebie opinią.");
+
+            Reload();
+        }
+
+        public short GetUserRate(Login login) {
+            int userID = 0;
+            int productID = 0;
+
+            try {
+                userID = login.GetUserID;
+                productID = Id;
+            } catch {
+                throw new AuthorizationException();
+            }
+
+            return Product.Product_Ratings
+                .Where(a => a.User_id == userID && a.Product_id == productID)
+                .Select(a => a.Product_Rating)
+                .FirstOrDefault();
         }
     }
 
