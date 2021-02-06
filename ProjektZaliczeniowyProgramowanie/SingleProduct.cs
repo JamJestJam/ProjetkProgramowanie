@@ -75,7 +75,7 @@ namespace DBconnectShop {
                 throw new AddElementException("Wystąpił problem z dodaną przez Ciebie opinią.");
 
             Reload();
-            return Product.Product_Opinions.Where(a => a.Product_id == comment.Product_id && a.User_id == comment.User_id).First();
+            return Product.Product_Opinions.Where(a => a.Product_id == comment.Product_id && a.User_id == comment.User_id).Last();
         }
 
         public void AddRate(Login login, short rate) {

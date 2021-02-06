@@ -57,6 +57,7 @@ namespace ProjektApp.Pages.Product {
                 SetPropertyValue(specyfication.Value);
             }
 
+            Comments.Children.Clear();
             foreach(var opinion in Product.Product_Opinions) {
                 CreateCommentBox(opinion);
             }
