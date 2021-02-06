@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DBconnectShop {
+namespace DBconnectShop.Access {
     public class BuyableProducts {
         List<Product> Products { get; set; }
         List<Product_categori> Categoris { get; set; }

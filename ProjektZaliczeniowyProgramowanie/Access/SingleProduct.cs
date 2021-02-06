@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
-namespace DBconnectShop {
+namespace DBconnectShop.Access {
     public class SingleProduct {
         private int Id { get; }
 

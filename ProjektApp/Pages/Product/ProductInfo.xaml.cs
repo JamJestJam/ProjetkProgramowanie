@@ -1,4 +1,4 @@
-﻿using DBconnectShop;
+﻿using DBconnectShop.Access;
 using DBconnectShop.Table;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using LoginDB = DBconnectShop.Access.Login;
 
 namespace ProjektApp.Pages.Product {
     using Product = DBconnectShop.Table.Product;
@@ -108,7 +109,7 @@ namespace ProjektApp.Pages.Product {
 
         private void AddComment() {
             string text = "";
-            DBconnectShop.Login login = null;
+            LoginDB login = null;
 
             Dispatcher.Invoke(() => {
                 text = CommentContent.Text;
@@ -162,7 +163,7 @@ namespace ProjektApp.Pages.Product {
 
         private void Rate() {
             short rate = 0;
-            DBconnectShop.Login login = null;
+            LoginDB login = null;
 
             Dispatcher.Invoke(() => {
                 rate = (short)UserRating.Value;

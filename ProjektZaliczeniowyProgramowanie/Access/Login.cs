@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using System.IO;
 
-namespace DBconnectShop {
+namespace DBconnectShop.Access {
     /// <summary>
     /// Klasa przechowująca dane użytkownika, po wczesniejszym zalogowaniu
     /// </summary>

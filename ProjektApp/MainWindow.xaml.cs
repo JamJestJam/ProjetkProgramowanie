@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
-using LoginDB = DBconnectShop.Login;
+using LoginDB = DBconnectShop.Access.Login;
 
 namespace ProjektApp {
     /// <summary>
