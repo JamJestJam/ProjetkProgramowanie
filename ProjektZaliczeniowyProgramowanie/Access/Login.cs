@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using System.IO;
 
 namespace DBconnectShop {
     /// <summary>
@@ -21,6 +22,7 @@ namespace DBconnectShop {
             using var db = new Shop();
 
             var users = db.Users
+                .Include(a => a.User_Data)
                 .Where(a => a.User_name == userName)
                 .Where(a => a.User_password == password);
 
@@ -37,6 +39,23 @@ namespace DBconnectShop {
                 throw new LoginException("Konto na które próbujesz się zalogować zostało zablokowane");
 
             this.user = user;
+        }
+
+        public void ChangeUserImage(string image) {
+            using var db = new Shop();
+
+            User_data data = user.User_Data;
+            
+            if(data is null) {
+                data = new User_data() {
+                    User_id = GetUserID,
+                    User_first_name = "",
+                    User_family_name = ""
+                };
+            }
+
+            using var str = File.OpenRead(image);
+            data.User_avatar = File.ReadAllBytes(image);
         }
 
         /// <summary>
@@ -72,6 +91,7 @@ namespace DBconnectShop {
             if(code != 1)
                 throw new LoginException("Wystąpił niespodziewany wyjątek podczas tworzenie konta");
         }
+
     }
 
     /// <summary>

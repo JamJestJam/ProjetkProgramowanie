@@ -68,7 +68,7 @@ namespace DBconnectShop {
             try {
                 code = db.SaveChanges();
             } catch {
-                throw new AddElementException("Nie udało się dodać Twojej opini.\nPamiętaj można dodać tylko jedeną opinie do danego produktu.");
+                throw new AddElementException("Nie udało się dodać Twojej opini.");
             }
 
             if(code != 1)
