@@ -6,6 +6,11 @@ namespace DBconnectShop.Table {
     public class Product_opinion {
         #region Columns ======================================
 
+        [Key]
+        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Product_opinion_id { get; set; }
+
         [Required]
         public int Product_id { get; set; }
 
@@ -28,9 +33,6 @@ namespace DBconnectShop.Table {
 
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Product_opinion>().ToTable("Product_opinions");
-
-            modelBuilder.Entity<Product_opinion>()
-                .HasKey(a => new { a.Product_id, a.User_id });
 
             modelBuilder.Entity<Product_opinion>()
                 .HasOne(a => a.Product)

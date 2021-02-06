@@ -8,16 +8,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.2" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Resource Include="Shop.mdf">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Resource>
-	  <Resource Include="Shop_log.ldf">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Resource>
-	</ItemGroup>
-
+	
 	<ItemGroup>
 	  <None Update="Shop.mdf">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

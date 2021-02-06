@@ -6,8 +6,8 @@ namespace DBconnectShop.Table {
     public class User_data {
         #region Columns ======================================
 
-        [Required]
         [Key]
+        [Required]
         public int User_id { get; set; }
 
         [Required]
@@ -23,6 +23,9 @@ namespace DBconnectShop.Table {
         [StringLength(25)]
         [Column(TypeName = "nchar")]
         public string User_family_name { get; set; }
+
+        [Column(TypeName = "varBinary")]
+        public byte[] User_avatar { get; set; }
 
         #endregion
 

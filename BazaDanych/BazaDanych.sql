@@ -1,3 +1,43 @@
+--drop
+DROP VIEW IF EXISTS V_Products_recently_sold;
+DROP VIEW IF EXISTS V_Products_specyfication;
+DROP VIEW IF EXISTS V_Products_not_aviable;
+DROP VIEW IF EXISTS V_planned_receipts;
+DROP VIEW IF EXISTS V_order_list;
+DROP VIEW IF EXISTS V_available_Products;
+DROP VIEW IF EXISTS V_Workers;
+DROP TRIGGER IF EXISTS TR_User_order_receipts;
+DROP TRIGGER IF EXISTS TR_Storage_Products;
+DROP TRIGGER IF EXISTS TR_Storage_Product_localizations;
+DROP TRIGGER IF EXISTS TR_Product_receipts;
+DROP TRIGGER IF EXISTS TR_Product_orders;
+DROP TABLE IF EXISTS User_order_receipts;
+DROP TABLE IF EXISTS User_order_Products;
+DROP TABLE IF EXISTS User_orders;
+DROP TABLE IF EXISTS User_order_status;
+DROP TABLE IF EXISTS Storage_Product_localizations;
+DROP TABLE IF EXISTS Storage_Products;
+DROP TABLE IF EXISTS Product_receipts;
+DROP TABLE IF EXISTS Product_orders;
+DROP TABLE IF EXISTS Storages;
+DROP TABLE IF EXISTS Product_ratings;
+DROP TABLE IF EXISTS Product_opinions;
+DROP TABLE IF EXISTS Product_images;
+DROP TABLE IF EXISTS Products_price;
+DROP TABLE IF EXISTS Product_specifications;
+DROP TABLE IF EXISTS Products;
+DROP TABLE IF EXISTS Product_categories;
+DROP TABLE IF EXISTS Product_producers;
+DROP TABLE IF EXISTS Worker_purchasers;
+DROP TABLE IF EXISTS Worker_storekeepers;
+DROP TABLE IF EXISTS Worker_sellers;
+DROP TABLE IF EXISTS User_Addresses;
+DROP TABLE IF EXISTS Users_data;
+DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS User_groups;
+DROP TABLE IF EXISTS Addresses;
+
+go
 --lista adresowa
 create table Addresses(
 Address_id int primary key identity(1,1),
@@ -36,7 +76,8 @@ create table Users_data(
 [User_id] int primary key not null,
 User_first_name nchar(25) not null,
 User_second_name nchar(25),
-User_family_name nchar(25) not null
+User_family_name nchar(25) not null,
+User_avatar varBinary(max)
 )
 alter table Users_data--polaczenie z tabela Users
 add constraint FK_Users_data__Users foreign key([User_id])
@@ -162,7 +203,7 @@ on update cascade
 create table Product_images(
 Product_image_id int primary key identity(1,1),
 Product_id int not null,
-Product_image nchar(50) not null
+Product_image varBinary(max) not null
 )
 alter table Product_images
 add constraint FK_Product_images__Products foreign key(Product_id)
@@ -172,10 +213,10 @@ on update cascade
 
 --lista recenzji produktu
 create table Product_opinions(
+Product_opinion_id int primary key identity(1,1),
 Product_id int not null,
 [User_id] int not null,
 Product_opinion nchar(200)
-constraint PK_Product_opinions primary key(Product_id, [User_id])
 )
 alter table Product_opinions
 add constraint FK_Product_opinions__Products foreign key (Product_id)
@@ -364,6 +405,7 @@ add constraint FK_User_order_receipts__User_orders foreign key(User_order_id)
 references User_orders(User_order_id)
 on delete no action
 on update no action
+
 go
 create trigger TR_Product_orders on Product_orders--sprawdzanie czy osoba ma uprawnienia
 after insert as
@@ -397,6 +439,7 @@ select @j=@j+1
 end
 close C_Product_orders
 deallocate C_Product_orders
+
 go
 create trigger TR_Product_receipts on Product_receipts--sprawdzanie czy ma sie uprawnienia i dodawanie towarow do tabel
 after insert as
@@ -443,6 +486,7 @@ select @j=@j+1
 end
 close C_Product_receipts
 deallocate C_Product_receipts
+
 go
 create trigger TR_Storage_Product_localizations on Storage_Product_localizations
 after insert as
@@ -472,6 +516,7 @@ end
 
 close C_Storage_Product_localizations
 deallocate C_Storage_Product_localizations
+
 go
 create trigger TR_Storage_Products on Storage_Products
 after insert as
@@ -506,6 +551,7 @@ select @j=@j+1
 end
 close C_Storage_Products
 deallocate C_Storage_Products
+
 go
 create trigger TR_User_order_receipts on User_order_receipts
 after insert as
@@ -578,6 +624,7 @@ join Storage_Products sp on uop.Storage_Product_id=sp.Storage_Product_id
 join Products p on p.Product_id = sp.Product_id
 where uo.User_order_date > DATEDIFF(DAY,  DATEADD(day, -10, SYSDATETIME()), GETDATE())
 group by p.Product_id, p.Product_name
+
 go
 insert into Addresses(Address_country, Address_city, Address_street, Address_building_number, Address_zip_code) values
 ('Polska','Kraków','Komandora Wroñskiego Bohdana','54','30-852'),
@@ -781,9 +828,6 @@ insert into Products_price(Product_id, Product_price_date, Product_price) values
 (4,'2019-10-21',2899),
 (5,'2019-10-21',139),
 (6,'2019-10-21',349);
-go
-INSERT INTO Product_images(Product_id, Product_image)
-Values (1, '1.png');
 go
 insert into Storages(Address_id, Storage_name) values
 (8,'G³ówny magazyn'),

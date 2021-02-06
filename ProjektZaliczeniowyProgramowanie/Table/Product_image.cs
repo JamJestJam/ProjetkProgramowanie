@@ -15,9 +15,9 @@ namespace DBconnectShop.Table {
         public int Product_id { get; set; }
 
         [Required]
-        [StringLength(50)]
-        [Column(TypeName = "nchar")]
-        public string Product_Image { get; set; }
+        [Column(TypeName = "varBinary")]
+        public byte[] Product_Image { get; set; }
+
 
         #endregion
 
