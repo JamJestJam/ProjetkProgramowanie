@@ -8,12 +8,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
     <ScrollViewer>
-        <materialDesign:ColorZone Mode="Dark">
-            <materialDesign:Card>
-                <StackPanel x:Name="Panel">
-                    
-                </StackPanel>
-            </materialDesign:Card>
-        </materialDesign:ColorZone> 
+        <TreeView MinWidth="220" x:Name="Panel">
+            
+        </TreeView>
     </ScrollViewer>
 </UserControl>
