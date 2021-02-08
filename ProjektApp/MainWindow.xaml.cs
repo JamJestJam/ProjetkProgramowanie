@@ -25,11 +25,17 @@ namespace ProjektApp {
         }
 
         private void Bar_MouseDown(object sender, MouseButtonEventArgs e) {
-            DragMove();
+            if(e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
 
         private void CloseDialog(object o, RoutedEventArgs e) {
             Dialog.IsOpen = false;
+        }
+
+        public void LogOut() {
+            login = null;
+            Content.Content = new Login();
         }
     }
 }

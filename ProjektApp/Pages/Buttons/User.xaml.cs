@@ -30,5 +30,9 @@ namespace ProjektApp.Pages.Buttons {
                 profil.Change_Avatar(filename);
             }
         }
+
+        private void LogOut(object o, RoutedEventArgs e) {
+            Window.LogOut();
+        }
     }
 }

@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:ProjektApp.Pages.Buttons"
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="40">
-    <Button Padding="0" Margin="5 0" Background="#292929" BorderBrush="#292929" Foreground="White" Width="30" Height="30" Click="Close">
+    <Button Padding="0" Margin="2 0" Width="30" Height="30" Click="Close" Style="{StaticResource MaterialDesignFloatingActionDarkButton}">
         <materialDesign:PackIcon Kind="Power"/>
     </Button>
 </UserControl>

@@ -143,7 +143,7 @@ namespace ProjektApp.Pages.Product {
                 Cursor = Cursors.Arrow
             };
 
-            if(opinion.User.User_Data is null) {
+            if(opinion.User.User_Data is null || opinion.User.User_Data.User_avatar is null) {
                 PackIcon icon = new PackIcon();
                 icon.Kind = PackIconKind.User;
                 chip.Icon = icon;

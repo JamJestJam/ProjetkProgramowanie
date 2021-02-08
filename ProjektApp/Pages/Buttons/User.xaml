@@ -6,8 +6,20 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:local="clr-namespace:ProjektApp.Pages.Buttons"
              mc:Ignorable="d" 
-             d:DesignHeight="30" d:DesignWidth="40">
-    <Button Padding="0" Margin="5 0" Background="#292929" BorderBrush="#292929" Foreground="White" Width="30" Height="30" Click="Test">
-        <materialDesign:PackIcon Kind="Account"/>
-    </Button>
+             d:DesignHeight="300" d:DesignWidth="400">
+    <StackPanel>
+        
+        <materialDesign:PopupBox>
+            <materialDesign:PopupBox.ToggleContent>
+                <Border Width="30" Height="30" Margin="2 -1" Padding="0" Background="{StaticResource MaterialDesignToolForeground}" CornerRadius="100">
+                    <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{StaticResource MaterialDesignBody}"/>
+                </Border>
+            </materialDesign:PopupBox.ToggleContent>
+            <StackPanel >
+                <Button Content="Profil użytkownika" HorizontalAlignment="Center" Click="Test"/>
+                <Separator />
+                <Button Content="Wyloguj się" HorizontalAlignment="Center" Click="LogOut"/>
+            </StackPanel>
+        </materialDesign:PopupBox>
+    </StackPanel>
 </UserControl>
