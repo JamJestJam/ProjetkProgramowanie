@@ -2,12 +2,16 @@
 using System.Windows;
 using Microsoft.Win32;
 using System;
+using DBconnectShop.Access;
 
 namespace ProjektApp.Pages.Buttons {
     /// <summary>
     /// Interaction logic for User.xaml
     /// </summary>
     public partial class User : UserControl {
+        static MainWindow Window =>
+            Application.Current.MainWindow as MainWindow;
+
         public User() {
             InitializeComponent();
         }
@@ -19,10 +23,11 @@ namespace ProjektApp.Pages.Buttons {
             dlg.Filter = "Zdjęcia|*.png;*.jpg;*.jpge";
 
             Nullable<bool> result = dlg.ShowDialog();
-            // Process open file dialog box results
             if(result == true) {
-                // Open document
                 string filename = dlg.FileName;
+
+                var profil = new UserProfil(Window.login);
+                profil.Change_Avatar(filename);
             }
         }
     }

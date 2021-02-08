@@ -11,30 +11,30 @@ namespace DBconnectShop.Table {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int User_order_id { get; set; }
+        public int User_order_id { get; internal set; }
 
         [Required]
-        public int User_order_status_id { get; set; }
+        public int User_order_status_id { get; internal set; }
 
         [Required]
-        public int User_Address_id { get; set; }
+        public int User_Address_id { get; internal set; }
 
         [Required]
         [Column(TypeName = "smalldatetime")]
-        public DateTime User_order_date { get; set; }
+        public DateTime User_order_date { get; internal set; }
 
         [StringLength(100)]
         [Column(TypeName = "nchar")]
-        public string User_note { get; set; }
+        public string User_note { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public User_order_status Order_Status { get; set; }
-        public User_address Address { get; set; }
-        public User_order_receipt Order_Receipt { get; set; }
-        public IEnumerable<User_order_Product> Order_Products { get; set; } = new List<User_order_Product>();
+        public User_order_status Order_Status { get; }
+        public User_address Address { get; }
+        public User_order_receipt Order_Receipt { get; }
+        public IEnumerable<User_order_Product> Order_Products { get; } = new List<User_order_Product>();
 
         #endregion
 

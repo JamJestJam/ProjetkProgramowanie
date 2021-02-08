@@ -2,11 +2,13 @@
 using DBconnectShop.Table;
 using MaterialDesignThemes.Wpf;
 using System;
+using System.IO;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using LoginDB = DBconnectShop.Access.Login;
 
 namespace ProjektApp.Pages.Product {
@@ -120,10 +122,10 @@ namespace ProjektApp.Pages.Product {
                 var opinion = singleProduct.AddComment(login, text);
 
                 Dispatcher.Invoke(() => {
+                    CreateCommentBox(opinion);
                     Window.DialogText.Content = "Dziękujemy za podzielenie się swoją opinią!";
                     Window.Dialog.IsOpen = true;
                     Window.Loading.IsOpen = false;
-                    CreateCommentBox(opinion);
                 });
             } catch(Exception e) {
                 Dispatcher.Invoke(() => {
@@ -135,14 +137,32 @@ namespace ProjektApp.Pages.Product {
         }
 
         private void CreateCommentBox(Product_opinion opinion) {
-            PackIcon icon = new PackIcon();
-            icon.Kind = PackIconKind.User;
             Chip chip = new Chip {
                 Margin = new Thickness(0, 5, 0, 0),
                 Content = opinion.User.UserName,
-                Icon = icon,
                 Cursor = Cursors.Arrow
             };
+
+            if(opinion.User.User_Data is null) {
+                PackIcon icon = new PackIcon();
+                icon.Kind = PackIconKind.User;
+                chip.Icon = icon;
+            } else {
+                var image = new BitmapImage();
+                var Image = new Image();
+                using var mem = new MemoryStream(opinion.User.User_Data.User_avatar);
+                mem.Position = 0;
+                image.BeginInit();
+                image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.UriSource = null;
+                image.StreamSource = mem;
+                image.EndInit();
+                image.Freeze();
+
+                Image.Source = image;
+                chip.Icon = Image;
+            }
 
             Label label = new Label {
                 Content = opinion.Product_Opinion,

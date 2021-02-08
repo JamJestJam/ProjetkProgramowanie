@@ -10,38 +10,38 @@ namespace DBconnectShop.Table {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Address_id { get; set; }
+        public int Address_id { get; internal set; }
 
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
-        public string Address_country { get; set; }
+        public string Address_country { get; internal set; }
 
         [Required]
         [StringLength(50)]
         [Column(TypeName = "nchar")]
-        public string Address_city { get; set; }
+        public string Address_city { get; internal set; }
 
         [Required]
         [StringLength(50)]
         [Column(TypeName = "nchar")]
-        public string Address_street { get; set; }
+        public string Address_street { get; internal set; }
 
         [Required]
         [StringLength(50)]
         [Column(TypeName = "nchar")]
-        public string Address_building_number { get; set; }
+        public string Address_building_number { get; internal set; }
 
         [StringLength(50)]
         [Column(TypeName = "nchar")]
-        public string Address_zip_code { get; set; }
+        public string Address_zip_code { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public ICollection<User_address> User_Addresses { get; set; } = new List<User_address>();
-        public ICollection<Storage> Storage_Addresses { get; set; } = new List<Storage>();
+        public ICollection<User_address> User_Addresses { get; } = new List<User_address>();
+        public ICollection<Storage> Storage_Addresses { get; } = new List<Storage>();
 
         #endregion
 

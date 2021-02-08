@@ -9,26 +9,26 @@ namespace DBconnectShop.Table {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Product_specification_id { get; set; }
+        public int Product_specification_id { get; internal set; }
 
         [Required]
-        public int Product_id { get; set; }
+        public int Product_id { get; internal set; }
 
         [Required]
         [StringLength(30)]
         [Column(TypeName = "nchar")]
-        public string Product_specification_name { get; set; }
+        public string Product_specification_name { get; internal set; }
 
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
-        public string Product_specification_value { get; set; }
+        public string Product_specification_value { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public Product Product { get; set; }
+        public Product Product { get; }
 
         #endregion
 

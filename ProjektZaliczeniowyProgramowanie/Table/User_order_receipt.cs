@@ -9,21 +9,21 @@ namespace DBconnectShop.Table {
 
         [Key]
         [Required]
-        public int User_order_id { get; set; }
+        public int User_order_id { get; internal set; }
 
         [Required]
-        public int Worker_seller_id { get; set; }
+        public int Worker_seller_id { get; internal set; }
 
         [Required]
         [Column(TypeName = "smalldatetime")]
-        public DateTime User_order_recipt_date { get; set; }
+        public DateTime User_order_recipt_date { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public User_order Order { get; set; }
-        public Worker_seller Worker { get; set; }
+        public User_order Order { get;  }
+        public Worker_seller Worker { get;  }
 
         #endregion
 

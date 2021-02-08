@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DBconnectShop.Addons;
+using System.Drawing;
+using ImageAddon = DBconnectShop.Addons.Image;
 
 namespace DBconnectShop.Table {
     public class User_data {
@@ -8,30 +11,36 @@ namespace DBconnectShop.Table {
 
         [Key]
         [Required]
-        public int User_id { get; set; }
+        public int User_id { get; internal set; }
 
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
-        public string User_first_name { get; set; }
+        public string User_first_name { get; internal set; }
 
         [StringLength(25)]
         [Column(TypeName = "nchar")]
-        public string User_second_name { get; set; }
+        public string User_second_name { get; internal set; }
 
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
-        public string User_family_name { get; set; }
+        public string User_family_name { get; internal set; }
 
         [Column(TypeName = "varBinary")]
-        public byte[] User_avatar { get; set; }
+        public byte[] User_avatar { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public virtual User User { get; set; }
+        public User User { get; }
+
+        #endregion
+
+        #region Cuts =========================================
+
+        public Bitmap Bitmap => new ImageAddon(User_avatar).bitmap;
 
         #endregion
 

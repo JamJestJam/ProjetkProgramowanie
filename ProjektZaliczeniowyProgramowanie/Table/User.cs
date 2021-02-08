@@ -10,36 +10,36 @@ namespace DBconnectShop.Table {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int User_id { get; set; }
+        public int User_id { get; internal set; }
 
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
-        public string User_name { get; set; }
+        public string User_name { get; internal set; }
 
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
-        public string User_password { get; set; }
+        public string User_password { get; internal set; }
 
         [Required]
-        public bool User_active { get; set; }
+        public bool User_active { get; internal set; }
 
         [Required]
-        public int User_group_id { get; set; }
+        public int User_group_id { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public User_group User_Group { get; set; }
-        public User_data User_Data { get; set; }
-        public ICollection<User_address> User_Address { get; set; } = new List<User_address>();
-        public ICollection<Product_opinion> Product_Opinions { get; set; } = new List<Product_opinion>();
-        public ICollection<Product_rating> Product_Ratings { get; set; } = new List<Product_rating>();
-        public Worker_seller Worker_Seller { get; set; }
-        public Worker_storekeeper Worker_Storekeeper { get; set; }
-        public Worker_purchaser Worker_Purchaser { get; set; }
+        public User_group User_Group { get; }
+        public User_data User_Data { get; internal set; }
+        public ICollection<User_address> User_Address { get;  } = new List<User_address>();
+        public ICollection<Product_opinion> Product_Opinions { get;  } = new List<Product_opinion>();
+        public ICollection<Product_rating> Product_Ratings { get;  } = new List<Product_rating>();
+        public Worker_seller Worker_Seller { get;  }
+        public Worker_storekeeper Worker_Storekeeper { get;  }
+        public Worker_purchaser Worker_Purchaser { get;  }
 
         #endregion
 

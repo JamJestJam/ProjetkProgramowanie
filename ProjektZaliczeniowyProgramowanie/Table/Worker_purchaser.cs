@@ -8,14 +8,14 @@ namespace DBconnectShop.Table {
 
         [Key]
         [Required]
-        public int User_id { get; set; }
+        public int User_id { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
         public User User { get; set; }
-        public IEnumerable<Product_order> Product_Order { get; set; }
+        public IEnumerable<Product_order> Product_Order { get;  }
 
         #endregion
 

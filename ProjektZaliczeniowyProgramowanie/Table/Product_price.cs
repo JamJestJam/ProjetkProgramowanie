@@ -8,21 +8,21 @@ namespace DBconnectShop.Table {
         #region Columns ======================================
 
         [Required]
-        public int Product_id { get; set; }
+        public int Product_id { get; internal set; }
 
         [Required]
         [Column(TypeName = "smalldatatime")]
-        public DateTime Product_price_date { get; set; }
+        public DateTime Product_price_date { get; internal set; }
 
         [Required]
         [Column(TypeName = "smallmoney")]
-        public decimal Product_price { get; set; }
+        public decimal Product_price { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public Product Product { get; set; }
+        public Product Product { get; }
 
         #endregion
 

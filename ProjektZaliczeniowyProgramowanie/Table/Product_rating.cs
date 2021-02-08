@@ -7,21 +7,21 @@ namespace DBconnectShop.Table {
         #region Columns ======================================
 
         [Required]
-        public int Product_id { get; set; }
+        public int Product_id { get; internal set; }
 
         [Required]
-        public int User_id { get; set; }
+        public int User_id { get; internal set; }
 
         [Required]
         [Column(TypeName = "tinyint")]
-        public short Product_Rating { get; set; }
+        public short Product_Rating { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public Product Product { get; set; }
-        public User User { get; set; }
+        public Product Product { get; }
+        public User User { get; }
 
         #endregion
 

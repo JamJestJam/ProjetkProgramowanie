@@ -10,18 +10,18 @@ namespace DBconnectShop.Table {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Product_producer_id { get; set; }
+        public int Product_producer_id { get; internal set; }
 
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
-        public string Product_producer_name { get; set; }
+        public string Product_producer_name { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public IEnumerable<Product> Products { get; set; } = new List<Product>();
+        public IEnumerable<Product> Products { get; } = new List<Product>();
 
         #endregion
 

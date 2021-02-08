@@ -10,41 +10,41 @@ namespace DBconnectShop.Table {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Product_order_id { get; set; }
+        public int Product_order_id { get; internal set; }
 
         [Required]
-        public int Storage_id { get; set; }
+        public int Storage_id { get; internal set; }
 
         [Required]
-        public int Worker_purchasers_id { get; set; }
+        public int Worker_purchasers_id { get; internal set; }
 
         [Required]
-        public int Product_id { get; set; }
+        public int Product_id { get; internal set; }
 
         [Required]
         [Column(TypeName = "smallmoney")]
-        public decimal Product_order_price { get; set; }
+        public decimal Product_order_price { get; internal set; }
 
         [Required]
         [Column(TypeName = "smallint")]
-        public short Product_order_quantity { get; set; }
+        public short Product_order_quantity { get; internal set; }
 
         [Required]
         [Column(TypeName = "smalldatetime")]
-        public DateTime Product_order_date { get; set; }
+        public DateTime Product_order_date { get; internal set; }
 
         [Required]
         [Column(TypeName = "date")]
-        public DateTime Product_order_estimated_time { get; set; }
+        public DateTime Product_order_estimated_time { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public Product Product { get; set; }
-        public Storage Storage { get; set; }
-        public Worker_purchaser Worker { get; set; }
-        public Product_receipt Product_Receipt { get; set; }
+        public Product Product { get; }
+        public Storage Storage { get; }
+        public Worker_purchaser Worker { get; }
+        public Product_receipt Product_Receipt { get; }
 
         #endregion
 

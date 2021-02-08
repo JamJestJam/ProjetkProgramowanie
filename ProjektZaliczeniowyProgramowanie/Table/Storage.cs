@@ -10,23 +10,23 @@ namespace DBconnectShop.Table {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Storage_id { get; set; }
+        public int Storage_id { get; internal set; }
 
         [Required]
-        public int Address_id { get; set; }
+        public int Address_id { get; internal set; }
 
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
-        public string Storage_name { get; set; }
+        public string Storage_name { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public Address Address { get; set; }
-        public IEnumerable<Product_order> Product_Order { get; set; }
-        public IEnumerable<Storage_Product_localization> Storage_Product_Localizations { get; set; }
+        public Address Address { get; }
+        public IEnumerable<Product_order> Product_Order { get; }
+        public IEnumerable<Storage_Product_localization> Storage_Product_Localizations { get; }
 
         #endregion
 

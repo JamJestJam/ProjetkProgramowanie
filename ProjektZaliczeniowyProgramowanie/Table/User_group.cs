@@ -10,18 +10,18 @@ namespace DBconnectShop.Table {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int User_group_id { get; set; }
+        public int User_group_id { get; internal set; }
 
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
-        public string User_group_name { get; set; }
+        public string User_group_name { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public ICollection<User> Users { get; set; } = new List<User>();
+        public ICollection<User> Users { get; } = new List<User>();
 
         #endregion
 

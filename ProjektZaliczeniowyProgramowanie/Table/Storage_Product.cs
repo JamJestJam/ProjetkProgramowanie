@@ -10,25 +10,25 @@ namespace DBconnectShop.Table {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Storage_Product_id { get; set; }
+        public int Storage_Product_id { get; internal set; }
 
         [Required]
-        public int Product_receipt_id { get; set; }
+        public int Product_receipt_id { get; internal set; }
 
         [Required]
-        public int Product_id { get; set; }
+        public int Product_id { get; internal set; }
 
         [StringLength(100)]
         [Column(TypeName = "nchar")]
-        public string Storage_Product_note { get; set; }
+        public string Storage_Product_note { get; internal set; }
         #endregion
 
         #region Fireign key ==================================
 
-        public Product_receipt Product_Receipt { get; set; }
-        public Product Product { get; set; }
-        public IEnumerable<Storage_Product_localization> Storage_Product_Localizations { get; set; } = new List<Storage_Product_localization>();
-        public IEnumerable<User_order_Product> Order_Products { get; set; } = new List<User_order_Product>();
+        public Product_receipt Product_Receipt { get; }
+        public Product Product { get; }
+        public IEnumerable<Storage_Product_localization> Storage_Product_Localizations { get; } = new List<Storage_Product_localization>();
+        public IEnumerable<User_order_Product> Order_Products { get; } = new List<User_order_Product>();
 
         #endregion
 

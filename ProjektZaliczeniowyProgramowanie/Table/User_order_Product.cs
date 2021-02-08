@@ -9,24 +9,24 @@ namespace DBconnectShop.Table {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int User_order_Product_id { get; set; }
+        public int User_order_Product_id { get; internal set; }
 
         [Required]
-        public int User_order_id { get; set; }
+        public int User_order_id { get; internal set; }
 
         [Required]
-        public int Storage_Product_id { get; set; }
+        public int Storage_Product_id { get; internal set; }
 
         [Required]
         [Column(TypeName = "smallmoney")]
-        public decimal User_order_Product_price { get; set; }
+        public decimal User_order_Product_price { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public User_order Order { get; set; }
-        public Storage_Product Product { get; set; }
+        public User_order Order { get;  }
+        public Storage_Product Product { get;  }
 
         #endregion
 

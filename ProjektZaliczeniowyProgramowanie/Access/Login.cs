@@ -22,7 +22,6 @@ namespace DBconnectShop.Access {
             using var db = new Shop();
 
             var users = db.Users
-                .Include(a => a.User_Data)
                 .Where(a => a.User_name == userName)
                 .Where(a => a.User_password == password);
 
@@ -39,23 +38,6 @@ namespace DBconnectShop.Access {
                 throw new LoginException("Konto na które próbujesz się zalogować zostało zablokowane");
 
             this.user = user;
-        }
-
-        public void ChangeUserImage(string image) {
-            using var db = new Shop();
-
-            User_data data = user.User_Data;
-            
-            if(data is null) {
-                data = new User_data() {
-                    User_id = GetUserID,
-                    User_first_name = "",
-                    User_family_name = ""
-                };
-            }
-
-            using var str = File.OpenRead(image);
-            data.User_avatar = File.ReadAllBytes(image);
         }
 
         /// <summary>

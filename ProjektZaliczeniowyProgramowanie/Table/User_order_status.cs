@@ -10,18 +10,18 @@ namespace DBconnectShop.Table {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int User_order_status_id { get; set; }
+        public int User_order_status_id { get; internal set; }
 
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
-        public string User_order_status_name { get; set; }
+        public string User_order_status_name { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public IEnumerable<User_order> User_Orders { get; set; } = new List<User_order>();
+        public IEnumerable<User_order> User_Orders { get; } = new List<User_order>();
 
         #endregion
 

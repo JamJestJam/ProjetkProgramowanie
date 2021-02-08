@@ -10,13 +10,13 @@ namespace DBconnectShop.Table {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int User_Address_id { get; set; }
+        public int User_Address_id { get; internal set; }
 
         [Required]
-        public int Address_id { get; set; }
+        public int Address_id { get; internal set; }
 
         [Required]
-        public int User_id { get; set; }
+        public int User_id { get; internal set; }
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace DBconnectShop.Table {
 
         public Address Address { get; }
         public User User { get; }
-        public IEnumerable<User_order> User_Orders { get; set; } = new List<User_order>();
+        public IEnumerable<User_order> User_Orders { get; } = new List<User_order>();
 
         #endregion
 

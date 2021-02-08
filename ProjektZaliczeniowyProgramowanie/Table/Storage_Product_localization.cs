@@ -8,28 +8,28 @@ namespace DBconnectShop.Table {
         #region Columns ======================================
 
         [Required]
-        public int Storage_Product_id { get; set; }
+        public int Storage_Product_id { get; internal set; }
 
         [Required]
-        public int Storage_id { get; set; }
+        public int Storage_id { get; internal set; }
 
         [Required]
-        public int Worker_storekeeper_id { get; set; }
+        public int Worker_storekeeper_id { get; internal set; }
 
         [Required]
-        public bool Storage_Product_on_the_way { get; set; }
+        public bool Storage_Product_on_the_way { get; internal set; }
 
         [Required]
         [Column(TypeName = "smalldatetime")]
-        public DateTime Storage_Product_date { get; set; }
+        public DateTime Storage_Product_date { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public Storage_Product Storage_Product { get; set; }
-        public Storage Storage { get; set; }
-        public Worker_storekeeper Worker { get; set; }
+        public Storage_Product Storage_Product { get;  }
+        public Storage Storage { get;  }
+        public Worker_storekeeper Worker { get;  }
 
         #endregion
 

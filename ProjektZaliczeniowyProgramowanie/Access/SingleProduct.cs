@@ -24,6 +24,7 @@ namespace DBconnectShop.Access {
                 .Include(a => a.Product_Ratings)
                 .Include(a => a.Product_Opinions)
                     .ThenInclude(b => b.User)
+                        .ThenInclude(b=>b.User_Data)
                 .Where(a => a.Product_id == Id);
 
 #if DEBUG
@@ -75,7 +76,8 @@ namespace DBconnectShop.Access {
                 throw new AddElementException("Wystąpił problem z dodaną przez Ciebie opinią.");
 
             Reload();
-            return Product.Product_Opinions.Where(a => a.Product_id == comment.Product_id && a.User_id == comment.User_id).Last();
+            return Product.Product_Opinions
+                .LastOrDefault(a => a.Product_id == comment.Product_id && a.User_id == comment.User_id);
         }
 
         public void AddRate(Login login, short rate) {

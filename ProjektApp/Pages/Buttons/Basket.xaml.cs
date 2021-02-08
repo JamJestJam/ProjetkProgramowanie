@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Drawing;
 
 namespace ProjektApp.Pages.Buttons {
     /// <summary>
@@ -7,6 +8,7 @@ namespace ProjektApp.Pages.Buttons {
     public partial class Basket : UserControl {
         public Basket() {
             InitializeComponent();
+            
         }
     }
 }

@@ -10,22 +10,22 @@ namespace DBconnectShop.Table {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Product_category_id { get; set; }
+        public int Product_category_id { get; internal set; }
 
-        public int? Product_sub_category { get; set; }
+        public int? Product_sub_category { get; internal set; }
 
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
-        public string Product_category_name { get; set; }
+        public string Product_category_name { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
-        public Product_categori Parent { get; set; }
-        public IEnumerable<Product_categori> Children { get; set; } = new List<Product_categori>();
-        public IEnumerable<Product> Products { get; set; } = new List<Product>();
+        public Product_categori Parent { get; }
+        public IEnumerable<Product_categori> Children { get; } = new List<Product_categori>();
+        public IEnumerable<Product> Products { get; } = new List<Product>();
 
         #endregion
 

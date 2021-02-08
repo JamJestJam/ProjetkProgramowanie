@@ -9,21 +9,21 @@ namespace DBconnectShop.Table {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Product_image_id { get; set; }
+        public int Product_image_id { get; internal set; }
 
         [Required]
-        public int Product_id { get; set; }
+        public int Product_id { get; internal set; }
 
         [Required]
         [Column(TypeName = "varBinary")]
-        public byte[] Product_Image { get; set; }
+        public byte[] Product_Image { get; internal set; }
 
 
         #endregion
 
         #region Fireign key ==================================
 
-        public Product Product { get; set; }
+        public Product Product { get; }
 
         #endregion
 
