@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using DBconnectShop.Addons;
 using System.Drawing;
 using ImageAddon = DBconnectShop.Addons.Image;
 

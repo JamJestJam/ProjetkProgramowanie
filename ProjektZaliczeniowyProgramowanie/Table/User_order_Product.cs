@@ -25,8 +25,8 @@ namespace DBconnectShop.Table {
 
         #region Fireign key ==================================
 
-        public User_order Order { get;  }
-        public Storage_Product Product { get;  }
+        public User_order Order { get; }
+        public Storage_Product Product { get; }
 
         #endregion
 

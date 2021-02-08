@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DBconnectShop.Addons {
-    class Class1 {
+    public class AuthorizationException : Exception {
+        private readonly string message = "Wystąpił problem z autoryzacją";
+
+        public AuthorizationException() { }
+
+        public override string Message => message;
     }
 }

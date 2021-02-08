@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DBconnectShop.Addons;
 using DBconnectShop.Table;
 using Microsoft.EntityFrameworkCore;
-using DBconnectShop.Addons;
+using System.Linq;
 
 namespace DBconnectShop.Access {
     public class UserProfil {

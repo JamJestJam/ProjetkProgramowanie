@@ -14,8 +14,8 @@ namespace DBconnectShop.Table {
 
         #region Fireign key ==================================
 
-        public User User { get;  }
-        public IEnumerable<User_order_receipt> Order_Receipts { get;  } = new List<User_order_receipt>();
+        public User User { get; }
+        public IEnumerable<User_order_receipt> Order_Receipts { get; } = new List<User_order_receipt>();
 
         #endregion
 

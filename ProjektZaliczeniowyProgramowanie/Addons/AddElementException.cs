@@ -1,10 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DBconnectShop.Addons {
-    class Class1 {
+    public class AddElementException : Exception {
+        private readonly string message;
+
+        public AddElementException(string message) {
+            this.message = message;
+        }
+
+        public override string Message => message;
     }
 }

@@ -25,7 +25,7 @@ namespace DBconnectShop.Access {
                 .Include(a => a.Product_Ratings)
                 .Include(a => a.Product_Opinions)
                     .ThenInclude(b => b.User)
-                        .ThenInclude(b=>b.User_Data)
+                        .ThenInclude(b => b.User_Data)
                 .Where(a => a.Product_id == Id);
 
 #if DEBUG

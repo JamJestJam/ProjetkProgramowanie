@@ -34,12 +34,12 @@ namespace DBconnectShop.Table {
 
         public User_group User_Group { get; }
         public User_data User_Data { get; internal set; }
-        public ICollection<User_address> User_Address { get;  } = new List<User_address>();
-        public ICollection<Product_opinion> Product_Opinions { get;  } = new List<Product_opinion>();
-        public ICollection<Product_rating> Product_Ratings { get;  } = new List<Product_rating>();
-        public Worker_seller Worker_Seller { get;  }
-        public Worker_storekeeper Worker_Storekeeper { get;  }
-        public Worker_purchaser Worker_Purchaser { get;  }
+        public ICollection<User_address> User_Address { get; } = new List<User_address>();
+        public ICollection<Product_opinion> Product_Opinions { get; } = new List<Product_opinion>();
+        public ICollection<Product_rating> Product_Ratings { get; } = new List<Product_rating>();
+        public Worker_seller Worker_Seller { get; }
+        public Worker_storekeeper Worker_Storekeeper { get; }
+        public Worker_purchaser Worker_Purchaser { get; }
 
         #endregion
 

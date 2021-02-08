@@ -1,5 +1,4 @@
-﻿using DBconnectShop.Access;
-using ProjektApp.Pages.Products;
+﻿using ProjektApp.Pages.Products;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
