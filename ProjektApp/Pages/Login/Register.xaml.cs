@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using DBconnectShop.Addons;
 using LoginDB = DBconnectShop.Access.Login;
 
 namespace ProjektApp.Pages.Login {
