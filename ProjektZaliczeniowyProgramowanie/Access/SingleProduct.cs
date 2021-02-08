@@ -1,4 +1,5 @@
-﻿using DBconnectShop.Table;
+﻿using DBconnectShop.Addons;
+using DBconnectShop.Table;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -129,23 +130,5 @@ namespace DBconnectShop.Access {
                 .Select(a => a.Product_Rating)
                 .FirstOrDefault();
         }
-    }
-
-    public class AuthorizationException : Exception {
-        private readonly string message = "Wystąpił problem z autoryzacją";
-
-        public AuthorizationException() { }
-
-        public override string Message => message;
-    }
-
-    public class AddElementException : Exception {
-        private readonly string message;
-
-        public AddElementException(string message) {
-            this.message = message;
-        }
-
-        public override string Message => message;
     }
 }

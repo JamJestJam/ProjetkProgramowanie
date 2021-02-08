@@ -1,4 +1,5 @@
 ﻿using DBconnectShop.Table;
+using DBconnectShop.Addons;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -74,21 +75,5 @@ namespace DBconnectShop.Access {
                 throw new LoginException("Wystąpił niespodziewany wyjątek podczas tworzenie konta");
         }
 
-    }
-
-    /// <summary>
-    /// Wyjątek do logowania
-    /// </summary>
-    public class LoginException : Exception {
-        private readonly string message;
-
-        internal LoginException(string message) {
-            this.message = message;
-        }
-
-        /// <summary>
-        /// Treść błędu
-        /// </summary>
-        public override string Message => message;
     }
 }

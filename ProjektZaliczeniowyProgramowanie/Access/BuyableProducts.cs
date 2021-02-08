@@ -1,4 +1,5 @@
 ﻿using DBconnectShop.Table;
+using DBconnectShop.Addons;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -51,13 +52,6 @@ namespace DBconnectShop.Access {
                 .Where(a => categoryWhere.Any(b => b == a.Product_category_id))
                 .Where(a => a.Product_name.ToLower().Contains(like.ToLower()))
                 .ToList();
-        }
-    }
-
-    internal static class Extension {
-        public static IEnumerable<T> SelectManyRecursive<T>(this IEnumerable<T> source, Func<T, IEnumerable<T>> selector) {
-            var result = source.SelectMany(selector);
-            return !result.Any() ? result : result.Union(result.SelectManyRecursive(selector));
         }
     }
 }
