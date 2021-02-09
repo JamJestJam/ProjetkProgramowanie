@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="ProjektApp.Pages.Profile.UserDataEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:local="clr-namespace:ProjektApp.Pages.Profile"
+             mc:Ignorable="d" 
+             d:DesignHeight="570" d:DesignWidth="724">
+    <materialDesign:ColorZone Mode="Dark" Width="400" Height="auto" VerticalAlignment="Center">
+        <StackPanel Margin="20">
+            <Label Content="Dane użytkownika" FontSize="25" HorizontalAlignment="Center" />
+            <Separator />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <materialDesign:PackIcon Kind="User" Foreground="{Binding ElementName=UserName, Path=BorderBrush}" Width="20" Height="20" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="UserName" materialDesign:HintAssist.Hint="Nazwa użytkownika" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" MinWidth="300" IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <materialDesign:PackIcon Kind="Person" Foreground="{Binding ElementName=FirstName, Path=BorderBrush}" Width="20" Height="20" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="FirstName" materialDesign:HintAssist.Hint="Imię" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" MinWidth="280" />
+                <materialDesign:PackIcon Kind="Star" Foreground="{Binding ElementName=FirstName, Path=BorderBrush}" Width="20" Height="20" VerticalAlignment="Bottom"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <materialDesign:PackIcon Kind="User" Foreground="{Binding ElementName=SecoundName, Path=BorderBrush}" Width="20" Height="20" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="SecoundName" materialDesign:HintAssist.Hint="Drugię imię" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" MinWidth="300" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <materialDesign:PackIcon Kind="User" Foreground="{Binding ElementName=FamilyName, Path=BorderBrush}" Width="20" Height="20" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="FamilyName" materialDesign:HintAssist.Hint="Nazwisko" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" MinWidth="280" />
+                <materialDesign:PackIcon Kind="Star" Foreground="{Binding ElementName=FamilyName, Path=BorderBrush}" Width="20" Height="20" VerticalAlignment="Bottom"/>
+            </StackPanel>
+            <Button Margin="0 10 0 0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" Click="Save">
+                <materialDesign:PackIcon Kind="ContentSave"/>
+            </Button>
+        </StackPanel>
+    </materialDesign:ColorZone>
+</UserControl>

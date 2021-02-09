@@ -30,18 +30,10 @@ namespace DBconnectShop.Access {
 
             var image = new Image(file);
             var User_Data = user.User_Data;
+            if(User_Data is null) 
+                throw new AddElementException("Aby dodać miniaturkę musisz posiadać wypełniony profil użytkownika.");
 
-            if(User_Data is null) {
-                User_Data = new User_data() {
-                    User_id = user.User_id,
-                    User_first_name = "Ala",
-                    User_family_name = "Kot"
-                };
-
-                db.Users_Data.Add(User_Data);
-            } else {
-                db.Users_Data.Attach(User_Data);
-            }
+            db.Users_Data.Attach(User_Data);            
 
             User_Data.User_avatar = image.BlobImage;
 

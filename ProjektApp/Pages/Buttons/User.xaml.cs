@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using ProjektApp.Pages.Profile;
 
 namespace ProjektApp.Pages.Buttons {
     /// <summary>
@@ -29,6 +30,10 @@ namespace ProjektApp.Pages.Buttons {
                 var profil = new UserProfil(Window.login);
                 profil.Change_Avatar(filename);
             }
+        }
+
+        private void Profile(object o, RoutedEventArgs e) {
+            Window.Content.Content = new UserDataEdit();
         }
 
         private void LogOut(object o, RoutedEventArgs e) {
