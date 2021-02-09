@@ -45,7 +45,9 @@ namespace DBconnectShop.Table {
 
         #region Cuts =========================================
 
-        public string UserName => User_name;
+        public string UserName => (User_Data is null)
+            ? User_name.Trim() :
+            User_Data.User_first_name.Trim() + " " + User_Data.User_family_name.Trim();
 
         #endregion
 
