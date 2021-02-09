@@ -1,6 +1,7 @@
 ﻿using DBconnectShop.Addons;
 using DBconnectShop.Table;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DBconnectShop.Access {
@@ -21,6 +22,9 @@ namespace DBconnectShop.Access {
             (user.User_Data.User_family_name is null) ?
                 "" : user.User_Data.User_family_name.Trim();
 
+        public List<Address> Address => 
+            user.User_Address.Select(a=>a.Address).ToList();
+
         public UserProfil(Login login) {
             int userID = 0;
 
@@ -40,6 +44,7 @@ namespace DBconnectShop.Access {
             var users = db.Users
                 .Include(a => a.User_Data)
                 .Include(a => a.User_Address)
+                    .ThenInclude(b=>b.Address)
                 .Where(a => a.User_id == id);
 
             this.user = users.FirstOrDefault();

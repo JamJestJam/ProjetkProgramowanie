@@ -45,6 +45,16 @@ namespace DBconnectShop.Table {
 
         #endregion
 
+        #region Cuts =========================================
+
+        public string Country => Address_country.Trim();
+        public string City => Address_city.Trim();
+        public string Street => Address_street.Trim();
+        public string BuildingNumber => Address_building_number.Trim();
+        public string ZipCode => Address_zip_code.Trim();
+
+        #endregion
+
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Address>().ToTable("Addresses");
         }

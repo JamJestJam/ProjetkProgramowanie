@@ -22,8 +22,8 @@ namespace DBconnectShop.Access {
             using var db = new Shop();
 
             var users = db.Users
-                .Where(a => a.User_name == userName)
-                .Where(a => a.User_password == password);
+                .Where(a => a.User_name.Equals(userName))
+                .Where(a => a.User_password.Equals(password));
 
 #if DEBUG
             Console.WriteLine(users.ToQueryString());
