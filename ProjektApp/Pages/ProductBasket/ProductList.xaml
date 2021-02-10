@@ -12,7 +12,7 @@
             <StackPanel Margin="20">
                 <Label Content="Koszyk" FontSize="25" HorizontalAlignment="Center" />
                 <Separator />
-                <DataGrid x:Name="GridData" CanUserAddRows="False" SelectionUnit="Cell" SelectionMode="Extended" HorizontalAlignment="Center" CellStyle="{StaticResource MaterialDesignDataGridCell}">
+                <DataGrid x:Name="GridData" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit="Cell" SelectionMode="Extended" HorizontalAlignment="Center">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Path=Lp}" Header="Lp" IsReadOnly="True">
                             <DataGridTextColumn.ElementStyle>
@@ -49,7 +49,7 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Cena w sumie" Binding="{Binding Path=Sum}" Width="auto" IsReadOnly="True">
+                        <DataGridTextColumn Header="Cena w sumie" Binding="{Binding Path=Sum}"  Width="auto" IsReadOnly="True">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="VerticalAlignment" Value="Center" />

@@ -8,13 +8,10 @@ using System.Linq;
 namespace DBconnectShop.Addons {
     public class Basket {
         Login login;
-        Dictionary<Product, uint> productList = new Dictionary<Product, uint>();
+        public Dictionary<Product, uint> ProductList { get; } = new Dictionary<Product, uint>();
 
         public long Count =>
-            productList.Sum(a => a.Value);
-
-        public IReadOnlyDictionary<Product, uint> Product =>
-            new ReadOnlyDictionary<Product, uint>(productList);
+            ProductList.Sum(a => a.Value);
 
         public delegate void BasketContentChange(Basket basket, BasketChangeEventArgs e);
 
@@ -42,38 +39,38 @@ namespace DBconnectShop.Addons {
             uint before = 0;
             uint after = count;
 
-            if(productList.ContainsKey(product)) {
-                before = productList[product];
-                productList[product] += count;
-                after = productList[product];
+            if(ProductList.ContainsKey(product)) {
+                before = ProductList[product];
+                ProductList[product] += count;
+                after = ProductList[product];
             } else {
-                productList.Add(product, count);
+                ProductList.Add(product, count);
             }
 
             OnChange?.Invoke(this, new BasketChangeEventArgs(product, before, after));
         }
 
         public void SetCount(int productID, uint count) {
-            var product = productList.FirstOrDefault(a => a.Key.ID == productID).Key;
+            var product = ProductList.FirstOrDefault(a => a.Key.ID == productID).Key;
 
             if(product is null)
                 AddProduct(productID, count);
             else {
-                uint before = productList[product];
-                productList[product] = count;
-                uint after = productList[product];
+                uint before = ProductList[product];
+                ProductList[product] = count;
+                uint after = ProductList[product];
 
                 OnChange?.Invoke(this, new BasketChangeEventArgs(product, before, after));
             }
         }
 
         public void Remove(int productID) {
-            var product = productList.FirstOrDefault(a => a.Key.ID == productID).Key;
+            var product = ProductList.FirstOrDefault(a => a.Key.ID == productID).Key;
 
             if(product != null) {
-                uint before = productList[product];
-                productList.Remove(product);
-                uint after = productList[product];
+                uint before = ProductList[product];
+                ProductList.Remove(product);
+                uint after = ProductList[product];
 
                 OnChange?.Invoke(this, new BasketChangeEventArgs(product, before, after));
             }
