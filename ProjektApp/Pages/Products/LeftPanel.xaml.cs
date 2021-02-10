@@ -46,7 +46,9 @@ namespace ProjektApp.Pages.Products {
         }
 
         private void ChangeCategory(int id) {
+#if DEBUG
             Console.WriteLine($"Jestem tu {id}");
+#endif
             productList.Category = id;
             productList.ShowProducts();
         }

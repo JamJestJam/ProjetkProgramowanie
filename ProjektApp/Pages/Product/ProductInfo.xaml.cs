@@ -206,5 +206,10 @@ namespace ProjektApp.Pages.Product {
                 });
             }
         }
+
+        private void AddBasket(object o, RoutedEventArgs e) {
+            var count = (Count.SelectedValue as ComboBoxItem).Content.ToString();
+            Window.basket.AddProduct(Product.ID, uint.Parse(count));
+        }
     }
 }

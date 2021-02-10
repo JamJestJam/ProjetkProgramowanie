@@ -31,7 +31,7 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <!-- Menu górne -->
-                <Grid x:Name="Bar" Grid.ColumnSpan="2" Background="#292929" MouseDown="Bar_MouseDown">
+                <Grid x:Name="Bar" Grid.ColumnSpan="2" Background="#292929" MouseDown="Bar_MouseDown" Panel.ZIndex="1">
                     <UserControl x:Name="TopBar">
 
                     </UserControl>

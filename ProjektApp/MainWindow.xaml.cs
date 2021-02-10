@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
+using DBconnectShop.Addons;
 using LoginDB = DBconnectShop.Access.Login;
 
 namespace ProjektApp {
@@ -9,7 +10,8 @@ namespace ProjektApp {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        internal LoginDB login = null;
+        public LoginDB login = null;
+        public Basket basket = null;
 
 #if DEBUG
         [DllImport("Kernel32")]

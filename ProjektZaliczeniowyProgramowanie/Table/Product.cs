@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace DBconnectShop.Table {
-    public class Product {
+    public class Product : IEquatable<Product> {
         #region Columns ======================================
 
         [Key]
@@ -57,6 +57,23 @@ namespace DBconnectShop.Table {
 
         #endregion
 
+        #region Equals =======================================
+
+        public bool Equals(Product other) {
+            if(other is null)
+                return false;
+
+            return this.ID == other.ID;
+        }
+
+        public override bool Equals(object obj) =>
+            obj is Product product && Equals(product);
+
+        public override int GetHashCode() =>
+            HashCode.Combine(ID);
+
+        #endregion
+        
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Product>().ToTable("Products");
 

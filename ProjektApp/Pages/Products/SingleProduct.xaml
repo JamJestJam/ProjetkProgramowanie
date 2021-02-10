@@ -35,7 +35,7 @@
             </Grid>
             
             <Grid Grid.Row="3" Margin="10 0 10 10" Background="#333">
-                <Button Content="Dodaj do koszyka" Style="{DynamicResource MaterialDesignFlatAccentButton}"/>
+                <Button Content="Dodaj do koszyka" Style="{DynamicResource MaterialDesignFlatAccentButton}" Click="AddBasket"/>
             </Grid>
         </Grid>
     </materialDesign:ColorZone>

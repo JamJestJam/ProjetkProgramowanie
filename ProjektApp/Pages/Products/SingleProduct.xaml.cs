@@ -28,5 +28,9 @@ namespace ProjektApp.Pages.Products {
         private void ShowMore(object o, RoutedEventArgs e) {
             Window.Content.Content = new ProductInfo(product.ID);
         }
+
+        private void AddBasket(object o, RoutedEventArgs e) {
+            Window.basket.AddProduct(product.ID);
+        }
     }
 }

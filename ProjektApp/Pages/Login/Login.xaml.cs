@@ -41,9 +41,11 @@ namespace ProjektApp.Pages.Login {
 
             try {
                 var tryLogin = new LoginDB(login, password);
+                var basket = new Basket(tryLogin);
 
                 Dispatcher.Invoke(() => {
                     Window.login = tryLogin;
+                    Window.basket = basket;
                     Content = new ProductList();
                 });
             } catch(LoginException e) {
