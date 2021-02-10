@@ -34,7 +34,7 @@ namespace DBconnectShop.Table {
         public User_order_status Order_Status { get; }
         public User_address Address { get; }
         public User_order_receipt Order_Receipt { get; }
-        public IEnumerable<User_order_Product> Order_Products { get; } = new List<User_order_Product>();
+        public IEnumerable<User_order_product> Products { get; } = new List<User_order_product>();
 
         #endregion
 

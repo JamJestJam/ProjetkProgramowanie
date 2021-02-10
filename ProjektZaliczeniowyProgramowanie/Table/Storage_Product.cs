@@ -28,7 +28,7 @@ namespace DBconnectShop.Table {
         public Product_receipt Product_Receipt { get; }
         public Product Product { get; }
         public IEnumerable<Storage_Product_localization> Storage_Product_Localizations { get; } = new List<Storage_Product_localization>();
-        public IEnumerable<User_order_Product> Order_Products { get; } = new List<User_order_Product>();
+        public User_order_product_storage Order { get; }
 
         #endregion
 

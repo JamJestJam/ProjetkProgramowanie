@@ -45,6 +45,7 @@ namespace DBconnectShop.Table {
         public IEnumerable<Product_opinion> Product_Opinions { get; } = new List<Product_opinion>();
         public IEnumerable<Product_specification> Product_Specifications { get; } = new List<Product_specification>();
         public IEnumerable<Products_price> Products_Prices { get; } = new List<Products_price>();
+        public IEnumerable<User_order_product> Order_Products { get; } = new List<User_order_product>();
 
         #endregion
 

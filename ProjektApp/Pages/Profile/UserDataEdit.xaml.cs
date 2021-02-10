@@ -25,6 +25,13 @@ namespace ProjektApp.Pages.Profile {
             UseData();
         }
 
+        public UserDataEdit(UserProfil profil) {
+            InitializeComponent();
+            this.profil = profil;
+
+            UseData();
+        }
+
         public void UseData() {
             Window.Loading.IsOpen = true;
             Thread thread = new Thread(DownloadData) {

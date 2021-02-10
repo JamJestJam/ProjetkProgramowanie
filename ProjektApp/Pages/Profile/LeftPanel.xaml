@@ -8,6 +8,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
     <StackPanel>
+        <Button Margin="10" Cursor="Hand" Height="50" Click="ShowProfil">
+            <StackPanel Width="250" Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Account" Height="40" Width="40"/>
+                <TextBlock Text="Edytuj profil" FontSize="25" Padding="5"/>
+            </StackPanel>
+        </Button>
         <Button Margin="10" Cursor="Hand" Height="50" Click="SetAvatar">
             <StackPanel Width="250" Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="FaceProfile" Height="40" Width="40"/>

@@ -7,19 +7,18 @@
              xmlns:local="clr-namespace:ProjektApp.Pages.Profile"
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="724">
-    <materialDesign:ColorZone Mode="Dark" Height="auto" Width="auto" VerticalAlignment="Center">
+    <materialDesign:ColorZone Mode="Dark" Height="auto" Width="600" VerticalAlignment="Center">
         <StackPanel Margin="20">
             <Label Content="Twoje adresy" FontSize="25" HorizontalAlignment="Center" />
             <Separator />
-
-            <DataGrid x:Name="GridData" CanUserAddRows="False" SelectionUnit="Cell" SelectionMode="Extended" IsReadOnly="True" HorizontalAlignment="Center">
+            <DataGrid x:Name="GridData" CanUserAddRows="False" SelectionUnit="Cell" SelectionMode="Extended" IsReadOnly="True" HorizontalAlignment="Center" CellStyle="{StaticResource MaterialDesignDataGridCell}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Lp" Binding="{Binding Path=c1}"/>
-                    <DataGridTextColumn Header="Country" Binding="{Binding Path=c2}"/>
-                    <DataGridTextColumn Header="City" Binding="{Binding Path=c3}"/>
-                    <DataGridTextColumn Header="Street" Binding="{Binding Path=c4}" />
-                    <DataGridTextColumn Header="Building number" Binding="{Binding Path=c5}" />
-                    <DataGridTextColumn Header="Zip code" Binding="{Binding Path=c6}" />
+                    <DataGridTextColumn Header="Lp" Binding="{Binding Path=c1}" Width="auto"/>
+                    <DataGridTextColumn Header="Kraj" Binding="{Binding Path=c2}" Width="auto"/>
+                    <DataGridTextColumn Header="Miasto" Binding="{Binding Path=c3}" Width="auto"/>
+                    <DataGridTextColumn Header="Ulica" Binding="{Binding Path=c4}" Width="auto"/>
+                    <DataGridTextColumn Header="Numer domu" Binding="{Binding Path=c5}" Width="auto"/>
+                    <DataGridTextColumn Header="Kod pocztowy" Binding="{Binding Path=c6}" Width="auto"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

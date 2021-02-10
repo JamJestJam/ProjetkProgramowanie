@@ -35,6 +35,10 @@ namespace ProjektApp.Pages.Profile {
             Window.Content.Content = new UserAddresses(profil);
         }
 
+        private void ShowProfil(object o, RoutedEventArgs e) {
+            Window.Content.Content = new UserDataEdit(profil);
+        }
+
         public void SetAvatar(object o, RoutedEventArgs e) {
             Thread thread = new Thread(SetAvatar) {
                 IsBackground = true

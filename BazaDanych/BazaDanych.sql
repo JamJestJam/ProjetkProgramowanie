@@ -1,17 +1,11 @@
 --drop
-DROP VIEW IF EXISTS V_Products_recently_sold;
-DROP VIEW IF EXISTS V_Products_specyfication;
-DROP VIEW IF EXISTS V_Products_not_aviable;
-DROP VIEW IF EXISTS V_planned_receipts;
-DROP VIEW IF EXISTS V_order_list;
-DROP VIEW IF EXISTS V_available_Products;
-DROP VIEW IF EXISTS V_Workers;
 DROP TRIGGER IF EXISTS TR_User_order_receipts;
 DROP TRIGGER IF EXISTS TR_Storage_Products;
 DROP TRIGGER IF EXISTS TR_Storage_Product_localizations;
 DROP TRIGGER IF EXISTS TR_Product_receipts;
 DROP TRIGGER IF EXISTS TR_Product_orders;
 DROP TABLE IF EXISTS User_order_receipts;
+DROP TABLE IF EXISTS User_order_Products_storage;
 DROP TABLE IF EXISTS User_order_Products;
 DROP TABLE IF EXISTS User_orders;
 DROP TABLE IF EXISTS User_order_status;
@@ -371,11 +365,11 @@ on delete no action
 on update cascade
 create index I_User_orders on User_orders(User_order_id)
 
---lista produktow zamowionych przez uzytkownika
+--lista produktów zamówionych przez u¿ytkownika przed ich przydzieleniem
 create table User_order_Products(
-User_order_Product_id int primary key identity(1,1),
+User_order_Products_id int primary key identity(1, 1),
 User_order_id int not null,
-Storage_Product_id int not null,
+Product_id int not null,
 User_order_Product_price smallmoney not null
 )
 alter table User_order_Products
@@ -384,8 +378,24 @@ references User_orders(User_order_id)
 on delete no action
 on update cascade
 alter table User_order_Products
-add constraint FK_User_order_Products__Storage_Products foreign key(Storage_Product_id)
+add constraint FK_User_order_Products__Products foreign key(Product_id)
+references Products(Product_id)
+on delete no action
+on update cascade
+
+--lista produktow zamowionych przez uzytkownika
+create table User_order_Products_storage(
+User_order_Products_id int primary key,
+Storage_Product_id int not null,
+)
+alter table User_order_Products_storage
+add constraint FK_User_order_Products_storage__Storage_Products foreign key(Storage_Product_id)
 references Storage_Products(Storage_Product_id)
+on delete no action
+on update no action
+alter table User_order_Products_storage
+add constraint FK_User_order_Products_storage__User_order_Products foreign key(User_order_Products_id)
+references User_order_Products(User_order_Products_id)
 on delete no action
 on update no action
 
@@ -582,50 +592,7 @@ end
 close C_User_order_receipts
 deallocate C_User_order_receipts
 go
-create view V_Workers as -- lista wszystkich pracowników
-SELECT * from Users u
-WHERE u.User_group_id=2
-go
-create view V_available_Products as --lista produktow w magazynach
-select p.Product_id ,p.Product_name, count(sp.Storage_Product_id) as "ilosc"
-from Products p
-left join Storage_Products sp on p.Product_id=sp.Product_id
-left join User_order_Products uop on uop.Storage_Product_id=sp.Storage_Product_id
-left join User_orders uo on uo.User_order_id = uop.User_order_id
-where uo.User_order_status_id!=3 or uo.User_order_status_id is null
-group by p.Product_id, p.Product_name
-go
-create view V_order_list as--lista zamowien klientow
-SELECT uo.User_order_id, sp.Storage_Product_id, Product_name from User_orders uo
-join User_order_Products uop on uo.User_order_id=uop.User_order_id
-join Storage_Products sp on sp.Storage_Product_id=uop.Storage_Product_id
-join Products p on p.Product_id=sp.Product_id
-where uo.User_order_status_id in (1,2)
-go
-create view V_planned_receipts as--lista planowanych dostaw produktow
-select po.Product_order_date, po.Product_order_estimated_time, p.Product_id, p.Product_name, po.Product_order_quantity from Product_orders po
-left join Products p on p.Product_id=po.Product_id
-left join Product_receipts pr on po.Product_order_id=pr.Product_order_id
-where pr.Product_order_id is null
-go
-create view V_Products_not_aviable as --produkty ktorych nie ma w magazynach
-select p.Product_id, p.Product_name from Products p
-left join Storage_Products sp on sp.Product_id=p.Product_id
-where sp.Product_id is null
-go
-create view V_Products_specyfication as --specyfikacja produktow
-select p.Product_name, ps.Product_specification_name, ps.Product_specification_value from Products p
-join Product_specifications ps on p.Product_id=ps.Product_id
-go
-create view V_Products_recently_sold as--sprzedane w ostatnim czasie
-select p.Product_name, count(*) as 'amount sold' from User_order_Products uop
-join User_orders uo on uo.User_order_id=uop.User_order_id
-join Storage_Products sp on uop.Storage_Product_id=sp.Storage_Product_id
-join Products p on p.Product_id = sp.Product_id
-where uo.User_order_date > DATEDIFF(DAY,  DATEADD(day, -10, SYSDATETIME()), GETDATE())
-group by p.Product_id, p.Product_name
 
-go
 insert into Addresses(Address_country, Address_city, Address_street, Address_building_number, Address_zip_code) values
 ('Polska','Kraków','Komandora Wroñskiego Bohdana','54','30-852'),
 ('Polska','Warszawa','11 Listopada','136', '03-436'),
@@ -859,7 +826,7 @@ insert into User_orders(User_order_status_id, User_Address_id, User_note) values
 (3, 3, NULL),
 (1, 4, NULL)
 
-insert into User_order_Products(User_order_id, Storage_Product_id, User_order_Product_price) values
+insert into User_order_Products(User_order_id, Product_id, User_order_Product_price) values
 (1, 1, 200),
 (2, 2, 200),
 (3, 3, 400),
