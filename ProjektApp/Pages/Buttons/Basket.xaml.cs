@@ -1,6 +1,7 @@
-﻿using System.Windows;
+﻿using DBconnectShop.Addons;
+using System.Windows;
 using System.Windows.Controls;
-using DBconnectShop.Addons;
+using ProjektApp.Pages.ProductBasket;
 using BasketDB = DBconnectShop.Addons.Basket;
 
 namespace ProjektApp.Pages.Buttons {
@@ -29,6 +30,10 @@ namespace ProjektApp.Pages.Buttons {
                 Count.Badge = "99+";
             else
                 Count.Badge = count;
+        }
+
+        private void ProductList(object o, RoutedEventArgs e) {
+            Window.Content.Content = new ProductList();
         }
     }
 }

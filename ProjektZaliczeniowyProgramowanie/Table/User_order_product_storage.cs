@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
     public class User_order_product_storage {
@@ -28,7 +27,7 @@ namespace DBconnectShop.Table {
             modelBuilder.Entity<User_order_product_storage>()
                 .HasOne(a => a.Storage_Product)
                 .WithOne(b => b.Order)
-                .HasForeignKey<User_order_product_storage>(a=>a.Storage_Product_id);
+                .HasForeignKey<User_order_product_storage>(a => a.Storage_Product_id);
 
             modelBuilder.Entity<User_order_product_storage>()
                 .HasOne(a => a.Product)

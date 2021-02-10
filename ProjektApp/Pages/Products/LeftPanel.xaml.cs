@@ -1,9 +1,7 @@
-﻿using MaterialDesignThemes.Wpf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace ProjektApp.Pages.Products {
     /// <summary>
@@ -37,9 +35,9 @@ namespace ProjektApp.Pages.Products {
         private TreeViewItem CreateConteiner(string name, int ID) {
             var item = new TreeViewItem();
             item.Header = name;
-            item.Selected += (object o, RoutedEventArgs e) => { 
-                ChangeCategory(ID); 
-                e.Handled = true; 
+            item.Selected += (object o, RoutedEventArgs e) => {
+                ChangeCategory(ID);
+                e.Handled = true;
             };
 
             return item;

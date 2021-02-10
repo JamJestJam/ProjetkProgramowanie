@@ -22,8 +22,8 @@ namespace DBconnectShop.Access {
             (user.User_Data.User_family_name is null) ?
                 "" : user.User_Data.User_family_name.Trim();
 
-        public List<Address> Address => 
-            user.User_Address.Select(a=>a.Address).ToList();
+        public List<Address> Address =>
+            user.User_Address.Select(a => a.Address).ToList();
 
         public UserProfil(Login login) {
             int userID = 0;
@@ -40,11 +40,11 @@ namespace DBconnectShop.Access {
 
         public void Reload() {
             using var db = new Shop();
-            
+
             var users = db.Users
                 .Include(a => a.User_Data)
                 .Include(a => a.User_Address)
-                    .ThenInclude(b=>b.Address)
+                    .ThenInclude(b => b.Address)
                 .Where(a => a.User_id == id);
 
             this.user = users.FirstOrDefault();

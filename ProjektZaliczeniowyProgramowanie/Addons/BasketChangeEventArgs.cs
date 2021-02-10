@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DBconnectShop.Table;
+﻿using DBconnectShop.Table;
+using System;
 
 namespace DBconnectShop.Addons {
     public class BasketChangeEventArgs : EventArgs {

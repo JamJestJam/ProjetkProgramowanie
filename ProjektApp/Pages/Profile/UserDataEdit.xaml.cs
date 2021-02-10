@@ -1,6 +1,5 @@
 ﻿using DBconnectShop.Access;
 using System;
-using System.Drawing;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;

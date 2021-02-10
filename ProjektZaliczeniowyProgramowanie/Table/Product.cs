@@ -73,7 +73,7 @@ namespace DBconnectShop.Table {
             HashCode.Combine(ID);
 
         #endregion
-        
+
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Product>().ToTable("Products");
 

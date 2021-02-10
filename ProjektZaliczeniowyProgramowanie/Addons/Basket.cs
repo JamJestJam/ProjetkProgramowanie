@@ -1,5 +1,6 @@
 ﻿using DBconnectShop.Access;
 using DBconnectShop.Table;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace DBconnectShop.Addons {
         Dictionary<Product, uint> productList = new Dictionary<Product, uint>();
 
         public long Count =>
-            productList.Sum(a=>a.Value);
+            productList.Sum(a => a.Value);
 
         public IReadOnlyDictionary<Product, uint> Product =>
             new ReadOnlyDictionary<Product, uint>(productList);
@@ -33,6 +34,7 @@ namespace DBconnectShop.Addons {
             using var db = new Shop();
 
             var product = db.Products
+                .Include(a=>a.Products_Prices)
                 .FirstOrDefault(a => a.Product_id == productID);
 
             if(product is null)

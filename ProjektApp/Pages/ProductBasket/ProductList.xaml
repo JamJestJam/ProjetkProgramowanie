@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="ProjektApp.Pages.ProductBasket.ProductList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:local="clr-namespace:ProjektApp.Pages.ProductBasket"
+             mc:Ignorable="d" 
+             d:DesignHeight="570" d:DesignWidth="724">
+    <materialDesign:ColorZone Mode="Dark" Height="auto" MinHeight="570">
+        <ScrollViewer>
+            <StackPanel Margin="20">
+                <Label Content="Koszyk" FontSize="25" HorizontalAlignment="Center" />
+                <Separator />
+                <DataGrid x:Name="GridData" CanUserAddRows="False" SelectionUnit="Cell" SelectionMode="Extended" HorizontalAlignment="Center" CellStyle="{StaticResource MaterialDesignDataGridCell}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Path=Lp}" Header="Lp" IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTemplateColumn Header="Grafika" IsReadOnly="True">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Image}" MaxWidth="50" MaxHeight="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Mazwa produktu" Binding="{Binding Path=Name}" Width="auto" IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Ilość" Binding="{Binding Path=Count}" Width="auto">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Cena" Binding="{Binding Path=Price}" Width="auto" IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Cena w sumie" Binding="{Binding Path=Sum}" Width="auto" IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </ScrollViewer>
+    </materialDesign:ColorZone>
+</UserControl>
