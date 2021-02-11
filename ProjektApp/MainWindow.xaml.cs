@@ -36,6 +36,7 @@ namespace ProjektApp {
         }
 
         public void LogOut() {
+            basket = null;
             login = null;
             Content.Content = new Login();
         }

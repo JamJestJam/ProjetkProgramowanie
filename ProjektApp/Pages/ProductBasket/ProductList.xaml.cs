@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Linq;
-using ProductDB = DBconnectShop.Table.Product;
-using ProjektApp;
-using System.ComponentModel;
+using DBconnectShop.Access;
+using DBconnectShop.Addons;
 
 namespace ProjektApp.Pages.ProductBasket {
     /// <summary>
@@ -15,59 +13,65 @@ namespace ProjektApp.Pages.ProductBasket {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
 
-
         public ProductList() {
             InitializeComponent();
-
-            InsertBasket();
-        }
-        public List<Element> Values { get; set; } = new List<Element>();
-
-        private void InsertBasket() {
             GridData.ItemsSource = Values;
 
+            Window.Loading.IsOpen = true;
+            Thread thread = new Thread(InsertBasket) {
+                IsBackground = true
+            };
+            thread.Start();
+        }
+
+        List<Element> Values { get; set; } = new List<Element>();
+
+        private void InsertBasket() {
+            Basket basketProducts = null;
+            Dispatcher.Invoke(() => {
+                basketProducts = Window.basket;
+            });
+            var basket = new BasketProducts(basketProducts); ;
+
             int lp = 0;
-            foreach(var product in Window.basket.ProductList)
-                Values.Add(new Element(product, lp++, GridData));
+            foreach(var product in basket.Products)
+                Values.Add(new Element(lp++, product, GridData));
+
+            Dispatcher.Invoke(() => {
+                Window.Loading.IsOpen = false;
+            });
         }
     }
 
-    public class Element {
+    class Element {
         static MainWindow Window =>
                 Application.Current.MainWindow as MainWindow;
-        private KeyValuePair<ProductDB, uint> reference;
-        private DataGrid Data { get; }
+        private BasketProduct ProductBS = null;
+        private DataGrid Values = null;
 
         public string Lp { get; }
-        public string Image { get; }
-        public string Name { get; set; }
-        public string Price { get; }
-        public string Sum {get; set;}
-
+        public string Image => ProductBS.Image;
+        public string Name => ProductBS.Name;
+        public string Price => ProductBS.Price.ToString("0.00");
+        public string Sum => ProductBS.Sum.ToString("0.00");
         public string Count {
-            get => Window.basket.ProductList[reference.Key].ToString();
-            set { 
-                Window.basket.SetCount(reference.Key.ID, uint.Parse(value));
-                SetSum();
-                var tmp = Data.ItemsSource;
-                Data.ItemsSource = null;
-                Data.ItemsSource = tmp;
-            }
+            get => ProductBS.Count.ToString();
+            set {
+                if(uint.TryParse(value, out var number)) {
+                    ProductBS.Count = number;
+                    var tmp = Values.ItemsSource;
+                    Values.ItemsSource = null;
+                    Values.ItemsSource = tmp;
+                }
+            } 
         }
 
-        public Element(KeyValuePair<ProductDB, uint> tmp, int lp, DataGrid data) {
-            reference = tmp;
-            Data = data;
 
+        public Element(int lp, BasketProduct product, DataGrid values) {
             Lp = lp.ToString();
-            Image = "";
-            Name = reference.Key.TrueName;
-            Price = reference.Key.ActualPrice.ToString();
-            SetSum();
-        }
 
-        private void SetSum() {
-            Sum = (Window.basket.ProductList[reference.Key] * reference.Key.ActualPrice).ToString();
+            ProductBS = product;
+            Values = values;
         }
     }
 }

@@ -41,6 +41,7 @@
                                     <Setter Property="VerticalAlignment" Value="Center" />
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
+                            
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="Cena" Binding="{Binding Path=Price}" Width="auto" IsReadOnly="True">
                             <DataGridTextColumn.ElementStyle>

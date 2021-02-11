@@ -40,7 +40,7 @@ namespace ProjektApp.Pages.Login {
 
             try {
                 var tryLogin = new LoginDB(login, password);
-                var basket = new Basket(tryLogin);
+                var basket = new Basket();
 
                 Dispatcher.Invoke(() => {
                     Window.login = tryLogin;
