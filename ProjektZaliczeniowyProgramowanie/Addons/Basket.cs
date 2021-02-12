@@ -1,8 +1,4 @@
-﻿using DBconnectShop.Access;
-using DBconnectShop.Table;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace DBconnectShop.Addons {
@@ -11,8 +7,6 @@ namespace DBconnectShop.Addons {
 
         public long Count =>
             ProductList.Sum(a => a.Value);
-
-
 
         public Basket() { }
 

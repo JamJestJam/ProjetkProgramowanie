@@ -69,7 +69,7 @@ namespace DBconnectShop.Table {
 
             modelBuilder.Entity<User>()
                 .HasData(new User() {
-                    User_id =1,
+                    User_id = 1,
                     User_group_id = 3,
                     User_name = "Admin",
                     User_password = "admin",

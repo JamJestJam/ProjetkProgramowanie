@@ -29,7 +29,7 @@ namespace DBconnectShop.Table {
 
             modelBuilder.Entity<Worker_purchaser>()
                 .HasData(new Worker_purchaser() {
-                    User_id=1,
+                    User_id = 1,
                 });
         }
     }

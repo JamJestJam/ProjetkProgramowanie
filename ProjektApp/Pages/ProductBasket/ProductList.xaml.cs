@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using DBconnectShop.Access;
+using DBconnectShop.Addons;
+using System.Collections.Generic;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using DBconnectShop.Access;
-using DBconnectShop.Addons;
 
 namespace ProjektApp.Pages.ProductBasket {
     /// <summary>
@@ -16,6 +16,9 @@ namespace ProjektApp.Pages.ProductBasket {
         public ProductList() {
             InitializeComponent();
             GridData.ItemsSource = Values;
+            
+            Window.LeftPanel.Content = new LeftPanel(this);
+            Window.TopBar.Content = new TopBar();
 
             Window.Loading.IsOpen = true;
             Thread thread = new Thread(InsertBasket) {
@@ -24,7 +27,7 @@ namespace ProjektApp.Pages.ProductBasket {
             thread.Start();
         }
 
-        List<Element> Values { get; set; } = new List<Element>();
+        public List<Element> Values { get; set; } = new List<Element>();
 
         private void InsertBasket() {
             Basket basketProducts = null;
@@ -39,11 +42,13 @@ namespace ProjektApp.Pages.ProductBasket {
 
             Dispatcher.Invoke(() => {
                 Window.Loading.IsOpen = false;
+                (Window.LeftPanel.Content as LeftPanel)
+                    .SetPrice(null, null);
             });
         }
     }
 
-    class Element {
+    public class Element {
         static MainWindow Window =>
                 Application.Current.MainWindow as MainWindow;
         private BasketProduct ProductBS = null;
@@ -63,7 +68,7 @@ namespace ProjektApp.Pages.ProductBasket {
                     Values.ItemsSource = null;
                     Values.ItemsSource = tmp;
                 }
-            } 
+            }
         }
 
 

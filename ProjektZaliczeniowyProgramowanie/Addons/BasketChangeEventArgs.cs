@@ -1,5 +1,4 @@
-﻿using DBconnectShop.Table;
-using System;
+﻿using System;
 
 namespace DBconnectShop.Addons {
     public class BasketChangeEventArgs : EventArgs {

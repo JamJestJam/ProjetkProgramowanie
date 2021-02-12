@@ -1,7 +1,7 @@
 ﻿using DBconnectShop.Addons;
+using ProjektApp.Pages.ProductBasket;
 using System.Windows;
 using System.Windows.Controls;
-using ProjektApp.Pages.ProductBasket;
 using BasketDB = DBconnectShop.Addons.Basket;
 
 namespace ProjektApp.Pages.Buttons {
