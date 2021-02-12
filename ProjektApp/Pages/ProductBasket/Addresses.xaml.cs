@@ -57,6 +57,11 @@ namespace ProjektApp.Pages.ProductBasket {
             UserProfil profil = new UserProfil(login);
             try {
                 profil.AddAddress(country, city, strret, building, zip);
+                Dispatcher.Invoke(() => {
+                    Window.DialogText.Content = "Udało się dodać adress.";
+                    Window.Dialog.IsOpen = true;
+                    Window.Loading.IsOpen = false;
+                });
             }catch(Exception e) {
                 Dispatcher.Invoke(() => {
                     Window.DialogText.Content = e.Message;

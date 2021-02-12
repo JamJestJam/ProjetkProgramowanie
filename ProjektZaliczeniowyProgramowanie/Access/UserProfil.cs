@@ -109,7 +109,7 @@ namespace DBconnectShop.Access {
         public void AddAddress(string country, string city, string street, string building, string zipCode) {
             using var db = new Shop();
 
-            if(country.Length<3 || city.Length < 3 || street.Length < 3)
+            if(country.Length < 3 || city.Length < 3 || street.Length < 3)
                 throw new ArgumentException("Uzupełnij wszystkie dane.");
 
             country = country.First().ToString().ToUpper() + country.Substring(1).ToLower();
@@ -127,13 +127,22 @@ namespace DBconnectShop.Access {
             if(!Regex.IsMatch(zipCode, @"^[0-9]{2}-[0-9]{3}$"))
                 throw new ArgumentException("Nie poprawny kod pocztowy.");
 
-            var address = new Address() {
-                Address_country = country,
-                Address_city = city,
-                Address_street = street,
-                Address_building_number = building,
-                Address_zip_code = zipCode
-            };
+            Address address = db.Addresses.Where(a =>
+                a.Address_country == country &&
+                a.Address_city == city &&
+                a.Address_street == street &&
+                a.Address_building_number == building &&
+                a.Address_zip_code == zipCode).FirstOrDefault();
+
+            if(address is null) {
+                address = new Address() {
+                    Address_country = country,
+                    Address_city = city,
+                    Address_street = street,
+                    Address_building_number = building,
+                    Address_zip_code = zipCode
+                };
+            }
 
             var userAddress = new User_address() {
                 User_id = user.User_id,
@@ -141,9 +150,13 @@ namespace DBconnectShop.Access {
             };
             db.User_Addresses.Add(userAddress);
 
-            int code = db.SaveChanges();
-            if(code == 0)
+            try {
+                int code = db.SaveChanges();
+                if(code == 0)
+                    throw new AddElementException("Wystąpił problem z przesłanym adressem.");
+            } catch {
                 throw new AddElementException("Wystąpił problem z przesłanym adressem.");
+            }
         }
     }
 }
