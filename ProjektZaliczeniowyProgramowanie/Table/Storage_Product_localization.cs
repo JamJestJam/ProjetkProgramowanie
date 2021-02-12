@@ -55,12 +55,14 @@ namespace DBconnectShop.Table {
             modelBuilder.Entity<Storage_Product_localization>()
                 .HasOne(a => a.Storage)
                 .WithMany(b => b.Storage_Product_Localizations)
-                .HasForeignKey(b => b.Storage_id);
+                .HasForeignKey(b => b.Storage_id)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Storage_Product_localization>()
                 .HasOne(a => a.Worker)
                 .WithMany(b => b.Storage_Product_Localizations)
-                .HasForeignKey(b => b.Worker_storekeeper_id);
+                .HasForeignKey(b => b.Worker_storekeeper_id)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

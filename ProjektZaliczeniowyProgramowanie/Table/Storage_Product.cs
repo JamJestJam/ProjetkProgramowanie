@@ -43,7 +43,8 @@ namespace DBconnectShop.Table {
             modelBuilder.Entity<Storage_Product>()
                 .HasOne(a => a.Product)
                 .WithMany(b => b.Storage_Products)
-                .HasForeignKey(b => b.Product_id);
+                .HasForeignKey(b => b.Product_id)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

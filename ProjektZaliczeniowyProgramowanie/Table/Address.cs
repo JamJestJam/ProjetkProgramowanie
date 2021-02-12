@@ -57,6 +57,16 @@ namespace DBconnectShop.Table {
 
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Address>().ToTable("Addresses");
+
+            modelBuilder.Entity<Address>()
+                .HasData(new Address() {
+                    Address_id = 1,
+                    Address_country = "Polska",
+                    Address_city = "Krakow",
+                    Address_street = "Komandora Wrońskiego Bohdana",
+                    Address_building_number = "54",
+                    Address_zip_code = "30-852"
+                });
         }
     }
 }

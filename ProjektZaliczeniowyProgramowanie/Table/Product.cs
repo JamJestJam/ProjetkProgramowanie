@@ -26,10 +26,6 @@ namespace DBconnectShop.Table {
         public string Product_name { get; internal set; }
 
         [Required]
-        [Column(TypeName = "ntext")]
-        public string Product_description { get; internal set; }
-
-        [Required]
         public bool Product_aviable { get; internal set; }
 
         #endregion
@@ -90,6 +86,14 @@ namespace DBconnectShop.Table {
                 .HasOne(a => a.Product_Producer)
                 .WithMany(b => b.Products)
                 .HasForeignKey(b => b.Product_producer_id);
+
+            modelBuilder.Entity<Product>()
+                .HasData(new Product() {
+                    Product_id = 1,
+                    Product_producer_id = 1,
+                    Product_category_id = 1,
+                    Product_name = "Przykład"
+                });
         }
     }
 }

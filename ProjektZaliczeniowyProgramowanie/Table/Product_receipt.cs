@@ -38,7 +38,8 @@ namespace DBconnectShop.Table {
             modelBuilder.Entity<Product_receipt>()
                 .HasOne(a => a.Worker)
                 .WithMany(b => b.Product_Receipts)
-                .HasForeignKey(b => b.Worker_storekeeper_id);
+                .HasForeignKey(b => b.Worker_storekeeper_id)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Product_receipt>()
                 .HasOne(a => a.Product_Order)

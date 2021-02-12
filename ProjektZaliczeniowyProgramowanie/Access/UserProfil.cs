@@ -13,13 +13,13 @@ namespace DBconnectShop.Access {
             (user.User_name is null) ?
                 "" : user.User_name.Trim();
         public string FirstName =>
-            (user.User_Data.User_first_name is null) ?
+            (user.User_Data is null) ?
                 "" : user.User_Data.User_first_name.Trim();
         public string SecoundName =>
-            (user.User_Data.User_second_name is null) ?
+            (user.User_Data is null) ?
                 "" : user.User_Data.User_second_name.Trim();
         public string FamilyName =>
-            (user.User_Data.User_family_name is null) ?
+            (user.User_Data is null) ?
                 "" : user.User_Data.User_family_name.Trim();
 
         public List<Address> Address =>

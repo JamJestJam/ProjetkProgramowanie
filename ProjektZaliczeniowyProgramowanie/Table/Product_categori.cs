@@ -44,6 +44,12 @@ namespace DBconnectShop.Table {
                 .HasMany(a => a.Children)
                 .WithOne(b => b.Parent)
                 .HasForeignKey(b => b.Product_sub_category);
+
+            modelBuilder.Entity<Product_categori>()
+                .HasData(new Product_categori() {
+                    Product_category_id = 1,
+                    Product_category_name = "Przykład"
+                });
         }
     }
 }

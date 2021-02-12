@@ -27,6 +27,22 @@ namespace DBconnectShop.Table {
 
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<User_group>().ToTable("User_groups");
+
+            modelBuilder.Entity<User_group>()
+                .HasData(new User_group() {
+                    User_group_id = 1,
+                    User_group_name = "Klient"
+                });
+            modelBuilder.Entity<User_group>()
+                .HasData(new User_group() {
+                    User_group_id = 2,
+                    User_group_name = "Pracownik"
+                });
+            modelBuilder.Entity<User_group>()
+                .HasData(new User_group() {
+                    User_group_id = 3,
+                    User_group_name = "Administrator"
+                });
         }
     }
 }

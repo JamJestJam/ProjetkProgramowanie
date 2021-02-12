@@ -26,6 +26,11 @@ namespace DBconnectShop.Table {
                 .HasOne(a => a.User)
                 .WithOne(b => b.Worker_Purchaser)
                 .HasForeignKey<Worker_purchaser>(b => b.User_id);
+
+            modelBuilder.Entity<Worker_purchaser>()
+                .HasData(new Worker_purchaser() {
+                    User_id=1,
+                });
         }
     }
 }

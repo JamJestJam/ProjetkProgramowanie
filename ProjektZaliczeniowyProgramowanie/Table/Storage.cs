@@ -37,6 +37,13 @@ namespace DBconnectShop.Table {
                 .HasOne(a => a.Address)
                 .WithMany(b => b.Storage_Addresses)
                 .HasForeignKey(a => a.Address_id);
+
+            modelBuilder.Entity<Storage>()
+                .HasData(new Storage() {
+                    Storage_id = 1,
+                    Address_id = 1,
+                    Storage_name = "Pierwotny magazyn"
+                });
         }
     }
 }

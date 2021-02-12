@@ -42,10 +42,10 @@ namespace DBconnectShop.Access {
                 .SelectManyRecursive(a => a.Children)
                 .Select(a => a.Product_category_id).ToList();
 
-            if(categoryID == null)
-                categoryWhere = Categoris.SelectManyRecursive(a => a.Children)
+            if(categoryID == null) {
+                categoryWhere = Categoris
                     .Select(a => a.Product_category_id).ToList();
-            else
+            } else
                 categoryWhere.Add((int)categoryID);
 
             return this.Products

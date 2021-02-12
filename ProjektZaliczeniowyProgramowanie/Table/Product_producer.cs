@@ -27,6 +27,12 @@ namespace DBconnectShop.Table {
 
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Product_producer>().ToTable("Product_producers");
+
+            modelBuilder.Entity<Product_producer>()
+                .HasData(new Product_producer() {
+                    Product_producer_id = 1,
+                    Product_producer_name = "Przykład"
+                });
         }
     }
 }

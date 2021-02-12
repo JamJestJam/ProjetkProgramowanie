@@ -66,6 +66,15 @@ namespace DBconnectShop.Table {
                 .HasOne(a => a.User_Group)
                 .WithMany(b => b.Users)
                 .HasForeignKey(b => b.User_group_id);
+
+            modelBuilder.Entity<User>()
+                .HasData(new User() {
+                    User_id =1,
+                    User_group_id = 3,
+                    User_name = "Admin",
+                    User_password = "admin",
+                    User_active = true
+                });
         }
     }
 }

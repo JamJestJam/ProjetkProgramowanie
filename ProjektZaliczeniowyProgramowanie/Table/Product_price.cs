@@ -11,7 +11,7 @@ namespace DBconnectShop.Table {
         public int Product_id { get; internal set; }
 
         [Required]
-        [Column(TypeName = "smalldatatime")]
+        [Column(TypeName = "smalldatetime")]
         public DateTime Product_price_date { get; internal set; }
 
         [Required]
@@ -40,6 +40,13 @@ namespace DBconnectShop.Table {
                 .HasOne(a => a.Product)
                 .WithMany(b => b.Products_Prices)
                 .HasForeignKey(b => b.Product_id);
+
+            modelBuilder.Entity<Products_price>()
+                .HasData(new Products_price() {
+                    Product_id = 1,
+                    Product_price_date = DateTime.Now,
+                    Product_price = 100
+                });
         }
     }
 }
