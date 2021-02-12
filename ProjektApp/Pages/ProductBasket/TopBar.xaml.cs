@@ -1,8 +1,8 @@
 ﻿using ProjektApp.Pages.Buttons;
 using ProjektApp.Pages.Products;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using ProductListMain = ProjektApp.Pages.Products.ProductList;
 
 namespace ProjektApp.Pages.ProductBasket {
     /// <summary>
@@ -11,17 +11,19 @@ namespace ProjektApp.Pages.ProductBasket {
     public partial class TopBar : UserControl {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
+        Type back;
 
-        public TopBar() {
+        public TopBar(Type type) {
             InitializeComponent();
 
+            this.back = type;
             UserBtn.Content = new User();
             Exit.Content = new Exit();
             Basket.Content = new Basket();
         }
 
         private void GoBack(object sender, RoutedEventArgs e) {
-            Window.Content.Content = new ProductListMain();
+            Window.Content.Content = Activator.CreateInstance(back);
         }
     }
 }

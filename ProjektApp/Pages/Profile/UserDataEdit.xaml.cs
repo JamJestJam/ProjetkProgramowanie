@@ -32,7 +32,9 @@ namespace ProjektApp.Pages.Profile {
         }
 
         public void UseData() {
-            Window.Loading.IsOpen = true;
+            Dispatcher.Invoke(() => {
+                Window.Loading.IsOpen = true;
+            });
             Thread thread = new Thread(DownloadData) {
                 IsBackground = true
             };
@@ -74,7 +76,7 @@ namespace ProjektApp.Pages.Profile {
                 UseData();
             } catch(Exception e) {
                 Dispatcher.Invoke(() => {
-                    Window.DialogText.Content = e.Message;
+                   Window.DialogText.Content = e.Message;
                     Window.Dialog.IsOpen = true;
                 });
             }

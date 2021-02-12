@@ -1,8 +1,10 @@
 ﻿using DBconnectShop.Addons;
 using DBconnectShop.Table;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace DBconnectShop.Access {
     public class UserProfil {
@@ -102,6 +104,46 @@ namespace DBconnectShop.Access {
             int code = db.SaveChanges();
             if(code != 1)
                 throw new AddElementException("Wystąpił problem z przesłanym avatarem.");
+        }
+
+        public void AddAddress(string country, string city, string street, string building, string zipCode) {
+            using var db = new Shop();
+
+            if(country.Length<3 || city.Length < 3 || street.Length < 3)
+                throw new ArgumentException("Uzupełnij wszystkie dane.");
+
+            country = country.First().ToString().ToUpper() + country.Substring(1).ToLower();
+            city = city.First().ToString().ToUpper() + city.Substring(1).ToLower();
+            street = street.First().ToString().ToUpper() + street.Substring(1).ToLower();
+
+            if(!Regex.IsMatch(country, @"^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$"))
+                throw new ArgumentException("Nie poprawna nazwa kraju.");
+            if(!Regex.IsMatch(city, @"^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$"))
+                throw new ArgumentException("Nie poprawna nazwa miasta.");
+            if(!Regex.IsMatch(street, @"^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$"))
+                throw new ArgumentException("Nie poprawna nazwa ulicy.");
+            if(!int.TryParse(building, out _))
+                throw new ArgumentException("Nie poprawny numer mieszkania.");
+            if(!Regex.IsMatch(zipCode, @"^[0-9]{2}-[0-9]{3}$"))
+                throw new ArgumentException("Nie poprawny kod pocztowy.");
+
+            var address = new Address() {
+                Address_country = country,
+                Address_city = city,
+                Address_street = street,
+                Address_building_number = building,
+                Address_zip_code = zipCode
+            };
+
+            var userAddress = new User_address() {
+                User_id = user.User_id,
+                Address = address
+            };
+            db.User_Addresses.Add(userAddress);
+
+            int code = db.SaveChanges();
+            if(code == 0)
+                throw new AddElementException("Wystąpił problem z przesłanym adressem.");
         }
     }
 }

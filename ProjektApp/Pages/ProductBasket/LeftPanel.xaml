@@ -8,13 +8,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
     <StackPanel>
-        <Button Margin="10" Cursor="Hand" Height="50" >
+        <Button Margin="10" Cursor="Hand" Height="50" Click="Address">
             <StackPanel Width="250" Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Earth" Height="40" Width="40"/>
                 <TextBlock Text="Adres dostawy" FontSize="25" Padding="5"/>
             </StackPanel>
         </Button>
-        <Button Margin="10" Cursor="Hand" Height="50" >
+        <Button Margin="10" Cursor="Hand" Height="50" Click="Buy">
             <StackPanel Width="250" Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="BasketFill" Height="40" Width="40"/>
                 <TextBlock Text="Zamów" FontSize="25" Padding="5"/>

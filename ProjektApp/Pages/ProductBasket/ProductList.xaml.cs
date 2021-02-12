@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using ProductListMain = ProjektApp.Pages.Products.ProductList;
 
 namespace ProjektApp.Pages.ProductBasket {
     /// <summary>
@@ -18,7 +19,7 @@ namespace ProjektApp.Pages.ProductBasket {
             GridData.ItemsSource = Values;
             
             Window.LeftPanel.Content = new LeftPanel(this);
-            Window.TopBar.Content = new TopBar();
+            Window.TopBar.Content = new TopBar(typeof(ProductListMain));
 
             Window.Loading.IsOpen = true;
             Thread thread = new Thread(InsertBasket) {
@@ -49,8 +50,6 @@ namespace ProjektApp.Pages.ProductBasket {
     }
 
     public class Element {
-        static MainWindow Window =>
-                Application.Current.MainWindow as MainWindow;
         private BasketProduct ProductBS = null;
         private DataGrid Values = null;
 
@@ -70,7 +69,6 @@ namespace ProjektApp.Pages.ProductBasket {
                 }
             }
         }
-
 
         public Element(int lp, BasketProduct product, DataGrid values) {
             Lp = lp.ToString();

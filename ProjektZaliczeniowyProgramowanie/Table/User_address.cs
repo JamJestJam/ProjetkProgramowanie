@@ -22,14 +22,21 @@ namespace DBconnectShop.Table {
 
         #region Fireign key ==================================
 
-        public Address Address { get; }
-        public User User { get; }
-        public IEnumerable<User_order> User_Orders { get; } = new List<User_order>();
+        public Address Address { get; internal set; }
+        public User User { get; internal set; }
+        public IEnumerable<User_order> User_Orders { get; internal set; } = new List<User_order>();
 
         #endregion
 
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<User_address>().ToTable("User_Addresses");
+
+            modelBuilder.Entity<User_address>()
+                .HasIndex(a => new {
+                    a.Address_id,
+                    a.User_id
+                })
+                .IsUnique(true);
 
             modelBuilder.Entity<User_address>()
                 .HasOne(a => a.Address)
