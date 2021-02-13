@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ProjektApp.Pages.Profile.OrderHistory"
+﻿<UserControl x:Class="ProjektApp.Pages.Profile.ProductsInOrder"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -13,19 +13,10 @@
             <Separator />
             <DataGrid x:Name="GridData" CanUserAddRows="False" SelectionUnit="Cell" SelectionMode="Extended" IsReadOnly="True" HorizontalAlignment="Center" CellStyle="{StaticResource MaterialDesignDataGridCell}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Lp" Binding="{Binding Path=c1}" Width="auto"/>
-                    <DataGridTextColumn Header="Stan zamówienia" Binding="{Binding Path=c2}" Width="auto"/>
-                    <DataGridTextColumn Header="Data zamówienia" Binding="{Binding Path=c3}" Width="auto"/>
-                    <DataGridTextColumn Header="Ilość produktów" Binding="{Binding Path=c4}" Width="auto"/>
-                    <DataGridTemplateColumn Header="Produkty" Width="auto">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Height="30" Width="30" Click="ShowProduct" CommandParameter="{Binding Path=c5}">
-                                    <materialDesign:PackIcon Kind="Show"/>
-                                </Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Lp" Binding="{Binding Path=c1}"/>
+                    <DataGridTextColumn Header="Nazwa produktu" Binding="{Binding Path=c2}"/>
+                    <DataGridTextColumn Header="Cena" Binding="{Binding Path=c3}"/>
+                    <DataGridTextColumn Header="Ilość produktów" Binding="{Binding Path=c4}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

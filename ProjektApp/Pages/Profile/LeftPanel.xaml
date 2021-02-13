@@ -26,7 +26,7 @@
                 <TextBlock Text="Przeglądaj adresy" FontSize="25" Padding="5"/>
             </StackPanel>
         </Button>
-        <Button Margin="10" Cursor="Hand" Height="50">
+        <Button Margin="10" Cursor="Hand" Height="50" Click="OrderHistory">
             <StackPanel Width="250" Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Payment" Height="40" Width="40"/>
                 <TextBlock Text="Zamówienia" FontSize="25" Padding="5"/>

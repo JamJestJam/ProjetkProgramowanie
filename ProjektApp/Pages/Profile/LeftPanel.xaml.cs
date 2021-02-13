@@ -63,5 +63,9 @@ namespace ProjektApp.Pages.Profile {
                 Window.Loading.IsOpen = false;
             });
         }
+
+        public void OrderHistory(object o, EventArgs e) {
+            Window.Content.Content = new OrderHistory();
+        }
     }
 }

@@ -27,7 +27,8 @@ namespace DBconnectShop.Table {
             modelBuilder.Entity<User_order_product_storage>()
                 .HasOne(a => a.Storage_Product)
                 .WithOne(b => b.Order)
-                .HasForeignKey<User_order_product_storage>(a => a.Storage_Product_id);
+                .HasForeignKey<User_order_product_storage>(a => a.Storage_Product_id)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<User_order_product_storage>()
                 .HasOne(a => a.Product)

@@ -38,7 +38,7 @@ namespace ProjektApp.Pages.ProductBasket {
             var basket = new BasketProducts(basketProducts);
             basket.ShowProducts();
 
-            int lp = 0;
+            int lp = 1;
             foreach(var product in basket.Products)
                 Values.Add(new Element(lp++, product, GridData));
 

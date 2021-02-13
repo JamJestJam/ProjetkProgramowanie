@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using DBconnectShop.Access;
-using DBconnectShop.Table;
 
 namespace DBconnectShop.Addons {
     public class Basket {

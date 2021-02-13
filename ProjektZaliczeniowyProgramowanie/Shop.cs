@@ -31,6 +31,7 @@ namespace DBconnectShop {
         public DbSet<Storage_Product_localization> Storage_Product_Localizations { get; set; }
         public DbSet<User_order_status> User_Order_Statuses { get; set; }
         public DbSet<User_order> User_Orders { get; set; }
+        public DbSet<User_order_product> User_Order_Product { get; set; }
         public DbSet<User_order_product_storage> User_Order_Product_Storages { get; set; }
         public DbSet<User_order_receipt> User_Order_Receipts { get; set; }
 
@@ -72,6 +73,7 @@ namespace DBconnectShop {
 
             User_order_status.ModelCreate(modelBuilder);
             User_order.ModelCreate(modelBuilder);
+            User_order_product.ModelCreate(modelBuilder);
             User_order_product_storage.ModelCreate(modelBuilder);
             User_order_receipt.ModelCreate(modelBuilder);
         }
