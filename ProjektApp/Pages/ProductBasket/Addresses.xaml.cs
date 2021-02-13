@@ -27,6 +27,7 @@ namespace ProjektApp.Pages.ProductBasket {
         public Addresses() {
             InitializeComponent();
             Window.TopBar.Content = new TopBar(typeof(ProductList));
+            Reload();
         }
 
         public void Add(object o, EventArgs e) {
@@ -35,6 +36,36 @@ namespace ProjektApp.Pages.ProductBasket {
                 IsBackground = true
             };
             thread.Start();
+        }
+
+        public void Reload() {
+            Window.Loading.IsOpen = true;
+            var thread = new Thread(ShowAddresses) {
+                IsBackground = true
+            };
+            thread.Start();
+        }
+
+        public void ShowAddresses() {
+            LoginDB login = null;
+            Dispatcher.Invoke(() => {
+                login = Window.login;
+                AddressesList.Children.Clear();
+            });
+            UserProfil profil = new UserProfil(login);
+
+            foreach(var address in profil.Addresses) {
+                Dispatcher.Invoke(() => {
+                    var control = new UserControl();
+                    var single = new SingleAddress(address.User_Address_id, address.Address);
+                    control.Content = single;
+                    AddressesList.Children.Add(control);
+                });
+            }
+
+            Dispatcher.Invoke(() => {
+                Window.Loading.IsOpen = false;
+            });
         }
 
         private void Add() {
@@ -56,11 +87,13 @@ namespace ProjektApp.Pages.ProductBasket {
 
             UserProfil profil = new UserProfil(login);
             try {
-                profil.AddAddress(country, city, strret, building, zip);
+                int id = profil.AddAddress(country, city, strret, building, zip);
                 Dispatcher.Invoke(() => {
                     Window.DialogText.Content = "Udało się dodać adress.";
                     Window.Dialog.IsOpen = true;
                     Window.Loading.IsOpen = false;
+                    Window.Content.Content = new ProductList();
+                    Window.basket.Address_id = id;
                 });
             }catch(Exception e) {
                 Dispatcher.Invoke(() => {

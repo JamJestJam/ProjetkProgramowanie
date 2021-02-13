@@ -20,11 +20,14 @@
                     <StackPanel Margin="20" x:Name="Adress">
                         <Label Content="Użyj wcześniejszego" FontSize="25" HorizontalAlignment="Center" />
                         <Separator />
+                        <StackPanel x:Name="AddressesList">
+                            
+                        </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
             <Grid Grid.Column="1" Background="White"/>
-            <Grid Grid.Column="2">
+            <Grid Grid.Column="2" VerticalAlignment="Center">
                 <StackPanel Margin="20">
                     <Label Content="Dodaj nowy adress" FontSize="25" HorizontalAlignment="Center" />
                     <Separator />
