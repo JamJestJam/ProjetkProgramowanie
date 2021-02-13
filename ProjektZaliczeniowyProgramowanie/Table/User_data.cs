@@ -26,6 +26,7 @@ namespace DBconnectShop.Table {
         [Column(TypeName = "nchar")]
         public string User_family_name { get; internal set; }
 
+        [MaxLength(8000)]
         [Column(TypeName = "varBinary")]
         public byte[] User_avatar { get; internal set; }
 

@@ -15,6 +15,7 @@ namespace DBconnectShop.Table {
         public int Product_id { get; internal set; }
 
         [Required]
+        [MaxLength(8000)]
         [Column(TypeName = "varBinary")]
         public byte[] Product_Image { get; internal set; }
 
