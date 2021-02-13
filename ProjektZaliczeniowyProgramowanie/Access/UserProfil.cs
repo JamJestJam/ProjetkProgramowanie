@@ -3,6 +3,7 @@ using DBconnectShop.Table;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -23,6 +24,8 @@ namespace DBconnectShop.Access {
         public string FamilyName =>
             (user.User_Data is null) ?
                 "" : user.User_Data.User_family_name.Trim();
+        public IReadOnlyList<User_address> Addresses =>
+            user.User_Address.ToList().AsReadOnly();
 
         public List<Address> Address =>
             user.User_Address.Select(a => a.Address).ToList();
@@ -106,7 +109,7 @@ namespace DBconnectShop.Access {
                 throw new AddElementException("Wystąpił problem z przesłanym avatarem.");
         }
 
-        public void AddAddress(string country, string city, string street, string building, string zipCode) {
+        public int AddAddress(string country, string city, string street, string building, string zipCode) {
             using var db = new Shop();
 
             if(country.Length < 3 || city.Length < 3 || street.Length < 3)
@@ -154,6 +157,7 @@ namespace DBconnectShop.Access {
                 int code = db.SaveChanges();
                 if(code == 0)
                     throw new AddElementException("Wystąpił problem z przesłanym adressem.");
+                return userAddress.User_Address_id;
             } catch {
                 throw new AddElementException("Wystąpił problem z przesłanym adressem.");
             }

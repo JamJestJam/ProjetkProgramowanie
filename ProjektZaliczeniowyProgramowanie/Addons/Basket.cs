@@ -3,6 +3,7 @@ using System.Linq;
 
 namespace DBconnectShop.Addons {
     public class Basket {
+        public int Address_id { get; set; }
         public Dictionary<int, uint> ProductList { get; } = new Dictionary<int, uint>();
 
         public long Count =>
