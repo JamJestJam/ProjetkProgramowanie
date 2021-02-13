@@ -1,5 +1,4 @@
 ﻿using ProjektApp.Pages.Buttons;
-using ProjektApp.Pages.Products;
 using System;
 using System.Windows;
 using System.Windows.Controls;

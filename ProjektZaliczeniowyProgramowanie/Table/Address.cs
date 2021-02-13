@@ -60,12 +60,13 @@ namespace DBconnectShop.Table {
             modelBuilder.Entity<Address>().ToTable("Addresses");
 
             modelBuilder.Entity<Address>()
-                .HasIndex(a => new { 
-                    a.Address_city, 
-                    a.Address_country, 
-                    a.Address_street, 
-                    a.Address_building_number, 
-                    a.Address_zip_code})
+                .HasIndex(a => new {
+                    a.Address_city,
+                    a.Address_country,
+                    a.Address_street,
+                    a.Address_building_number,
+                    a.Address_zip_code
+                })
                 .IsUnique(true);
 
             modelBuilder.Entity<Address>()

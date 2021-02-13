@@ -23,10 +23,6 @@ namespace DBconnectShop.Table {
         [Column(TypeName = "smalldatetime")]
         public DateTime User_order_date { get; internal set; }
 
-        [StringLength(100)]
-        [Column(TypeName = "nchar")]
-        public string User_note { get; internal set; }
-
         #endregion
 
         #region Fireign key ==================================
@@ -34,7 +30,7 @@ namespace DBconnectShop.Table {
         public User_order_status Order_Status { get; }
         public User_address Address { get; }
         public User_order_receipt Order_Receipt { get; }
-        public IEnumerable<User_order_product> Products { get; } = new List<User_order_product>();
+        public IEnumerable<User_order_product> Products { get; internal set; } = new List<User_order_product>();
 
         #endregion
 

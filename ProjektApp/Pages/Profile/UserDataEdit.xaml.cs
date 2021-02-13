@@ -76,7 +76,7 @@ namespace ProjektApp.Pages.Profile {
                 UseData();
             } catch(Exception e) {
                 Dispatcher.Invoke(() => {
-                   Window.DialogText.Content = e.Message;
+                    Window.DialogText.Content = e.Message;
                     Window.Dialog.IsOpen = true;
                 });
             }

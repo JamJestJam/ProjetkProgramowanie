@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using DBconnectShop.Access;
+using DBconnectShop.Table;
 
 namespace DBconnectShop.Addons {
     public class Basket {
-        public int Address_id { get; set; }
+        public int? Address_id { get; set; } = null;
         public Dictionary<int, uint> ProductList { get; } = new Dictionary<int, uint>();
 
         public long Count =>
@@ -47,8 +50,6 @@ namespace DBconnectShop.Addons {
                 OnChange?.Invoke(this, new BasketChangeEventArgs(productID, before, after));
             }
         }
-
-
 
         public delegate void BasketContentChange(Basket basket, BasketChangeEventArgs e);
 

@@ -17,7 +17,7 @@ namespace ProjektApp.Pages.ProductBasket {
         public ProductList() {
             InitializeComponent();
             GridData.ItemsSource = Values;
-            
+
             Window.LeftPanel.Content = new LeftPanel(this);
             Window.TopBar.Content = new TopBar(typeof(ProductListMain));
 
@@ -35,7 +35,8 @@ namespace ProjektApp.Pages.ProductBasket {
             Dispatcher.Invoke(() => {
                 basketProducts = Window.basket;
             });
-            var basket = new BasketProducts(basketProducts); ;
+            var basket = new BasketProducts(basketProducts);
+            basket.ShowProducts();
 
             int lp = 0;
             foreach(var product in basket.Products)

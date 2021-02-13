@@ -1,11 +1,12 @@
 ﻿using DBconnectShop.Access;
-using Microsoft.Win32;
+using DBconnectShop.Addons;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Linq;
 using LoginDB = DBconnectShop.Access.Login;
+
 
 namespace ProjektApp.Pages.ProductBasket {
     /// <summary>
@@ -40,28 +41,29 @@ namespace ProjektApp.Pages.ProductBasket {
 
         private void Buy() {
             LoginDB login = null;
+            Basket basket = null;
             Dispatcher.Invoke(() => {
                 login = Window.login;
+                basket = Window.basket;
             });
 
             var profil = new UserProfil(login);
 
-            if(profil.FirstName == "" || profil.FamilyName == "") {
+            try {
+                var buy = new BasketProducts(basket);
+                buy.Buy(profil);
+
                 Dispatcher.Invoke(() => {
-                    Window.DialogText.Content = "Przez zamówieniem produktów uzupełnij profil.";
+                    Window.basket = new Basket();
                     Window.Dialog.IsOpen = true;
+                    Window.DialogText.Content = "Wysłano zamówienie";
                     Window.Loading.IsOpen = false;
+                    Window.Content.Content = new ProductList();
                 });
-            }else if(profil.Address.Count == 0){
+            } catch(Exception e) {
                 Dispatcher.Invoke(() => {
-                    Window.DialogText.Content = "Przez zamówieniem produktów wpisz adres przesyłki.";
                     Window.Dialog.IsOpen = true;
-                    Window.Loading.IsOpen = false;
-                });
-            } else {
-                Dispatcher.Invoke(() => {
-                    Window.DialogText.Content = "Jeszcze nie działam.";
-                    Window.Dialog.IsOpen = true;
+                    Window.DialogText.Content = e.Message;
                     Window.Loading.IsOpen = false;
                 });
             }

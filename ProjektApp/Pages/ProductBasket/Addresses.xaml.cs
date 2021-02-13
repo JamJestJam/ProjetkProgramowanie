@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using DBconnectShop.Access;
+using System;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DBconnectShop.Access;
 using LoginDB = DBconnectShop.Access.Login;
 
 namespace ProjektApp.Pages.ProductBasket {
@@ -70,10 +59,10 @@ namespace ProjektApp.Pages.ProductBasket {
 
         private void Add() {
             LoginDB login = null;
-            string country = null, 
-                city = null, 
-                strret = null, 
-                building = null, 
+            string country = null,
+                city = null,
+                strret = null,
+                building = null,
                 zip = null;
 
             Dispatcher.Invoke(() => {
@@ -95,7 +84,7 @@ namespace ProjektApp.Pages.ProductBasket {
                     Window.Content.Content = new ProductList();
                     Window.basket.Address_id = id;
                 });
-            }catch(Exception e) {
+            } catch(Exception e) {
                 Dispatcher.Invoke(() => {
                     Window.DialogText.Content = e.Message;
                     Window.Dialog.IsOpen = true;

@@ -3,7 +3,6 @@ using DBconnectShop.Table;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Collections;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -27,8 +26,8 @@ namespace DBconnectShop.Access {
         public IReadOnlyList<User_address> Addresses =>
             user.User_Address.ToList().AsReadOnly();
 
-        public List<Address> Address =>
-            user.User_Address.Select(a => a.Address).ToList();
+        public IReadOnlyList<Address> Address =>
+            user.User_Address.Select(a => a.Address).ToList().AsReadOnly();
 
         public UserProfil(Login login) {
             int userID = 0;
