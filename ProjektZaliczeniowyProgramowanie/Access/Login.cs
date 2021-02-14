@@ -13,6 +13,8 @@ namespace DBconnectShop.Access {
 
         public int GetUserID => user.User_id;
 
+        public UserGroup Group => user.User_Group.Group;
+
         /// <summary>
         /// Tworzy obiekt klasy
         /// </summary>
@@ -22,6 +24,7 @@ namespace DBconnectShop.Access {
             using var db = new Shop();
 
             var users = db.Users
+                .Include(a => a.User_Group)
                 .Where(a => a.User_name.Equals(userName))
                 .Where(a => a.User_password.Equals(password));
 

@@ -4,6 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
+    public enum UserGroup{
+        User = 1,
+        Worker = 2,
+        Admin = 3
+    }
+
     public class User_group {
         #region Columns ======================================
 
@@ -22,6 +28,13 @@ namespace DBconnectShop.Table {
         #region Fireign key ==================================
 
         public ICollection<User> Users { get; } = new List<User>();
+
+        #endregion
+
+        #region Cut ==========================================
+
+        public UserGroup Group =>
+            (UserGroup)User_group_id;
 
         #endregion
 
