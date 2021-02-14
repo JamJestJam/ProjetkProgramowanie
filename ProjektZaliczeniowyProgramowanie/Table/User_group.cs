@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
-    public enum UserGroup{
+    public enum UserGroup {
         User = 1,
         Worker = 2,
         Admin = 3

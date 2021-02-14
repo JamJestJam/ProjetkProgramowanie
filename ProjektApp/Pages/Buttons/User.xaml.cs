@@ -1,12 +1,12 @@
 ﻿using DBconnectShop.Access;
+using DBconnectShop.Table;
 using Microsoft.Win32;
+using ProjektApp.Pages.Admin;
+using ProjektApp.Pages.Employee;
 using ProjektApp.Pages.Profile;
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using DBconnectShop.Table;
-using ProjektApp.Pages.Admin;
-using ProjektApp.Pages.Employee;
 
 namespace ProjektApp.Pages.Buttons {
     /// <summary>
