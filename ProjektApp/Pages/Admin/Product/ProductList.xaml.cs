@@ -24,9 +24,11 @@ namespace ProjektApp.Pages.Admin.Product {
     public partial class ProductList : UserControl {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
+        AdminProducts admin = new AdminProducts(Window.login);
 
-        public List<Element> Values { get; set; } = new List<Element>();
-        public List<string> Categories { get; set; } = new List<string>();
+        List<Element> Values { get; set; } = new List<Element>();
+        List<string> Categories { get; set; } = new List<string>();
+        List<string> Producers { get; set; } = new List<string>();
 
         public ProductList() {
             InitializeComponent();
@@ -39,17 +41,12 @@ namespace ProjektApp.Pages.Admin.Product {
         }
 
         private void InitItems() {
-            LoginDB login = null;
-            Dispatcher.Invoke(() => {
-                login = Window.login;
-            });
-
-            AdminProducts admin = new AdminProducts(login);
             Categories = admin.GetCategories().Select(a => a.TrueName).ToList();
+            Producers = admin.GetProducers().Select(a => a.TrueName).ToList();
             Dispatcher.Invoke(() => {
                 Categoriee.ItemsSource = Categories;
+                Producer.ItemsSource = Producers;
             });
-
 
             foreach(var product in admin.GetProducts()) {
                 Dispatcher.Invoke(() => {
@@ -62,26 +59,40 @@ namespace ProjektApp.Pages.Admin.Product {
                 GridData.ItemsSource = Values;
             });
         }
-    }
 
-    public class Element {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Category { get; set; } 
-        public bool Aviable { get; set; }
+        class Element {
+            static MainWindow Window =>
+                Application.Current.MainWindow as MainWindow;
+            static AdminProducts admin = new AdminProducts(Window.login);
 
-        public Element(ProductDB product) {
-            ID = product.ID;
-            Name = product.TrueName;
-            Aviable = product.Product_aviable;
-            Category = product.Product_Categori.TrueName;
-        }
+            public int ID =>
+                Product.ID;
+            public string Name {
+                get => Product.TrueName;
+                set => admin.ChangeName(Product, value);
+            }
+            public string Category {
+                get => Product.Product_Categori.TrueName;
+                set => admin.ChangeCategory(Product, value);
+            }
+            public string Producer {
+                get => Product.Product_Producer.TrueName;
+                set => admin.ChangeProducer(Product, value);
+            }
+            public bool Aviable {
+                get => Product.Product_aviable;
+                set => admin.ChangeAviable(Product, value);
+            }
 
-        public Element() {
-            ID = 0;
-            Name = "";
-            Aviable = false;
-            Category = "Przyklad";
+            ProductDB Product;
+
+            public Element(ProductDB product) {
+                Product = product;
+            }
+
+            public Element() {
+                Product = admin.NewProduct();
+            }
         }
     }
 }

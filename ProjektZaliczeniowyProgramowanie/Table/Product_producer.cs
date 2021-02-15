@@ -25,6 +25,13 @@ namespace DBconnectShop.Table {
 
         #endregion
 
+        #region Cuts =========================================
+
+        public string TrueName =>
+            Product_producer_name.Trim();
+
+        #endregion
+
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Product_producer>().ToTable("Product_producers");
 

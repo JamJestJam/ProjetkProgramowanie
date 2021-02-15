@@ -48,7 +48,18 @@ namespace DBconnectShop.Table {
         #region Cuts =========================================
 
         public int ID => Product_id;
-        public decimal ActualPrice => Products_Prices.Where(a => a.Product_price_date <= DateTime.Now).OrderBy(a => a.Product_price_date).FirstOrDefault().Product_price;
+        public decimal ActualPrice {
+            get {
+                var tmp = Products_Prices
+                    .Where(a => a.Product_price_date <= DateTime.Now)
+                    .OrderBy(a => a.Product_price_date)
+                    .FirstOrDefault();
+
+                if(tmp is null)
+                    return 0;
+                return tmp.Product_price;
+            }
+        }
         public string TrueName => Product_name.Trim();
 
         #endregion
@@ -72,10 +83,6 @@ namespace DBconnectShop.Table {
 
         internal static void ModelCreate(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Product>().ToTable("Products");
-
-            modelBuilder.Entity<Product>()
-                .Property(a => a.Product_aviable)
-                .HasDefaultValue(true);
 
             modelBuilder.Entity<Product>()
                 .HasOne(a => a.Product_Categori)
