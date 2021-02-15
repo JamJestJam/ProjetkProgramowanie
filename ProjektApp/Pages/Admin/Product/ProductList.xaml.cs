@@ -60,10 +60,15 @@ namespace ProjektApp.Pages.Admin.Product {
             });
         }
 
+        private void ShowImages(object o, EventArgs e) {
+            var id = (int)((Button)o).CommandParameter;
+            Window.Content.Content = new ProductImages(id);
+        }
+
         class Element {
             static MainWindow Window =>
                 Application.Current.MainWindow as MainWindow;
-            static AdminProducts admin = new AdminProducts(Window.login);
+            AdminProducts admin = new AdminProducts(Window.login);
 
             public int ID =>
                 Product.ID;

@@ -103,9 +103,13 @@ namespace DBconnectShop.Access {
 
             User_Data.User_avatar = image.BlobImage;
 
-            int code = db.SaveChanges();
-            if(code != 1)
+            try {
+                int code = db.SaveChanges();
+                if(code != 1)
+                    throw new AddElementException("Wystąpił problem z przesłanym avatarem.");
+            } catch {
                 throw new AddElementException("Wystąpił problem z przesłanym avatarem.");
+            }
         }
 
         public int AddAddress(string country, string city, string street, string building, string zipCode) {

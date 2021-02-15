@@ -37,7 +37,6 @@ namespace ProjektApp.Pages.Profile {
 
         public void SetAvatar() {
             OpenFileDialog dlg = new OpenFileDialog();
-            dlg.FileName = "cos";
             dlg.DefaultExt = ".png";
             dlg.Filter = "Zdjęcia|*.png;*.jpg;*.jpge";
 

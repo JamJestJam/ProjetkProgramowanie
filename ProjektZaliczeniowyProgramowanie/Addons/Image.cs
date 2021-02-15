@@ -22,8 +22,13 @@ namespace DBconnectShop.Addons {
         }
 
         public Image(string FileLocation) {
-            if(!File.Exists(FileLocation))
-                throw new ImageException("Nie znaleźiono podanego pliku");
+            if(!File.Exists(FileLocation)) {
+                string test = Path.Combine(Environment.CurrentDirectory, FileLocation);
+                if(!File.Exists(FileLocation))
+                    throw new ImageException("Nie znaleźiono podanego pliku");
+                else
+                    FileLocation = test;
+            }
 
             ReadOnlySpan<byte> data = File.ReadAllBytes(FileLocation);
 
@@ -55,6 +60,9 @@ namespace DBconnectShop.Addons {
 
             throw new ImageException("Proszę podać plik graficzny.");
         }
+
+        public static Image Default =>
+            new Image("Images\\no-image.png");
     }
 
     public class ImageException : Exception {

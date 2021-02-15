@@ -23,11 +23,13 @@ namespace DBconnectShop.Access {
             Login = login;
         }
 
+        #region Product ========================================
+
         public List<Product> GetProducts() {
             using var db = new Shop();
             var products = db.Products
-                .Include(a=>a.Product_Categori)
-                .Include(a=>a.Product_Producer)
+                .Include(a => a.Product_Categori)
+                .Include(a => a.Product_Producer)
                 .ToList();
 
             return products;
@@ -63,9 +65,9 @@ namespace DBconnectShop.Access {
             db.SaveChanges();
 
             return db.Products
-                    .Include(a=>a.Product_Producer)
-                    .Include(a=>a.Product_Categori)
-                    .First(a=>a.Product_id == product.ID);
+                    .Include(a => a.Product_Producer)
+                    .Include(a => a.Product_Categori)
+                    .First(a => a.Product_id == product.ID);
         }
 
         public void ChangeName(Product product, string value) {
@@ -88,10 +90,10 @@ namespace DBconnectShop.Access {
             using var db = new Shop();
             db.Products.Attach(product);
 
-            product.Product_category_id = 
+            product.Product_category_id =
             db.Product_Categories
-                .Where(a=>a.Product_category_name == value)
-                .Select(a=>a.Product_category_id)
+                .Where(a => a.Product_category_name == value)
+                .Select(a => a.Product_category_id)
                 .First();
             db.SaveChanges();
         }
@@ -107,5 +109,62 @@ namespace DBconnectShop.Access {
                 .First();
             db.SaveChanges();
         }
+
+        #endregion
+
+        #region Imgaes =========================================
+
+        public List<Product_image> GetImages(int id) {
+            using var db = new Shop();
+
+            return db
+                .Product_Images
+                .Where(a => a.Product_id == id)
+                .ToList();
+        }
+
+        public void ChangeActive(Product_image product, bool value) {
+            using var db = new Shop();
+            db.Product_Images.Attach(product);
+
+            product.Product_image_active = value;
+            db.SaveChanges();
+        }
+
+        public void ChangeImage(int id, string file) {
+            using var db = new Shop();
+
+            var image = new Image(file);
+            var product = db.Product_Images.Where(a => a.Product_image_id == id).FirstOrDefault();
+
+            db.Product_Images.Attach(product);
+            product.Product_Image = image.BlobImage;
+
+            try {
+                int code = db.SaveChanges();
+                if(code != 1)
+                    throw new AddElementException("Wystąpił problem z przesłanym avatarem.");
+            } catch {
+                throw new AddElementException("Wystąpił problem z przesłanym avatarem.");
+            }
+        }
+
+        public Product_image NewImage(int id) {
+            using var db = new Shop();
+            var tmp = Image.Default.BlobImage;
+
+            Product_image product = new Product_image() {
+                Product_image_active = false,
+                Product_id = id,
+                Product_Image = tmp
+            };
+
+            db.Product_Images.Add(product);
+            db.SaveChanges();
+
+            return product;
+        }
+
+        #endregion
     }
 }

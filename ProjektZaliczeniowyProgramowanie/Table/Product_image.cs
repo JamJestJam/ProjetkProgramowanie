@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DBconnectShop.Addons;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,16 +16,24 @@ namespace DBconnectShop.Table {
         public int Product_id { get; internal set; }
 
         [Required]
-        [MaxLength(8000)]
-        [Column(TypeName = "varBinary")]
+        [Column(TypeName = "varBinary(max)")]
         public byte[] Product_Image { get; internal set; }
 
+        [Required]
+        public bool Product_image_active { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
 
         public Product Product { get; }
+
+        #endregion
+
+        #region Cuts =========================================
+
+        public Image Image =>
+            new Image(Product_Image);
 
         #endregion
 

@@ -17,6 +17,7 @@ namespace ProjektApp.Pages.Products {
             InitializeComponent();
             this.product = product;
 
+            Image.Source = product.FirstImage.ToBitmap();
             ManageInfo();
         }
 

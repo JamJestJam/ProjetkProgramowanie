@@ -26,8 +26,7 @@ namespace DBconnectShop.Table {
         [Column(TypeName = "nchar")]
         public string User_family_name { get; internal set; }
 
-        [MaxLength(8000)]
-        [Column(TypeName = "varBinary")]
+        [Column(TypeName = "varBinary(max)")]
         public byte[] User_avatar { get; internal set; }
 
         #endregion
@@ -40,7 +39,7 @@ namespace DBconnectShop.Table {
 
         #region Cuts =========================================
 
-        public Bitmap Bitmap => new ImageAddon(User_avatar).bitmap;
+        public ImageAddon Image => new ImageAddon(User_avatar);
 
         #endregion
 

@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using ImageAddon = DBconnectShop.Addons.Image;
 using LoginDB = DBconnectShop.Access.Login;
 
 namespace ProjektApp.Pages.Product {
@@ -148,20 +149,9 @@ namespace ProjektApp.Pages.Product {
                 icon.Kind = PackIconKind.User;
                 chip.Icon = icon;
             } else {
-                var image = new BitmapImage();
-                var Image = new Image();
-                using var mem = new MemoryStream(opinion.User.User_Data.User_avatar);
-                mem.Position = 0;
-                image.BeginInit();
-                image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
-                image.CacheOption = BitmapCacheOption.OnLoad;
-                image.UriSource = null;
-                image.StreamSource = mem;
-                image.EndInit();
-                image.Freeze();
+                var image = opinion.User.User_Data.Image;
 
-                Image.Source = image;
-                chip.Icon = Image;
+                chip.Icon = image.ToImage();
             }
 
             Label label = new Label {
