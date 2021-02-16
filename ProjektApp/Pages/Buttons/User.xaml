@@ -16,7 +16,6 @@
             </materialDesign:PopupBox.ToggleContent>
             <StackPanel >
                 <Button Content="Profil użytkownika" HorizontalAlignment="Center" Click="Profile"/>
-                <Button x:Name="WorkerBt" Content="Menu pracownika" HorizontalAlignment="Center" Click="Worker"/>
                 <Button x:Name="AdminBt" Content="Menu admina" HorizontalAlignment="Center" Click="Admin"/>
                 <Separator />
                 <Button Content="Wyloguj się" HorizontalAlignment="Center" Click="LogOut"/>

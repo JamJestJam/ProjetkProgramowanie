@@ -35,13 +35,6 @@
                                 </Style>
                             </DataGridComboBoxColumn.ElementStyle>
                         </DataGridComboBoxColumn>
-                        <DataGridComboBoxColumn x:Name="Producer" Header="Producent" SelectedItemBinding="{Binding Path=Producer}">
-                            <DataGridComboBoxColumn.ElementStyle>
-                                <Style TargetType="ComboBox">
-                                    <Setter Property="VerticalAlignment" Value="Center" />
-                                </Style>
-                            </DataGridComboBoxColumn.ElementStyle>
-                        </DataGridComboBoxColumn>
                         <DataGridCheckBoxColumn Header="Dostępny" Binding="{Binding Path=Aviable}" >
                             <DataGridCheckBoxColumn.ElementStyle>
                                 <Style TargetType="CheckBox">

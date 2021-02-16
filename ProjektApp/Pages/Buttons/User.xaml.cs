@@ -2,7 +2,6 @@
 using DBconnectShop.Table;
 using Microsoft.Win32;
 using ProjektApp.Pages.Admin;
-using ProjektApp.Pages.Employee;
 using ProjektApp.Pages.Profile;
 using System;
 using System.Windows;
@@ -21,7 +20,6 @@ namespace ProjektApp.Pages.Buttons {
 
             switch(Window.login.Group) {
                 case UserGroup.User:
-                    WorkerBt.Visibility = Visibility.Collapsed;
                     AdminBt.Visibility = Visibility.Collapsed;
                     break;
             }
@@ -48,10 +46,6 @@ namespace ProjektApp.Pages.Buttons {
 
         private void Admin(object o, RoutedEventArgs e) {
             Window.Content.Content = new MainAdmin();
-        }
-
-        private void Worker(object o, RoutedEventArgs e) {
-            Window.Content.Content = new MainEmployee();
         }
 
         private void LogOut(object o, RoutedEventArgs e) {

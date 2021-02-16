@@ -28,7 +28,6 @@ namespace ProjektApp.Pages.Admin.Product {
 
         private void Reload() {
             Values = new List<Element>();
-            Window.Loading.IsOpen = true;
             Thread thread = new Thread(InitItems) {
                 IsBackground = true
             };

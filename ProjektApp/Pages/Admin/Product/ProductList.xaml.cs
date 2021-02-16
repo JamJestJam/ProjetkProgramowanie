@@ -19,7 +19,6 @@ namespace ProjektApp.Pages.Admin.Product {
 
         List<Element> Values { get; set; } = new List<Element>();
         List<string> Categories { get; set; } = new List<string>();
-        List<string> Producers { get; set; } = new List<string>();
 
         public ProductList() {
             InitializeComponent();
@@ -35,7 +34,6 @@ namespace ProjektApp.Pages.Admin.Product {
             Categories = admin.GetCategories().Select(a => a.TrueName).ToList();
             Dispatcher.Invoke(() => {
                 Categoriee.ItemsSource = Categories;
-                Producer.ItemsSource = Producers;
             });
 
             foreach(var product in admin.GetProducts()) {
