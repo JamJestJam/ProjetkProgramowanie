@@ -5,34 +5,49 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
+    /// <summary>
+    /// lista addresów
+    /// </summary>
     public class Address : IEquatable<Address> {
         #region Columns ======================================
-
+        /// <summary>
+        /// Klucz główny
+        /// </summary>
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Address_id { get; internal set; }
-
+        /// <summary>
+        /// Nazwa kraju
+        /// </summary>
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
         public string Address_country { get; internal set; }
-
+        /// <summary>
+        /// Nazwa miasta
+        /// </summary>
         [Required]
         [StringLength(50)]
         [Column(TypeName = "nchar")]
         public string Address_city { get; internal set; }
-
+        /// <summary>
+        /// Nazwa ulicy
+        /// </summary>
         [Required]
         [StringLength(50)]
         [Column(TypeName = "nchar")]
         public string Address_street { get; internal set; }
-
+        /// <summary>
+        /// Numer budynku
+        /// </summary>
         [Required]
         [StringLength(50)]
         [Column(TypeName = "nchar")]
         public string Address_building_number { get; internal set; }
-
+        /// <summary>
+        /// Kod pocztowy
+        /// </summary>
         [StringLength(50)]
         [Column(TypeName = "nchar")]
         public string Address_zip_code { get; internal set; }
@@ -40,7 +55,9 @@ namespace DBconnectShop.Table {
         #endregion
 
         #region Fireign key ==================================
-
+        /// <summary>
+        /// Lista użytkowników mających ten adress
+        /// </summary>
         public ICollection<User_address> User_Addresses { get; } = new List<User_address>();
 
         #endregion

@@ -16,6 +16,9 @@ namespace ProjektApp.Pages.Admin.Product {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
         AdminControl admin = new AdminControl(Window.login);
+        /// <summary>
+        /// ID obrazka które przetwarzamy
+        /// </summary>
         public static int ID { get; private set; }
         List<Element> Values { get; set; } = new List<Element>();
 

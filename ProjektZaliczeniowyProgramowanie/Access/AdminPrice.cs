@@ -5,6 +5,11 @@ using System.Linq;
 
 namespace DBconnectShop.Access {
     public partial class AdminControl {
+        /// <summary>
+        /// Pobiera liste historii cen produktu
+        /// </summary>
+        /// <param name="id">ID produktu</param>
+        /// <returns>lista cen produktu</returns>
         public List<Products_price> GetPrice(int id) {
             using var db = new Shop();
 
@@ -14,6 +19,11 @@ namespace DBconnectShop.Access {
                 .ToList();
         }
 
+        /// <summary>
+        /// Dodaje nową cene produktu
+        /// </summary>
+        /// <param name="id">ID produktu</param>
+        /// <returns>Zwraca dodaną cene</returns>
         public Products_price NewPrice(int id) {
             using var db = new Shop();
 
@@ -29,6 +39,11 @@ namespace DBconnectShop.Access {
             return product;
         }
 
+        /// <summary>
+        /// Zmienia cene produktu w czasie nie dłuższym niż minuta od jej dodania
+        /// </summary>
+        /// <param name="product">Cena produktu do zmiany</param>
+        /// <param name="value">Wartość na jaką zmienia</param>
         public void ChangePrice(Products_price product, decimal value) {
             using var db = new Shop();
 

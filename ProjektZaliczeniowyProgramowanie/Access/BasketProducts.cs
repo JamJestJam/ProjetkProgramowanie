@@ -6,14 +6,25 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace DBconnectShop.Access {
+    /// <summary>
+    /// Koszyk
+    /// </summary>
     public class BasketProducts {
         Basket Basket { get; }
+        /// <summary>
+        /// Lista produktów w koszyku
+        /// </summary>
         public List<BasketProduct> Products { get; private set; }
-
+        /// <summary>
+        /// tworzy nowy koszyk
+        /// </summary>
+        /// <param name="basket">Lista zakupów</param>
         public BasketProducts(Basket basket) {
             Basket = basket;
         }
-
+        /// <summary>
+        /// Zamienia listę zakupów na produkty
+        /// </summary>
         public void ShowProducts() {
             using var db = new Shop();
 
@@ -30,7 +41,10 @@ namespace DBconnectShop.Access {
             foreach(var product in productsQuery)
                 Products.Add(new BasketProduct(Basket, product));
         }
-
+        /// <summary>
+        /// Kupuje produktu
+        /// </summary>
+        /// <param name="profil">Użytkownik który kupuje</param>
         public void Buy(UserProfil profil) {
             if(profil.FirstName == "" || profil.FamilyName == "")
                 throw new ArgumentException("Przez zamówieniem produktów uzupełnij profil.");
@@ -73,26 +87,39 @@ namespace DBconnectShop.Access {
         }
     }
 
+    /// <summary>
+    /// Produkt w koszyku
+    /// </summary>
     public class BasketProduct {
         Basket Basket { get; }
         Product Product { get; }
-
+        /// <summary>
+        /// Ilość danego produktu
+        /// </summary>
         public uint Count {
             get => Basket.ProductList[Product.ID];
             set => Basket.SetCount(Product.ID, value);
         }
-
+        /// <summary>
+        /// Nazwa produktu
+        /// </summary>
         public string Name =>
             Product.TrueName;
-
+        /// <summary>
+        /// Cena produktu
+        /// </summary>
         public decimal Price =>
             Product.ActualPrice;
-
+        /// <summary>
+        /// Całkowita cena produktów
+        /// </summary>
         public decimal Sum =>
             Price * Count;
-
-        public string Image =>
-            "/Images/no-image.png";
+        /// <summary>
+        /// Miniaturka
+        /// </summary>
+        public Image Image =>
+            Product.FirstImage;
 
         internal BasketProduct(Basket basket, Product product) {
             Basket = basket;

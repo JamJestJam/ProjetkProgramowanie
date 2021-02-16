@@ -4,14 +4,22 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
+    /// <summary>
+    /// Stany zamówień
+    /// </summary>
     public class User_order_status {
         #region Columns ======================================
-
+        /// <summary>
+        /// Klucz główny
+        /// </summary>
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int User_order_status_id { get; internal set; }
 
+        /// <summary>
+        /// Nazwa stanu
+        /// </summary>
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
@@ -20,7 +28,9 @@ namespace DBconnectShop.Table {
         #endregion
 
         #region Fireign key ==================================
-
+        /// <summary>
+        /// Lista zamówień w danym stanie
+        /// </summary>
         public IEnumerable<User_order> User_Orders { get; } = new List<User_order>();
 
         #endregion

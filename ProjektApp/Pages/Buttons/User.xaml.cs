@@ -34,7 +34,7 @@ namespace ProjektApp.Pages.Buttons {
             Nullable<bool> result = dlg.ShowDialog();
             if(result == true) {
                 string filename = dlg.FileName;
-                
+
                 var profil = new UserProfil(Window.login);
                 profil.Change_Avatar(filename);
             }

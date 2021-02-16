@@ -5,6 +5,10 @@ using System.Linq;
 
 namespace DBconnectShop.Access {
     public partial class AdminControl {
+        /// <summary>
+        /// Pobiera liste produktów
+        /// </summary>
+        /// <returns>Zwraca listę produktów</returns>
         public List<Product> GetProducts() {
             using var db = new Shop();
             var products = db.Products
@@ -14,6 +18,10 @@ namespace DBconnectShop.Access {
             return products;
         }
 
+        /// <summary>
+        /// Pobiera liste kategorii
+        /// </summary>
+        /// <returns>Zwraca listę kategorii</returns>
         public List<Product_categori> GetCategories() {
             using var db = new Shop();
             var categories = db.Product_Categories
@@ -22,6 +30,10 @@ namespace DBconnectShop.Access {
             return categories;
         }
 
+        /// <summary>
+        /// Tworzy nowy produkt
+        /// </summary>
+        /// <returns>Zwraca stworzony produkt</returns>
         public Product NewProduct() {
             using var db = new Shop();
 
@@ -39,6 +51,11 @@ namespace DBconnectShop.Access {
                     .First(a => a.Product_id == product.ID);
         }
 
+        /// <summary>
+        /// Zmienia nazwe produktu
+        /// </summary>
+        /// <param name="product">Produkt do zmiany</param>
+        /// <param name="value">Wartość jaką ma przyjąć</param>
         public void ChangeName(Product product, string value) {
             using var db = new Shop();
             db.Products.Attach(product);
@@ -47,6 +64,11 @@ namespace DBconnectShop.Access {
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Zmienia stan produktu
+        /// </summary>
+        /// <param name="product">Produkt do zmiany</param>
+        /// <param name="value">Stan</param>
         public void ChangeAviable(Product product, bool value) {
             using var db = new Shop();
             db.Products.Attach(product);
@@ -55,6 +77,11 @@ namespace DBconnectShop.Access {
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Zmienia kategorie produktu
+        /// </summary>
+        /// <param name="product">Produkt do zmiany</param>
+        /// <param name="value">nazwa kategorii</param>
         public void ChangeCategory(Product product, string value) {
             using var db = new Shop();
             db.Products.Attach(product);

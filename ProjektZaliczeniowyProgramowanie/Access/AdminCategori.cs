@@ -1,12 +1,12 @@
 ﻿using DBconnectShop.Table;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DBconnectShop.Access {
     public partial class AdminControl {
+        /// <summary>
+        /// Tworzy nową kategorie
+        /// </summary>
+        /// <returns>Zwraca nową kategorię</returns>
         public Product_categori NewCategori() {
             using var db = new Shop();
 
@@ -21,6 +21,11 @@ namespace DBconnectShop.Access {
             return product;
         }
 
+        /// <summary>
+        /// Zmienia nazwe kategorii
+        /// </summary>
+        /// <param name="product">Kategoria której zmienia nazwe</param>
+        /// <param name="value">Wartość na jaką ma zmienić</param>
         public void ChangeCategoryName(Product_categori product, string value) {
             using var db = new Shop();
 
@@ -30,13 +35,18 @@ namespace DBconnectShop.Access {
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Zmienia rodzica kategorii
+        /// </summary>
+        /// <param name="product">Kategoria do zmiany</param>
+        /// <param name="value">Nazwa rodzica</param>
         public void ChangeParent(Product_categori product, string value) {
             using var db = new Shop();
             int? id = null;
             var tmp = db.Product_Categories
                 .FirstOrDefault(a => a.Product_category_name == value);
 
-            if(tmp != null) 
+            if(tmp != null)
                 id = tmp.ID;
             if(id == product.ID)
                 return;

@@ -1,20 +1,10 @@
 ﻿using DBconnectShop.Access;
 using DBconnectShop.Table;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ProjektApp.Pages.Admin.Product {
     /// <summary>
@@ -57,27 +47,44 @@ namespace ProjektApp.Pages.Admin.Product {
             });
         }
 
-        class Element {
+        /// <summary>
+        /// Clasa obsługująca datagrid
+        /// </summary>
+        private class Element {
             static MainWindow Window =>
                             Application.Current.MainWindow as MainWindow;
             AdminControl admin = new AdminControl(Window.login);
             Product_categori Product { get; }
 
+            /// <summary>
+            /// ID kategori
+            /// </summary>
             public int ID =>
                 Product.ID;
+            /// <summary>
+            /// Nazwa kategorii
+            /// </summary>
             public string Name {
                 get => Product.TrueName;
                 set => admin.ChangeCategoryName(Product, value);
             }
+            /// <summary>
+            /// Rodzic kategorii
+            /// </summary>
             public string Parent {
                 get => (Product.Parent is null) ? "Null" : Product.Parent.TrueName;
                 set => admin.ChangeParent(Product, value);
             }
-
+            /// <summary>
+            /// Tworzy nowy wiersz w datarowie
+            /// </summary>
             public Element() {
                 Product = admin.NewCategori();
             }
-
+            /// <summary>
+            /// Tworzy nowy wiersz w datarowie
+            /// </summary>
+            /// <param name="product">Kategoria którą ma być wypełniony</param>
             public Element(Product_categori product) {
                 Product = product;
             }

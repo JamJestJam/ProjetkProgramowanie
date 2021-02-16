@@ -4,19 +4,28 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
+    /// <summary>
+    /// Grupy uzytkowników
+    /// </summary>
     public enum UserGroup {
         User = 1,
         Admin = 3
     }
-
+    /// <summary>
+    /// grupy uzytkowników
+    /// </summary>
     public class User_group {
         #region Columns ======================================
-
+        /// <summary>
+        /// Klucz główny
+        /// </summary>
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int User_group_id { get; internal set; }
-
+        /// <summary>
+        /// Nazwa grupy
+        /// </summary>
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
@@ -25,13 +34,17 @@ namespace DBconnectShop.Table {
         #endregion
 
         #region Fireign key ==================================
-
+        /// <summary>
+        /// Lista użytkowników w grupie
+        /// </summary>
         public ICollection<User> Users { get; } = new List<User>();
 
         #endregion
 
         #region Cut ==========================================
-
+        /// <summary>
+        /// Zamiana na enum
+        /// </summary>
         public UserGroup Group =>
             (UserGroup)User_group_id;
 

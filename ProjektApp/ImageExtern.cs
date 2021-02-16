@@ -6,14 +6,14 @@ using ImageAddon = DBconnectShop.Addons.Image;
 
 namespace ProjektApp {
     public static class ImageExtern {
-        public static Image ToImage(this ImageAddon imageAddon) {
+        internal static Image ToImage(this ImageAddon imageAddon) {
             var Image = new Image();
 
             Image.Source = imageAddon.ToBitmap();
             return Image;
         }
 
-        public static BitmapImage ToBitmap(this ImageAddon imageAddon) {
+        internal static BitmapImage ToBitmap(this ImageAddon imageAddon) {
             var image = new BitmapImage();
             using var mem = new MemoryStream(imageAddon.BlobImage);
             mem.Position = 0;

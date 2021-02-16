@@ -12,9 +12,9 @@ namespace ProjektApp.Pages.Admin.Product {
     public partial class ProductSpecyfication : UserControl {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
-        AdminControl admin = new AdminControl(Window.login);
-        public static int ID { get; private set; }
-        List<Element> Values { get; set; } = new List<Element>();
+        private AdminControl admin = new AdminControl(Window.login);
+        private static int ID { get; set; }
+        private List<Element> Values { get; set; } = new List<Element>();
 
         public ProductSpecyfication(int id) {
             InitializeComponent();

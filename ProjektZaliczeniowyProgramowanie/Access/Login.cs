@@ -10,9 +10,13 @@ namespace DBconnectShop.Access {
     /// </summary>
     public class Login {
         private readonly User user;
-
+        /// <summary>
+        /// Pobiera dane użytkownika
+        /// </summary>
         public int GetUserID => user.User_id;
-
+        /// <summary>
+        /// Grupa do której należy uzytkownik
+        /// </summary>
         public UserGroup Group => user.User_Group.Group;
 
         /// <summary>

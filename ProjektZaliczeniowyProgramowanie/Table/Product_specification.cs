@@ -3,22 +3,33 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
+    /// <summary>
+    /// Specyfikacja produktu
+    /// </summary>
     public class Product_specification {
         #region Columns ======================================
-
+        /// <summary>
+        /// Klucz główny
+        /// </summary>
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Product_specification_id { get; internal set; }
-
+        /// <summary>
+        /// ID produktu
+        /// </summary>
         [Required]
         public int Product_id { get; internal set; }
-
+        /// <summary>
+        /// Nazwa specyfikacji
+        /// </summary>
         [Required]
         [StringLength(30)]
         [Column(TypeName = "nchar")]
         public string Product_specification_name { get; internal set; }
-
+        /// <summary>
+        /// Wartosc specyfikacji
+        /// </summary>
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
@@ -27,7 +38,9 @@ namespace DBconnectShop.Table {
         #endregion
 
         #region Fireign key ==================================
-
+        /// <summary>
+        /// Produkt
+        /// </summary>
         public Product Product { get; }
 
         #endregion

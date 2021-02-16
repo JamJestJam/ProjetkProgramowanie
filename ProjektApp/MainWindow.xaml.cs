@@ -35,7 +35,7 @@ namespace ProjektApp {
             Dialog.IsOpen = false;
         }
 
-        public void LogOut() {
+        internal void LogOut() {
             basket = null;
             login = null;
             Content.Content = new Login();

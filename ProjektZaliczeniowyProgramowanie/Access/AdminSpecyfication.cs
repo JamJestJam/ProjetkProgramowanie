@@ -4,6 +4,11 @@ using System.Linq;
 
 namespace DBconnectShop.Access {
     public partial class AdminControl {
+        /// <summary>
+        /// Pobiera listę specyfikacji produktu
+        /// </summary>
+        /// <param name="id">ID produktu</param>
+        /// <returns>Zwraca liste specyfikacji danego produktu</returns>
         public List<Product_specification> GetSpecyfication(int id) {
             using var db = new Shop();
 
@@ -13,6 +18,11 @@ namespace DBconnectShop.Access {
                 .ToList();
         }
 
+        /// <summary>
+        /// Tworzy nową specyfikacje
+        /// </summary>
+        /// <param name="id">ID produktu</param>
+        /// <returns>Zwraca stworząną specyfikacje</returns>
         public Product_specification NewSpecyfication(int id) {
             using var db = new Shop();
 
@@ -28,6 +38,11 @@ namespace DBconnectShop.Access {
             return product;
         }
 
+        /// <summary>
+        /// Zmienia nazwe specyfikacji
+        /// </summary>
+        /// <param name="product">Specyfikacja do zmiany</param>
+        /// <param name="value">Nowa nazwa</param>
         public void ChangeName(Product_specification product, string value) {
             using var db = new Shop();
 
@@ -37,6 +52,11 @@ namespace DBconnectShop.Access {
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Zmienia wartość specyfikacji
+        /// </summary>
+        /// <param name="product">Specyfikacja do zmiany</param>
+        /// <param name="value">Nowa wartość</param>
         public void ChangeValue(Product_specification product, string value) {
             using var db = new Shop();
 

@@ -7,28 +7,50 @@ using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace DBconnectShop.Access {
+    /// <summary>
+    /// Informacje o użytkowniku
+    /// </summary>
     public class UserProfil {
         private User user;
         int id;
-
+        /// <summary>
+        /// Login użytkownika
+        /// </summary>
         public string UserName =>
             (user.User_name is null) ?
                 "" : user.User_name.Trim();
+        /// <summary>
+        /// Imie
+        /// </summary>
         public string FirstName =>
             (user.User_Data is null) ?
                 "" : user.User_Data.User_first_name.Trim();
+        /// <summary>
+        /// Drugie imie
+        /// </summary>
         public string SecoundName =>
             (user.User_Data is null) ?
                 "" : user.User_Data.User_second_name.Trim();
+        /// <summary>
+        /// Nazwisko
+        /// </summary>
         public string FamilyName =>
             (user.User_Data is null) ?
                 "" : user.User_Data.User_family_name.Trim();
+        /// <summary>
+        /// Lista adresów
+        /// </summary>
         public IReadOnlyList<User_address> Addresses =>
             user.User_Address.ToList().AsReadOnly();
-
+        /// <summary>
+        /// Lista adresów
+        /// </summary>
         public IReadOnlyList<Address> Address =>
             user.User_Address.Select(a => a.Address).ToList().AsReadOnly();
-
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="login">Autoryzacja</param>
         public UserProfil(Login login) {
             int userID = 0;
 
@@ -41,7 +63,9 @@ namespace DBconnectShop.Access {
             id = userID;
             Reload();
         }
-
+        /// <summary>
+        /// Odswieża dane użytkownika
+        /// </summary>
         public void Reload() {
             using var db = new Shop();
 
@@ -53,7 +77,12 @@ namespace DBconnectShop.Access {
 
             this.user = users.FirstOrDefault();
         }
-
+        /// <summary>
+        /// Zmiana danych
+        /// </summary>
+        /// <param name="FirstName">Nowe imie</param>
+        /// <param name="SecoundName">Nowe drugie imie</param>
+        /// <param name="FamilyName">Nowe nazwisko</param>
         public void Change_Data(string FirstName, string SecoundName, string FamilyName) {
             using var db = new Shop();
             int userID = 0;
@@ -91,6 +120,10 @@ namespace DBconnectShop.Access {
                 throw new AddElementException("Wystąpił problem z przesłanymi danymi.");
         }
 
+        /// <summary>
+        /// Zmiana avatara
+        /// </summary>
+        /// <param name="file">Sciezka do zdjęcia</param>
         public void Change_Avatar(string file) {
             using var db = new Shop();
 
@@ -112,6 +145,15 @@ namespace DBconnectShop.Access {
             }
         }
 
+        /// <summary>
+        /// Dodaje nowy address użytkownikowi
+        /// </summary>
+        /// <param name="country">Kraj</param>
+        /// <param name="city">Miasto</param>
+        /// <param name="street">Ulica</param>
+        /// <param name="building">Numer budynku</param>
+        /// <param name="zipCode">Kod pocztowy</param>
+        /// <returns>Zwraca ID dodanego adresu</returns>
         public int AddAddress(string country, string city, string street, string building, string zipCode) {
             using var db = new Shop();
 

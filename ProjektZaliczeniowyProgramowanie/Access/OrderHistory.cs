@@ -5,9 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace DBconnectShop.Access {
+    /// <summary>
+    /// Lista zamówień użytkownika
+    /// </summary>
     public class OrderHistory {
         private int ID;
-
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="login">Autoryzacja</param>
         public OrderHistory(Login login) {
             int userID = 0;
 
@@ -20,6 +26,10 @@ namespace DBconnectShop.Access {
             this.ID = userID;
         }
 
+        /// <summary>
+        /// Pobiera listę zamówień
+        /// </summary>
+        /// <returns>Zwraca listę</returns>
         public List<User_order> GetOrderHistory() {
             using var db = new Shop();
 
@@ -33,6 +43,11 @@ namespace DBconnectShop.Access {
             return history;
         }
 
+        /// <summary>
+        /// Pobiera listę produktów w zamówieniu
+        /// </summary>
+        /// <param name="id">ID zamówienia</param>
+        /// <returns>Zwraca listę produktów</returns>
         public List<User_order_product> GetOrderProducts(int id) {
             using var db = new Shop();
 

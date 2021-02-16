@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using ProductListMain = ProjektApp.Pages.Products.ProductList;
 
 namespace ProjektApp.Pages.ProductBasket {
@@ -55,7 +56,7 @@ namespace ProjektApp.Pages.ProductBasket {
         private DataGrid Values = null;
 
         public string Lp { get; }
-        public string Image => ProductBS.Image;
+        public BitmapImage Image => ProductBS.Image.ToBitmap();
         public string Name => ProductBS.Name;
         public string Price => ProductBS.Price.ToString("0.00");
         public string Sum => ProductBS.Sum.ToString("0.00");

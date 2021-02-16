@@ -5,6 +5,11 @@ using System.Linq;
 
 namespace DBconnectShop.Access {
     public partial class AdminControl {
+        /// <summary>
+        /// Pobiera listę obrazków danego produktu
+        /// </summary>
+        /// <param name="id">Id produktu</param>
+        /// <returns>Zwraca listę obrazków</returns>
         public List<Product_image> GetImages(int id) {
             using var db = new Shop();
 
@@ -14,6 +19,11 @@ namespace DBconnectShop.Access {
                 .ToList();
         }
 
+        /// <summary>
+        /// Zmienia stan obrazka
+        /// </summary>
+        /// <param name="product">Obrazek do zmiany</param>
+        /// <param name="value">Wartość stanu</param>
         public void ChangeActive(Product_image product, bool value) {
             using var db = new Shop();
             db.Product_Images.Attach(product);
@@ -22,6 +32,11 @@ namespace DBconnectShop.Access {
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Zmienia obrazek
+        /// </summary>
+        /// <param name="id">ID obrazka</param>
+        /// <param name="file">Ścieżka do nowego obrazka</param>
         public void ChangeImage(int id, string file) {
             using var db = new Shop();
 
@@ -40,6 +55,11 @@ namespace DBconnectShop.Access {
             }
         }
 
+        /// <summary>
+        /// Tworzy nowy obrazek
+        /// </summary>
+        /// <param name="id">ID produktu do którego jest dołączony</param>
+        /// <returns>Obrazek</returns>
         public Product_image NewImage(int id) {
             using var db = new Shop();
             var tmp = Image.Default.BlobImage;

@@ -5,16 +5,27 @@ using System;
 using System.Linq;
 
 namespace DBconnectShop.Access {
+    /// <summary>
+    /// Pojedynczy produkt
+    /// </summary>
     public class SingleProduct {
         private int Id { get; }
-
+        /// <summary>
+        /// Produkt
+        /// </summary>
         public Product Product { get; private set; } = null;
-
+        /// <summary>
+        /// Tworzy nową listę
+        /// </summary>
+        /// <param name="ID">ID produktu</param>
         public SingleProduct(int ID) {
             Id = ID;
             Reload();
         }
 
+        /// <summary>
+        /// Odświeża informacje o produkcie
+        /// </summary>
         public void Reload() {
             using var shop = new Shop();
 
@@ -38,6 +49,9 @@ namespace DBconnectShop.Access {
             Product = product.First();
         }
 
+        /// <summary>
+        /// Pobiera średni ranking produktu
+        /// </summary>
         public short AverageRating {
             get {
                 if(Product.Product_Ratings.Count() == 0)
@@ -47,6 +61,12 @@ namespace DBconnectShop.Access {
             }
         }
 
+        /// <summary>
+        /// Dodaje komentarz pod produktem
+        /// </summary>
+        /// <param name="login">Autoryzacja</param>
+        /// <param name="content">Tresc komentarza</param>
+        /// <returns>Zwraca wysłany komentarz</returns>
         public Product_opinion AddComment(Login login, string content) {
             using var db = new Shop();
             int userID = -1;
@@ -81,6 +101,11 @@ namespace DBconnectShop.Access {
                 .LastOrDefault(a => a.Product_id == comment.Product_id && a.User_id == comment.User_id);
         }
 
+        /// <summary>
+        /// Dodaje ocenę produktu
+        /// </summary>
+        /// <param name="login">Autoryzacja</param>
+        /// <param name="rate">Ocena</param>
         public void AddRate(Login login, short rate) {
             using var db = new Shop();
             int userID = 0;
@@ -114,6 +139,11 @@ namespace DBconnectShop.Access {
             Reload();
         }
 
+        /// <summary>
+        /// Pobiera poprzednią ocene użytkownika
+        /// </summary>
+        /// <param name="login">Autoryzacja</param>
+        /// <returns>Ocena użytkownika</returns>
         public short GetUserRate(Login login) {
             int userID = 0;
             int productID = 0;

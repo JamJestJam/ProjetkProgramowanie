@@ -6,15 +6,28 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace DBconnectShop.Access {
+    /// <summary>
+    /// Lista produktów
+    /// </summary>
     public class BuyableProducts {
         List<Product> Products { get; set; }
         List<Product_categori> Categoris { get; set; }
 
+        /// <summary>
+        /// Lista kategorii
+        /// </summary>
         public IReadOnlyList<Product_categori> CatergorisRO => Categoris.OrderBy(a => a.ParentID).ToList().AsReadOnly();
+        /// <summary>
+        /// Lista produktów
+        /// </summary>
         public IReadOnlyList<Product> ProductsRO => Products.AsReadOnly();
-
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
         public BuyableProducts() { }
-
+        /// <summary>
+        /// Odświeża listę produktów
+        /// </summary>
         public void Refresh() {
             using var db = new Shop();
 
@@ -34,7 +47,12 @@ namespace DBconnectShop.Access {
             Products = products.ToList();
             Categoris = category.ToList();
         }
-
+        /// <summary>
+        /// Wyszukuje w liscie produktów o.
+        /// </summary>
+        /// <param name="categoryID">ID kategorii</param>
+        /// <param name="like">Część nazwy</param>
+        /// <returns>Zwraca Znależione elementy</returns>
         public List<Product> GetProducts(int? categoryID, string like = "") {
             var categoryWhere = Categoris
                 .Where(a => a.Product_category_id == categoryID)

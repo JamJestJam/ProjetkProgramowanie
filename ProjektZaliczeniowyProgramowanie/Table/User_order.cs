@@ -5,20 +5,31 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
+    /// <summary>
+    /// Zamówienia klienta
+    /// </summary>
     public class User_order {
         #region Columns ======================================
-
+        /// <summary>
+        /// klucz główny
+        /// </summary>
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int User_order_id { get; internal set; }
-
+        /// <summary>
+        /// ID statusu zamówienia
+        /// </summary>
         [Required]
         public int User_order_status_id { get; internal set; }
-
+        /// <summary>
+        /// Addres zamówienia
+        /// </summary>
         [Required]
         public int User_Address_id { get; internal set; }
-
+        /// <summary>
+        /// Data zamówienia
+        /// </summary>
         [Required]
         [Column(TypeName = "smalldatetime")]
         public DateTime User_order_date { get; internal set; }
@@ -26,9 +37,17 @@ namespace DBconnectShop.Table {
         #endregion
 
         #region Fireign key ==================================
-
+        /// <summary>
+        /// Stan zamówienia
+        /// </summary>
         public User_order_status Order_Status { get; }
+        /// <summary>
+        /// Address zamówienia
+        /// </summary>
         public User_address Address { get; }
+        /// <summary>
+        /// Produkty zamówione
+        /// </summary>
         public IEnumerable<User_order_product> Products { get; internal set; } = new List<User_order_product>();
 
         #endregion

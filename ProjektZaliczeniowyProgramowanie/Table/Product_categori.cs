@@ -4,16 +4,25 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBconnectShop.Table {
+    /// <summary>
+    /// Kategorie produktów
+    /// </summary>
     public class Product_categori {
         #region Columns ======================================
-
+        /// <summary>
+        /// Klucz główny
+        /// </summary>
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Product_category_id { get; internal set; }
-
+        /// <summary>
+        /// rodzic kategorii
+        /// </summary>
         public int? Product_sub_category { get; internal set; }
-
+        /// <summary>
+        /// Nazwa kategorii
+        /// </summary>
         [Required]
         [StringLength(25)]
         [Column(TypeName = "nchar")]
@@ -22,17 +31,34 @@ namespace DBconnectShop.Table {
         #endregion
 
         #region Fireign key ==================================
-
+        /// <summary>
+        /// Rodzic kategorii
+        /// </summary>
         public Product_categori Parent { get; }
+        /// <summary>
+        /// Lista dzieci kategorii
+        /// </summary>
         public IEnumerable<Product_categori> Children { get; } = new List<Product_categori>();
+        /// <summary>
+        /// Lista produktów zawierających daną kategorie
+        /// </summary>
         public IEnumerable<Product> Products { get; } = new List<Product>();
 
         #endregion
 
         #region Cuts =========================================
 
+        /// <summary>
+        /// Skrócone ID
+        /// </summary>
         public int ID => Product_category_id;
+        /// <summary>
+        /// Skrócona ID rodzica
+        /// </summary>
         public int ParentID => (Product_sub_category is null) ? 0 : (int)Product_sub_category;
+        /// <summary>
+        /// Skrócona nazwa produktu
+        /// </summary>
         public string TrueName => Product_category_name.Trim();
 
         #endregion

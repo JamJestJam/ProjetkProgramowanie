@@ -10,40 +10,73 @@ using System.Linq;
 namespace DBconnectShop.Table {
     public class Product : IEquatable<Product> {
         #region Columns ======================================
-
+        /// <summary>
+        /// Klucz główny
+        /// </summary>
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Product_id { get; internal set; }
-
+        /// <summary>
+        /// ID kategorii
+        /// </summary>
         [Required]
         public int Product_category_id { get; internal set; }
-
+        /// <summary>
+        /// Nazwa produktu
+        /// </summary>
         [Required]
         [StringLength(50)]
         [Column(TypeName = "nchar")]
         public string Product_name { get; internal set; }
-
+        /// <summary>
+        /// Dostępność produktu
+        /// </summary>
         [Required]
         public bool Product_aviable { get; internal set; }
 
         #endregion
 
         #region Fireign key ==================================
-
+        /// <summary>
+        /// Kategoria produktu
+        /// </summary>
         public Product_categori Product_Categori { get; internal set; }
+        /// <summary>
+        /// Oceny produktu
+        /// </summary>
         public IEnumerable<Product_rating> Product_Ratings { get; } = new List<Product_rating>();
+        /// <summary>
+        /// Zdjęcia produktu
+        /// </summary>
         public IEnumerable<Product_image> Product_Images { get; } = new List<Product_image>();
+        /// <summary>
+        /// Opinie produktu
+        /// </summary>
         public IEnumerable<Product_opinion> Product_Opinions { get; } = new List<Product_opinion>();
+        /// <summary>
+        /// Specyfikacja produktu
+        /// </summary>
         public IEnumerable<Product_specification> Product_Specifications { get; } = new List<Product_specification>();
+        /// <summary>
+        /// Historia cen produktu
+        /// </summary>
         public IEnumerable<Products_price> Products_Prices { get; } = new List<Products_price>();
+        /// <summary>
+        /// Zamówienia produktu
+        /// </summary>
         public IEnumerable<User_order_product> Order_Products { get; } = new List<User_order_product>();
 
         #endregion
 
         #region Cuts =========================================
-
+        /// <summary>
+        /// ID produktu
+        /// </summary>
         public int ID => Product_id;
+        /// <summary>
+        /// Aktualna cena produktu
+        /// </summary>
         public decimal ActualPrice {
             get {
                 var price = Products_Prices
@@ -57,8 +90,15 @@ namespace DBconnectShop.Table {
                 return tmp.Product_price;
             }
         }
+        /// <summary>
+        /// Aktywne zdjęcia produktu
+        /// </summary>
+        /// <returns>Zwraca listę zdjęc</returns>
         public List<Product_image> TrueImages() =>
             Product_Images.Where(a => a.Product_image_active).ToList();
+        /// <summary>
+        /// Pierwsze aktywne zdjęcie
+        /// </summary>
         public Image FirstImage {
             get {
                 if(TrueImages().Count == 0)
@@ -66,6 +106,9 @@ namespace DBconnectShop.Table {
                 return TrueImages().First().Image;
             }
         }
+        /// <summary>
+        /// Skrócona nazwa produktu
+        /// </summary>
         public string TrueName => Product_name.Trim();
 
         #endregion
