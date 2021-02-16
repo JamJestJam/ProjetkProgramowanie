@@ -78,7 +78,7 @@ namespace ProjektApp.Pages.Admin.Product {
                             Application.Current.MainWindow as MainWindow;
             AdminProducts admin = new AdminProducts(Window.login);
 
-            public int ID =>
+            public int Id =>
                 Product.Product_image_id;
             Product_image Product { get; }
 
@@ -94,7 +94,7 @@ namespace ProjektApp.Pages.Admin.Product {
             }
 
             public Element() {
-                Product = admin.NewImage(ProductImages.ID);
+                Product = admin.NewImage(ID);
             }
         }
     }

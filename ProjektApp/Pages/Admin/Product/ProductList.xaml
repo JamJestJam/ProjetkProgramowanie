@@ -61,7 +61,7 @@
                         <DataGridTemplateColumn Header="Specyfikacja" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Height="30" Width="30" CommandParameter="{Binding Path=ID}">
+                                    <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Height="30" Width="30" CommandParameter="{Binding Path=ID}" Click="ShowSpecyfication">
                                         <materialDesign:PackIcon Kind="Show"/>
                                     </Button>
                                 </DataTemplate>

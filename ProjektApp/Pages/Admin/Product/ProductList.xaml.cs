@@ -64,6 +64,13 @@ namespace ProjektApp.Pages.Admin.Product {
             Window.Content.Content = new ProductPrice(id);
         }
 
+        private void ShowSpecyfication(object o, EventArgs e) {
+            if(((Button)o).CommandParameter is null)
+                return;
+            var id = (int)((Button)o).CommandParameter;
+            Window.Content.Content = new ProductSpecyfication(id);
+        }
+
         class Element {
             static MainWindow Window =>
                 Application.Current.MainWindow as MainWindow;

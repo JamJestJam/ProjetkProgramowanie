@@ -14,7 +14,7 @@
                 <Separator />
                 <DataGrid x:Name="GridData" HorizontalAlignment="Center" SelectionUnit="Cell" SelectionMode="Extended" AutoGenerateColumns="False" CanUserAddRows="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" IsReadOnly="True">
+                        <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}" IsReadOnly="True">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="VerticalAlignment" Value="Center" />

@@ -1,22 +1,33 @@
 ﻿using DBconnectShop.Access;
 using DBconnectShop.Table;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace ProjektApp.Pages.Admin.Product {
     /// <summary>
-    /// Interaction logic for ProductPrice.xaml
+    /// Interaction logic for ProductSpecyfication.xaml
     /// </summary>
-    public partial class ProductPrice : UserControl {
+    public partial class ProductSpecyfication : UserControl {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
         AdminProducts admin = new AdminProducts(Window.login);
         public static int ID { get; private set; }
         List<Element> Values { get; set; } = new List<Element>();
 
-        public ProductPrice(int id) {
+        public ProductSpecyfication(int id) {
             InitializeComponent();
             ID = id;
 
@@ -28,7 +39,7 @@ namespace ProjektApp.Pages.Admin.Product {
         }
 
         private void InitItems() {
-            foreach(var product in admin.GetPrice(ID)) {
+            foreach(var product in admin.GetSpecyfication(ID)) {
                 Dispatcher.Invoke(() => {
                     Values.Add(new Element(product));
                 });
@@ -45,20 +56,25 @@ namespace ProjektApp.Pages.Admin.Product {
                             Application.Current.MainWindow as MainWindow;
             AdminProducts admin = new AdminProducts(Window.login);
 
-            Products_price Product { get; }
-            public decimal Price {
-                get => Product.Product_price;
-                set => admin.ChangePrice(Product, value);
+            Product_specification Product { get; }
+
+            public int Id =>
+                Product.ID;
+            public string Name {
+                get => Product.Name;
+                set => admin.ChangeName(Product, value);
             }
-            public string Date =>
-                Product.Product_price_date.ToString();
+            public string Value {
+                get => Product.Value;
+                set => admin.ChangeValue(Product, value);
+            }
 
             public Element() {
-                Product = admin.NewPrice(ID);
+                Product = admin.NewSpecyfication(ID);
             }
 
-            public Element(Products_price price) {
-                Product = price;
+            public Element(Product_specification product) {
+                Product = product;
             }
         }
     }
