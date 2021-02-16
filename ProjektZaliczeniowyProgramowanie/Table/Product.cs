@@ -20,9 +20,6 @@ namespace DBconnectShop.Table {
         public int Product_category_id { get; internal set; }
 
         [Required]
-        public int Product_producer_id { get; internal set; }
-
-        [Required]
         [StringLength(50)]
         [Column(TypeName = "nchar")]
         public string Product_name { get; internal set; }
@@ -35,9 +32,6 @@ namespace DBconnectShop.Table {
         #region Fireign key ==================================
 
         public Product_categori Product_Categori { get; }
-        public Product_producer Product_Producer { get; }
-        public IEnumerable<Storage_Product> Storage_Products { get; } = new List<Storage_Product>();
-        public IEnumerable<Product_order> Product_Order { get; } = new List<Product_order>();
         public IEnumerable<Product_rating> Product_Ratings { get; } = new List<Product_rating>();
         public IEnumerable<Product_image> Product_Images { get; } = new List<Product_image>();
         public IEnumerable<Product_opinion> Product_Opinions { get; } = new List<Product_opinion>();
@@ -102,14 +96,8 @@ namespace DBconnectShop.Table {
                 .HasForeignKey(b => b.Product_category_id);
 
             modelBuilder.Entity<Product>()
-                .HasOne(a => a.Product_Producer)
-                .WithMany(b => b.Products)
-                .HasForeignKey(b => b.Product_producer_id);
-
-            modelBuilder.Entity<Product>()
                 .HasData(new Product() {
                     Product_id = 1,
-                    Product_producer_id = 1,
                     Product_category_id = 1,
                     Product_name = "Przykład"
                 });

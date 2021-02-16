@@ -1,4 +1,5 @@
-﻿using DBconnectShop.Table;
+﻿using DBconnectShop.Access;
+using DBconnectShop.Table;
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows;
@@ -11,7 +12,7 @@ namespace ProjektApp.Pages.Admin.Product {
     public partial class ProductPrice : UserControl {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
-        DBconnectShop.Access.Admin admin = new DBconnectShop.Access.Admin(Window.login);
+        AdminControl admin = new AdminControl(Window.login);
         public static int ID { get; private set; }
         List<Element> Values { get; set; } = new List<Element>();
 
@@ -42,7 +43,7 @@ namespace ProjektApp.Pages.Admin.Product {
         class Element {
             static MainWindow Window =>
                             Application.Current.MainWindow as MainWindow;
-            DBconnectShop.Access.Admin admin = new DBconnectShop.Access.Admin(Window.login);
+            AdminControl admin = new AdminControl(Window.login);
 
             Products_price Product { get; }
             public decimal Price {

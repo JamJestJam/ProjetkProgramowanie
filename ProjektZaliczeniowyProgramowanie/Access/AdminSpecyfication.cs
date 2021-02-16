@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace DBconnectShop.Access {
-    partial class Admin {
+    public partial class AdminControl {
         public List<Product_specification> GetSpecyfication(int id) {
             using var db = new Shop();
 

@@ -13,10 +13,6 @@ namespace DBconnectShop {
         public DbSet<User_group> User_Groups { get; set; }
         public DbSet<User_data> Users_Data { get; set; }
         public DbSet<User_address> User_Addresses { get; set; }
-        public DbSet<Worker_seller> Worker_Sellers { get; set; }
-        public DbSet<Worker_storekeeper> Worker_Storekeepers { get; set; }
-        public DbSet<Worker_purchaser> Worker_Purchasers { get; set; }
-        public DbSet<Product_producer> Product_Producers { get; set; }
         public DbSet<Product_categori> Product_Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Product_specification> Product_Specifications { get; set; }
@@ -24,16 +20,9 @@ namespace DBconnectShop {
         public DbSet<Product_image> Product_Images { get; set; }
         public DbSet<Product_opinion> Product_Opinions { get; set; }
         public DbSet<Product_rating> Product_Ratings { get; set; }
-        public DbSet<Storage> Storages { get; set; }
-        public DbSet<Product_order> Product_Orders { get; set; }
-        public DbSet<Product_receipt> Product_Receipts { get; set; }
-        public DbSet<Storage_Product> Storage_Products { get; set; }
-        public DbSet<Storage_Product_localization> Storage_Product_Localizations { get; set; }
         public DbSet<User_order_status> User_Order_Statuses { get; set; }
         public DbSet<User_order> User_Orders { get; set; }
         public DbSet<User_order_product> User_Order_Product { get; set; }
-        public DbSet<User_order_product_storage> User_Order_Product_Storages { get; set; }
-        public DbSet<User_order_receipt> User_Order_Receipts { get; set; }
 
         #endregion
 
@@ -52,11 +41,6 @@ namespace DBconnectShop {
             User_data.ModelCreate(modelBuilder);
             User_address.ModelCreate(modelBuilder);
 
-            Worker_seller.ModelCreate(modelBuilder);
-            Worker_storekeeper.ModelCreate(modelBuilder);
-            Worker_purchaser.ModelCreate(modelBuilder);
-
-            Product_producer.ModelCreate(modelBuilder);
             Product_categori.ModelCreate(modelBuilder);
             Product.ModelCreate(modelBuilder);
             Product_specification.ModelCreate(modelBuilder);
@@ -65,17 +49,9 @@ namespace DBconnectShop {
             Product_opinion.ModelCreate(modelBuilder);
             Product_rating.ModelCreate(modelBuilder);
 
-            Storage.ModelCreate(modelBuilder);
-            Product_order.ModelCreate(modelBuilder);
-            Product_receipt.ModelCreate(modelBuilder);
-            Storage_Product.ModelCreate(modelBuilder);
-            Storage_Product_localization.ModelCreate(modelBuilder);
-
             User_order_status.ModelCreate(modelBuilder);
             User_order.ModelCreate(modelBuilder);
             User_order_product.ModelCreate(modelBuilder);
-            User_order_product_storage.ModelCreate(modelBuilder);
-            User_order_receipt.ModelCreate(modelBuilder);
         }
     }
 }

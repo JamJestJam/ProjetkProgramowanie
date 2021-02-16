@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace DBconnectShop.Access {
-    partial class Admin {
+    public partial class AdminControl {
         public List<Products_price> GetPrice(int id) {
             using var db = new Shop();
 

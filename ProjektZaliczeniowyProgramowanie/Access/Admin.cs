@@ -2,10 +2,10 @@
 using DBconnectShop.Table;
 
 namespace DBconnectShop.Access {
-    public partial class Admin {
+    public partial class AdminControl {
         Login Login;
 
-        public Admin(Login login) {
+        public AdminControl(Login login) {
             try {
                 _ = login.GetUserID;
                 if(login.Group != UserGroup.Admin)

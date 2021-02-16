@@ -27,7 +27,6 @@ namespace DBconnectShop.Table {
 
         public User_order Order { get; }
         public Product Product { get; }
-        public User_order_product_storage Storage { get; }
 
         #endregion
 

@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using DBconnectShop.Access;
 using ProductDB = DBconnectShop.Table.Product;
+
 
 namespace ProjektApp.Pages.Admin.Product {
     /// <summary>
@@ -13,7 +15,7 @@ namespace ProjektApp.Pages.Admin.Product {
     public partial class ProductList : UserControl {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
-        DBconnectShop.Access.Admin admin = new DBconnectShop.Access.Admin(Window.login);
+        AdminControl admin = new AdminControl(Window.login);
 
         List<Element> Values { get; set; } = new List<Element>();
         List<string> Categories { get; set; } = new List<string>();
@@ -31,7 +33,6 @@ namespace ProjektApp.Pages.Admin.Product {
 
         private void InitItems() {
             Categories = admin.GetCategories().Select(a => a.TrueName).ToList();
-            Producers = admin.GetProducers().Select(a => a.TrueName).ToList();
             Dispatcher.Invoke(() => {
                 Categoriee.ItemsSource = Categories;
                 Producer.ItemsSource = Producers;
@@ -73,7 +74,7 @@ namespace ProjektApp.Pages.Admin.Product {
         class Element {
             static MainWindow Window =>
                 Application.Current.MainWindow as MainWindow;
-            DBconnectShop.Access.Admin admin = new DBconnectShop.Access.Admin(Window.login);
+            AdminControl admin = new AdminControl(Window.login);
 
             public int ID =>
                 Product.ID;
@@ -84,10 +85,6 @@ namespace ProjektApp.Pages.Admin.Product {
             public string Category {
                 get => Product.Product_Categori.TrueName;
                 set => admin.ChangeCategory(Product, value);
-            }
-            public string Producer {
-                get => Product.Product_Producer.TrueName;
-                set => admin.ChangeProducer(Product, value);
             }
             public bool Aviable {
                 get => Product.Product_aviable;
