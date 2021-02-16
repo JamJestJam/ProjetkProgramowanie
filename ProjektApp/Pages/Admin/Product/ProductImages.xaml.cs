@@ -80,12 +80,12 @@ namespace ProjektApp.Pages.Admin.Product {
 
             public int ID =>
                 Product.Product_image_id;
+            Product_image Product { get; }
 
             public bool Active {
                 get => Product.Product_image_active;
                 set => admin.ChangeActive(Product, value);
             }
-            Product_image Product { get; }
             public BitmapImage Image =>
                 Product.Image.ToBitmap();
 

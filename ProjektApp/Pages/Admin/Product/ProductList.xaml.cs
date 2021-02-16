@@ -51,10 +51,17 @@ namespace ProjektApp.Pages.Admin.Product {
         }
 
         private void ShowImages(object o, EventArgs e) {
-            if((Button)o).CommandParameter is null)
-                    return;
+            if(((Button)o).CommandParameter is null)
+                return;
             var id = (int)((Button)o).CommandParameter;
             Window.Content.Content = new ProductImages(id);
+        }
+
+        private void ShowPrice(object o, EventArgs e) {
+            if(((Button)o).CommandParameter is null)
+                return;
+            var id = (int)((Button)o).CommandParameter;
+            Window.Content.Content = new ProductPrice(id);
         }
 
         class Element {

@@ -22,9 +22,6 @@
                     <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" Click="Find">
                         <materialDesign:PackIcon Foreground="#fff" Kind="Send" Width="30" Height="30" />
                     </Button>
-                    <Button Margin="5 0" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}">
-                        <materialDesign:PackIcon Foreground="#fff" Kind="Settings" Width="30" Height="30"/>
-                    </Button>
                 </StackPanel>
             </materialDesign:ColorZone>
         </Grid>

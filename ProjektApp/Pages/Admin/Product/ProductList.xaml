@@ -6,35 +6,35 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:local="clr-namespace:ProjektApp.Pages.Admin.Product"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="724">
-    <materialDesign:ColorZone Mode="Dark" Height="auto" VerticalAlignment="Center" MinHeight="450">
+             d:DesignHeight="570" d:DesignWidth="724">
+    <materialDesign:ColorZone Mode="Dark" Height="auto" VerticalAlignment="Center" MinHeight="570">
         <ScrollViewer>
-        <StackPanel Margin="20">
-            <Label Content="Lista produktów" FontSize="25" HorizontalAlignment="Center" />
-            <Separator />
+            <StackPanel Margin="20">
+                <Label Content="Lista produktów" FontSize="25" HorizontalAlignment="Center" />
+                <Separator />
                 <DataGrid x:Name="GridData" HorizontalAlignment="Center" SelectionUnit="Cell" SelectionMode="Extended" AutoGenerateColumns="False" CanUserAddRows="True">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" IsReadOnly="True">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="VerticalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Nazwa produktu" Binding="{Binding Path=Name}" >
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="VerticalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridComboBoxColumn x:Name="Categoriee" Header="Kategoria" SelectedItemBinding="{Binding Path=Category}">
-                        <DataGridComboBoxColumn.ElementStyle>
-                            <Style TargetType="ComboBox">
-                                <Setter Property="VerticalAlignment" Value="Center" />
-                            </Style>    
-                        </DataGridComboBoxColumn.ElementStyle>
-                    </DataGridComboBoxColumn>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Nazwa produktu" Binding="{Binding Path=Name}" >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridComboBoxColumn x:Name="Categoriee" Header="Kategoria" SelectedItemBinding="{Binding Path=Category}">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
                         <DataGridComboBoxColumn x:Name="Producer" Header="Producent" SelectedItemBinding="{Binding Path=Producer}">
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="ComboBox">
@@ -42,34 +42,43 @@
                                 </Style>
                             </DataGridComboBoxColumn.ElementStyle>
                         </DataGridComboBoxColumn>
+                        <DataGridCheckBoxColumn Header="Dostępny" Binding="{Binding Path=Aviable}" >
+                            <DataGridCheckBoxColumn.ElementStyle>
+                                <Style TargetType="CheckBox">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridCheckBoxColumn.ElementStyle>
+                        </DataGridCheckBoxColumn>
+                        <DataGridTemplateColumn Header="Ceny">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Height="30" Width="30" CommandParameter="{Binding Path=ID}" Click="ShowPrice">
+                                        <materialDesign:PackIcon Kind="Show"/>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTemplateColumn Header="Specyfikacja" >
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Height="30" Width="30" CommandParameter="{Binding Path=ID}">
-                                    <materialDesign:PackIcon Kind="Show"/>
-                                </Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Obrazki" Width="auto">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Height="30" Width="30" CommandParameter="{Binding Path=ID}" Click="ShowImages">
-                                    <materialDesign:PackIcon Kind="Show"/>
-                                </Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridCheckBoxColumn Header="Dostępny" Binding="{Binding Path=Aviable}" >
-                        <DataGridCheckBoxColumn.ElementStyle>
-                            <Style TargetType="CheckBox">
-                                <Setter Property="VerticalAlignment" Value="Center"/>
-                            </Style>
-                        </DataGridCheckBoxColumn.ElementStyle>
-                    </DataGridCheckBoxColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-        </StackPanel>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Height="30" Width="30" CommandParameter="{Binding Path=ID}">
+                                        <materialDesign:PackIcon Kind="Show"/>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Obrazki">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Height="30" Width="30" CommandParameter="{Binding Path=ID}" Click="ShowImages">
+                                        <materialDesign:PackIcon Kind="Show"/>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
         </ScrollViewer>
     </materialDesign:ColorZone>
 </UserControl>

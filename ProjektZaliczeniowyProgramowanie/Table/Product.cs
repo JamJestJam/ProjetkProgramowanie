@@ -52,10 +52,11 @@ namespace DBconnectShop.Table {
         public int ID => Product_id;
         public decimal ActualPrice {
             get {
-                var tmp = Products_Prices
+                var price = Products_Prices
                     .Where(a => a.Product_price_date <= DateTime.Now)
-                    .OrderBy(a => a.Product_price_date)
-                    .FirstOrDefault();
+                    .OrderBy(a => a.Product_price_date);
+
+                var tmp = price.LastOrDefault();
 
                 if(tmp is null)
                     return 0;

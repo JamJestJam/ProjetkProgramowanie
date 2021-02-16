@@ -11,7 +11,7 @@ namespace DBconnectShop.Table {
         public int Product_id { get; internal set; }
 
         [Required]
-        [Column(TypeName = "smalldatetime")]
+        [Column(TypeName = "datetime")]
         public DateTime Product_price_date { get; internal set; }
 
         [Required]
