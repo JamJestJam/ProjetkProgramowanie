@@ -59,10 +59,9 @@ namespace DBconnectShop.Access {
             using var db = new Shop();
             db.Products.Attach(product);
 
-            product.Product_category_id =
+            product.Product_Categori =
             db.Product_Categories
                 .Where(a => a.Product_category_name == value)
-                .Select(a => a.Product_category_id)
                 .First();
             db.SaveChanges();
         }

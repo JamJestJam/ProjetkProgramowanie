@@ -13,14 +13,11 @@ namespace ProjektApp.Pages.Products {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
 
-        readonly List<UserControl> controls;
         public BuyableProducts Products { get; }
 
         readonly LeftPanel left;
         readonly TopBar top;
 
-        public int Page { get; set; } = 0;
-        public int PerPage { get; set; } = 18;
         public int? Category { get; set; } = null;
         public string Like { get; set; } = "";
 
@@ -28,12 +25,6 @@ namespace ProjektApp.Pages.Products {
             InitializeComponent();
 
             Products = new BuyableProducts();
-            controls = new List<UserControl> {
-                Product00, Product10, Product20,
-                Product01, Product11, Product21,
-                Product02, Product12, Product22,
-                Product03, Product13, Product23
-            };
 
             left = new LeftPanel(this);
             top = new TopBar(this);
@@ -63,11 +54,14 @@ namespace ProjektApp.Pages.Products {
         }
 
         public void ShowProducts() {
-            var list = Products.GetProducts(Page, PerPage, Category, Like);
-            controls.ForEach(a => a.Content = null);
+            var list = Products.GetProducts(Category, Like);
+            StackPanelProducts.Children.Clear();
 
-            for(int i = 0; i < list.Count; i++)
-                controls[i].Content = new SingleProduct(list[i]);
+            foreach(var ele in list) {
+                UserControl tmp = new UserControl();
+                tmp.Content = new SingleProduct(ele);
+                StackPanelProducts.Children.Add(tmp);
+            }
         }
 
         private void Find(object o, RoutedEventArgs e) {

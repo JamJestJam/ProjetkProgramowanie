@@ -44,56 +44,9 @@
         <!-- Content -->
         <Grid Grid.Row="1">
             <ScrollViewer>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Grid Grid.Column="0" Grid.Row="0">
-                        <UserControl x:Name="Product00"/>
-                    </Grid>
-                    <Grid Grid.Column="1" Grid.Row="0">
-                        <UserControl x:Name="Product10"/>
-                    </Grid>
-                    <Grid Grid.Column="2" Grid.Row="0">
-                        <UserControl x:Name="Product20"/>
-                    </Grid>
-                    <Grid Grid.Column="0" Grid.Row="1">
-                        <UserControl x:Name="Product01"/>
-                    </Grid>
-                    <Grid Grid.Column="1" Grid.Row="1">
-                        <UserControl x:Name="Product11"/>
-                    </Grid>
-                    <Grid Grid.Column="2" Grid.Row="1">
-                        <UserControl x:Name="Product21"/>
-                    </Grid>
-                    <Grid Grid.Column="0" Grid.Row="2">
-                        <UserControl x:Name="Product02"/>
-                    </Grid>
-                    <Grid Grid.Column="1" Grid.Row="2">
-                        <UserControl x:Name="Product12"/>
-                    </Grid>
-                    <Grid Grid.Column="2" Grid.Row="2">
-                        <UserControl x:Name="Product22"/>
-                    </Grid>
-                    <Grid Grid.Column="0" Grid.Row="3">
-                        <UserControl x:Name="Product03"/>
-                    </Grid>
-                    <Grid Grid.Column="1" Grid.Row="3">
-                        <UserControl x:Name="Product13"/>
-                    </Grid>
-                    <Grid Grid.Column="2" Grid.Row="3">
-                        <UserControl x:Name="Product23"/>
-                    </Grid>
-                </Grid>
+                <WrapPanel x:Name="StackPanelProducts" Orientation="Horizontal">
+                    
+                </WrapPanel>
             </ScrollViewer>
         </Grid>
     </Grid>

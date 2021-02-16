@@ -17,5 +17,9 @@ namespace ProjektApp.Pages.Admin {
         public void ShowProducts(object o, EventArgs e) {
             Window.Content.Content = new Product.ProductList();
         }
+
+        public void ShowCategories(object o, EventArgs e) {
+            Window.Content.Content = new Product.ProductCategories();
+        }
     }
 }

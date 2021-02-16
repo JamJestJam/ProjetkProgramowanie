@@ -35,9 +35,7 @@ namespace DBconnectShop.Access {
             Categoris = category.ToList();
         }
 
-        public List<Product> GetProducts(int page, int perPage, int? categoryID, string like = "") {
-            perPage++;
-            page++;
+        public List<Product> GetProducts(int? categoryID, string like = "") {
             var categoryWhere = Categoris
                 .Where(a => a.Product_category_id == categoryID)
                 .SelectManyRecursive(a => a.Children)

@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="240">
     <materialDesign:ColorZone Mode="Dark" Background="{x:Null}">
-        <Grid Width="240" Height="350">
+        <Grid Width="230" Height="350">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="50" />

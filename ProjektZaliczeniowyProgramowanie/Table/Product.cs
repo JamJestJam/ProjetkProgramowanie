@@ -31,7 +31,7 @@ namespace DBconnectShop.Table {
 
         #region Fireign key ==================================
 
-        public Product_categori Product_Categori { get; }
+        public Product_categori Product_Categori { get; internal set; }
         public IEnumerable<Product_rating> Product_Ratings { get; } = new List<Product_rating>();
         public IEnumerable<Product_image> Product_Images { get; } = new List<Product_image>();
         public IEnumerable<Product_opinion> Product_Opinions { get; } = new List<Product_opinion>();

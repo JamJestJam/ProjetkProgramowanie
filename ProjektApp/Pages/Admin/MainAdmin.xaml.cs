@@ -12,6 +12,7 @@ namespace ProjektApp.Pages.Admin {
         public MainAdmin() {
             InitializeComponent();
 
+            Window.Content.Content = new Product.ProductList();
             Window.TopBar.Content = new TopBar();
             Window.LeftPanel.Content = new LeftPanel();
         }
