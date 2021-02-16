@@ -2,14 +2,11 @@
 using DBconnectShop.Table;
 using MaterialDesignThemes.Wpf;
 using System;
-using System.IO;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using ImageAddon = DBconnectShop.Addons.Image;
 using LoginDB = DBconnectShop.Access.Login;
 
 namespace ProjektApp.Pages.Product {
@@ -61,6 +58,12 @@ namespace ProjektApp.Pages.Product {
                 SetPropertyValue(specyfication.Value);
             }
 
+            MainImage.Source = Product.FirstImage.ToBitmap();
+            Images.Children.Clear();
+            foreach(var image in Product.TrueImages()) {
+                CreateImage(image.Image.ToImage());
+            }
+
             Comments.Children.Clear();
             foreach(var opinion in Product.Product_Opinions) {
                 CreateCommentBox(opinion);
@@ -71,6 +74,18 @@ namespace ProjektApp.Pages.Product {
             UserRating.ValueChanged -= Rate;
             UserRating.Value = singleProduct.GetUserRate(Window.login);
             UserRating.ValueChanged += Rate;
+        }
+
+        private void CreateImage(Image image) {
+            image.Margin = new Thickness(0, 0, 0, 10);
+            image.Cursor = Cursors.Hand; 
+            image.MouseDown += ChangeMain;
+            Images.Children.Add(image);
+        }
+
+        private void ChangeMain(object o, EventArgs e) {
+            var image = (Image)o;
+            MainImage.Source = image.Source;
         }
 
         private void SetPropertyName(string name) {

@@ -22,7 +22,7 @@ namespace DBconnectShop.Access {
 
             var products = db.Products
                 .Include(a => a.Products_Prices)
-                .Include(a=>a.Product_Images)
+                .Include(a => a.Product_Images)
                 .Include(a => a.Product_Categori)
                 .Where(a => a.Product_aviable);
 

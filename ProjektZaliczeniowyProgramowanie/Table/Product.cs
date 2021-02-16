@@ -62,13 +62,15 @@ namespace DBconnectShop.Table {
                 return tmp.Product_price;
             }
         }
-        public List<Product_image> TrueImages()=>
+        public List<Product_image> TrueImages() =>
             Product_Images.Where(a => a.Product_image_active).ToList();
-        public Image FirstImage { get {
-                if(TrueImages().Count == 0) 
+        public Image FirstImage {
+            get {
+                if(TrueImages().Count == 0)
                     return Image.Default;
                 return TrueImages().First().Image;
-            } }
+            }
+        }
         public string TrueName => Product_name.Trim();
 
         #endregion

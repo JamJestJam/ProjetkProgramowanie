@@ -56,18 +56,14 @@
 
                         <Grid Grid.Column="0" Grid.Row="0">
                             <ScrollViewer>
-                                <StackPanel>
-                                    <Image Source="/Images/no-image.png" Width="80" Height="80" HorizontalAlignment="Center"/>
-                                    <Image Source="/Images/no-image.png" Width="80" Height="80" HorizontalAlignment="Center"/>
-                                    <Image Source="/Images/no-image.png" Width="80" Height="80" HorizontalAlignment="Center"/>
-                                    <Image Source="/Images/no-image.png" Width="80" Height="80" HorizontalAlignment="Center"/>
-                                    <Image Source="/Images/no-image.png" Width="80" Height="80" HorizontalAlignment="Center"/>
+                                <StackPanel x:Name="Images">
+                                    
                                 </StackPanel>
                             </ScrollViewer>
                         </Grid>
 
                         <Grid Grid.Column="1" Grid.Row="0">
-                            <Image Source="/Images/no-image.png"  HorizontalAlignment="Center" x:Name="MainImg"/>
+                            <Image x:Name="MainImage" Source="/Images/no-image.png"  HorizontalAlignment="Center"/>
                         </Grid>
                     </Grid>
                 </Grid>

@@ -1,21 +1,11 @@
-﻿using System;
+﻿using DBconnectShop.Access;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DBconnectShop.Access;
 using ProductDB = DBconnectShop.Table.Product;
-using LoginDB = DBconnectShop.Access.Login;
 
 namespace ProjektApp.Pages.Admin.Product {
     /// <summary>
@@ -61,6 +51,8 @@ namespace ProjektApp.Pages.Admin.Product {
         }
 
         private void ShowImages(object o, EventArgs e) {
+            if((Button)o).CommandParameter is null)
+                    return;
             var id = (int)((Button)o).CommandParameter;
             Window.Content.Content = new ProductImages(id);
         }
