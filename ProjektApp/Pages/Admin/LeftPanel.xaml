@@ -8,22 +8,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
     <StackPanel>
-        <Button Margin="10" Cursor="Hand" Height="50">
+        <Button Margin="10" Cursor="Hand" Height="50" Click="ShowProducts">
             <StackPanel Width="250" Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="ChartBar" Height="40" Width="40"/>
-                <TextBlock Text="Statystyki" FontSize="25" Padding="5"/>
+                <materialDesign:PackIcon Kind="ShapeRectanglePlus" Height="40" Width="40"/>
+                <TextBlock Text="Produkty" FontSize="25" Padding="5"/>
             </StackPanel>
         </Button>
         <Button Margin="10" Cursor="Hand" Height="50">
             <StackPanel Width="250" Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="AccountEdit" Height="40" Width="40"/>
                 <TextBlock Text="Użytkownicy" FontSize="25" Padding="5"/>
-            </StackPanel>
-        </Button>
-        <Button Margin="10" Cursor="Hand" Height="50" Click="ShowProducts">
-            <StackPanel Width="250" Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="ShapeRectanglePlus" Height="40" Width="40"/>
-                <TextBlock Text="Produkty" FontSize="25" Padding="5"/>
             </StackPanel>
         </Button>
         <Button Margin="10" Cursor="Hand" Height="50">

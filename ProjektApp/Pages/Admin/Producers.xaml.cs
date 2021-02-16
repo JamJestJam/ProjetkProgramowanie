@@ -4,20 +4,18 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ProjektApp.Pages.Admin.Product {
+namespace ProjektApp.Pages.Admin {
     /// <summary>
-    /// Interaction logic for ProductPrice.xaml
+    /// Interaction logic for Producers.xaml
     /// </summary>
-    public partial class ProductPrice : UserControl {
+    public partial class Producers : UserControl {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
         DBconnectShop.Access.Admin admin = new DBconnectShop.Access.Admin(Window.login);
-        public static int ID { get; private set; }
         List<Element> Values { get; set; } = new List<Element>();
 
-        public ProductPrice(int id) {
+        public Producers() {
             InitializeComponent();
-            ID = id;
 
             Window.Loading.IsOpen = true;
             Thread thread = new Thread(InitItems) {
@@ -27,7 +25,7 @@ namespace ProjektApp.Pages.Admin.Product {
         }
 
         private void InitItems() {
-            foreach(var product in admin.GetPrice(ID)) {
+            foreach(var product in admin.GetSpecyfication(ID)) {
                 Dispatcher.Invoke(() => {
                     Values.Add(new Element(product));
                 });
@@ -44,20 +42,25 @@ namespace ProjektApp.Pages.Admin.Product {
                             Application.Current.MainWindow as MainWindow;
             DBconnectShop.Access.Admin admin = new DBconnectShop.Access.Admin(Window.login);
 
-            Products_price Product { get; }
-            public decimal Price {
-                get => Product.Product_price;
-                set => admin.ChangePrice(Product, value);
+            Product_specification Product { get; }
+
+            public int Id =>
+                Product.ID;
+            public string Name {
+                get => Product.Name;
+                set => admin.ChangeName(Product, value);
             }
-            public string Date =>
-                Product.Product_price_date.ToString();
+            public string Value {
+                get => Product.Value;
+                set => admin.ChangeValue(Product, value);
+            }
 
             public Element() {
-                Product = admin.NewPrice(ID);
+                Product = admin.NewSpecyfication(ID);
             }
 
-            public Element(Products_price price) {
-                Product = price;
+            public Element(Product_specification product) {
+                Product = product;
             }
         }
     }

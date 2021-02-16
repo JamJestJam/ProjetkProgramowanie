@@ -1,20 +1,8 @@
-﻿using DBconnectShop.Access;
-using DBconnectShop.Table;
-using System;
+﻿using DBconnectShop.Table;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ProjektApp.Pages.Admin.Product {
     /// <summary>
@@ -23,7 +11,7 @@ namespace ProjektApp.Pages.Admin.Product {
     public partial class ProductSpecyfication : UserControl {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
-        AdminProducts admin = new AdminProducts(Window.login);
+        DBconnectShop.Access.Admin admin = new DBconnectShop.Access.Admin(Window.login);
         public static int ID { get; private set; }
         List<Element> Values { get; set; } = new List<Element>();
 
@@ -54,7 +42,7 @@ namespace ProjektApp.Pages.Admin.Product {
         class Element {
             static MainWindow Window =>
                             Application.Current.MainWindow as MainWindow;
-            AdminProducts admin = new AdminProducts(Window.login);
+            DBconnectShop.Access.Admin admin = new DBconnectShop.Access.Admin(Window.login);
 
             Product_specification Product { get; }
 

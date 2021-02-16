@@ -24,9 +24,6 @@ namespace ProjektApp.Pages.Buttons {
                     WorkerBt.Visibility = Visibility.Collapsed;
                     AdminBt.Visibility = Visibility.Collapsed;
                     break;
-                case UserGroup.Worker:
-                    AdminBt.Visibility = Visibility.Collapsed;
-                    break;
             }
         }
 
@@ -39,7 +36,7 @@ namespace ProjektApp.Pages.Buttons {
             Nullable<bool> result = dlg.ShowDialog();
             if(result == true) {
                 string filename = dlg.FileName;
-
+                
                 var profil = new UserProfil(Window.login);
                 profil.Change_Avatar(filename);
             }

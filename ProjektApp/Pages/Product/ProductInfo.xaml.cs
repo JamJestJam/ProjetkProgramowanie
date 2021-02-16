@@ -78,7 +78,7 @@ namespace ProjektApp.Pages.Product {
 
         private void CreateImage(Image image) {
             image.Margin = new Thickness(0, 0, 0, 10);
-            image.Cursor = Cursors.Hand; 
+            image.Cursor = Cursors.Hand;
             image.MouseDown += ChangeMain;
             Images.Children.Add(image);
         }

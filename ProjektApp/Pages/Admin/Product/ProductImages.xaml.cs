@@ -1,5 +1,4 @@
-﻿using DBconnectShop.Access;
-using DBconnectShop.Table;
+﻿using DBconnectShop.Table;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -15,7 +14,7 @@ namespace ProjektApp.Pages.Admin.Product {
     public partial class ProductImages : UserControl {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
-        AdminProducts admin = new AdminProducts(Window.login);
+        DBconnectShop.Access.Admin admin = new DBconnectShop.Access.Admin(Window.login);
         public static int ID { get; private set; }
         List<Element> Values { get; set; } = new List<Element>();
 
@@ -76,7 +75,7 @@ namespace ProjektApp.Pages.Admin.Product {
         class Element {
             static MainWindow Window =>
                             Application.Current.MainWindow as MainWindow;
-            AdminProducts admin = new AdminProducts(Window.login);
+            DBconnectShop.Access.Admin admin = new DBconnectShop.Access.Admin(Window.login);
 
             public int Id =>
                 Product.Product_image_id;

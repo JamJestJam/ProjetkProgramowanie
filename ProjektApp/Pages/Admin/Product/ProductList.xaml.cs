@@ -1,5 +1,4 @@
-﻿using DBconnectShop.Access;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -14,7 +13,7 @@ namespace ProjektApp.Pages.Admin.Product {
     public partial class ProductList : UserControl {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
-        AdminProducts admin = new AdminProducts(Window.login);
+        DBconnectShop.Access.Admin admin = new DBconnectShop.Access.Admin(Window.login);
 
         List<Element> Values { get; set; } = new List<Element>();
         List<string> Categories { get; set; } = new List<string>();
@@ -74,7 +73,7 @@ namespace ProjektApp.Pages.Admin.Product {
         class Element {
             static MainWindow Window =>
                 Application.Current.MainWindow as MainWindow;
-            AdminProducts admin = new AdminProducts(Window.login);
+            DBconnectShop.Access.Admin admin = new DBconnectShop.Access.Admin(Window.login);
 
             public int ID =>
                 Product.ID;
