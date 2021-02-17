@@ -5,7 +5,7 @@ using ImageAddon = DBconnectShop.Addons.Image;
 
 
 namespace ProjektApp {
-    public static class ImageExtern {
+    internal static class ImageExtern {
         internal static Image ToImage(this ImageAddon imageAddon) {
             var Image = new Image();
 

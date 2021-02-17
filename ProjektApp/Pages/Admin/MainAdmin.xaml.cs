@@ -9,6 +9,9 @@ namespace ProjektApp.Pages.Admin {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
 
+        /// <summary>
+        /// Inicjalizuje komponenty admina
+        /// </summary>
         public MainAdmin() {
             InitializeComponent();
 

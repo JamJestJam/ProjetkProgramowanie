@@ -7,17 +7,25 @@ using LoginDB = DBconnectShop.Access.Login;
 
 namespace ProjektApp {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Główne okienko
     /// </summary>
     public partial class MainWindow : Window {
+        /// <summary>
+        /// Zmienna przechowująca autoryzacje zalogowanego użytkownika
+        /// </summary>
         public LoginDB login = null;
+        /// <summary>
+        /// Lista produktów użytkownika
+        /// </summary>
         public Basket basket = null;
 
 #if DEBUG
         [DllImport("Kernel32")]
         private static extern void AllocConsole();
 #endif
-
+        /// <summary>
+        /// Tworzy nowe okienko
+        /// </summary>
         public MainWindow() {
             InitializeComponent();
 #if DEBUG

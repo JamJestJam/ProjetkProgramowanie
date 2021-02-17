@@ -17,6 +17,9 @@ namespace ProjektApp.Pages.Admin.Product {
         List<Element> Values { get; set; } = new List<Element>();
         List<string> Categories { get; set; } = new List<string>();
 
+        /// <summary>
+        /// Tworzy liste kategori w panelu admina
+        /// </summary>
         public ProductCategories() {
             InitializeComponent();
 

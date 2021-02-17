@@ -63,11 +63,25 @@ namespace DBconnectShop.Table {
         #endregion
 
         #region Cuts =========================================
-
+        /// <summary>
+        /// Skrócona nazwa kraju
+        /// </summary>
         public string Country => Address_country.Trim();
+        /// <summary>
+        /// Skrócona nazwa miasta
+        /// </summary>
         public string City => Address_city.Trim();
+        /// <summary>
+        /// Skrócona nazwa ulicy
+        /// </summary>
         public string Street => Address_street.Trim();
+        /// <summary>
+        /// Skrócony numer budynku
+        /// </summary>
         public string BuildingNumber => Address_building_number.Trim();
+        /// <summary>
+        /// Skrócony kod pocztowy
+        /// </summary>
         public string ZipCode => Address_zip_code.Trim();
 
         #endregion

@@ -16,6 +16,7 @@ namespace ProjektApp.Pages.Admin.Product {
         public static int ID { get; private set; }
         List<Element> Values { get; set; } = new List<Element>();
 
+
         public ProductPrice(int id) {
             InitializeComponent();
             ID = id;

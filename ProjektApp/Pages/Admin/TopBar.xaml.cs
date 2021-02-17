@@ -12,6 +12,9 @@ namespace ProjektApp.Pages.Admin {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
 
+        /// <summary>
+        /// Tworzy pasek nawigacyjny dla widoku admina
+        /// </summary>
         public TopBar() {
             InitializeComponent();
 
@@ -20,7 +23,7 @@ namespace ProjektApp.Pages.Admin {
             Basket.Content = new Basket();
         }
 
-        public void GoBack(object o, EventArgs e) {
+        private void GoBack(object o, EventArgs e) {
             Window.Content.Content = new ProductList();
         }
     }

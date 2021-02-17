@@ -10,15 +10,18 @@ namespace ProjektApp.Pages.Admin {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
 
+        /// <summary>
+        /// Tworzy widok dla lewego panelu w panelu admina
+        /// </summary>
         public LeftPanel() {
             InitializeComponent();
         }
 
-        public void ShowProducts(object o, EventArgs e) {
+        private void ShowProducts(object o, EventArgs e) {
             Window.Content.Content = new Product.ProductList();
         }
 
-        public void ShowCategories(object o, EventArgs e) {
+        private void ShowCategories(object o, EventArgs e) {
             Window.Content.Content = new Product.ProductCategories();
         }
     }

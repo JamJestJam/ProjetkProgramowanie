@@ -22,6 +22,10 @@ namespace ProjektApp.Pages.Admin.Product {
         public static int ID { get; private set; }
         List<Element> Values { get; set; } = new List<Element>();
 
+        /// <summary>
+        /// Tworzy liste obrazków produktu dla panelu admina
+        /// </summary>
+        /// <param name="id"></param>
         public ProductImages(int id) {
             InitializeComponent();
             ID = id;
@@ -50,7 +54,7 @@ namespace ProjektApp.Pages.Admin.Product {
             });
         }
 
-        public void ChangeImage(object o, EventArgs eventArgs) {
+        private void ChangeImage(object o, EventArgs eventArgs) {
             if(((Button)o).CommandParameter is null)
                 return;
             int product = (int)((Button)o).CommandParameter;
