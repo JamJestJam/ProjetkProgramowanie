@@ -17,7 +17,7 @@ namespace ProjektApp.Pages.Admin.Product {
             Application.Current.MainWindow as MainWindow;
         AdminControl admin = new AdminControl(Window.login);
         /// <summary>
-        /// ID obrazka które przetwarzamy
+        /// ID produktu które przetwarzamy
         /// </summary>
         public static int ID { get; private set; }
         List<Element> Values { get; set; } = new List<Element>();
@@ -25,7 +25,7 @@ namespace ProjektApp.Pages.Admin.Product {
         /// <summary>
         /// Tworzy liste obrazków produktu dla panelu admina
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">ID produktu</param>
         public ProductImages(int id) {
             InitializeComponent();
             ID = id;

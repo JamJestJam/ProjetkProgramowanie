@@ -16,7 +16,10 @@ namespace ProjektApp.Pages.ProductBasket {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
         ProductList list;
-
+        /// <summary>
+        /// Lewy panel dla listy zakupów
+        /// </summary>
+        /// <param name="list">Lista produktów</param>
         public LeftPanel(ProductList list) {
             InitializeComponent();
             this.list = list;
@@ -25,12 +28,12 @@ namespace ProjektApp.Pages.ProductBasket {
             Window.basket.OnChange += SetPrice;
         }
 
-        public void SetPrice(object o, EventArgs e) {
+        internal void SetPrice(object o, EventArgs e) {
             var sum = list.Values.Sum(a => decimal.Parse(a.Sum));
             Price.Text = sum.ToString("#,0.00") + "zł";
         }
 
-        public void Buy(object o, EventArgs e) {
+        private void Buy(object o, EventArgs e) {
             Window.Loading.IsOpen = true;
 
             Thread thread = new Thread(Buy) {

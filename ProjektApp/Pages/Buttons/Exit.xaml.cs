@@ -6,6 +6,9 @@ namespace ProjektApp.Pages.Buttons {
     /// Interaction logic for Exit.xaml
     /// </summary>
     public partial class Exit : UserControl {
+        /// <summary>
+        /// Przycisk zamknięcia aplikacji
+        /// </summary>
         public Exit() {
             InitializeComponent();
         }

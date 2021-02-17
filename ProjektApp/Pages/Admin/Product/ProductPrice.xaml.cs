@@ -13,10 +13,16 @@ namespace ProjektApp.Pages.Admin.Product {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
         AdminControl admin = new AdminControl(Window.login);
+        /// <summary>
+        /// ID produktu który przetwarzamy
+        /// </summary>
         public static int ID { get; private set; }
         List<Element> Values { get; set; } = new List<Element>();
 
-
+        /// <summary>
+        /// Tworzy historię cen dla panelu admina
+        /// </summary>
+        /// <param name="id">ID produktu</param>
         public ProductPrice(int id) {
             InitializeComponent();
             ID = id;

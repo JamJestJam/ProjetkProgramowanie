@@ -10,13 +10,17 @@ namespace ProjektApp.Pages.Products {
     public partial class LeftPanel : UserControl {
         readonly ProductList productList;
 
+        /// <summary>
+        /// Lewy panel dla listy produktów
+        /// </summary>
+        /// <param name="product">Panel z listą produktów</param>
         public LeftPanel(ProductList product) {
             InitializeComponent();
 
             this.productList = product;
         }
 
-        public void ShowCategory() {
+        internal void ShowCategory() {
             var dict = new Dictionary<int, TreeViewItem>();
             var categories = productList.Products.CatergorisRO;
             Panel.Items.Clear();

@@ -13,13 +13,16 @@ namespace ProjektApp.Pages.ProductBasket {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
 
+        /// <summary>
+        /// Lista addresów w liscie zakupów
+        /// </summary>
         public Addresses() {
             InitializeComponent();
             Window.TopBar.Content = new TopBar(typeof(ProductList));
             Reload();
         }
 
-        public void Add(object o, EventArgs e) {
+        private void Add(object o, EventArgs e) {
             Window.Loading.IsOpen = true;
             var thread = new Thread(Add) {
                 IsBackground = true
@@ -27,7 +30,7 @@ namespace ProjektApp.Pages.ProductBasket {
             thread.Start();
         }
 
-        public void Reload() {
+        private void Reload() {
             Window.Loading.IsOpen = true;
             var thread = new Thread(ShowAddresses) {
                 IsBackground = true
@@ -35,7 +38,7 @@ namespace ProjektApp.Pages.ProductBasket {
             thread.Start();
         }
 
-        public void ShowAddresses() {
+        private void ShowAddresses() {
             LoginDB login = null;
             Dispatcher.Invoke(() => {
                 login = Window.login;

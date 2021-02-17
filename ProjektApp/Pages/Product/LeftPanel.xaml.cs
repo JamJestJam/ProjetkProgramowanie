@@ -5,6 +5,9 @@ namespace ProjektApp.Pages.Product {
     /// Interaction logic for LeftPanel.xaml
     /// </summary>
     public partial class LeftPanel : UserControl {
+        /// <summary>
+        /// Lewy panel dla widoku produktu
+        /// </summary>
         public LeftPanel() {
             InitializeComponent();
         }

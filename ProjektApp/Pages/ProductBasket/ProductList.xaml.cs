@@ -14,7 +14,9 @@ namespace ProjektApp.Pages.ProductBasket {
     public partial class ProductList : UserControl {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
-
+        /// <summary>
+        /// Lista produktów w koszyku
+        /// </summary>
         public ProductList() {
             InitializeComponent();
             GridData.ItemsSource = Values;
@@ -29,7 +31,7 @@ namespace ProjektApp.Pages.ProductBasket {
             thread.Start();
         }
 
-        public List<Element> Values { get; set; } = new List<Element>();
+        internal List<Element> Values { get; set; } = new List<Element>();
 
         private void InsertBasket() {
             Basket basketProducts = null;

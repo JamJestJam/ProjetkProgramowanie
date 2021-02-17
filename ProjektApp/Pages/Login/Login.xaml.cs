@@ -13,6 +13,9 @@ namespace ProjektApp.Pages.Login {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
 
+        /// <summary>
+        /// Formularz logowania
+        /// </summary>
         public Login() {
             InitializeComponent();
 

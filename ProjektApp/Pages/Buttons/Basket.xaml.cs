@@ -12,6 +12,9 @@ namespace ProjektApp.Pages.Buttons {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
 
+        /// <summary>
+        /// Przycisk koszyka
+        /// </summary>
         public Basket() {
             InitializeComponent();
 

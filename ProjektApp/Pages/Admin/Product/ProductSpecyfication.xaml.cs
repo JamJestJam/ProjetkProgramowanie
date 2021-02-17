@@ -13,9 +13,16 @@ namespace ProjektApp.Pages.Admin.Product {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
         private AdminControl admin = new AdminControl(Window.login);
-        private static int ID { get; set; }
+        /// <summary>
+        /// ID produktu który przetwarzamy
+        /// </summary>
+        public static int ID { get; set; }
         private List<Element> Values { get; set; } = new List<Element>();
 
+        /// <summary>
+        /// Tworzy listę specyfikacji dla panelu admina
+        /// </summary>
+        /// <param name="id">ID produktu</param>
         public ProductSpecyfication(int id) {
             InitializeComponent();
             ID = id;

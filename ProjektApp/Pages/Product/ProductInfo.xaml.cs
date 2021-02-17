@@ -22,6 +22,10 @@ namespace ProjektApp.Pages.Product {
         SingleProduct singleProduct;
         Product Product => singleProduct.Product;
 
+        /// <summary>
+        /// Widok produktu
+        /// </summary>
+        /// <param name="ProductID"></param>
         public ProductInfo(int ProductID) {
             InitializeComponent();
             singleProduct = new SingleProduct(ProductID);
@@ -31,7 +35,7 @@ namespace ProjektApp.Pages.Product {
             Reload();
         }
 
-        public void Reload() {
+        internal void Reload() {
             Window.Loading.IsOpen = true;
 
             Thread thread = new Thread(ReloadProductInfo) {
@@ -49,7 +53,7 @@ namespace ProjektApp.Pages.Product {
             });
         }
 
-        public void ReloadContent() {
+        private void ReloadContent() {
             Name.Text = Product.TrueName;
             Price.Text = $"Cena produktu: {Product.ActualPrice.ToString("#,0.00")} zł";
 

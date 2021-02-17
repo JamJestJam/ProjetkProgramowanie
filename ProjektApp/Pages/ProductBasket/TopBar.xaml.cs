@@ -11,7 +11,11 @@ namespace ProjektApp.Pages.ProductBasket {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
         Type back;
-
+        
+        /// <summary>
+        /// Menu nawigacyjne dla listy produktów w koszyku
+        /// </summary>
+        /// <param name="type">Klasa do której ma wracać</param>
         public TopBar(Type type) {
             InitializeComponent();
 

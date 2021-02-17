@@ -17,10 +17,10 @@ namespace ProjektApp.Pages.Products {
         readonly LeftPanel left;
         readonly TopBar top;
 
-        public int? Category { get; set; } = null;
-        public string Like { get; set; } = "";
+        internal int? Category { get; set; } = null;
+        internal string Like { get; set; } = "";
 
-        public ProductList() {
+        internal ProductList() {
             InitializeComponent();
 
             Products = new BuyableProducts();

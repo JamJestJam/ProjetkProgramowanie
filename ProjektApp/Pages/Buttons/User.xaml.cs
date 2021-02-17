@@ -14,7 +14,9 @@ namespace ProjektApp.Pages.Buttons {
     public partial class User : UserControl {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
-
+        /// <summary>
+        /// Przycisk edycji profilu
+        /// </summary>
         public User() {
             InitializeComponent();
 

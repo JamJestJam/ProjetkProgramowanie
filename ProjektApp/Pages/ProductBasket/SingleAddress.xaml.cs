@@ -12,6 +12,11 @@ namespace ProjektApp.Pages.ProductBasket {
             Application.Current.MainWindow as MainWindow;
         int ID;
 
+        /// <summary>
+        /// Pojedynczy address w liscie addresów
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <param name="address">Addres</param>
         public SingleAddress(int id, Address address) {
             InitializeComponent();
 

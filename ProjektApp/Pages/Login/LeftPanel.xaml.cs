@@ -9,6 +9,9 @@ namespace ProjektApp.Pages.Login {
         static MainWindow Window =>
             Application.Current.MainWindow as MainWindow;
 
+        /// <summary>
+        /// Lewy panel w widoku logowania
+        /// </summary>
         public LeftPanel() {
             InitializeComponent();
         }

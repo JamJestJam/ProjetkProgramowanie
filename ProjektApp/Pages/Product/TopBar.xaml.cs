@@ -12,6 +12,10 @@ namespace ProjektApp.Pages.Product {
             Application.Current.MainWindow as MainWindow;
         ProductInfo productInfo;
 
+        /// <summary>
+        /// Menu nawigacyjne dla widoku produktu
+        /// </summary>
+        /// <param name="product">Produkt który nawiguje</param>
         public TopBar(ProductInfo product) {
             InitializeComponent();
             productInfo = product;
